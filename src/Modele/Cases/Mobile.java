@@ -1,6 +1,6 @@
 package Modele.Cases;
 
-public class Mobile extends Case
+public abstract class Mobile extends Case
 {
 
 }

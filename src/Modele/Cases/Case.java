@@ -1,6 +1,6 @@
 package Modele.Cases;
 
-public class Case
+public abstract class Case
 {
 
 }
