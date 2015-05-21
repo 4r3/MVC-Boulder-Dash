@@ -8,7 +8,7 @@ import Modele.Cases.Case;
 import Modele.Cases.ElementDynamique;
 import Modele.Cases.MurIndestructible;
 import Modele.Cases.MurNormal;
-import Modele.Cases.Personage;
+import Modele.Cases.Personnage;
 import Modele.Cases.Sortie;
 import Modele.Cases.Vide;
 
@@ -25,7 +25,7 @@ public class Niveau
 	//Variables
 	private int hauteur;
 	private int longueur;
-	private Personage perso;
+	private Personnage perso;
 	private Sortie sortie;
 	/**
 	 * tableau de Case du niveau
@@ -106,10 +106,10 @@ public class Niveau
 	private void inserePersonage(int x, int y)
 	{
 		if ( x > 0 && x < longueur - 1 && y > 0 && y < hauteur - 1 ) {
-			perso = new Personage(x, y);
+			perso = new Personnage(x, y);
 			tableau[x][y] = perso;
 		} else {
-			perso = new Personage(1, 1);
+			perso = new Personnage(1, 1);
 			tableau[1][1] = perso;
 		}
 

@@ -2,9 +2,9 @@ package Modele.Cases;
 
 import Modele.Niveau;
 
-public class Personage extends ElementDynamique
+public class Personnage extends ElementDynamique
 {
-	public Personage(int pos_x, int pos_y)
+	public Personnage(int pos_x, int pos_y)
 	{
 		super(pos_x, pos_y);
 	}
