@@ -27,11 +27,36 @@ public class Personnage extends ElementDynamique
 	 * 
 	 * @see Modele.Cases.ElementDynamique#deplacer()
 	 */
+	@SuppressWarnings("incomplete-switch")
 	@Override
-	public void deplacer()
+	public void deplacer(Niveau N, Directions D)
 	{
-		// TODO Auto-generated method stub
-
+		int xdest = getPos_x();
+		int ydest = getPos_y();
+		switch ( D ) {
+			case Bas :
+				ydest++;
+				break;
+			case Droite :
+				xdest++;
+				break;
+			case Gauche :
+				xdest--;
+				break;
+			case Haut :
+				ydest--;
+				break;
+			default :
+				return;
+		}
+		if ( N.getCase(xdest, ydest).getClass().getName() == "Modele.Cases.Boue" ) {
+			N.echangeCases(getPos_x(), getPos_y(), xdest, ydest);
+			N.insereVide(getPos_x(), getPos_y());
+			setPos(xdest, ydest);
+		} else if ( N.getCase(xdest, ydest).getClass().getName() == "Modele.Cases.Vide" ) {
+			N.echangeCases(getPos_x(), getPos_y(), xdest, ydest);
+			setPos(xdest, ydest);
+		}
 	}
 
 	@Override

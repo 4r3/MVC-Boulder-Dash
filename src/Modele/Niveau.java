@@ -189,4 +189,26 @@ public class Niveau
 			System.out.print("\n");
 		}
 	}
+
+	public Case getCase(int x, int y)
+	{
+		if ( x >= 0 && x < longueur && y >= 0 && y < hauteur ) {
+			return tableau[x][y];
+		} else {
+			return null;
+		}
+	}
+
+	public Personnage getPerso()
+	{
+		return perso;
+	}
+
+	public void echangeCases(int x1, int y1, int x2, int y2)
+	{
+		Case temp = tableau[x1][y1];
+		tableau[x1][y1] = tableau[x2][y2];
+		tableau[x2][y2] = temp;
+	}
+
 }
