@@ -52,9 +52,11 @@ public class Personnage extends ElementDynamique
 		if ( N.getCase(xdest, ydest).getClass().getName() == "Modele.Cases.Boue" ) {
 			N.echangeCases(getPos_x(), getPos_y(), xdest, ydest);
 			N.insereVide(getPos_x(), getPos_y());
+			N.remplirUpTable(getPos_x(), getPos_y());
 			setPos(xdest, ydest);
 		} else if ( N.getCase(xdest, ydest).getClass().getName() == "Modele.Cases.Vide" ) {
 			N.echangeCases(getPos_x(), getPos_y(), xdest, ydest);
+			N.remplirUpTable(getPos_x(), getPos_y());
 			setPos(xdest, ydest);
 		}
 	}

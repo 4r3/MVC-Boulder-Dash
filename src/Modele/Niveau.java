@@ -211,4 +211,17 @@ public class Niveau
 		tableau[x2][y2] = temp;
 	}
 
+	public void remplirUpTable(int x, int y)
+	{
+		if ( tableau[x][y - 1].getClass().getSuperclass().getName() == "Modele.Cases.ElementDynamique" ) {
+			UpTable.add(0, (ElementDynamique) tableau[x][y - 1]);
+		}
+		if ( tableau[x + 1][y - 1].getClass().getSuperclass().getName() == "Modele.Cases.ElementDynamique" ) {
+			UpTable.add(0, (ElementDynamique) tableau[x + 1][y - 1]);
+		}
+		if ( tableau[x - 1][y - 1].getClass().getSuperclass().getName() == "Modele.Cases.ElementDynamique" ) {
+			UpTable.add(0, (ElementDynamique) tableau[x - 1][y - 1]);
+		}
+	}
+
 }
