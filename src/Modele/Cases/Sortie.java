@@ -13,7 +13,7 @@ public class Sortie extends Murs
 
 	public Sortie()
 	{
-		ouverte = false;
+		setOuverte(false);
 	}
 
 	@Override
@@ -21,4 +21,14 @@ public class Sortie extends Murs
 	{
 		return "S";
 	}
+
+	public boolean isOuverte()
+    {
+	    return ouverte;
+    }
+
+	public void setOuverte(boolean ouverte)
+    {
+	    this.ouverte = ouverte;
+    }
 }

@@ -1,5 +1,7 @@
 package Modele.Cases;
 
+import Modele.Niveau;
+
 public class Personage extends ElementDynamique
 {
 	public Personage(int pos_x, int pos_y)
@@ -7,8 +9,33 @@ public class Personage extends ElementDynamique
 		super(pos_x, pos_y);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see Modele.Cases.ElementDynamique#collision(Modele.Niveau,
+	 * Modele.Cases.Case)
+	 */
 	@Override
-	public void refresh()
+	public void collision(Niveau N, Case C)
+	{
+		// TODO Auto-generated method stub
+
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see Modele.Cases.ElementDynamique#deplacer()
+	 */
+	@Override
+	public void deplacer()
+	{
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void refresh(Niveau N)
 	{
 		// TODO Auto-generated method stub
 	}
@@ -18,5 +45,4 @@ public class Personage extends ElementDynamique
 	{
 		return "P";
 	}
-
 }

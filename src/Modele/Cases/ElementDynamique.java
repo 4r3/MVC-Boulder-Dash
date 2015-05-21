@@ -1,5 +1,7 @@
 package Modele.Cases;
 
+import Modele.Niveau;
+
 public abstract class ElementDynamique extends Case
 {
 	private int pos_x;
@@ -11,7 +13,11 @@ public abstract class ElementDynamique extends Case
 		this.pos_y = pos_y;
 	}
 
-	public abstract void refresh();
+	public abstract void collision(Niveau N, Case C);
+
+	public abstract void deplacer();
+
+	public abstract void refresh(Niveau N);
 
 	public int getPos_x()
 	{
