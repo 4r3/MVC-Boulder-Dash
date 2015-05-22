@@ -171,6 +171,7 @@ public class Niveau
 	 */
 	public void refresh()
 	{
+		perso.refresh(this);
 		for ( ElementDynamique mob : UpTable ) {
 			mob.refresh(this);
 		}

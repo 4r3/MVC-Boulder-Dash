@@ -4,36 +4,25 @@ import Modele.Niveau;
 
 public class Personnage extends ElementDynamique
 {
+	Directions Deplace;
+
 	public Personnage(int pos_x, int pos_y)
 	{
 		super(pos_x, pos_y);
+		Deplace = Directions.Null;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see Modele.Cases.ElementDynamique#collision(Modele.Niveau,
-	 * Modele.Cases.Case)
-	 */
-	@Override
-	public void collision(Niveau N, Case C)
+	public void setDeplace(Directions D)
 	{
-		// TODO Auto-generated method stub
-
+		Deplace = D;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see Modele.Cases.ElementDynamique#deplacer()
-	 */
-	@SuppressWarnings("incomplete-switch")
 	@Override
-	public void deplacer(Niveau N, Directions D)
+	public void refresh(Niveau N)
 	{
 		int xdest = getPos_x();
 		int ydest = getPos_y();
-		switch ( D ) {
+		switch ( Deplace ) {
 			case Bas :
 				ydest++;
 				break;
@@ -46,6 +35,8 @@ public class Personnage extends ElementDynamique
 			case Haut :
 				ydest--;
 				break;
+			case Null :
+				return;
 			default :
 				return;
 		}
@@ -59,12 +50,7 @@ public class Personnage extends ElementDynamique
 			N.remplirUpTable(getPos_x(), getPos_y());
 			setPos(xdest, ydest);
 		}
-	}
-
-	@Override
-	public void refresh(Niveau N)
-	{
-		// TODO Auto-generated method stub
+		setDeplace(Directions.Null);
 	}
 
 	@Override

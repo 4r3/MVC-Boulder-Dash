@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 import Modele.Niveau;
 import Modele.Cases.Directions;
 
@@ -12,14 +14,47 @@ public class BoulderDash
 			level.insereMurNormal(x, 5);
 		}
 
-		for ( y = 8; y < 12; y++ ) {
-			for ( x = 0; x < 20; x++ ) {
-				level.insereVide(x, y);
-			}
-		}
-		level.getPerso().deplacer(level, Directions.Bas);
-		level.getPerso().deplacer(level, Directions.Droite);
-		level.getPerso().deplacer(level, Directions.Gauche);
+		/*
+		 * for ( y = 8; y < 12; y++ ) { for ( x = 0; x < 20; x++ ) {
+		 * level.insereVide(x, y); } }
+		 */
+		System.out.print("\r");
 		level.affiche();
+		while ( true ) {
+			System.out.print("\r");
+			try {
+				Thread.sleep(1000); //1000 milliseconds is one second.
+			} catch ( InterruptedException ex ) {
+				Thread.currentThread().interrupt();
+			}
+			level.getPerso().setDeplace(getDirection());
+			level.refresh();
+			level.affiche();
+		}
+	}
+
+	@SuppressWarnings("resource")
+	public static Directions getDirection()
+	{
+		Directions dir;
+		int in = new Scanner(System.in).nextInt();
+		switch ( in ) {
+			case 8 :
+				dir = Directions.Haut;
+				break;
+			case 6 :
+				dir = Directions.Droite;
+				break;
+			case 4 :
+				dir = Directions.Gauche;
+				break;
+			case 2 :
+				dir = Directions.Bas;
+				break;
+			default :
+				dir = Directions.Null;
+				break;
+		}
+		return dir;
 	}
 }
