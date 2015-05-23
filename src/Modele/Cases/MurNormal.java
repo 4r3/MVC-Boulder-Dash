@@ -1,6 +1,6 @@
 package Modele.Cases;
 
-public class MurNormal extends Murs
+public class MurNormal extends Case
 {
 	@Override
 	public String ID()

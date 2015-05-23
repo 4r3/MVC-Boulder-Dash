@@ -1,6 +1,6 @@
 package Modele.Cases;
 
-public class MurIndestructible extends Murs
+public class MurIndestructible extends Case
 {
 
 	@Override

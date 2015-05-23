@@ -7,7 +7,7 @@ package Modele.Cases;
  * @author 4r3
  *
  */
-public class Sortie extends Murs
+public class Sortie extends Case
 {
 	private boolean ouverte;
 
@@ -23,12 +23,12 @@ public class Sortie extends Murs
 	}
 
 	public boolean isOuverte()
-    {
-	    return ouverte;
-    }
+	{
+		return ouverte;
+	}
 
 	public void setOuverte(boolean ouverte)
-    {
-	    this.ouverte = ouverte;
-    }
+	{
+		this.ouverte = ouverte;
+	}
 }

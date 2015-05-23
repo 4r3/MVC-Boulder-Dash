@@ -8,19 +8,22 @@ public class BoulderDash
 
 	public static void main(String[] args)
 	{
-		Niveau level = new Niveau(20, 15, 5, 5, 18, 18);
+		Niveau level = new Niveau(20, 15, 5, 5, 5, 10);
 		int x, y;
 		for ( x = 0; x < 20; x++ ) {
 			level.insereMurNormal(x, 5);
 		}
 
-		/*
-		 * for ( y = 8; y < 12; y++ ) { for ( x = 0; x < 20; x++ ) {
-		 * level.insereVide(x, y); } }
-		 */
+		for ( y = 8; y < 12; y++ ) {
+			for ( x = 0; x < 20; x++ ) {
+				level.insereVide(x, y);
+			}
+		}
+		level.insereRocher(4, 6);
+
 		System.out.print("\r");
 		level.affiche();
-		while ( true ) {
+		while ( !level.isFini() ) {
 			System.out.print("\r");
 			try {
 				Thread.sleep(1000); //1000 milliseconds is one second.
@@ -31,13 +34,15 @@ public class BoulderDash
 			level.refresh();
 			level.affiche();
 		}
+		System.out.println("niveau ternine");
 	}
 
 	@SuppressWarnings("resource")
 	public static Directions getDirection()
 	{
 		Directions dir;
-		int in = new Scanner(System.in).nextInt();
+		Scanner scanner = new Scanner(System.in);
+		int in = scanner.nextInt();
 		switch ( in ) {
 			case 8 :
 				dir = Directions.Haut;

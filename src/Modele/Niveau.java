@@ -5,10 +5,12 @@ import java.util.List;
 
 import Modele.Cases.Boue;
 import Modele.Cases.Case;
+import Modele.Cases.Chutable;
 import Modele.Cases.ElementDynamique;
 import Modele.Cases.MurIndestructible;
 import Modele.Cases.MurNormal;
 import Modele.Cases.Personnage;
+import Modele.Cases.Rocher;
 import Modele.Cases.Sortie;
 import Modele.Cases.Vide;
 
@@ -25,6 +27,7 @@ public class Niveau
 	//Variables
 	private int hauteur;
 	private int longueur;
+	private boolean fini;
 	private Personnage perso;
 	private Sortie sortie;
 	/**
@@ -76,6 +79,7 @@ public class Niveau
 		UpTable = new ArrayList<>();
 		hauteur = h;
 		longueur = l;
+		fini = false;
 
 		//remplisage du niveau
 		for ( y = 0; y < h; y++ ) {
@@ -160,8 +164,16 @@ public class Niveau
 	 */
 	public void insereVide(int x, int y)
 	{
-		if ( x > 0 && x < longueur - 1 && y > 0 && y < hauteur - 1 && tableau[x][y] != perso && tableau[x][y] != sortie ) {
+		if ( x > 0 && x < longueur - 1 && y > 0 && y < hauteur - 1 && tableau[x][y] != perso && (tableau[x][y] != sortie || sortie.isOuverte()) ) {
 			tableau[x][y] = new Vide();
+		}
+	}
+
+	public void insereRocher(int x, int y)
+	{
+		if ( x > 0 && x < longueur - 1 && y > 0 && y < hauteur - 1 && tableau[x][y] != perso && (tableau[x][y] != sortie || sortie.isOuverte()) ) {
+			tableau[x][y] = new Rocher(x, y);
+			UpTable.add((ElementDynamique) tableau[x][y]);
 		}
 	}
 
@@ -174,6 +186,10 @@ public class Niveau
 		perso.refresh(this);
 		for ( ElementDynamique mob : UpTable ) {
 			mob.refresh(this);
+		}
+		cleanUpTable();
+		if ( !sortie.isOuverte() ) {
+			sortie.setOuverte(true);
 		}
 	}
 
@@ -189,6 +205,7 @@ public class Niveau
 			}
 			System.out.print("\n");
 		}
+		System.out.print(UpTable.size());
 	}
 
 	public Case getCase(int x, int y)
@@ -214,15 +231,37 @@ public class Niveau
 
 	public void remplirUpTable(int x, int y)
 	{
-		if ( tableau[x][y - 1].getClass().getSuperclass().getName() == "Modele.Cases.ElementDynamique" ) {
-			UpTable.add(0, (ElementDynamique) tableau[x][y - 1]);
+		if ( tableau[x][y - 1] instanceof Chutable ) {
+			UpTable.add(UpTable.size(), (ElementDynamique) tableau[x][y - 1]);
 		}
-		if ( tableau[x + 1][y - 1].getClass().getSuperclass().getName() == "Modele.Cases.ElementDynamique" ) {
-			UpTable.add(0, (ElementDynamique) tableau[x + 1][y - 1]);
+		if ( tableau[x + 1][y - 1] instanceof Chutable ) {
+			UpTable.add(UpTable.size(), (ElementDynamique) tableau[x + 1][y - 1]);
 		}
-		if ( tableau[x - 1][y - 1].getClass().getSuperclass().getName() == "Modele.Cases.ElementDynamique" ) {
-			UpTable.add(0, (ElementDynamique) tableau[x - 1][y - 1]);
+		if ( tableau[x - 1][y - 1] instanceof Chutable ) {
+			UpTable.add(UpTable.size(), (ElementDynamique) tableau[x - 1][y - 1]);
 		}
+	}
+
+	public void cleanUpTable()
+	{
+		int i = 0;
+		while ( i < UpTable.size() ) {
+			if ( (UpTable.get(i) instanceof Chutable) && !((Chutable) UpTable.get(i)).enChute() ) {
+				UpTable.remove(i);
+			} else {
+				i++;
+			}
+		}
+	}
+
+	public boolean isFini()
+	{
+		return fini;
+	}
+
+	public void setFini()
+	{
+		fini = true;
 	}
 
 }
