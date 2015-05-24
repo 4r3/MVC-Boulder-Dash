@@ -61,11 +61,13 @@ public class Personnage extends ElementDynamique
 			if ( Deplace == Directions.Gauche ) {
 				if ( N.getCase(xdest - 1, ydest) instanceof Vide ) {
 					N.echangeCases(xdest, ydest, xdest - 1, ydest);
+					N.addUptable(xdest - 1, ydest);
 					N.remplirUpTable(xdest, ydest);
 				}
 			} else if ( Deplace == Directions.Droite ) {
 				if ( N.getCase(xdest + 1, ydest) instanceof Vide ) {
 					N.echangeCases(xdest, ydest, xdest + 1, ydest);
+					N.addUptable(xdest + 1, ydest);
 					N.remplirUpTable(xdest, ydest);
 				}
 			}

@@ -6,6 +6,7 @@ import java.util.List;
 import Modele.Cases.Boue;
 import Modele.Cases.Case;
 import Modele.Cases.Chutable;
+import Modele.Cases.Diamant;
 import Modele.Cases.ElementDynamique;
 import Modele.Cases.MurIndestructible;
 import Modele.Cases.MurNormal;
@@ -177,15 +178,25 @@ public class Niveau
 		}
 	}
 
+	public void insereDiamant(int x, int y)
+	{
+		if ( x > 0 && x < longueur - 1 && y > 0 && y < hauteur - 1 && tableau[x][y] != perso && (tableau[x][y] != sortie || sortie.isOuverte()) ) {
+			tableau[x][y] = new Diamant(x, y);
+			UpTable.add((ElementDynamique) tableau[x][y]);
+		}
+	}
+
 	/**
 	 * fonction de mise à jour du niveau, met a jour tout les ElementDynamique
 	 * suceptibles d'etre mis a jour dans le niveau
 	 */
 	public void refresh()
 	{
+		int i = 0;
 		perso.refresh(this);
-		for ( ElementDynamique mob : UpTable ) {
-			mob.refresh(this);
+		while ( i < UpTable.size() ) {
+			UpTable.get(i).refresh(this);
+			i++;
 		}
 		cleanUpTable();
 		if ( !sortie.isOuverte() ) {
@@ -229,17 +240,18 @@ public class Niveau
 		tableau[x2][y2] = temp;
 	}
 
+	public void addUptable(int x, int y)
+	{
+		if ( tableau[x][y] instanceof Chutable ) {
+			UpTable.add(UpTable.size(), (ElementDynamique) tableau[x][y]);
+		}
+	}
+
 	public void remplirUpTable(int x, int y)
 	{
-		if ( tableau[x][y - 1] instanceof Chutable ) {
-			UpTable.add(UpTable.size(), (ElementDynamique) tableau[x][y - 1]);
-		}
-		if ( tableau[x + 1][y - 1] instanceof Chutable ) {
-			UpTable.add(UpTable.size(), (ElementDynamique) tableau[x + 1][y - 1]);
-		}
-		if ( tableau[x - 1][y - 1] instanceof Chutable ) {
-			UpTable.add(UpTable.size(), (ElementDynamique) tableau[x - 1][y - 1]);
-		}
+		addUptable(x, y - 1);
+		addUptable(x + 1, y - 1);
+		addUptable(x - 1, y - 1);
 	}
 
 	public void cleanUpTable()

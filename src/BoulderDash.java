@@ -20,6 +20,7 @@ public class BoulderDash
 			}
 		}
 		level.insereRocher(4, 6);
+		level.insereDiamant(4, 5);
 
 		System.out.print("\r");
 		level.affiche();
