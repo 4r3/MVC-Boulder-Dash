@@ -10,11 +10,11 @@ public class BoulderDash
 	{
 		Niveau level = new Niveau(20, 15, 5, 5, 5, 10);
 		int x, y;
-		for ( x = 0; x < 20; x++ ) {
-			level.insereMurNormal(x, 5);
-		}
+		/*
+		 * for ( x = 0; x < 20; x++ ) { level.insereMurNormal(x, 5); }
+		 */
 
-		for ( y = 8; y < 12; y++ ) {
+		for ( y = 4; y < 19; y++ ) {
 			for ( x = 0; x < 20; x++ ) {
 				level.insereVide(x, y);
 			}

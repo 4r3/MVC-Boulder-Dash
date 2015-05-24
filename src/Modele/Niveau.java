@@ -194,6 +194,7 @@ public class Niveau
 	{
 		int i = 0;
 		perso.refresh(this);
+		trieUpTable();
 		while ( i < UpTable.size() ) {
 			UpTable.get(i).refresh(this);
 			i++;
@@ -217,6 +218,7 @@ public class Niveau
 			System.out.print("\n");
 		}
 		System.out.print(UpTable.size());
+		System.out.println(UpTable.toString());
 	}
 
 	public Case getCase(int x, int y)
@@ -242,7 +244,7 @@ public class Niveau
 
 	public void addUptable(int x, int y)
 	{
-		if ( tableau[x][y] instanceof Chutable ) {
+		if ( tableau[x][y] instanceof ElementDynamique && !UpTable.contains(tableau[x][y]) && !(tableau[x][y] instanceof Personnage) ) {
 			UpTable.add(UpTable.size(), (ElementDynamique) tableau[x][y]);
 		}
 	}
@@ -252,6 +254,27 @@ public class Niveau
 		addUptable(x, y - 1);
 		addUptable(x + 1, y - 1);
 		addUptable(x - 1, y - 1);
+	}
+
+	public void trieUpTable()
+	{
+		int i = 0;
+		int j, pmin;
+		ElementDynamique temp;
+
+		while ( i < UpTable.size() - 1 ) {
+			pmin = i;
+			j = i + 1;
+			while ( j < UpTable.size() ) {
+				if ( UpTable.get(j).isSuperior(UpTable.get(pmin)) ) {
+					pmin = j;
+				}
+				j++;
+			}
+			temp = UpTable.set(i, UpTable.get(pmin));
+			UpTable.set(pmin, temp);
+			i++;
+		}
 	}
 
 	public void cleanUpTable()

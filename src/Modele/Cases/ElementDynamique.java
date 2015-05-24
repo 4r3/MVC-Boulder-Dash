@@ -40,4 +40,22 @@ public abstract class ElementDynamique extends Case
 		this.pos_x = pos_x;
 		this.pos_y = pos_y;
 	}
+
+	/**
+	 * @param elementDynamique
+	 * @return
+	 */
+	public boolean isInferior(ElementDynamique Ed)
+	{
+		return (pos_y < Ed.getPos_y()) || (pos_y == Ed.getPos_y() && pos_x < Ed.getPos_x());
+	}
+
+	/**
+	 * @param elementDynamique
+	 * @return
+	 */
+	public boolean isSuperior(ElementDynamique Ed)
+	{
+		return pos_y > Ed.getPos_y();
+	}
 }

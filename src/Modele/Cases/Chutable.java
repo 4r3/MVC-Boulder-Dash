@@ -26,12 +26,13 @@ public class Chutable extends ElementDynamique
 	@Override
 	public void refresh(Niveau N)
 	{
-		if ( N.getCase(getPos_x(), getPos_y() + 1) instanceof Vide ) {
+		Case C = N.getCase(getPos_x(), getPos_y() + 1);
+		if ( C instanceof Vide ) {
 			N.echangeCases(getPos_x(), getPos_y(), getPos_x(), getPos_y() + 1);
 			N.remplirUpTable(getPos_x(), getPos_y());
 			setPos_y(getPos_y() + 1);
 			chute = true;
-		} else if ( N.getCase(getPos_x(), getPos_y() + 1) instanceof Chutable ) {
+		} else if ( C instanceof Chutable || C instanceof MurNormal || C instanceof Sortie ) {
 			if ( (N.getCase(getPos_x() + 1, getPos_y()) instanceof Vide) && (N.getCase(getPos_x() + 1, getPos_y() + 1) instanceof Vide) ) {
 				N.echangeCases(getPos_x(), getPos_y(), getPos_x() + 1, getPos_y() + 1);
 				N.remplirUpTable(getPos_x(), getPos_y());
