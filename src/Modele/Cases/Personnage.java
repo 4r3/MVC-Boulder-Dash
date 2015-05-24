@@ -2,9 +2,10 @@ package Modele.Cases;
 
 import Modele.Niveau;
 
-public class Personnage extends ElementDynamique
+public class Personnage extends ElementDynamique implements Vivant
 {
 	Directions Deplace;
+	boolean vivant;
 
 	public Personnage(int pos_x, int pos_y)
 	{
@@ -71,6 +72,13 @@ public class Personnage extends ElementDynamique
 					N.remplirUpTable(xdest, ydest);
 				}
 			}
+		} else if ( C instanceof Diamant ) {
+			N.echangeCases(getPos_x(), getPos_y(), xdest, ydest);
+			N.insereVide(getPos_x(), getPos_y());
+			N.remplirUpTable(getPos_x(), getPos_y());
+			setPos(xdest, ydest);
+			N.AddDscore();
+			N.remUptable(C);
 		} else {
 			System.out.println(N.getCase(xdest, ydest).getClass().getName());
 		}
@@ -81,5 +89,17 @@ public class Personnage extends ElementDynamique
 	public String ID()
 	{
 		return "P";
+	}
+
+	@Override
+	public boolean estVivant()
+	{
+		return vivant;
+	}
+
+	@Override
+	public void tuer(Niveau N)
+	{
+		N.setFini();
 	}
 }

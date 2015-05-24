@@ -43,7 +43,11 @@ public class Chutable extends ElementDynamique
 				N.remplirUpTable(getPos_x(), getPos_y());
 				setPos(getPos_x() - 1, getPos_y() + 1);
 				chute = true;
+			} else {
+				chute = false;
 			}
+		} else if ( C instanceof Vivant && chute ) {
+			((Vivant) C).tuer(N);
 		} else {
 			chute = false;
 		}

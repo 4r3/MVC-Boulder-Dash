@@ -28,6 +28,7 @@ public class Niveau
 	//Variables
 	private int hauteur;
 	private int longueur;
+	private int dscore;
 	private boolean fini;
 	private Personnage perso;
 	private Sortie sortie;
@@ -81,6 +82,7 @@ public class Niveau
 		hauteur = h;
 		longueur = l;
 		fini = false;
+		dscore = 2; //TODO gerer a la construction
 
 		//remplisage du niveau
 		for ( y = 0; y < h; y++ ) {
@@ -200,7 +202,7 @@ public class Niveau
 			i++;
 		}
 		cleanUpTable();
-		if ( !sortie.isOuverte() ) {
+		if ( !sortie.isOuverte() && dscore <= 0 ) {
 			sortie.setOuverte(true);
 		}
 	}
@@ -219,6 +221,8 @@ public class Niveau
 		}
 		System.out.print(UpTable.size());
 		System.out.println(UpTable.toString());
+		System.out.println("Diamant restant :" + dscore);
+		System.out.println("sortie ouverte : " + sortie.isOuverte());
 	}
 
 	public Case getCase(int x, int y)
@@ -289,6 +293,11 @@ public class Niveau
 		}
 	}
 
+	public void remUptable(Case C)
+	{
+		UpTable.remove(C);
+	}
+
 	public boolean isFini()
 	{
 		return fini;
@@ -297,6 +306,14 @@ public class Niveau
 	public void setFini()
 	{
 		fini = true;
+	}
+
+	/**
+	 * 
+	 */
+	public void AddDscore()
+	{
+		dscore--;
 	}
 
 }

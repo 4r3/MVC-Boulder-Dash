@@ -8,34 +8,34 @@ public class BoulderDash
 
 	public static void main(String[] args)
 	{
-		Niveau level = new Niveau(20, 15, 5, 5, 5, 10);
+		Niveau level = new Niveau(20, 12, 5, 5, 5, 10);
 		int x, y;
-		/*
-		 * for ( x = 0; x < 20; x++ ) { level.insereMurNormal(x, 5); }
-		 */
 
-		for ( y = 4; y < 19; y++ ) {
+		for ( x = 0; x < 20; x++ ) {
+			level.insereDiamant(x, 1);
+		}
+
+		for ( y = 2; y < 19; y++ ) {
 			for ( x = 0; x < 20; x++ ) {
 				level.insereVide(x, y);
 			}
 		}
-		level.insereRocher(4, 6);
-		level.insereDiamant(4, 5);
+		//level.insereRocher(4, 6);
+		//level.insereRocher(4, 7);
+		level.insereMurNormal(4, 8);
 
 		System.out.print("\r");
 		level.affiche();
 		while ( !level.isFini() ) {
 			System.out.print("\r");
-			try {
-				Thread.sleep(1000); //1000 milliseconds is one second.
-			} catch ( InterruptedException ex ) {
-				Thread.currentThread().interrupt();
-			}
 			level.getPerso().setDeplace(getDirection());
+			long time = System.currentTimeMillis();
 			level.refresh();
 			level.affiche();
+			System.out.println("refresh : " + (System.currentTimeMillis() - time) + "ms");
+
 		}
-		System.out.println("niveau ternine");
+		System.out.println("niveau termine");
 	}
 
 	@SuppressWarnings("resource")
