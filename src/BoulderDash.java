@@ -35,7 +35,7 @@ public class BoulderDash
 			long time = System.nanoTime();
 			level.refresh();
 			level.afficheDebug();
-			System.out.println("refresh : " + (System.nanoTime() - time) / 1000 + "µs");
+			System.out.println("refresh : " + (System.nanoTime() - time) / 1000 + " µs");
 
 		}
 		System.out.println("niveau termine");

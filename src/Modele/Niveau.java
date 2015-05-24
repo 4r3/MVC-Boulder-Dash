@@ -9,6 +9,7 @@ import Modele.Cases.Chutable;
 import Modele.Cases.Diamant;
 import Modele.Cases.ElementDynamique;
 import Modele.Cases.MurIndestructible;
+import Modele.Cases.MurMagique;
 import Modele.Cases.MurNormal;
 import Modele.Cases.Personnage;
 import Modele.Cases.Rocher;
@@ -185,6 +186,13 @@ public class Niveau
 		if ( x > 0 && x < longueur - 1 && y > 0 && y < hauteur - 1 && tableau[x][y] != perso && (tableau[x][y] != sortie || sortie.isOuverte()) ) {
 			tableau[x][y] = new Diamant(x, y);
 			UpTable.add((ElementDynamique) tableau[x][y]);
+		}
+	}
+
+	public void insereMurMagique(int x, int y)
+	{
+		if ( x > 0 && x < longueur - 1 && y > 0 && y < hauteur - 1 && tableau[x][y] != perso && (tableau[x][y] != sortie || sortie.isOuverte()) ) {
+			tableau[x][y] = new MurMagique();
 		}
 	}
 
