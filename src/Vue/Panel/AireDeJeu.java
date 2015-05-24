@@ -330,6 +330,7 @@ public class AireDeJeu extends JPanel {
 	public void refreshJeu() {
 		cycle();
 		update();
+		this.niveau.refresh();
 		repaint();
 	}
 
