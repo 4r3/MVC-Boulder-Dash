@@ -92,12 +92,6 @@ public class Personnage extends ElementDynamique implements Vivant
 	}
 
 	@Override
-	public boolean estVivant()
-	{
-		return vivant;
-	}
-
-	@Override
 	public void tuer(Niveau N)
 	{
 		N.setFini();

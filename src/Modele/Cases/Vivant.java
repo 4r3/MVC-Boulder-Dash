@@ -11,7 +11,5 @@ import Modele.Niveau;
  */
 public interface Vivant
 {
-	public boolean estVivant();
-
 	public void tuer(Niveau N);
 }

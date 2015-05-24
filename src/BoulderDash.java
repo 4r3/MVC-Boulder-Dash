@@ -11,28 +11,31 @@ public class BoulderDash
 		Niveau level = new Niveau(20, 12, 5, 5, 5, 10);
 		int x, y;
 
-		for ( x = 0; x < 20; x++ ) {
-			level.insereDiamant(x, 1);
-		}
-
-		for ( y = 2; y < 19; y++ ) {
+		for ( y = 1; y < 19; y++ ) {
 			for ( x = 0; x < 20; x++ ) {
 				level.insereVide(x, y);
 			}
 		}
+
+		for ( y = 1; y < 19; y++ ) {
+			for ( x = 15; x < 20; x++ ) {
+				level.insereDiamant(x, y);
+			}
+		}
+
 		//level.insereRocher(4, 6);
 		//level.insereRocher(4, 7);
 		level.insereMurNormal(4, 8);
 
 		System.out.print("\r");
-		level.affiche();
+		level.afficheDebug();
 		while ( !level.isFini() ) {
 			System.out.print("\r");
 			level.getPerso().setDeplace(getDirection());
-			long time = System.currentTimeMillis();
+			long time = System.nanoTime();
 			level.refresh();
-			level.affiche();
-			System.out.println("refresh : " + (System.currentTimeMillis() - time) + "ms");
+			level.afficheDebug();
+			System.out.println("refresh : " + (System.nanoTime() - time) / 1000 + "µs");
 
 		}
 		System.out.println("niveau termine");

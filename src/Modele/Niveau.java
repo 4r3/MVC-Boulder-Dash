@@ -210,7 +210,7 @@ public class Niveau
 	/**
 	 * affiche le niveau en mode texte, a utiliser pour le débuggage
 	 */
-	public void affiche()
+	public void afficheDebug()
 	{
 		int x, y;
 		for ( y = 0; y < hauteur; y++ ) {
