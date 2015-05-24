@@ -1,4 +1,7 @@
+import java.awt.EventQueue;
 import java.util.Scanner;
+
+import javax.swing.JFrame;
 
 import Modele.Niveau;
 import Modele.Cases.Directions;
@@ -7,7 +10,7 @@ public class BoulderDash
 {
 
 	public static void main(String[] args)
-	{
+	{/*
 		Niveau level = new Niveau(20, 15, 5, 5, 18, 18);
 		int x, y;
 		for ( x = 0; x < 20; x++ ) {
@@ -17,7 +20,7 @@ public class BoulderDash
 		/*
 		 * for ( y = 8; y < 12; y++ ) { for ( x = 0; x < 20; x++ ) {
 		 * level.insereVide(x, y); } }
-		 */
+		 *//*
 		System.out.print("\r");
 		level.affiche();
 		while ( true ) {
@@ -55,6 +58,15 @@ public class BoulderDash
 				dir = Directions.Null;
 				break;
 		}
-		return dir;
+		return dir;*/
+		
+		EventQueue.invokeLater(new Runnable() {
+            
+            @Override
+            public void run() {                
+                JFrame ex = new ThreadBoulderDash();
+                ex.setVisible(true);                
+            }
+        });
 	}
 }

@@ -204,6 +204,11 @@ public class Niveau
 	{
 		return perso;
 	}
+	
+	public Sortie getSortie()
+	{
+		return sortie;
+	}
 
 	public void echangeCases(int x1, int y1, int x2, int y2)
 	{
@@ -223,6 +228,22 @@ public class Niveau
 		if ( tableau[x - 1][y - 1].getClass().getSuperclass().getName() == "Modele.Cases.ElementDynamique" ) {
 			UpTable.add(0, (ElementDynamique) tableau[x - 1][y - 1]);
 		}
+	}
+
+	public int getHauteur() {
+		return hauteur;
+	}
+
+	public void setHauteur(int hauteur) {
+		this.hauteur = hauteur;
+	}
+
+	public int getLongueur() {
+		return longueur;
+	}
+
+	public void setLongueur(int longueur) {
+		this.longueur = longueur;
 	}
 
 }
