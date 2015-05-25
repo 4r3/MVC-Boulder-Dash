@@ -3,11 +3,13 @@
  */
 package Modele.Cases;
 
+import Modele.Niveau;
+
 /**
  * @author 4r3
  *
  */
-public class Diamant extends Chutable
+public class Diamant extends Chutable implements InterPersonnage
 {
 
 	/**
@@ -23,6 +25,18 @@ public class Diamant extends Chutable
 	public String ID()
 	{
 		return "D";
+	}
+
+	@Override
+	public void PersonageArrive(Niveau N, int x, int y)
+	{
+		N.echangeCases(N.getPerso().getPos_x(), N.getPerso().getPos_y(), x, y);
+		N.insereVide(N.getPerso().getPos_x(), N.getPerso().getPos_y());
+		N.remplirUpTable(N.getPerso().getPos_x(), N.getPerso().getPos_y());
+		N.getPerso().setPos(x, y);
+		N.AddDscore();
+		N.remUptable(this);
+
 	}
 
 }

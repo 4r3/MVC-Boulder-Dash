@@ -17,8 +17,8 @@ public class BoulderDash
 			}
 		}
 
-		for ( y = 1; y < 19; y++ ) {
-			for ( x = 15; x < 20; x++ ) {
+		for ( y = 1; y < 2; y++ ) {
+			for ( x = 1; x < 5; x++ ) {
 				level.insereDiamant(x, y);
 			}
 		}

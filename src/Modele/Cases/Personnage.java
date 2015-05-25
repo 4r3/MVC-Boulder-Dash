@@ -18,6 +18,11 @@ public class Personnage extends ElementDynamique implements Vivant
 		Deplace = D;
 	}
 
+	public Directions getDeplace()
+	{
+		return Deplace;
+	}
+
 	@Override
 	public void refresh(Niveau N)
 	{
@@ -42,36 +47,8 @@ public class Personnage extends ElementDynamique implements Vivant
 				return;
 		}
 		Case C = N.getCase(xdest, ydest);
-		if ( C instanceof Boue ) {
-			N.echangeCases(getPos_x(), getPos_y(), xdest, ydest);
-			N.insereVide(getPos_x(), getPos_y());
-			N.remplirUpTable(getPos_x(), getPos_y());
-			setPos(xdest, ydest);
-		} else if ( C instanceof Vide ) {
-			N.echangeCases(getPos_x(), getPos_y(), xdest, ydest);
-			N.remplirUpTable(getPos_x(), getPos_y());
-			setPos(xdest, ydest);
-		} else if ( C instanceof Sortie ) {
-			if ( ((Sortie) C).isOuverte() ) {
-				N.echangeCases(getPos_x(), getPos_y(), xdest, ydest);
-				N.insereVide(getPos_x(), getPos_y());
-				setPos(xdest, ydest);
-				N.setFini();
-			}
-		} else if ( C instanceof Rocher ) {
-			if ( Deplace == Directions.Gauche ) {
-				if ( N.getCase(xdest - 1, ydest) instanceof Vide ) {
-					N.echangeCases(xdest, ydest, xdest - 1, ydest);
-					N.addUptable(xdest - 1, ydest);
-					N.remplirUpTable(xdest, ydest);
-				}
-			} else if ( Deplace == Directions.Droite ) {
-				if ( N.getCase(xdest + 1, ydest) instanceof Vide ) {
-					N.echangeCases(xdest, ydest, xdest + 1, ydest);
-					N.addUptable(xdest + 1, ydest);
-					N.remplirUpTable(xdest, ydest);
-				}
-			}
+		if ( C instanceof InterPersonnage ) {
+			((InterPersonnage) C).PersonageArrive(N, xdest, ydest);
 		} else if ( C instanceof Diamant ) {
 			N.echangeCases(getPos_x(), getPos_y(), xdest, ydest);
 			N.insereVide(getPos_x(), getPos_y());
