@@ -4,23 +4,36 @@
 package Modele.Cases;
 
 import Modele.Niveau;
+import java.awt.image.BufferedImage;
+
+import Modele.Variables;
+import Modele.Animation.Animation;
+import Modele.Animation.Sprite;
 
 /**
  * @author 4r3
- *
+ * 
  */
 public class Sortie extends Case implements InterPersonnage
 {
 	private boolean ouverte;
+	private Animation animation;
 
-	public Sortie()
-	{
+	public Sortie() {
 		setOuverte(false);
+		Sprite spriteSortie = new Sprite("beacon");
+		BufferedImage[] sortie = { spriteSortie.getSprite(0, 0),
+				spriteSortie.getSprite(1, 0), spriteSortie.getSprite(2, 0),
+				spriteSortie.getSprite(3, 0) };
+		this.animation = new Animation(sortie, Variables.VITESSE_ANIM);
+	}
+
+	public Animation getAnimation() {
+		return animation;
 	}
 
 	@Override
-	public String ID()
-	{
+	public String ID() {
 		return "S";
 	}
 

@@ -246,6 +246,11 @@ public class Niveau
 	{
 		return perso;
 	}
+	
+	public Sortie getSortie()
+	{
+		return sortie;
+	}
 
 	public void echangeCases(int x1, int y1, int x2, int y2)
 	{
@@ -322,6 +327,22 @@ public class Niveau
 	public void AddDscore()
 	{
 		dscore--;
+	}
+
+	public int getHauteur() {
+		return hauteur;
+	}
+
+	public void setHauteur(int hauteur) {
+		this.hauteur = hauteur;
+	}
+
+	public int getLongueur() {
+		return longueur;
+	}
+
+	public void setLongueur(int longueur) {
+		this.longueur = longueur;
 	}
 
 }
