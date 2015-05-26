@@ -15,7 +15,7 @@ import Modele.Animation.Sprite;
  */
 public class Sortie extends Murs {
 	private boolean ouverte;
-	private static Animation animation;
+	private Animation animation;
 
 	public Sortie() {
 		setOuverte(false);
@@ -24,7 +24,7 @@ public class Sortie extends Murs {
 		BufferedImage[] sortie = { spriteSortie.getSprite(0, 0),
 				spriteSortie.getSprite(1, 0), spriteSortie.getSprite(2, 0),
 				spriteSortie.getSprite(3, 0) };
-		animation = new Animation(sortie, Variables.VITESSE_ANIM);
+		this.animation = new Animation(sortie, Variables.VITESSE_ANIM);
 	}
 
 	public Animation getAnimation() {

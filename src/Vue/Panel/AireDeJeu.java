@@ -54,6 +54,8 @@ public class AireDeJeu extends JPanel {
 		this.mvtDelay = Variables.DELAI_MARCHE;
 		this.compteurIdle = 0;
 		this.idleDelay = Variables.DELAI_IDLE;
+
+		this.niveau.getSortie().getAnimation().start();
 	}
 
 	private void drawNiveau(Graphics g) {
@@ -250,6 +252,7 @@ public class AireDeJeu extends JPanel {
 
 	private void cycle() {
 		niveau.getPerso().getAnimation().update();
+		this.niveau.getSortie().getAnimation().update();
 	}
 
 	private void mouvement(int dir) {
@@ -257,8 +260,9 @@ public class AireDeJeu extends JPanel {
 		case KeyEvent.VK_RIGHT:
 			if (!(this.niveau.getPerso().getPos_x() * Variables.TAILLE_CASE >= (this.niveau
 					.getLongueur() * Variables.TAILLE_CASE)
-					- (Variables.PAS_MVT)))
+					- (Variables.PAS_MVT))) {
 				this.niveau.getPerso().setDeplace(Directions.Droite);
+			}
 			break;
 		case KeyEvent.VK_LEFT:
 			if (!(this.niveau.getPerso().getPos_x() * Variables.TAILLE_CASE <= 0))

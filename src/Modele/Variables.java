@@ -18,10 +18,10 @@ public class Variables {
 	public static final int TAILLE_CASE = 16;
 
 	public static final int DELAI = 25;
-	public static final int DELAI_MARCHE = 3;
+	public static final int DELAI_MARCHE = 4;
 	public static final int DELAI_IDLE = 70;
 	public static final int PAS_MVT = 16;
-	public static final int VITESSE_ANIM = 4;
+	public static final int VITESSE_ANIM = 5;
 	public static final int VITESSE_IDLE = 15;
 
 }
