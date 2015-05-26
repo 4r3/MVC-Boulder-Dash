@@ -3,7 +3,12 @@
  */
 package Modele.Cases;
 
+import java.awt.image.BufferedImage;
+
 import Modele.Niveau;
+import Modele.Variables;
+import Modele.Animation.Animation;
+import Modele.Animation.Sprite;
 
 /**
  * @author 4r3
@@ -11,6 +16,7 @@ import Modele.Niveau;
  */
 public class Diamant extends Chutable implements InterPersonnage
 {
+	private Animation animation;
 
 	/**
 	 * @param pos_x
@@ -19,6 +25,12 @@ public class Diamant extends Chutable implements InterPersonnage
 	public Diamant(int pos_x, int pos_y)
 	{
 		super(pos_x, pos_y);
+		Sprite spriteDiamant = new Sprite("diamonds");
+
+		BufferedImage[] diamond = { spriteDiamant.getSprite(0, 0), spriteDiamant.getSprite(1, 0), spriteDiamant.getSprite(2, 0), spriteDiamant.getSprite(3, 0) };
+
+		this.animation = new Animation(diamond, Variables.VITESSE_ANIM);
+		this.animation.start();
 	}
 
 	@Override
@@ -37,6 +49,11 @@ public class Diamant extends Chutable implements InterPersonnage
 		N.AddDscore();
 		N.remUptable(this);
 
+	}
+
+	public Animation getAnimation()
+	{
+		return animation;
 	}
 
 }

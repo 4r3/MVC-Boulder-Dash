@@ -1,6 +1,7 @@
 package Modele;
 
-public class Variables {
+public class Variables
+{
 
 	public static final int HAUTEUR_FRAME = 500;
 	public static final int LARGEUR_FRAME = 500;
@@ -17,8 +18,8 @@ public class Variables {
 
 	public static final int TAILLE_CASE = 16;
 
-	public static final int DELAI = 25;
-	public static final int DELAI_MARCHE = 4;
+	public static final int DELAI = 30;
+	public static final int DELAI_MARCHE = 6;
 	public static final int DELAI_IDLE = 70;
 	public static final int PAS_MVT = 16;
 	public static final int VITESSE_ANIM = 5;

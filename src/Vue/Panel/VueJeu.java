@@ -11,13 +11,15 @@ import javax.swing.KeyStroke;
 import Modele.Niveau;
 import Modele.Variables;
 
-public class VueJeu extends JPanel implements Runnable, KeyListener {
+public class VueJeu extends JPanel implements Runnable, KeyListener
+{
 	private Thread animator;
 
 	private Niveau niveau;
 	private AireDeJeu aireJeu;
 
-	public VueJeu() {
+	public VueJeu()
+	{
 
 		initBoard();
 		System.out.println("Thread");
@@ -26,90 +28,100 @@ public class VueJeu extends JPanel implements Runnable, KeyListener {
 		setFocusable(true);
 	}
 
-	private void initBoard() {
+	private void initBoard()
+	{
 
 		aireJeu = new AireDeJeu();
 		add(aireJeu);
 
 		// animation.start();
 
-		this.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0),
-				KeyEvent.VK_RIGHT);
+		this.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0), KeyEvent.VK_RIGHT);
 		this.getActionMap().put(KeyEvent.VK_RIGHT, new AbstractAction() {
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e)
+			{
 				aireJeu.toucheDroite();
 			}
 		});
 
-		this.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0),
-				KeyEvent.VK_LEFT);
+		this.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0), KeyEvent.VK_LEFT);
 		this.getActionMap().put(KeyEvent.VK_LEFT, new AbstractAction() {
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e)
+			{
 				aireJeu.toucheGauche();
 			}
 		});
 
-		this.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0),
-				KeyEvent.VK_UP);
+		this.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0), KeyEvent.VK_UP);
 		this.getActionMap().put(KeyEvent.VK_UP, new AbstractAction() {
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e)
+			{
 				aireJeu.toucheHaut();
 			}
 		});
 
-		this.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0),
-				KeyEvent.VK_DOWN);
+		this.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0), KeyEvent.VK_DOWN);
 		this.getActionMap().put(KeyEvent.VK_DOWN, new AbstractAction() {
+
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e)
+			{
 				aireJeu.toucheBas();
 			}
 		});
 	}
 
 	@Override
-	public void addNotify() {
+	public void addNotify()
+	{
 		super.addNotify();
 
 		animator = new Thread(this);
 		animator.start();
 	}
 
-	public void keyPressed(KeyEvent evt) {
-
-	}
-
-	public void keyReleased(KeyEvent evt) {
-		aireJeu.toucheRelache(evt);
-	}
-
-	public void keyTyped(KeyEvent evt) {
+	@Override
+	public void keyPressed(KeyEvent evt)
+	{
 
 	}
 
 	@Override
-	public void run() {
+	public void keyReleased(KeyEvent evt)
+	{
+		aireJeu.toucheRelache(evt);
+	}
+
+	@Override
+	public void keyTyped(KeyEvent evt)
+	{
+
+	}
+
+	@Override
+	public void run()
+	{
 
 		long beforeTime, timeDiff, sleep;
 
 		beforeTime = System.currentTimeMillis();
 
-		while (true) {
+		while ( true ) {
 			this.aireJeu.refreshJeu();
 
 			timeDiff = System.currentTimeMillis() - beforeTime;
 			sleep = Variables.DELAI - timeDiff;
 
-			if (sleep < 0) {
-				sleep = 2;
+			if ( sleep < 0 ) {
+				sleep = 0;
 			}
 
 			try {
 				Thread.sleep(sleep);
-			} catch (InterruptedException e) {
+			} catch ( InterruptedException e ) {
 				System.out.println("Interrupted: " + e.getMessage());
 			}
 

@@ -3,7 +3,12 @@
  */
 package Modele.Cases;
 
+import java.awt.image.BufferedImage;
+
 import Modele.Niveau;
+import Modele.Variables;
+import Modele.Animation.Animation;
+import Modele.Animation.Sprite;
 
 /**
  * @author 4r3
@@ -11,6 +16,8 @@ import Modele.Niveau;
  */
 public class Rocher extends Chutable implements InterPersonnage
 {
+	private Animation animation;
+
 	/**
 	 * @param pos_x
 	 * @param pos_y
@@ -18,6 +25,9 @@ public class Rocher extends Chutable implements InterPersonnage
 	public Rocher(int pos_x, int pos_y)
 	{
 		super(pos_x, pos_y);
+		Sprite spriteRocher = new Sprite("boulder");
+		BufferedImage[] rocher = { spriteRocher.getSprite(0, 0) };
+		setAnimation(new Animation(rocher, Variables.VITESSE_ANIM));
 	}
 
 	@Override
@@ -43,5 +53,15 @@ public class Rocher extends Chutable implements InterPersonnage
 			}
 		}
 
+	}
+
+	public Animation getAnimation()
+	{
+		return animation;
+	}
+
+	private void setAnimation(Animation animation)
+	{
+		this.animation = animation;
 	}
 }

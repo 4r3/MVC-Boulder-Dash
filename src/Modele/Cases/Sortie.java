@@ -3,9 +3,9 @@
  */
 package Modele.Cases;
 
-import Modele.Niveau;
 import java.awt.image.BufferedImage;
 
+import Modele.Niveau;
 import Modele.Variables;
 import Modele.Animation.Animation;
 import Modele.Animation.Sprite;
@@ -19,21 +19,19 @@ public class Sortie extends Case implements InterPersonnage
 	private boolean ouverte;
 	private Animation animation;
 
-	public Sortie() {
-		setOuverte(false);
-		Sprite spriteSortie = new Sprite("beacon");
-		BufferedImage[] sortie = { spriteSortie.getSprite(0, 0),
-				spriteSortie.getSprite(1, 0), spriteSortie.getSprite(2, 0),
-				spriteSortie.getSprite(3, 0) };
-		this.animation = new Animation(sortie, Variables.VITESSE_ANIM);
+	public Sortie()
+	{
+		Fermer();
 	}
 
-	public Animation getAnimation() {
+	public Animation getAnimation()
+	{
 		return animation;
 	}
 
 	@Override
-	public String ID() {
+	public String ID()
+	{
 		return "S";
 	}
 
@@ -42,9 +40,25 @@ public class Sortie extends Case implements InterPersonnage
 		return ouverte;
 	}
 
-	public void setOuverte(boolean ouverte)
+	public void Ouvrir()
 	{
-		this.ouverte = ouverte;
+		this.ouverte = true;
+		Sprite spriteSortieO = new Sprite("beacon");
+
+		BufferedImage[] sortieO = { spriteSortieO.getSprite(0, 0), spriteSortieO.getSprite(1, 0), spriteSortieO.getSprite(2, 0), spriteSortieO.getSprite(3, 0) };
+
+		this.animation = new Animation(sortieO, Variables.VITESSE_ANIM);
+		this.animation.start();
+	}
+
+	public void Fermer()
+	{
+		this.ouverte = false;
+		Sprite spriteSortieF = new Sprite("wall");
+
+		BufferedImage[] sortieF = { spriteSortieF.getSprite(0, 0) };
+
+		this.animation = new Animation(sortieF, Variables.VITESSE_ANIM);
 	}
 
 	@Override
@@ -54,6 +68,8 @@ public class Sortie extends Case implements InterPersonnage
 			N.echangeCases(N.getPerso().getPos_x(), N.getPerso().getPos_y(), x, y);
 			N.getPerso().setPos(x, y);
 			N.setFini();
+		} else {
+			System.out.println("sortie fermée");
 		}
 	}
 }

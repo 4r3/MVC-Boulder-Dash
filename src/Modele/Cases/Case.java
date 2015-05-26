@@ -1,5 +1,7 @@
 package Modele.Cases;
 
+import Modele.Animation.Animation;
+
 public abstract class Case
 {
 
@@ -9,5 +11,10 @@ public abstract class Case
 		// TODO Auto-generated method stub
 		return "C";
 	}
+
+	/**
+	 * @return
+	 */
+	public abstract Animation getAnimation();
 
 }

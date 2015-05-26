@@ -13,10 +13,7 @@ import javax.swing.JPanel;
 import Modele.Niveau;
 import Modele.Variables;
 import Modele.Animation.Etats;
-import Modele.Cases.Boue;
 import Modele.Cases.Directions;
-import Modele.Cases.MurIndestructible;
-import Modele.Cases.MurNormal;
 import Modele.Cases.Personnage;
 import Modele.Cases.Vide;
 
@@ -44,8 +41,10 @@ public class AireDeJeu extends JPanel
 		setBackground(Color.BLACK);
 		setPreferredSize(new Dimension(this.niveau.getLongueur() * Variables.TAILLE_CASE, this.niveau.getHauteur() * Variables.TAILLE_CASE));
 		setDoubleBuffered(true);
+		niveau.insereDiamant(1, 1);
+		niveau.insereRocher(1, 3);
 
-		keys = new HashMap<Integer, Boolean>();
+		keys = new HashMap<>();
 		keys.put(KeyEvent.VK_RIGHT, false);
 		keys.put(KeyEvent.VK_LEFT, false);
 		keys.put(KeyEvent.VK_UP, false);
@@ -63,29 +62,10 @@ public class AireDeJeu extends JPanel
 	{
 		int a, b;
 		Vide vide = new Vide();
-		Boue boue = new Boue();
-		MurIndestructible murInd = new MurIndestructible();
-		MurNormal murNorm = new MurNormal();
 		for ( a = 0; a < this.niveau.getLongueur(); a++ ) {
 			for ( b = 0; b < this.niveau.getHauteur(); b++ ) {
 				g.drawImage(vide.getAnimation().getSprite(), a * Variables.TAILLE_CASE, b * Variables.TAILLE_CASE, null);
-				switch ( this.niveau.getCase(a, b).getClass().getName() ) {
-					case "Modele.Cases.Boue" :
-						g.drawImage(boue.getAnimation().getSprite(), a * Variables.TAILLE_CASE, b * Variables.TAILLE_CASE, null);
-						break;
-					case "Modele.Cases.MurNormal" :
-						g.drawImage(murNorm.getAnimation().getSprite(), a * Variables.TAILLE_CASE, b * Variables.TAILLE_CASE, null);
-						break;
-					case "Modele.Cases.MurIndestructible" :
-						g.drawImage(murInd.getAnimation().getSprite(), a * Variables.TAILLE_CASE, b * Variables.TAILLE_CASE, null);
-						break;
-					case "Modele.Cases.Sortie" :
-						g.drawImage(this.niveau.getSortie().getAnimation().getSprite(), a * Variables.TAILLE_CASE, b * Variables.TAILLE_CASE, null);
-						break;
-					case "Modele.Cases.Personnage" :
-						g.drawImage(this.niveau.getPerso().getAnimation().getSprite(), a * Variables.TAILLE_CASE, b * Variables.TAILLE_CASE, null);
-						break;
-				}
+				g.drawImage(this.niveau.getCase(a, b).getAnimation().getSprite(), a * Variables.TAILLE_CASE, b * Variables.TAILLE_CASE, null);
 			}
 		}
 		Toolkit.getDefaultToolkit().sync();
@@ -206,6 +186,8 @@ public class AireDeJeu extends JPanel
 					}
 					repaint();
 					break;
+				default :
+					break;
 			}
 		}
 	}
@@ -216,18 +198,11 @@ public class AireDeJeu extends JPanel
 		super.paintComponent(g);
 
 		drawNiveau(g);
-		// drawPerso(g);
-	}
-
-	private void drawPerso(Graphics g)
-	{
-		g.drawImage(niveau.getPerso().getAnimation().getSprite(), this.niveau.getPerso().getPos_x(), this.niveau.getPerso().getPos_y(), null);
-		Toolkit.getDefaultToolkit().sync();
 	}
 
 	private void cycle()
 	{
-		niveau.getPerso().getAnimation().update();
+		this.niveau.getPerso().getAnimation().update();
 		this.niveau.getSortie().getAnimation().update();
 	}
 
@@ -247,6 +222,8 @@ public class AireDeJeu extends JPanel
 				break;
 			case KeyEvent.VK_DOWN :
 				if ( !(this.niveau.getPerso().getPos_y() * Variables.TAILLE_CASE >= (this.niveau.getHauteur() * Variables.TAILLE_CASE) - (Variables.PAS_MVT)) ) this.niveau.getPerso().setDeplace(Directions.Bas);
+				break;
+			default :
 				break;
 		}
 	}

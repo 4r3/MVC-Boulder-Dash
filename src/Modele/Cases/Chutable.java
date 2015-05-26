@@ -9,7 +9,7 @@ import Modele.Niveau;
  * @author 4r3
  *
  */
-public class Chutable extends ElementDynamique
+public abstract class Chutable extends ElementDynamique
 {
 	private boolean chute;
 
@@ -60,4 +60,5 @@ public class Chutable extends ElementDynamique
 	{
 		return chute;
 	}
+
 }

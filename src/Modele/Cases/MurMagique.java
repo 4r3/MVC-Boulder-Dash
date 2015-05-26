@@ -3,6 +3,8 @@
  */
 package Modele.Cases;
 
+import Modele.Animation.Animation;
+
 /**
  * @author 4r3
  *
@@ -34,5 +36,12 @@ public class MurMagique extends Case
 		} else {
 			return "X";
 		}
+	}
+
+	@Override
+	public Animation getAnimation()
+	{
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

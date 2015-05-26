@@ -83,7 +83,7 @@ public class Niveau
 		hauteur = h;
 		longueur = l;
 		fini = false;
-		dscore = 2; //TODO gerer a la construction
+		dscore = 0; //TODO gerer a la construction
 
 		//remplisage du niveau
 		for ( y = 0; y < h; y++ ) {
@@ -211,7 +211,7 @@ public class Niveau
 		}
 		cleanUpTable();
 		if ( !sortie.isOuverte() && dscore <= 0 ) {
-			sortie.setOuverte(true);
+			sortie.Ouvrir();
 		}
 	}
 
@@ -246,7 +246,7 @@ public class Niveau
 	{
 		return perso;
 	}
-	
+
 	public Sortie getSortie()
 	{
 		return sortie;
@@ -329,19 +329,23 @@ public class Niveau
 		dscore--;
 	}
 
-	public int getHauteur() {
+	public int getHauteur()
+	{
 		return hauteur;
 	}
 
-	public void setHauteur(int hauteur) {
+	public void setHauteur(int hauteur)
+	{
 		this.hauteur = hauteur;
 	}
 
-	public int getLongueur() {
+	public int getLongueur()
+	{
 		return longueur;
 	}
 
-	public void setLongueur(int longueur) {
+	public void setLongueur(int longueur)
+	{
 		this.longueur = longueur;
 	}
 
