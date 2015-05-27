@@ -210,18 +210,16 @@ public class AireDeJeu extends JPanel
 	{
 		switch ( dir ) {
 			case KeyEvent.VK_RIGHT :
-				if ( !(this.niveau.getPerso().getPos_x() * Variables.TAILLE_CASE >= (this.niveau.getLongueur() * Variables.TAILLE_CASE) - (Variables.PAS_MVT)) ) {
-					this.niveau.getPerso().setDeplace(Directions.Droite);
-				}
+				this.niveau.getPerso().setDeplace(Directions.Droite);
 				break;
 			case KeyEvent.VK_LEFT :
-				if ( !(this.niveau.getPerso().getPos_x() * Variables.TAILLE_CASE <= 0) ) this.niveau.getPerso().setDeplace(Directions.Gauche);
+				this.niveau.getPerso().setDeplace(Directions.Gauche);
 				break;
 			case KeyEvent.VK_UP :
-				if ( !(this.niveau.getPerso().getPos_y() * Variables.TAILLE_CASE <= 0) ) this.niveau.getPerso().setDeplace(Directions.Haut);
+				this.niveau.getPerso().setDeplace(Directions.Haut);
 				break;
 			case KeyEvent.VK_DOWN :
-				if ( !(this.niveau.getPerso().getPos_y() * Variables.TAILLE_CASE >= (this.niveau.getHauteur() * Variables.TAILLE_CASE) - (Variables.PAS_MVT)) ) this.niveau.getPerso().setDeplace(Directions.Bas);
+				this.niveau.getPerso().setDeplace(Directions.Bas);
 				break;
 			default :
 				break;
