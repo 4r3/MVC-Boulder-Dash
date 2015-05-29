@@ -33,9 +33,4 @@ public class Fenetre extends JFrame
 		addKeyListener(new GestionClavier(niveau));
 	}
 
-	@Override
-	public void repaint()
-	{
-		aireJeu.repaint();
-	}
 }

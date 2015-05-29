@@ -13,7 +13,6 @@ public class BoulderDash
 		fen.setVisible(true);
 		while ( !niveau.isFini() ) {
 			niveau.refresh();
-			fen.repaint();
 			try {
 				Thread.sleep(200);
 			} catch ( InterruptedException e ) {
