@@ -85,17 +85,9 @@ public class Personnage extends ElementDynamique implements Vivant
 		Case C = N.getCase(xdest, ydest);
 		if ( C instanceof InterPersonnage ) {
 			((InterPersonnage) C).PersonageArrive(N, xdest, ydest);
-		} else if ( C instanceof Diamant ) {
-			N.echangeCases(getPos_x(), getPos_y(), xdest, ydest);
-			N.insereVide(getPos_x(), getPos_y());
-			N.remplirUpTable(getPos_x(), getPos_y());
-			setPos(xdest, ydest);
-			N.AddDscore();
-			N.remUptable(C);
 		} else {
 			System.out.println(N.getCase(xdest, ydest).getClass().getName());
 		}
-		setDeplace(Directions.Null);
 	}
 
 	public static Map<Etats, Animation> getAnimations()
