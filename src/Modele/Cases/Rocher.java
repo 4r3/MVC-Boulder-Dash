@@ -12,41 +12,40 @@ import Modele.Animation.Sprite;
 
 /**
  * @author 4r3
- *
+ * 
  */
-public class Rocher extends Chutable implements InterPersonnage
-{
+public class Rocher extends Chutable implements InterPersonnage {
 	private Animation animation;
 
 	/**
 	 * @param pos_x
 	 * @param pos_y
 	 */
-	public Rocher(int pos_x, int pos_y)
-	{
+	public Rocher(int pos_x, int pos_y) {
 		super(pos_x, pos_y);
 		Sprite spriteRocher = new Sprite("boulder");
-		BufferedImage[] rocher = { spriteRocher.getSprite(0, 0) };
+		BufferedImage[] rocher = { spriteRocher.getSprite(0, 0),
+				spriteRocher.getSprite(1, 0), spriteRocher.getSprite(0, 0),
+				spriteRocher.getSprite(2, 0) };
 		setAnimation(new Animation(rocher, Variables.VITESSE_ANIM));
+		this.animation.start();
 	}
 
 	@Override
-	public String ID()
-	{
+	public String ID() {
 		return "R";
 	}
 
 	@Override
-	public void PersonageArrive(Niveau N, int x, int y)
-	{
-		if ( N.getPerso().getDeplace() == Directions.Gauche ) {
-			if ( N.getCase(x - 1, y) instanceof Vide ) {
+	public void PersonageArrive(Niveau N, int x, int y) {
+		if (N.getPerso().getDeplace() == Directions.Gauche) {
+			if (N.getCase(x - 1, y) instanceof Vide) {
 				N.echangeCases(x, y, x - 1, y);
 				N.addUptable(x - 1, y);
 				N.remplirUpTable(x, y);
 			}
-		} else if ( N.getPerso().getDeplace() == Directions.Droite ) {
-			if ( N.getCase(x + 1, y) instanceof Vide ) {
+		} else if (N.getPerso().getDeplace() == Directions.Droite) {
+			if (N.getCase(x + 1, y) instanceof Vide) {
 				N.echangeCases(x, y, x + 1, y);
 				N.addUptable(x + 1, y);
 				N.remplirUpTable(x, y);
@@ -55,13 +54,11 @@ public class Rocher extends Chutable implements InterPersonnage
 
 	}
 
-	public Animation getAnimation()
-	{
+	public Animation getAnimation() {
 		return animation;
 	}
 
-	private void setAnimation(Animation animation)
-	{
+	private void setAnimation(Animation animation) {
 		this.animation = animation;
 	}
 }

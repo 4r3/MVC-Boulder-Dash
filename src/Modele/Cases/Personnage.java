@@ -42,7 +42,7 @@ public class Personnage extends ElementDynamique implements Vivant
 		BufferedImage[] standingDown = { spritePersonnage.getSprite(2, 2) };
 		animations.put(Etats.StopBas, new Animation(standingDown, Variables.VITESSE_ANIM));
 		BufferedImage[] idling = { spritePersonnage.getSprite(0, 4), spritePersonnage.getSprite(1, 4) };
-		animations.put(Etats.StopIdle, new Animation(idling, Variables.VITESSE_IDLE));
+		animations.put(Etats.StopIdle, new Animation(idling, Variables.VITESSE_ANIM));
 		BufferedImage[] mort = { spritePersonnage.getSprite(2, 4) };
 		animations.put(Etats.Mort, new Animation(mort, Variables.VITESSE_ANIM));
 

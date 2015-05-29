@@ -2,6 +2,7 @@ package Modele;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 
 import Modele.Cases.Boue;
 import Modele.Cases.Case;
@@ -22,11 +23,10 @@ import Modele.Cases.Vide;
  * 
  * @see Case
  * @author 4r3
- *
+ * 
  */
-public class Niveau
-{
-	//Variables
+public class Niveau extends Observable {
+	// Variables
 	private int hauteur;
 	private int longueur;
 	private int dscore;
@@ -49,8 +49,7 @@ public class Niveau
 	 * en bas a droite
 	 * 
 	 */
-	public Niveau()
-	{
+	public Niveau() {
 		this(10, 10, 1, 1, 8, 8);
 	}
 
@@ -74,8 +73,7 @@ public class Niveau
 	 * @see MurIndestructible
 	 * 
 	 */
-	public Niveau(int l, int h, int Px, int Py, int Sx, int Sy)
-	{
+	public Niveau(int l, int h, int Px, int Py, int Sx, int Sy) {
 		int x, y;
 
 		tableau = new Case[l][h];
@@ -83,17 +81,17 @@ public class Niveau
 		hauteur = h;
 		longueur = l;
 		fini = false;
-		dscore = 0; //TODO gerer a la construction
+		dscore = 0; // TODO gerer a la construction
 
-		//remplisage du niveau
-		for ( y = 0; y < h; y++ ) {
-			if ( y == 0 || y == (h - 1) ) {
-				for ( x = 0; x < l; x++ ) {
+		// remplisage du niveau
+		for (y = 0; y < h; y++) {
+			if (y == 0 || y == (h - 1)) {
+				for (x = 0; x < l; x++) {
 					tableau[x][y] = new MurIndestructible();
 				}
 			} else {
 				tableau[0][y] = new MurIndestructible();
-				for ( x = 1; x < (l - 1); x++ ) {
+				for (x = 1; x < (l - 1); x++) {
 					tableau[x][y] = new Boue();
 				}
 				tableau[l - 1][y] = new MurIndestructible();
@@ -111,9 +109,8 @@ public class Niveau
 	 * @param y
 	 *            position en y du personage
 	 */
-	private void inserePersonage(int x, int y)
-	{
-		if ( x > 0 && x < longueur - 1 && y > 0 && y < hauteur - 1 ) {
+	private void inserePersonage(int x, int y) {
+		if (x > 0 && x < longueur - 1 && y > 0 && y < hauteur - 1) {
 			perso = new Personnage(x, y);
 			tableau[x][y] = perso;
 		} else {
@@ -131,9 +128,9 @@ public class Niveau
 	 * @param y
 	 *            position en y de la sortie
 	 */
-	private void insereSortie(int x, int y)
-	{
-		if ( x >= 0 && x < longueur && y >= 0 && y < hauteur && tableau[x][y] != perso ) {
+	private void insereSortie(int x, int y) {
+		if (x >= 0 && x < longueur && y >= 0 && y < hauteur
+				&& tableau[x][y] != perso) {
 
 			sortie = new Sortie();
 			tableau[x][y] = sortie;
@@ -151,9 +148,9 @@ public class Niveau
 	 * @param y
 	 *            position en y de la sortie
 	 */
-	public void insereMurNormal(int x, int y)
-	{
-		if ( x > 0 && x < longueur - 1 && y > 0 && y < hauteur - 1 && tableau[x][y] != perso && tableau[x][y] != sortie ) {
+	public void insereMurNormal(int x, int y) {
+		if (x > 0 && x < longueur - 1 && y > 0 && y < hauteur - 1
+				&& tableau[x][y] != perso && tableau[x][y] != sortie) {
 			tableau[x][y] = new MurNormal();
 		}
 	}
@@ -166,32 +163,36 @@ public class Niveau
 	 * @param y
 	 *            position en y de la sortie
 	 */
-	public void insereVide(int x, int y)
-	{
-		if ( x > 0 && x < longueur - 1 && y > 0 && y < hauteur - 1 && tableau[x][y] != perso && (tableau[x][y] != sortie || sortie.isOuverte()) ) {
+	public void insereVide(int x, int y) {
+		if (x > 0 && x < longueur - 1 && y > 0 && y < hauteur - 1
+				&& tableau[x][y] != perso
+				&& (tableau[x][y] != sortie || sortie.isOuverte())) {
 			tableau[x][y] = new Vide();
 		}
 	}
 
-	public void insereRocher(int x, int y)
-	{
-		if ( x > 0 && x < longueur - 1 && y > 0 && y < hauteur - 1 && tableau[x][y] != perso && (tableau[x][y] != sortie || sortie.isOuverte()) ) {
+	public void insereRocher(int x, int y) {
+		if (x > 0 && x < longueur - 1 && y > 0 && y < hauteur - 1
+				&& tableau[x][y] != perso
+				&& (tableau[x][y] != sortie || sortie.isOuverte())) {
 			tableau[x][y] = new Rocher(x, y);
 			UpTable.add((ElementDynamique) tableau[x][y]);
 		}
 	}
 
-	public void insereDiamant(int x, int y)
-	{
-		if ( x > 0 && x < longueur - 1 && y > 0 && y < hauteur - 1 && tableau[x][y] != perso && (tableau[x][y] != sortie || sortie.isOuverte()) ) {
+	public void insereDiamant(int x, int y) {
+		if (x > 0 && x < longueur - 1 && y > 0 && y < hauteur - 1
+				&& tableau[x][y] != perso
+				&& (tableau[x][y] != sortie || sortie.isOuverte())) {
 			tableau[x][y] = new Diamant(x, y);
 			UpTable.add((ElementDynamique) tableau[x][y]);
 		}
 	}
 
-	public void insereMurMagique(int x, int y)
-	{
-		if ( x > 0 && x < longueur - 1 && y > 0 && y < hauteur - 1 && tableau[x][y] != perso && (tableau[x][y] != sortie || sortie.isOuverte()) ) {
+	public void insereMurMagique(int x, int y) {
+		if (x > 0 && x < longueur - 1 && y > 0 && y < hauteur - 1
+				&& tableau[x][y] != perso
+				&& (tableau[x][y] != sortie || sortie.isOuverte())) {
 			tableau[x][y] = new MurMagique();
 		}
 	}
@@ -200,29 +201,29 @@ public class Niveau
 	 * fonction de mise à jour du niveau, met a jour tout les ElementDynamique
 	 * suceptibles d'etre mis a jour dans le niveau
 	 */
-	public void refresh()
-	{
+	public void refresh() {
 		int i = 0;
 		perso.refresh(this);
 		trieUpTable();
-		while ( i < UpTable.size() ) {
+		while (i < UpTable.size()) {
 			UpTable.get(i).refresh(this);
 			i++;
 		}
 		cleanUpTable();
-		if ( !sortie.isOuverte() && dscore <= 0 ) {
+		if (!sortie.isOuverte() && dscore <= 0) {
 			sortie.Ouvrir();
 		}
+		setChanged();
+		notifyObservers();
 	}
 
 	/**
 	 * affiche le niveau en mode texte, a utiliser pour le débuggage
 	 */
-	public void afficheDebug()
-	{
+	public void afficheDebug() {
 		int x, y;
-		for ( y = 0; y < hauteur; y++ ) {
-			for ( x = 0; x < longueur; x++ ) {
+		for (y = 0; y < hauteur; y++) {
+			for (x = 0; x < longueur; x++) {
 				System.out.print(tableau[x][y].ID() + " ");
 			}
 			System.out.print("\n");
@@ -233,57 +234,54 @@ public class Niveau
 		System.out.println("sortie ouverte : " + sortie.isOuverte());
 	}
 
-	public Case getCase(int x, int y)
-	{
-		if ( x >= 0 && x < longueur && y >= 0 && y < hauteur ) {
+	public Case getCase(int x, int y) {
+		if (x >= 0 && x < longueur && y >= 0 && y < hauteur) {
 			return tableau[x][y];
 		} else {
 			return null;
 		}
 	}
 
-	public Personnage getPerso()
-	{
+	public Personnage getPerso() {
 		return perso;
 	}
 
-	public Sortie getSortie()
-	{
+	public Sortie getSortie() {
 		return sortie;
 	}
 
-	public void echangeCases(int x1, int y1, int x2, int y2)
-	{
+	public void echangeCases(int x1, int y1, int x2, int y2) {
 		Case temp = tableau[x1][y1];
 		tableau[x1][y1] = tableau[x2][y2];
 		tableau[x2][y2] = temp;
 	}
 
-	public void addUptable(int x, int y)
-	{
-		if ( tableau[x][y] instanceof ElementDynamique && !UpTable.contains(tableau[x][y]) && !(tableau[x][y] instanceof Personnage) ) {
+	public void addUptable(int x, int y) {
+		if (tableau[x][y] instanceof ElementDynamique
+				&& !UpTable.contains(tableau[x][y])
+				&& !(tableau[x][y] instanceof Personnage)) {
 			UpTable.add(UpTable.size(), (ElementDynamique) tableau[x][y]);
 		}
 	}
 
-	public void remplirUpTable(int x, int y)
-	{
+	public void remplirUpTable(int x, int y) {
 		addUptable(x, y - 1);
 		addUptable(x + 1, y - 1);
 		addUptable(x - 1, y - 1);
+		addUptable(x + 1, y);
+		addUptable(x - 1, y);
 	}
 
-	public void trieUpTable()
-	{
+	public void trieUpTable() {
 		int i = 0;
 		int j, pmin;
 		ElementDynamique temp;
 
-		while ( i < UpTable.size() - 1 ) {
+		while (i < UpTable.size() - 1) {
 			pmin = i;
 			j = i + 1;
-			while ( j < UpTable.size() ) {
-				if ( UpTable.get(j).isSuperior(UpTable.get(pmin)) ) {
+			while (j < UpTable.size()) {
+				if (UpTable.get(j).isSuperior(UpTable.get(pmin))) {
 					pmin = j;
 				}
 				j++;
@@ -294,11 +292,11 @@ public class Niveau
 		}
 	}
 
-	public void cleanUpTable()
-	{
+	public void cleanUpTable() {
 		int i = 0;
-		while ( i < UpTable.size() ) {
-			if ( (UpTable.get(i) instanceof Chutable) && !((Chutable) UpTable.get(i)).enChute() ) {
+		while (i < UpTable.size()) {
+			if ((UpTable.get(i) instanceof Chutable)
+					&& !((Chutable) UpTable.get(i)).enChute()) {
 				UpTable.remove(i);
 			} else {
 				i++;
@@ -306,46 +304,38 @@ public class Niveau
 		}
 	}
 
-	public void remUptable(Case C)
-	{
+	public void remUptable(Case C) {
 		UpTable.remove(C);
 	}
 
-	public boolean isFini()
-	{
+	public boolean isFini() {
 		return fini;
 	}
 
-	public void setFini()
-	{
+	public void setFini() {
 		fini = true;
 	}
 
 	/**
 	 * 
 	 */
-	public void AddDscore()
-	{
+	public void AddDscore() {
 		dscore--;
 	}
 
-	public int getHauteur()
-	{
+	public int getHauteur() {
 		return hauteur;
 	}
 
-	public void setHauteur(int hauteur)
-	{
+	public void setHauteur(int hauteur) {
 		this.hauteur = hauteur;
 	}
 
-	public int getLongueur()
-	{
+	public int getLongueur() {
 		return longueur;
 	}
 
-	public void setLongueur(int longueur)
-	{
+	public void setLongueur(int longueur) {
 		this.longueur = longueur;
 	}
 
