@@ -12,13 +12,11 @@ import javax.swing.JPanel;
 
 import Modele.Niveau;
 import Modele.Variables;
-import Modele.Animation.Etats;
+import Modele.Animation.TableAnimation;
 import Modele.Cases.Directions;
-import Modele.Cases.Personnage;
 import Modele.Cases.Vide;
 
-public class AireDeJeu extends JPanel
-{
+public class AireDeJeu extends JPanel {
 
 	private Niveau niveau;
 
@@ -30,16 +28,16 @@ public class AireDeJeu extends JPanel
 
 	private int lastAnim = KeyEvent.VK_DOWN;
 
-	public AireDeJeu()
-	{
+	public AireDeJeu() {
 		initAireDeJeu();
 	}
 
-	private void initAireDeJeu()
-	{
+	private void initAireDeJeu() {
 		niveau = new Niveau(20, 15, 5, 5, 18, 18);
 		setBackground(Color.BLACK);
-		setPreferredSize(new Dimension(this.niveau.getLongueur() * Variables.TAILLE_CASE, this.niveau.getHauteur() * Variables.TAILLE_CASE));
+		setPreferredSize(new Dimension(this.niveau.getLongueur()
+				* Variables.TAILLE_CASE, this.niveau.getHauteur()
+				* Variables.TAILLE_CASE));
 		setDoubleBuffered(true);
 		niveau.insereDiamant(1, 1);
 		niveau.insereRocher(1, 3);
@@ -58,223 +56,219 @@ public class AireDeJeu extends JPanel
 		this.niveau.getSortie().getAnimation().start();
 	}
 
-	private void drawNiveau(Graphics g)
-	{
+	private void drawNiveau(Graphics g) {
 		int a, b;
 		Vide vide = new Vide();
-		for ( a = 0; a < this.niveau.getLongueur(); a++ ) {
-			for ( b = 0; b < this.niveau.getHauteur(); b++ ) {
-				g.drawImage(vide.getAnimation().getSprite(), a * Variables.TAILLE_CASE, b * Variables.TAILLE_CASE, null);
-				g.drawImage(this.niveau.getCase(a, b).getAnimation().getSprite(), a * Variables.TAILLE_CASE, b * Variables.TAILLE_CASE, null);
+		for (a = 0; a < this.niveau.getLongueur(); a++) {
+			for (b = 0; b < this.niveau.getHauteur(); b++) {
+				g.drawImage(vide.getAnimation().getSprite(), a
+						* Variables.TAILLE_CASE, b * Variables.TAILLE_CASE,
+						null);
+				g.drawImage(this.niveau.getCase(a, b).getAnimation()
+						.getSprite(), a * Variables.TAILLE_CASE, b
+						* Variables.TAILLE_CASE, null);
 			}
 		}
 		Toolkit.getDefaultToolkit().sync();
 	}
 
-	public void toucheDroite()
-	{
+	public void toucheDroite() {
 		keys.put(KeyEvent.VK_RIGHT, true);
 		lastAnim = KeyEvent.VK_RIGHT;
-		niveau.getPerso().setAnimation(Personnage.getAnimations().get(Etats.MarcheDroite));
+		niveau.getPerso().marcheDroite();
 		niveau.getPerso().getAnimation().start();
 		repaint();
 	}
 
-	public void toucheGauche()
-	{
+	public void toucheGauche() {
 		keys.put(KeyEvent.VK_LEFT, true);
-		if ( !keys.get(KeyEvent.VK_RIGHT) ) {
+		if (!keys.get(KeyEvent.VK_RIGHT)) {
 			lastAnim = KeyEvent.VK_LEFT;
-			niveau.getPerso().setAnimation(Personnage.getAnimations().get(Etats.MarcheGauche));
+			niveau.getPerso().marcheGauche();
 			niveau.getPerso().getAnimation().start();
 			repaint();
 		}
 	}
 
-	public void toucheHaut()
-	{
+	public void toucheHaut() {
 		keys.put(KeyEvent.VK_UP, true);
-		if ( !keys.get(KeyEvent.VK_RIGHT) && !keys.get(KeyEvent.VK_LEFT) ) {
+		if (!keys.get(KeyEvent.VK_RIGHT) && !keys.get(KeyEvent.VK_LEFT)) {
 			lastAnim = KeyEvent.VK_UP;
-			niveau.getPerso().setAnimation(Personnage.getAnimations().get(Etats.MarcheHaut));
+			niveau.getPerso().marcheHaut();
 			niveau.getPerso().getAnimation().start();
 			repaint();
 		}
 	}
 
-	public void toucheBas()
-	{
+	public void toucheBas() {
 		keys.put(KeyEvent.VK_DOWN, true);
-		if ( !keys.get(KeyEvent.VK_RIGHT) && !keys.get(KeyEvent.VK_LEFT) && !keys.get(KeyEvent.VK_UP) ) {
+		if (!keys.get(KeyEvent.VK_RIGHT) && !keys.get(KeyEvent.VK_LEFT)
+				&& !keys.get(KeyEvent.VK_UP)) {
 			lastAnim = KeyEvent.VK_DOWN;
-			niveau.getPerso().setAnimation(Personnage.getAnimations().get(Etats.MarcheBas));
+			niveau.getPerso().marcheBas();
 			niveau.getPerso().getAnimation().start();
 			repaint();
 		}
 	}
 
-	public void toucheRelache(KeyEvent evt)
-	{
+	public void toucheRelache(KeyEvent evt) {
 		keys.put(evt.getKeyCode(), false);
-		if ( !keys.containsValue(true) ) {
-			switch ( lastAnim ) {
-				case KeyEvent.VK_RIGHT :
-					if ( keys.get(KeyEvent.VK_LEFT) ) {
-						lastAnim = KeyEvent.VK_LEFT;
-						niveau.getPerso().setAnimation(Personnage.getAnimations().get(Etats.MarcheGauche));
-					} else if ( keys.get(KeyEvent.VK_UP) ) {
-						lastAnim = KeyEvent.VK_UP;
-						niveau.getPerso().setAnimation(Personnage.getAnimations().get(Etats.MarcheHaut));
-					} else if ( keys.get(KeyEvent.VK_DOWN) ) {
-						lastAnim = KeyEvent.VK_DOWN;
-						niveau.getPerso().setAnimation(Personnage.getAnimations().get(Etats.MarcheBas));
-					} else {
-						niveau.getPerso().setAnimation(Personnage.getAnimations().get(Etats.StopDroite));
-						niveau.getPerso().getAnimation().stop();
-						niveau.getPerso().getAnimation().reset();
-					}
-					repaint();
-					break;
-				case KeyEvent.VK_LEFT :
-					if ( keys.get(KeyEvent.VK_RIGHT) ) {
-						lastAnim = KeyEvent.VK_RIGHT;
-						niveau.getPerso().setAnimation(Personnage.getAnimations().get(Etats.MarcheDroite));
-					} else if ( keys.get(KeyEvent.VK_UP) ) {
-						lastAnim = KeyEvent.VK_UP;
-						niveau.getPerso().setAnimation(Personnage.getAnimations().get(Etats.MarcheHaut));
-					} else if ( keys.get(KeyEvent.VK_DOWN) ) {
-						lastAnim = KeyEvent.VK_DOWN;
-						niveau.getPerso().setAnimation(Personnage.getAnimations().get(Etats.MarcheBas));
-					} else {
-						niveau.getPerso().setAnimation(Personnage.getAnimations().get(Etats.StopGauche));
-						niveau.getPerso().getAnimation().stop();
-						niveau.getPerso().getAnimation().reset();
-					}
-					repaint();
-					break;
-				case KeyEvent.VK_UP :
-					if ( keys.get(KeyEvent.VK_RIGHT) ) {
-						lastAnim = KeyEvent.VK_RIGHT;
-						niveau.getPerso().setAnimation(Personnage.getAnimations().get(Etats.MarcheDroite));
-					} else if ( keys.get(KeyEvent.VK_LEFT) ) {
-						lastAnim = KeyEvent.VK_LEFT;
-						niveau.getPerso().setAnimation(Personnage.getAnimations().get(Etats.MarcheGauche));
-					} else if ( keys.get(KeyEvent.VK_DOWN) ) {
-						lastAnim = KeyEvent.VK_DOWN;
-						niveau.getPerso().setAnimation(Personnage.getAnimations().get(Etats.MarcheBas));
-					} else {
-						niveau.getPerso().setAnimation(Personnage.getAnimations().get(Etats.StopHaut));
-						niveau.getPerso().getAnimation().stop();
-						niveau.getPerso().getAnimation().reset();
-					}
-					repaint();
-					break;
-				case KeyEvent.VK_DOWN :
-					if ( keys.get(KeyEvent.VK_RIGHT) ) {
-						lastAnim = KeyEvent.VK_RIGHT;
-						niveau.getPerso().setAnimation(Personnage.getAnimations().get(Etats.MarcheDroite));
-					} else if ( keys.get(KeyEvent.VK_LEFT) ) {
-						lastAnim = KeyEvent.VK_LEFT;
-						niveau.getPerso().setAnimation(Personnage.getAnimations().get(Etats.MarcheGauche));
-					} else if ( keys.get(KeyEvent.VK_UP) ) {
-						lastAnim = KeyEvent.VK_UP;
-						niveau.getPerso().setAnimation(Personnage.getAnimations().get(Etats.MarcheHaut));
-					} else {
-						niveau.getPerso().setAnimation(Personnage.getAnimations().get(Etats.StopBas));
-						niveau.getPerso().getAnimation().stop();
-						niveau.getPerso().getAnimation().reset();
-					}
-					repaint();
-					break;
-				default :
-					break;
+		if (!keys.containsValue(true)) {
+			switch (lastAnim) {
+			case KeyEvent.VK_RIGHT:
+				if (keys.get(KeyEvent.VK_LEFT)) {
+					lastAnim = KeyEvent.VK_LEFT;
+					niveau.getPerso().marcheGauche();
+				} else if (keys.get(KeyEvent.VK_UP)) {
+					lastAnim = KeyEvent.VK_UP;
+					niveau.getPerso().marcheHaut();
+				} else if (keys.get(KeyEvent.VK_DOWN)) {
+					lastAnim = KeyEvent.VK_DOWN;
+					niveau.getPerso().marcheBas();
+				} else {
+					niveau.getPerso().deboutDroite();
+					niveau.getPerso().getAnimation().stop();
+					niveau.getPerso().getAnimation().reset();
+				}
+				repaint();
+				break;
+			case KeyEvent.VK_LEFT:
+				if (keys.get(KeyEvent.VK_RIGHT)) {
+					lastAnim = KeyEvent.VK_RIGHT;
+					niveau.getPerso().marcheDroite();
+				} else if (keys.get(KeyEvent.VK_UP)) {
+					lastAnim = KeyEvent.VK_UP;
+					niveau.getPerso().marcheHaut();
+				} else if (keys.get(KeyEvent.VK_DOWN)) {
+					lastAnim = KeyEvent.VK_DOWN;
+					niveau.getPerso().marcheBas();
+				} else {
+					niveau.getPerso().deboutGauche();
+					niveau.getPerso().getAnimation().stop();
+					niveau.getPerso().getAnimation().reset();
+				}
+				repaint();
+				break;
+			case KeyEvent.VK_UP:
+				if (keys.get(KeyEvent.VK_RIGHT)) {
+					lastAnim = KeyEvent.VK_RIGHT;
+					niveau.getPerso().marcheDroite();
+				} else if (keys.get(KeyEvent.VK_LEFT)) {
+					lastAnim = KeyEvent.VK_LEFT;
+					niveau.getPerso().marcheGauche();
+				} else if (keys.get(KeyEvent.VK_DOWN)) {
+					lastAnim = KeyEvent.VK_DOWN;
+					niveau.getPerso().marcheBas();
+				} else {
+					niveau.getPerso().deboutHaut();
+					niveau.getPerso().getAnimation().stop();
+					niveau.getPerso().getAnimation().reset();
+				}
+				repaint();
+				break;
+			case KeyEvent.VK_DOWN:
+				if (keys.get(KeyEvent.VK_RIGHT)) {
+					lastAnim = KeyEvent.VK_RIGHT;
+					niveau.getPerso().marcheDroite();
+				} else if (keys.get(KeyEvent.VK_LEFT)) {
+					lastAnim = KeyEvent.VK_LEFT;
+					niveau.getPerso().marcheGauche();
+				} else if (keys.get(KeyEvent.VK_UP)) {
+					lastAnim = KeyEvent.VK_UP;
+					niveau.getPerso().marcheHaut();
+				} else {
+					niveau.getPerso().deboutBas();
+					niveau.getPerso().getAnimation().stop();
+					niveau.getPerso().getAnimation().reset();
+				}
+				repaint();
+				break;
+			default:
+				break;
 			}
 		}
 	}
 
 	@Override
-	public void paintComponent(Graphics g)
-	{
+	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 
 		drawNiveau(g);
 	}
 
-	private void cycle()
-	{
+	private void cycle() {
 		this.niveau.getPerso().getAnimation().update();
 		this.niveau.getSortie().getAnimation().update();
+		TableAnimation.getRocher().update();
+		TableAnimation.getDiamant().update();
 	}
 
-	private void mouvement(int dir)
-	{
-		switch ( dir ) {
-			case KeyEvent.VK_RIGHT :
-				this.niveau.getPerso().setDeplace(Directions.Droite);
-				break;
-			case KeyEvent.VK_LEFT :
-				this.niveau.getPerso().setDeplace(Directions.Gauche);
-				break;
-			case KeyEvent.VK_UP :
-				this.niveau.getPerso().setDeplace(Directions.Haut);
-				break;
-			case KeyEvent.VK_DOWN :
-				this.niveau.getPerso().setDeplace(Directions.Bas);
-				break;
-			default :
-				break;
+	private void mouvement(int dir) {
+		switch (dir) {
+		case KeyEvent.VK_RIGHT:
+			this.niveau.getPerso().setDeplace(Directions.Droite);
+			break;
+		case KeyEvent.VK_LEFT:
+			this.niveau.getPerso().setDeplace(Directions.Gauche);
+			break;
+		case KeyEvent.VK_UP:
+			this.niveau.getPerso().setDeplace(Directions.Haut);
+			break;
+		case KeyEvent.VK_DOWN:
+			this.niveau.getPerso().setDeplace(Directions.Bas);
+			break;
+		default:
+			break;
 		}
 	}
 
-	public void update()
-	{
-		if ( (boolean) keys.get(KeyEvent.VK_RIGHT) ) {
+	public void update() {
+		if ((boolean) keys.get(KeyEvent.VK_RIGHT)) {
 			compteurMvt++;
 			compteurIdle = 0;
-			if ( compteurMvt > mvtDelay ) {
+			if (compteurMvt > mvtDelay) {
 				compteurMvt = 0;
 				mouvement(KeyEvent.VK_RIGHT);
 			}
-		} else if ( (boolean) keys.get(KeyEvent.VK_LEFT) ) {
+		} else if ((boolean) keys.get(KeyEvent.VK_LEFT)) {
 			compteurMvt++;
 			compteurIdle = 0;
-			if ( compteurMvt > mvtDelay ) {
+			if (compteurMvt > mvtDelay) {
 				compteurMvt = 0;
 				mouvement(KeyEvent.VK_LEFT);
 				lastAnim = KeyEvent.VK_LEFT;
-				niveau.getPerso().setAnimation(Personnage.getAnimations().get(Etats.MarcheGauche));
+				niveau.getPerso().marcheGauche();
 			}
-		} else if ( (boolean) keys.get(KeyEvent.VK_UP) ) {
+		} else if ((boolean) keys.get(KeyEvent.VK_UP)) {
 			compteurMvt++;
 			compteurIdle = 0;
-			if ( compteurMvt > mvtDelay ) {
+			if (compteurMvt > mvtDelay) {
 				compteurMvt = 0;
 				mouvement(KeyEvent.VK_UP);
 				lastAnim = KeyEvent.VK_UP;
-				niveau.getPerso().setAnimation(Personnage.getAnimations().get(Etats.MarcheHaut));
+				niveau.getPerso().marcheHaut();
 			}
-		} else if ( (boolean) keys.get(KeyEvent.VK_DOWN) ) {
+		} else if ((boolean) keys.get(KeyEvent.VK_DOWN)) {
 			compteurMvt++;
 			compteurIdle = 0;
-			if ( compteurMvt > mvtDelay ) {
+			if (compteurMvt > mvtDelay) {
 				compteurMvt = 0;
 				mouvement(KeyEvent.VK_DOWN);
 				lastAnim = KeyEvent.VK_DOWN;
-				niveau.getPerso().setAnimation(Personnage.getAnimations().get(Etats.MarcheBas));
+				niveau.getPerso().marcheBas();
 			}
 		} else {
 			compteurIdle++;
-			if ( compteurIdle > idleDelay ) {
+			if (compteurIdle > idleDelay) {
 				compteurIdle = (compteurIdle + idleDelay) % idleDelay;
-				niveau.getPerso().setAnimation(Personnage.getAnimations().get(Etats.StopIdle));
+				niveau.getPerso().idle();
 				niveau.getPerso().getAnimation().start();
 			}
 		}
 		repaint();
 	}
 
-	public void refreshJeu()
-	{
+	public void refreshJeu() {
 		cycle();
 		update();
 		this.niveau.refresh();

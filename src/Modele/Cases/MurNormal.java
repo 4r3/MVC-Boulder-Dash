@@ -1,30 +1,20 @@
 package Modele.Cases;
 
-import java.awt.image.BufferedImage;
-
-import Modele.Variables;
 import Modele.Animation.Animation;
-import Modele.Animation.Sprite;
+import Modele.Animation.TableAnimation;
 
-public class MurNormal extends Case
-{
-	private Animation animation;
+public class MurNormal extends Case {
 
-	public MurNormal()
-	{
-		Sprite spriteMur = new Sprite("wall");
-		BufferedImage[] wall = { spriteMur.getSprite(0, 0) };
-		animation = new Animation(wall, Variables.VITESSE_ANIM);
+	public MurNormal() {
+
 	}
 
-	public Animation getAnimation()
-	{
-		return animation;
+	public Animation getAnimation() {
+		return TableAnimation.getMur();
 	}
 
 	@Override
-	public String ID()
-	{
+	public String ID() {
 		return "N";
 	}
 }

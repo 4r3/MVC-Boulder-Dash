@@ -39,7 +39,7 @@ public class Niveau extends Observable {
 	private Case[][] tableau;
 
 	/**
-	 * tableau de mise à jour, contient les ElementDynamique suceptibles d'etre
+	 * tableau de mise à jour, contient les ElementDynamique susceptibles d'etre
 	 * modifiés au prochain cycle
 	 */
 	private List<ElementDynamique> UpTable;
@@ -307,6 +307,66 @@ public class Niveau extends Observable {
 	public void remUptable(Case C) {
 		UpTable.remove(C);
 	}
+
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+
+	public void remplirRefreshAnim(int x, int y) {
+		addUptable(x, y - 1);
+		addUptable(x + 1, y - 1);
+		addUptable(x - 1, y - 1);
+		addUptable(x + 1, y);
+		addUptable(x - 1, y);
+	}
+
+	public void trieRefreshAnim() {
+		int i = 0;
+		int j, pmin;
+		ElementDynamique temp;
+
+		while (i < UpTable.size() - 1) {
+			pmin = i;
+			j = i + 1;
+			while (j < UpTable.size()) {
+				if (UpTable.get(j).isSuperior(UpTable.get(pmin))) {
+					pmin = j;
+				}
+				j++;
+			}
+			temp = UpTable.set(i, UpTable.get(pmin));
+			UpTable.set(pmin, temp);
+			i++;
+		}
+	}
+
+	public void cleanRefreshAnim() {
+		int i = 0;
+		while (i < UpTable.size()) {
+			if ((UpTable.get(i) instanceof Chutable)
+					&& !((Chutable) UpTable.get(i)).enChute()) {
+				UpTable.remove(i);
+			} else {
+				i++;
+			}
+		}
+	}
+
+	public void remRefreshAnim(Case C) {
+		UpTable.remove(C);
+	}
+
+	//
+	//
+	//
+	//
+	//
+	//
+	//
 
 	public boolean isFini() {
 		return fini;

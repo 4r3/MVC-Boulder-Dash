@@ -7,31 +7,26 @@ import Modele.Animation.Animation;
 
 /**
  * @author 4r3
- *
+ * 
  */
-public class MurMagique extends Case
-{
+public class MurMagique extends Case {
 	private boolean active;
 
-	public MurMagique()
-	{
+	public MurMagique() {
 		active = false;
 	}
 
-	public void activer()
-	{
+	public void activer() {
 		active = true;
 	}
 
-	public boolean isActive()
-	{
+	public boolean isActive() {
 		return active;
 	}
 
 	@Override
-	public String ID()
-	{
-		if ( active ) {
+	public String ID() {
+		if (active) {
 			return "T";
 		} else {
 			return "X";
@@ -39,8 +34,7 @@ public class MurMagique extends Case
 	}
 
 	@Override
-	public Animation getAnimation()
-	{
+	public Animation getAnimation() {
 		// TODO Auto-generated method stub
 		return null;
 	}
