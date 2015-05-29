@@ -1,16 +1,13 @@
+package Vue.Panel;
+
 import javax.swing.JFrame;
 
-import Vue.Panel.VueJeu;
+public class Fenetre extends JFrame
+{
+	private static final long serialVersionUID = 3393452907097178193L;
 
-public class ThreadBoulderDash extends JFrame {
-
-	public ThreadBoulderDash() {
-
-		initUI();
-	}
-
-	private void initUI() {
-
+	public Fenetre()
+	{
 		add(new VueJeu());
 
 		setResizable(false);

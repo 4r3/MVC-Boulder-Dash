@@ -22,7 +22,7 @@ public class Personnage extends ElementDynamique implements Vivant
 		super(pos_x, pos_y);
 		Deplace = Directions.Null;
 
-		animations = new HashMap<Etats, Animation>();
+		animations = new HashMap<>();
 
 		Sprite spritePersonnage = new Sprite("rockford");
 		BufferedImage[] walkingLeft = { spritePersonnage.getSprite(1, 0), spritePersonnage.getSprite(2, 0) };
@@ -103,6 +103,7 @@ public class Personnage extends ElementDynamique implements Vivant
 		return animations;
 	}
 
+	@Override
 	public Animation getAnimation()
 	{
 		return animation;
