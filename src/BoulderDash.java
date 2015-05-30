@@ -9,6 +9,9 @@ public class BoulderDash
 	public static void main(String[] args)
 	{
 		Niveau niveau = new Niveau(20, 15, 5, 5, 18, 18);
+
+		niveau.insereDiamant(1, 1);
+
 		JFrame fen = new Fenetre(niveau);
 		fen.setVisible(true);
 		while ( !niveau.isFini() ) {

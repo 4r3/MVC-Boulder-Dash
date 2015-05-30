@@ -1,20 +1,25 @@
 package Modele.Cases;
 
+import Modele.Niveau;
 import Modele.Animation.Animation;
-import Modele.Animation.TableAnimation;
 
-public class MurIndestructible extends Case {
+public class MurIndestructible extends Case
+{
 
-	public MurIndestructible() {
+	public MurIndestructible()
+	{
 
-	}
-
-	public Animation getAnimation() {
-		return TableAnimation.getMur();
 	}
 
 	@Override
-	public String ID() {
+	public Animation getAnimation(Niveau N)
+	{
+		return N.getTableAnim().getMur();
+	}
+
+	@Override
+	public String ID()
+	{
 		return "M";
 	}
 }

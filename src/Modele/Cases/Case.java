@@ -1,5 +1,6 @@
 package Modele.Cases;
 
+import Modele.Niveau;
 import Modele.Animation.Animation;
 
 public abstract class Case
@@ -15,6 +16,6 @@ public abstract class Case
 	/**
 	 * @return
 	 */
-	public abstract Animation getAnimation();
+	public abstract Animation getAnimation(Niveau N);
 
 }
