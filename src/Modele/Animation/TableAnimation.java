@@ -178,4 +178,25 @@ public class TableAnimation
 		}
 		return tableAnimations.get(ChoixAnimation.Vide);
 	}
+
+	/**
+	 * @param animation
+	 * @return
+	 */
+	public Animation Personnage(ChoixAnimation animation)
+	{
+		switch ( animation ) {
+			case Personnage_Marche_Haut :
+				return getPersonnageMarcheHaut();
+			case Personnage_Marche_Bas :
+				return getPersonnageMarcheBas();
+			case Personnage_Marche_Gauche :
+				return getPersonnageMarcheGauche();
+			case Personnage_Marche_Droite :
+				return getPersonnageMarcheDroite();
+				//$CASES-OMITTED$
+			default :
+				return getPersonnageIdle();
+		}
+	}
 }

@@ -11,6 +11,7 @@ public class Vide extends Case implements InterPersonnage
 
 	}
 
+	@Override
 	public Animation getAnimation(Niveau N)
 	{
 		return N.getTableAnim().getVide();

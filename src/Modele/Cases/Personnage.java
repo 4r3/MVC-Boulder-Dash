@@ -2,11 +2,12 @@ package Modele.Cases;
 
 import Modele.Niveau;
 import Modele.Animation.Animation;
+import Modele.Animation.ChoixAnimation;
 
 public class Personnage extends ElementDynamique implements Vivant
 {
 	Directions Deplace;
-	//private Animation animation;
+	private ChoixAnimation animation;
 	boolean vivant;
 
 	public Personnage(int pos_x, int pos_y)
@@ -14,7 +15,7 @@ public class Personnage extends ElementDynamique implements Vivant
 		super(pos_x, pos_y);
 		Deplace = Directions.Null;
 
-		//this.animation = TableAnimation.getPersonnageDeboutGauche();
+		animation = ChoixAnimation.Personnage_Idle;
 	}
 
 	public void setDeplace(Directions D)
@@ -35,17 +36,22 @@ public class Personnage extends ElementDynamique implements Vivant
 		switch ( Deplace ) {
 			case Bas :
 				ydest++;
+				animation = ChoixAnimation.Personnage_Marche_Bas;
 				break;
 			case Droite :
 				xdest++;
+				animation = ChoixAnimation.Personnage_Marche_Droite;
 				break;
 			case Gauche :
+				animation = ChoixAnimation.Personnage_Marche_Gauche;
 				xdest--;
 				break;
 			case Haut :
 				ydest--;
+				animation = ChoixAnimation.Personnage_Marche_Haut;
 				break;
 			case Null :
+				animation = ChoixAnimation.Personnage_Idle;
 				return;
 			default :
 				return;
@@ -68,7 +74,7 @@ public class Personnage extends ElementDynamique implements Vivant
 	@Override
 	public Animation getAnimation(Niveau N)
 	{
-		return N.getTableAnim().getPersonnageMarcheHaut();
+		return N.getTableAnim().Personnage(animation);
 	}
 
 	/*

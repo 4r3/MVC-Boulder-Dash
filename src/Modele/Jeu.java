@@ -1,16 +1,21 @@
 package Modele;
 
-public class Jeu {
+public class Jeu
+{
 
-	public Niveau chargeurNiveau() {
+	@SuppressWarnings("static-method")
+	public Niveau chargeurNiveau()
+	{
 		return null;
 	}
 
-	public void initialisateur() {
+	public void initialisateur()
+	{
 
 	}
 
-	public void refreshAnim() {
+	public void refreshAnim()
+	{
 
 	}
 }
