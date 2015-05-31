@@ -36,12 +36,14 @@ public class Rocher extends Chutable implements InterPersonnage
 				N.echangeCases(x, y, x - 1, y);
 				N.addUptable(x - 1, y);
 				N.remplirUpTable(x, y);
+				setPos_x(x - 1);
 			}
 		} else if ( N.getPerso().getDeplace() == Directions.Droite ) {
 			if ( N.getCase(x + 1, y) instanceof Vide ) {
 				N.echangeCases(x, y, x + 1, y);
 				N.addUptable(x + 1, y);
 				N.remplirUpTable(x, y);
+				setPos_x(x + 1);
 			}
 		}
 
