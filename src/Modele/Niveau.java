@@ -20,7 +20,7 @@ import Modele.Cases.Vide;
 
 /**
  * Classe de niveau, décrit un niveau complet, le niveau est constitué de
- * tableau bidimentionel de Case
+ * tableau bidimentionel de Case, d'une table de rafraichisement
  * 
  * @see Case
  * @author 4r3
@@ -197,7 +197,7 @@ public class Niveau extends Observable
 	public void insereMurMagique(int x, int y)
 	{
 		if ( x > 0 && x < longueur - 1 && y > 0 && y < hauteur - 1 && tableau[x][y] != perso && (tableau[x][y] != sortie || sortie.isOuverte()) ) {
-			tableau[x][y] = new MurMagique();
+			tableau[x][y] = new MurMagique(x, y);
 		}
 	}
 
@@ -307,7 +307,7 @@ public class Niveau extends Observable
 	{
 		int i = 0;
 		while ( i < UpTable.size() ) {
-			if ( (UpTable.get(i) instanceof Chutable) && !((Chutable) UpTable.get(i)).enChute() ) {
+			if ( (UpTable.get(i) instanceof Chutable) && !((Chutable) UpTable.get(i)).instable() ) {
 				UpTable.remove(i);
 			} else {
 				i++;
@@ -362,7 +362,7 @@ public class Niveau extends Observable
 	{
 		int i = 0;
 		while ( i < UpTable.size() ) {
-			if ( (UpTable.get(i) instanceof Chutable) && !((Chutable) UpTable.get(i)).enChute() ) {
+			if ( (UpTable.get(i) instanceof Chutable) && !((Chutable) UpTable.get(i)).instable() ) {
 				UpTable.remove(i);
 			} else {
 				i++;

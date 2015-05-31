@@ -10,9 +10,11 @@ public class BoulderDash
 	{
 		Niveau niveau = new Niveau(20, 15, 5, 5, 18, 18);
 
-		niveau.insereDiamant(1, 1);
+		niveau.insereDiamant(5, 1);
 
 		niveau.insereRocher(2, 2);
+
+		niveau.insereMurMagique(5, 10);
 
 		JFrame fen = new Fenetre(niveau);
 		fen.setVisible(true);

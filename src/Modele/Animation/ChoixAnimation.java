@@ -1,6 +1,5 @@
 package Modele.Animation;
 
-
 public enum ChoixAnimation
 {
 	Personnage_Marche_Droite,
@@ -22,4 +21,3 @@ public enum ChoixAnimation
 	Mur_Magique,
 	Vide;
 }
-

@@ -9,9 +9,9 @@ import Modele.Niveau;
  * @author 4r3
  *
  */
-public abstract class Chutable extends ElementDynamique
+public abstract class Chutable extends ElementDynamique implements InterChutable
 {
-	private boolean chute;
+	private EtatChutable etat;
 
 	/**
 	 * @param pos_x
@@ -20,54 +20,68 @@ public abstract class Chutable extends ElementDynamique
 	public Chutable(int pos_x, int pos_y)
 	{
 		super(pos_x, pos_y);
-		chute = false;
+		etat = EtatChutable.Stable;
 	}
 
 	@Override
 	public void refresh(Niveau N)
 	{
 		Case C = N.getCase(getPos_x(), getPos_y() + 1);
-		if ( C instanceof Vide ) {
-			if ( chute ) {
-				N.echangeCases(getPos_x(), getPos_y(), getPos_x(), getPos_y() + 1);
-				N.remplirUpTable(getPos_x(), getPos_y());
-				setPos_y(getPos_y() + 1);
-			} else {
-				chute = true;
-			}
-		} else if ( C instanceof Chutable || C instanceof MurNormal || C instanceof Sortie ) {
-			if ( (N.getCase(getPos_x() + 1, getPos_y()) instanceof Vide) && (N.getCase(getPos_x() + 1, getPos_y() + 1) instanceof Vide) ) {
-				if ( chute ) {
-					N.echangeCases(getPos_x(), getPos_y(), getPos_x() + 1, getPos_y() + 1);
-					N.remplirUpTable(getPos_x(), getPos_y());
-					setPos(getPos_x() + 1, getPos_y() + 1);
-				} else {
-					chute = true;
-				}
-			} else if ( (N.getCase(getPos_x() - 1, getPos_y()) instanceof Vide) && (N.getCase(getPos_x() - 1, getPos_y() + 1) instanceof Vide) ) {
-				if ( chute ) {
-					N.echangeCases(getPos_x(), getPos_y(), getPos_x() - 1, getPos_y() + 1);
-					N.remplirUpTable(getPos_x(), getPos_y());
-					setPos(getPos_x() - 1, getPos_y() + 1);
-				} else {
-					chute = true;
-				}
-			} else {
-				chute = false;
-			}
-		} else if ( C instanceof Vivant && chute ) {
+		if ( C instanceof InterChutable ) {
+			etat = ((InterChutable) C).chutableArrive(N, getPos_x(), getPos_y());
+		} else if ( C instanceof Vivant && etat == EtatChutable.Chute ) {
 			((Vivant) C).tuer(N);
 		} else {
-			chute = false;
+			etat = EtatChutable.Stable;
+		}
+	}
+
+	public boolean chute()
+	{
+		return etat == EtatChutable.Chute;
+	}
+
+	public boolean instable()
+	{
+		return etat != EtatChutable.Stable;
+	}
+
+	public boolean stable()
+	{
+		return etat == EtatChutable.Stable;
+	}
+
+	@Override
+	public EtatChutable chutableArrive(Niveau N, int x, int y)
+	{
+		if ( (N.getCase(x + 1, y) instanceof Vide) && (N.getCase(x + 1, y + 1) instanceof Vide) ) {
+			if ( ((Chutable) N.getCase(x, y)).instable() ) {
+				N.echangeCases(x, y, x + 1, y + 1);
+				N.remplirUpTable(x, y);
+				((Chutable) N.getCase(x + 1, y + 1)).setPos(x + 1, y + 1);
+				return EtatChutable.Chute;
+			} else {
+				return EtatChutable.Instable;
+			}
+		} else if ( (N.getCase(x - 1, y) instanceof Vide) && (N.getCase(x - 1, y + 1) instanceof Vide) ) {
+			if ( ((Chutable) N.getCase(x, y)).instable() ) {
+				N.echangeCases(x, y, x - 1, y + 1);
+				N.remplirUpTable(x, y);
+				((Chutable) N.getCase(x - 1, y + 1)).setPos(x - 1, y + 1);
+				return EtatChutable.Chute;
+			} else {
+				return EtatChutable.Instable;
+			}
+		} else {
+			return EtatChutable.Stable;
 		}
 	}
 
 	/**
-	 * @return
+	 * 
 	 */
-	public boolean enChute()
+	public void setChute()
 	{
-		return chute;
+		etat = EtatChutable.Chute;
 	}
-
 }
