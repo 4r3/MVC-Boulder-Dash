@@ -19,7 +19,7 @@ public class TableAnimation
 		getDiamant().start();
 	}
 
-	public Animation getPersonnageMarcheDroite()
+	private Animation getPersonnageMarcheDroite()
 	{
 		if ( tableAnimations.get(ChoixAnimation.Personnage_Marche_Droite) == null ) {
 			Sprite spritePersonnage = new Sprite("rockford");
@@ -29,7 +29,7 @@ public class TableAnimation
 		return tableAnimations.get(ChoixAnimation.Personnage_Marche_Droite);
 	}
 
-	public Animation getPersonnageMarcheGauche()
+	private Animation getPersonnageMarcheGauche()
 	{
 		if ( tableAnimations.get(ChoixAnimation.Personnage_Marche_Gauche) == null ) {
 			Sprite spritePersonnage = new Sprite("rockford");
@@ -39,7 +39,7 @@ public class TableAnimation
 		return tableAnimations.get(ChoixAnimation.Personnage_Marche_Gauche);
 	}
 
-	public Animation getPersonnageMarcheHaut()
+	private Animation getPersonnageMarcheHaut()
 	{
 		if ( tableAnimations.get(ChoixAnimation.Personnage_Marche_Haut) == null ) {
 			Sprite spritePersonnage = new Sprite("rockford");
@@ -49,7 +49,7 @@ public class TableAnimation
 		return tableAnimations.get(ChoixAnimation.Personnage_Marche_Haut);
 	}
 
-	public Animation getPersonnageMarcheBas()
+	private Animation getPersonnageMarcheBas()
 	{
 		if ( tableAnimations.get(ChoixAnimation.Personnage_Marche_Bas) == null ) {
 			Sprite spritePersonnage = new Sprite("rockford");
@@ -59,7 +59,7 @@ public class TableAnimation
 		return tableAnimations.get(ChoixAnimation.Personnage_Marche_Bas);
 	}
 
-	public Animation getPersonnageDeboutDroite()
+	private Animation getPersonnageDeboutDroite()
 	{
 		if ( tableAnimations.get(ChoixAnimation.Personnage_Marche_Droite) == null ) {
 			Sprite spritePersonnage = new Sprite("rockford");
@@ -69,7 +69,7 @@ public class TableAnimation
 		return tableAnimations.get(ChoixAnimation.Personnage_Marche_Droite);
 	}
 
-	public Animation getPersonnageDeboutGauche()
+	private Animation getPersonnageDeboutGauche()
 	{
 		if ( tableAnimations.get(ChoixAnimation.Personnage_Debout_Gauche) == null ) {
 			Sprite spritePersonnage = new Sprite("rockford");
@@ -79,7 +79,7 @@ public class TableAnimation
 		return tableAnimations.get(ChoixAnimation.Personnage_Debout_Gauche);
 	}
 
-	public Animation getPersonnageDeboutHaut()
+	private Animation getPersonnageDeboutHaut()
 	{
 		if ( tableAnimations.get(ChoixAnimation.Personnage_Debout_Haut) == null ) {
 			Sprite spritePersonnage = new Sprite("rockford");
@@ -89,7 +89,7 @@ public class TableAnimation
 		return tableAnimations.get(ChoixAnimation.Personnage_Debout_Haut);
 	}
 
-	public Animation getPersonnageDeboutBas()
+	private Animation getPersonnageDeboutBas()
 	{
 		if ( tableAnimations.get(ChoixAnimation.Personnage_Debout_Bas) == null ) {
 			Sprite spritePersonnage = new Sprite("rockford");
@@ -99,7 +99,7 @@ public class TableAnimation
 		return tableAnimations.get(ChoixAnimation.Personnage_Debout_Bas);
 	}
 
-	public Animation getPersonnageIdle()
+	private Animation getPersonnageIdle()
 	{
 		if ( tableAnimations.get(ChoixAnimation.Personnage_Idle) == null ) {
 			Sprite spritePersonnage = new Sprite("rockford");
@@ -109,7 +109,7 @@ public class TableAnimation
 		return tableAnimations.get(ChoixAnimation.Personnage_Idle);
 	}
 
-	public Animation getPersonnageMort()
+	private Animation getPersonnageMort()
 	{
 		if ( tableAnimations.get(ChoixAnimation.Personnage_Mort) == null ) {
 			Sprite spritePersonnage = new Sprite("rockford");
@@ -159,6 +159,16 @@ public class TableAnimation
 		return tableAnimations.get(ChoixAnimation.Mur);
 	}
 
+	public Animation getMurMagique()
+	{
+		if ( tableAnimations.get(ChoixAnimation.Mur_Magique) == null ) {
+			Sprite spriteMurMagique = new Sprite("magicwall");
+			BufferedImage[] wall = { spriteMurMagique.getSprite(0, 0), spriteMurMagique.getSprite(1, 0), spriteMurMagique.getSprite(2, 0), spriteMurMagique.getSprite(3, 0) };
+			tableAnimations.put(ChoixAnimation.Mur_Magique, new Animation(wall, Variables.VITESSE_ANIM));
+		}
+		return tableAnimations.get(ChoixAnimation.Mur_Magique);
+	}
+
 	public Animation getSortie()
 	{
 		if ( tableAnimations.get(ChoixAnimation.Sortie) == null ) {
@@ -196,6 +206,14 @@ public class TableAnimation
 				return getPersonnageMarcheDroite();
 			case Personnage_Mort :
 				return getPersonnageMort();
+			case Personnage_Debout_Bas :
+				return getPersonnageDeboutBas();
+			case Personnage_Debout_Droite :
+				return getPersonnageDeboutDroite();
+			case Personnage_Debout_Gauche :
+				return getPersonnageDeboutGauche();
+			case Personnage_Debout_Haut :
+				return getPersonnageDeboutHaut();
 				//$CASES-OMITTED$
 			default :
 				return getPersonnageIdle();
