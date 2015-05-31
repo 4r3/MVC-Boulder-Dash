@@ -24,7 +24,12 @@ public class Sortie extends Case implements InterPersonnage
 	@Override
 	public Animation getAnimation(Niveau N)
 	{
-		return N.getTableAnim().getSortie();
+		if ( ouverte ) {
+			return N.getTableAnim().getSortie();
+		} else {
+			return N.getTableAnim().getMur();
+		}
+
 	}
 
 	@Override

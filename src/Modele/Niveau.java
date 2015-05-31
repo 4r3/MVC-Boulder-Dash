@@ -87,7 +87,7 @@ public class Niveau extends Observable
 		hauteur = h;
 		longueur = l;
 		fini = false;
-		dscore = 0;
+		dscore = 1;
 		anim = new TableAnimation();
 
 		// remplisage du niveau

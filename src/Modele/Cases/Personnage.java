@@ -77,38 +77,6 @@ public class Personnage extends ElementDynamique implements Vivant
 		return N.getTableAnim().Personnage(animation);
 	}
 
-	/*
-	 * public void marcheDroite() { this.animation =
-	 * TableAnimation.getPersonnageMarcheDroite(); }
-	 * 
-	 * public void marcheGauche() { this.animation =
-	 * TableAnimation.getPersonnageMarcheGauche(); }
-	 * 
-	 * public void marcheHaut() { this.animation =
-	 * TableAnimation.getPersonnageMarcheHaut(); }
-	 * 
-	 * public void marcheBas() { this.animation =
-	 * TableAnimation.getPersonnageMarcheBas(); }
-	 * 
-	 * public void deboutDroite() { this.animation =
-	 * TableAnimation.getPersonnageDeboutDroite(); }
-	 * 
-	 * public void deboutGauche() { this.animation =
-	 * TableAnimation.getPersonnageDeboutGauche(); }
-	 * 
-	 * public void deboutHaut() { this.animation =
-	 * TableAnimation.getPersonnageDeboutHaut(); }
-	 * 
-	 * public void deboutBas() { this.animation =
-	 * TableAnimation.getPersonnageDeboutBas(); }
-	 * 
-	 * public void idle() { this.animation = TableAnimation.getPersonnageIdle();
-	 * }
-	 * 
-	 * public void mort() { this.animation = TableAnimation.getPersonnageMort();
-	 * }
-	 */
-
 	@Override
 	public String ID()
 	{
@@ -118,6 +86,7 @@ public class Personnage extends ElementDynamique implements Vivant
 	@Override
 	public void tuer(Niveau N)
 	{
-		N.setFini();
+		animation = ChoixAnimation.Personnage_Mort;
+		//N.setFini();
 	}
 }

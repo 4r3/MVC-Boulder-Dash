@@ -11,7 +11,6 @@ import javax.swing.JPanel;
 
 import Modele.Niveau;
 import Modele.Variables;
-import Modele.Cases.Vide;
 
 @SuppressWarnings("serial")
 public class AireDeJeu extends JPanel implements Observer
@@ -37,11 +36,10 @@ public class AireDeJeu extends JPanel implements Observer
 	private void drawNiveau(Graphics g)
 	{
 		int a, b;
-		Vide vide = new Vide();
 		for ( a = 0; a < this.niveau.getLongueur(); a++ ) {
 			for ( b = 0; b < this.niveau.getHauteur(); b++ ) {
-				g.drawImage(vide.getAnimation(niveau).getSprite(), a * Variables.TAILLE_CASE, b * Variables.TAILLE_CASE, null);
-				g.drawImage(this.niveau.getCase(a, b).getAnimation(niveau).getSprite(), a * Variables.TAILLE_CASE, b * Variables.TAILLE_CASE, null);
+				g.drawImage(niveau.getTableAnim().getVide().getSprite(), a * Variables.TAILLE_CASE, b * Variables.TAILLE_CASE, null);
+				g.drawImage(niveau.getCase(a, b).getAnimation(niveau).getSprite(), a * Variables.TAILLE_CASE, b * Variables.TAILLE_CASE, null);
 			}
 		}
 		Toolkit.getDefaultToolkit().sync();

@@ -194,6 +194,8 @@ public class TableAnimation
 				return getPersonnageMarcheGauche();
 			case Personnage_Marche_Droite :
 				return getPersonnageMarcheDroite();
+			case Personnage_Mort :
+				return getPersonnageMort();
 				//$CASES-OMITTED$
 			default :
 				return getPersonnageIdle();

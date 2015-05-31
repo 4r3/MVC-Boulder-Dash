@@ -12,6 +12,8 @@ public class BoulderDash
 
 		niveau.insereDiamant(1, 1);
 
+		niveau.insereRocher(2, 2);
+
 		JFrame fen = new Fenetre(niveau);
 		fen.setVisible(true);
 		while ( !niveau.isFini() ) {
