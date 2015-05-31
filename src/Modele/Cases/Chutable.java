@@ -35,7 +35,7 @@ public abstract class Chutable extends ElementDynamique implements InterChutable
 			etat = EtatChutable.Stable;
 		}
 	}
-
+ 
 	public void setChute()
 	{
 		etat = EtatChutable.Chute;
@@ -45,20 +45,18 @@ public abstract class Chutable extends ElementDynamique implements InterChutable
 	{
 		return etat == EtatChutable.Chute;
 	}
-
-	public void setInstable()
-	{
+	
+	public void setInstable(){
 		etat = EtatChutable.Instable;
 	}
-
+	
 	public boolean instable()
 	{
 		return etat != EtatChutable.Stable;
 	}
-
-	public void setStable()
-	{
-		etat = EtatChutable.Stable;
+	
+	public void setStable(){
+		etat=EtatChutable.Stable;
 	}
 
 	public boolean stable()
