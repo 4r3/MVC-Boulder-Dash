@@ -234,4 +234,10 @@ public class TableAnimation {
 			return getPersonnageIdle();
 		}
 	}
+
+	public static void refreshAnim() {
+		getDiamant().update();
+		getRocher().update();
+		getMurMagique().update();
+	}
 }

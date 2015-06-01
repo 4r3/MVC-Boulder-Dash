@@ -32,21 +32,26 @@ public class Personnage extends ElementDynamique implements Vivant, RefreshAnim 
 		switch (Deplace) {
 		case Bas:
 			ydest++;
+			TableAnimation.Personnage(animation).stop();
 			animation = ChoixAnimation.Personnage_Marche_Bas;
 			break;
 		case Droite:
 			xdest++;
+			TableAnimation.Personnage(animation).stop();
 			animation = ChoixAnimation.Personnage_Marche_Droite;
 			break;
 		case Gauche:
+			TableAnimation.Personnage(animation).stop();
 			animation = ChoixAnimation.Personnage_Marche_Gauche;
 			xdest--;
 			break;
 		case Haut:
 			ydest--;
+			TableAnimation.Personnage(animation).stop();
 			animation = ChoixAnimation.Personnage_Marche_Haut;
 			break;
 		case Null:
+			TableAnimation.Personnage(animation).stop();
 			animation = ChoixAnimation.Personnage_Idle;
 			return;
 		default:

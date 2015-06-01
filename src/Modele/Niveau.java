@@ -411,13 +411,8 @@ public class Niveau extends Observable implements RefreshAnim {
 
 	@Override
 	public void refreshAnim() {
-		int a, b;
-		for (a = 0; a < this.getLongueur(); a++) {
-			for (b = 0; b < this.getHauteur(); b++) {
-				if (this.getCase(a, b) instanceof RefreshAnim)
-					((RefreshAnim) this.getCase(a, b)).refreshAnim();
-			}
-		}
+		getPerso().refreshAnim();
+		getSortie().refreshAnim();
 	}
 
 }
