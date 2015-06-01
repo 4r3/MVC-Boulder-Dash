@@ -19,7 +19,8 @@ public class Variables {
 
 	public static final int DELAI = 120;
 	public static final int DELAI_MARCHE = 0;
-	public static final int DELAI_IDLE = 20;
+	public static final int DELAI_IDLE = 10;
+
 	public static final int PAS_MVT = 16;
 	public static final int VITESSE_ANIM = 1;
 	public static final int VITESSE_IDLE = 8;

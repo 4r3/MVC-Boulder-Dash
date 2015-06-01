@@ -7,12 +7,17 @@ import Modele.Animation.TableAnimation;
 
 public class Personnage extends ElementDynamique implements Vivant, RefreshAnim {
 	Directions Deplace;
+	Directions Last;
 	private ChoixAnimation animation;
 	boolean vivant;
+	private int IDLE;
 
 	public Personnage(int pos_x, int pos_y) {
 		super(pos_x, pos_y);
 		Deplace = Directions.Null;
+		Last = Directions.Null;
+
+		IDLE = 0;
 
 		animation = ChoixAnimation.Personnage_Idle;
 	}
@@ -52,11 +57,13 @@ public class Personnage extends ElementDynamique implements Vivant, RefreshAnim 
 			break;
 		case Null:
 			TableAnimation.Personnage(animation).stop();
-			animation = ChoixAnimation.Personnage_Idle;
+			arret();
+			Last = Directions.Null;
 			return;
 		default:
 			return;
 		}
+		Last = Deplace;
 		Case C = N.getCase(xdest, ydest);
 		if (C instanceof InterPersonnage) {
 			((InterPersonnage) C).PersonageArrive(N, xdest, ydest);
@@ -69,6 +76,36 @@ public class Personnage extends ElementDynamique implements Vivant, RefreshAnim 
 			N.remUptable(C);
 		} else {
 			System.out.println(N.getCase(xdest, ydest).getClass().getName());
+		}
+	}
+
+	private void arret() {
+		switch (Last) {
+		case Bas:
+			animation = ChoixAnimation.Personnage_Debout_Bas;
+			IDLE = 0;
+			break;
+		case Droite:
+			animation = ChoixAnimation.Personnage_Debout_Droite;
+			IDLE = 0;
+			break;
+		case Gauche:
+			animation = ChoixAnimation.Personnage_Debout_Gauche;
+			IDLE = 0;
+			break;
+		case Haut:
+			animation = ChoixAnimation.Personnage_Debout_Haut;
+			IDLE = 0;
+			break;
+		case Null:
+			if (IDLE < Modele.Variables.DELAI_IDLE) {
+				IDLE++;
+			} else {
+				animation = ChoixAnimation.Personnage_Idle;
+			}
+			break;
+		default:
+			break;
 		}
 	}
 
