@@ -1,14 +1,11 @@
 package Modele.Cases;
 
-import Modele.Niveau;
 import Modele.Animation.Animation;
 
-public abstract class Case
-{
+public abstract class Case {
 
 	@SuppressWarnings("static-method")
-	public String ID()
-	{
+	public String ID() {
 		// TODO Auto-generated method stub
 		return "C";
 	}
@@ -16,6 +13,6 @@ public abstract class Case
 	/**
 	 * @return
 	 */
-	public abstract Animation getAnimation(Niveau N);
+	public abstract Animation getAnimation();
 
 }
