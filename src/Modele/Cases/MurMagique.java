@@ -5,45 +5,43 @@ package Modele.Cases;
 
 import Modele.Niveau;
 import Modele.Animation.Animation;
+import Modele.Animation.TableAnimation;
 
 /**
  * @author 4r3
  * 
  */
-public class MurMagique extends Case implements InterChutable
-{
+public class MurMagique extends Case implements InterChutable {
 	private boolean active;
 	private int x;
 	private int y;
 
-	public MurMagique(int x, int y)
-	{
+	public MurMagique(int x, int y) {
 		this.x = x;
 		this.y = y;
 		active = false;
 	}
 
-	public void activer(Niveau N)
-	{
+	public void activer(Niveau N) {
 		active = true;
-		if ( N.getCase(x - 1, y) instanceof MurMagique && !((MurMagique) N.getCase(x - 1, y)).isActive() ) {
+		if (N.getCase(x - 1, y) instanceof MurMagique
+				&& !((MurMagique) N.getCase(x - 1, y)).isActive()) {
 			((MurMagique) N.getCase(x - 1, y)).activer(N);
 		}
 
-		if ( N.getCase(x + 1, y) instanceof MurMagique && !((MurMagique) N.getCase(x + 1, y)).isActive() ) {
+		if (N.getCase(x + 1, y) instanceof MurMagique
+				&& !((MurMagique) N.getCase(x + 1, y)).isActive()) {
 			((MurMagique) N.getCase(x + 1, y)).activer(N);
 		}
 	}
 
-	public boolean isActive()
-	{
+	public boolean isActive() {
 		return active;
 	}
 
 	@Override
-	public String ID()
-	{
-		if ( active ) {
+	public String ID() {
+		if (active) {
 			return "T";
 		} else {
 			return "X";
@@ -51,25 +49,23 @@ public class MurMagique extends Case implements InterChutable
 	}
 
 	@Override
-	public Animation getAnimation(Niveau N)
-	{
-		if ( active ) {
-			return N.getTableAnim().getMurMagique();
+	public Animation getAnimation() {
+		if (active) {
+			return TableAnimation.getMurMagique();
 		} else {
-			return N.getTableAnim().getMur();
+			return TableAnimation.getMur();
 		}
 	}
 
 	@Override
-	public EtatChutable chutableArrive(Niveau N, int x, int y)
-	{
-		if ( ((Chutable) N.getCase(x, y)).chute() ) {
-			if ( !active ) {
+	public EtatChutable chutableArrive(Niveau N, int x, int y) {
+		if (((Chutable) N.getCase(x, y)).chute()) {
+			if (!active) {
 				activer(N);
 			}
 			N.remUptable(N.getCase(x, y));
-			if ( N.getCase(x, y + 2) instanceof Vide ) {
-				if ( N.getCase(x, y) instanceof Diamant ) {
+			if (N.getCase(x, y + 2) instanceof Vide) {
+				if (N.getCase(x, y) instanceof Diamant) {
 					N.insereRocher(x, y + 2);
 				} else {
 
@@ -85,10 +81,10 @@ public class MurMagique extends Case implements InterChutable
 		}
 	}
 
-	private static EtatChutable modeMur(Niveau N, int x, int y)
-	{
-		if ( (N.getCase(x + 1, y) instanceof Vide) && (N.getCase(x + 1, y + 1) instanceof Vide) ) {
-			if ( ((Chutable) N.getCase(x, y)).instable() ) {
+	private static EtatChutable modeMur(Niveau N, int x, int y) {
+		if ((N.getCase(x + 1, y) instanceof Vide)
+				&& (N.getCase(x + 1, y + 1) instanceof Vide)) {
+			if (((Chutable) N.getCase(x, y)).instable()) {
 				N.echangeCases(x, y, x + 1, y + 1);
 				N.remplirUpTable(x, y);
 				((Chutable) N.getCase(x + 1, y + 1)).setPos(x + 1, y + 1);
@@ -96,8 +92,9 @@ public class MurMagique extends Case implements InterChutable
 			} else {
 				return EtatChutable.Instable;
 			}
-		} else if ( (N.getCase(x - 1, y) instanceof Vide) && (N.getCase(x - 1, y + 1) instanceof Vide) ) {
-			if ( ((Chutable) N.getCase(x, y)).instable() ) {
+		} else if ((N.getCase(x - 1, y) instanceof Vide)
+				&& (N.getCase(x - 1, y + 1) instanceof Vide)) {
+			if (((Chutable) N.getCase(x, y)).instable()) {
 				N.echangeCases(x, y, x - 1, y + 1);
 				N.remplirUpTable(x, y);
 				((Chutable) N.getCase(x - 1, y + 1)).setPos(x - 1, y + 1);

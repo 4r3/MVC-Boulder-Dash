@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
-import Modele.Animation.TableAnimation;
 import Modele.Cases.Boue;
 import Modele.Cases.Case;
 import Modele.Cases.Chutable;
@@ -18,6 +17,7 @@ import Modele.Cases.MurIndestructible;
 import Modele.Cases.MurMagique;
 import Modele.Cases.MurNormal;
 import Modele.Cases.Personnage;
+import Modele.Cases.RefreshAnim;
 import Modele.Cases.Rocher;
 import Modele.Cases.Sortie;
 import Modele.Cases.Vide;
@@ -30,7 +30,7 @@ import Modele.Cases.Vide;
  * @author 4r3
  * 
  */
-public class Niveau extends Observable {
+public class Niveau extends Observable implements RefreshAnim {
 	// Variables
 	private int hauteur;
 	private int longueur;
@@ -38,7 +38,6 @@ public class Niveau extends Observable {
 	private boolean fini;
 	private Personnage perso;
 	private Sortie sortie;
-	private TableAnimation anim;
 
 	/**
 	 * tableau de Case du niveau
@@ -64,7 +63,6 @@ public class Niveau extends Observable {
 		UpTable = new ArrayList<>();
 		fini = false;
 		dscore = 1;
-		anim = new TableAnimation();
 
 		importer(niveau);
 	}
@@ -98,7 +96,6 @@ public class Niveau extends Observable {
 		longueur = l;
 		fini = false;
 		dscore = 1;
-		anim = new TableAnimation();
 
 		// remplisage du niveau
 		for (y = 0; y < h; y++) {
@@ -432,10 +429,6 @@ public class Niveau extends Observable {
 		this.longueur = longueur;
 	}
 
-	public TableAnimation getTableAnim() {
-		return anim;
-	}
-
 	/**
 	 * @param string
 	 */
@@ -504,6 +497,12 @@ public class Niveau extends Observable {
 
 		System.out.println("niveau importé");
 		afficheDebug();
+	}
+
+	@Override
+	public void refreshAnim() {
+		getPerso().refreshAnim();
+		getSortie().refreshAnim();
 	}
 
 }

@@ -1,6 +1,7 @@
 import javax.swing.JFrame;
 
 import Modele.Niveau;
+import Modele.Animation.TableAnimation;
 import Vue.Panel.Fenetre;
 
 public class BoulderDash {
@@ -35,10 +36,11 @@ public class BoulderDash {
 			if (i == 0) {
 				niveau.refresh();
 			} else {
-				// rafraichir animation
+				TableAnimation.refreshAnim();
+				niveau.refreshAnim();
 			}
 
-			i = (i + 1) % 4;
+			i = (i + 1) % 6;
 		}
 		System.exit(0);
 

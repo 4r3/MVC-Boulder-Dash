@@ -3,63 +3,64 @@ package Modele.Cases;
 import Modele.Niveau;
 import Modele.Animation.Animation;
 import Modele.Animation.ChoixAnimation;
+import Modele.Animation.TableAnimation;
 
-public class Personnage extends ElementDynamique implements Vivant
-{
+public class Personnage extends ElementDynamique implements Vivant, RefreshAnim {
 	Directions Deplace;
 	private ChoixAnimation animation;
 	boolean vivant;
 
-	public Personnage(int pos_x, int pos_y)
-	{
+	public Personnage(int pos_x, int pos_y) {
 		super(pos_x, pos_y);
 		Deplace = Directions.Null;
 
 		animation = ChoixAnimation.Personnage_Idle;
 	}
 
-	public void setDeplace(Directions D)
-	{
+	public void setDeplace(Directions D) {
 		Deplace = D;
 	}
 
-	public Directions getDeplace()
-	{
+	public Directions getDeplace() {
 		return Deplace;
 	}
 
 	@Override
-	public void refresh(Niveau N)
-	{
+	public void refresh(Niveau N) {
 		int xdest = getPos_x();
 		int ydest = getPos_y();
-		switch ( Deplace ) {
-			case Bas :
-				ydest++;
-				animation = ChoixAnimation.Personnage_Marche_Bas;
-				break;
-			case Droite :
-				xdest++;
-				animation = ChoixAnimation.Personnage_Marche_Droite;
-				break;
-			case Gauche :
-				animation = ChoixAnimation.Personnage_Marche_Gauche;
-				xdest--;
-				break;
-			case Haut :
-				ydest--;
-				animation = ChoixAnimation.Personnage_Marche_Haut;
-				break;
-			case Null :
-				animation = ChoixAnimation.Personnage_Idle;
-				return;
-			default :
-				return;
+		switch (Deplace) {
+		case Bas:
+			ydest++;
+			TableAnimation.Personnage(animation).stop();
+			animation = ChoixAnimation.Personnage_Marche_Bas;
+			break;
+		case Droite:
+			xdest++;
+			TableAnimation.Personnage(animation).stop();
+			animation = ChoixAnimation.Personnage_Marche_Droite;
+			break;
+		case Gauche:
+			TableAnimation.Personnage(animation).stop();
+			animation = ChoixAnimation.Personnage_Marche_Gauche;
+			xdest--;
+			break;
+		case Haut:
+			ydest--;
+			TableAnimation.Personnage(animation).stop();
+			animation = ChoixAnimation.Personnage_Marche_Haut;
+			break;
+		case Null:
+			TableAnimation.Personnage(animation).stop();
+			animation = ChoixAnimation.Personnage_Idle;
+			return;
+		default:
+			return;
 		}
 		Case C = N.getCase(xdest, ydest);
-		if ( C instanceof InterPersonnage ) {
+		if (C instanceof InterPersonnage) {
 			((InterPersonnage) C).PersonageArrive(N, xdest, ydest);
-		} else if ( C instanceof Diamant ) {
+		} else if (C instanceof Diamant) {
 			N.echangeCases(getPos_x(), getPos_y(), xdest, ydest);
 			N.insereVide(getPos_x(), getPos_y());
 			N.remplirUpTable(getPos_x(), getPos_y());
@@ -72,21 +73,23 @@ public class Personnage extends ElementDynamique implements Vivant
 	}
 
 	@Override
-	public Animation getAnimation(Niveau N)
-	{
-		return N.getTableAnim().Personnage(animation);
-	}
-
-	@Override
-	public String ID()
-	{
+	public String ID() {
 		return "P";
 	}
 
 	@Override
-	public void tuer(Niveau N)
-	{
+	public void tuer(Niveau N) {
 		animation = ChoixAnimation.Personnage_Mort;
-		//N.setFini();
+		// N.setFini();
+	}
+
+	@Override
+	public void refreshAnim() {
+		getAnimation().update();
+	}
+
+	@Override
+	public Animation getAnimation() {
+		return TableAnimation.Personnage(animation);
 	}
 }

@@ -5,62 +5,47 @@ package Modele.Cases;
 
 import Modele.Niveau;
 import Modele.Animation.Animation;
+import Modele.Animation.TableAnimation;
 
 /**
  * @author 4r3
  * 
  */
-public class Sortie extends Case implements InterPersonnage, InterChutable
-{
+public class Sortie extends Case implements InterPersonnage, InterChutable,
+		RefreshAnim {
 	private boolean ouverte;
 
-	//private Animation animation;
+	// private Animation animation;
 
-	public Sortie()
-	{
+	public Sortie() {
 		Fermer();
 	}
 
 	@Override
-	public Animation getAnimation(Niveau N)
-	{
-		if ( ouverte ) {
-			return N.getTableAnim().getSortie();
-		} else {
-			return N.getTableAnim().getMur();
-		}
-
-	}
-
-	@Override
-	public String ID()
-	{
+	public String ID() {
 		return "S";
 	}
 
-	public boolean isOuverte()
-	{
+	public boolean isOuverte() {
 		return ouverte;
 	}
 
-	public void Ouvrir()
-	{
+	public void Ouvrir() {
 		this.ouverte = true;
-		//this.animation = TableAnimation.getSortie();
-		//this.animation.start();
+		// this.animation = TableAnimation.getSortie();
+		// this.animation.start();
 	}
 
-	public void Fermer()
-	{
+	public void Fermer() {
 		this.ouverte = false;
-		//this.animation = TableAnimation.getMur();
+		// this.animation = TableAnimation.getMur();
 	}
 
 	@Override
-	public void PersonageArrive(Niveau N, int x, int y)
-	{
-		if ( ouverte ) {
-			N.echangeCases(N.getPerso().getPos_x(), N.getPerso().getPos_y(), x, y);
+	public void PersonageArrive(Niveau N, int x, int y) {
+		if (ouverte) {
+			N.echangeCases(N.getPerso().getPos_x(), N.getPerso().getPos_y(), x,
+					y);
 			N.getPerso().setPos(x, y);
 			N.setFini();
 		} else {
@@ -69,10 +54,10 @@ public class Sortie extends Case implements InterPersonnage, InterChutable
 	}
 
 	@Override
-	public EtatChutable chutableArrive(Niveau N, int x, int y)
-	{
-		if ( (N.getCase(x + 1, y) instanceof Vide) && (N.getCase(x + 1, y + 1) instanceof Vide) ) {
-			if ( ((Chutable) N.getCase(x, y)).instable() ) {
+	public EtatChutable chutableArrive(Niveau N, int x, int y) {
+		if ((N.getCase(x + 1, y) instanceof Vide)
+				&& (N.getCase(x + 1, y + 1) instanceof Vide)) {
+			if (((Chutable) N.getCase(x, y)).instable()) {
 				N.echangeCases(x, y, x + 1, y + 1);
 				N.remplirUpTable(x, y);
 				((Chutable) N.getCase(x + 1, y + 1)).setPos(x + 1, y + 1);
@@ -80,8 +65,9 @@ public class Sortie extends Case implements InterPersonnage, InterChutable
 			} else {
 				return EtatChutable.Instable;
 			}
-		} else if ( (N.getCase(x - 1, y) instanceof Vide) && (N.getCase(x - 1, y + 1) instanceof Vide) ) {
-			if ( ((Chutable) N.getCase(x, y)).instable() ) {
+		} else if ((N.getCase(x - 1, y) instanceof Vide)
+				&& (N.getCase(x - 1, y + 1) instanceof Vide)) {
+			if (((Chutable) N.getCase(x, y)).instable()) {
 				N.echangeCases(x, y, x - 1, y + 1);
 				N.remplirUpTable(x, y);
 				((Chutable) N.getCase(x - 1, y + 1)).setPos(x - 1, y + 1);
@@ -91,6 +77,20 @@ public class Sortie extends Case implements InterPersonnage, InterChutable
 			}
 		} else {
 			return EtatChutable.Stable;
+		}
+	}
+
+	@Override
+	public void refreshAnim() {
+		getAnimation().update();
+	}
+
+	@Override
+	public Animation getAnimation() {
+		if (ouverte) {
+			return TableAnimation.getSortie();
+		} else {
+			return TableAnimation.getMur();
 		}
 	}
 }
