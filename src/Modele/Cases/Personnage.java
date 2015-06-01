@@ -117,7 +117,7 @@ public class Personnage extends ElementDynamique implements Vivant, RefreshAnim 
 	@Override
 	public void tuer(Niveau N) {
 		animation = ChoixAnimation.Personnage_Mort;
-		// N.setFini();
+		N.setFini();
 	}
 
 	@Override

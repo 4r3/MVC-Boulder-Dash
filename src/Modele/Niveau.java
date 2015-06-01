@@ -1,9 +1,14 @@
 package Modele;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -203,8 +208,8 @@ public class Niveau extends Observable implements RefreshAnim {
 
 	public void insereRocher(int x, int y) {
 		if (x > 0 && x < longueur - 1 && y > 0 && y < hauteur - 1
-				&& tableau[x][y] != perso
-				&& (tableau[x][y] != sortie || sortie.isOuverte())) {
+				&& !(tableau[x][y] instanceof Personnage)
+				&& !(tableau[x][y] instanceof Sortie)) {
 			tableau[x][y] = new Rocher(x, y);
 			UpTable.add((ElementDynamique) tableau[x][y]);
 		}
@@ -212,8 +217,8 @@ public class Niveau extends Observable implements RefreshAnim {
 
 	public void insereDiamant(int x, int y) {
 		if (x > 0 && x < longueur - 1 && y > 0 && y < hauteur - 1
-				&& tableau[x][y] != perso
-				&& (tableau[x][y] != sortie || sortie.isOuverte())) {
+				&& !(tableau[x][y] instanceof Personnage)
+				&& !(tableau[x][y] instanceof Sortie)) {
 			tableau[x][y] = new Diamant(x, y);
 			UpTable.add((ElementDynamique) tableau[x][y]);
 		}
@@ -221,8 +226,8 @@ public class Niveau extends Observable implements RefreshAnim {
 
 	public void insereMurMagique(int x, int y) {
 		if (x > 0 && x < longueur - 1 && y > 0 && y < hauteur - 1
-				&& tableau[x][y] != perso
-				&& (tableau[x][y] != sortie || sortie.isOuverte())) {
+				&& !(tableau[x][y] instanceof Personnage)
+				&& !(tableau[x][y] instanceof Sortie)) {
 			tableau[x][y] = new MurMagique(x, y);
 		}
 	}
@@ -436,8 +441,33 @@ public class Niveau extends Observable implements RefreshAnim {
 	/**
 	 * @param string
 	 */
-	public void exporter(String string) {
+	@SuppressWarnings("resource")
+	public void exporter(String niveau) {
+		Writer writer = null;
+		try {
+			int x, y;
 
+			writer = new BufferedWriter(
+					new OutputStreamWriter(new FileOutputStream("niveaux/"
+							+ niveau + ".csv"), "utf-8"));
+
+			writer.write("LEVEL," + longueur + "," + hauteur + "\n");
+
+			for (y = 0; y < hauteur; y++) {
+				for (x = 0; x < longueur; x++) {
+					writer.write(getCase(x, y).ID() + ",");
+				}
+				writer.write("\n");
+			}
+			writer.close();
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void importer(String niveau) {
@@ -468,6 +498,9 @@ public class Niveau extends Observable implements RefreshAnim {
 						case "M":
 							insereMurIndestructible(x, y);
 							break;
+						case "N":
+							insereMurNormal(x, y);
+							break;
 						case "P":
 							inserePersonage(x, y);
 							break;
@@ -477,12 +510,25 @@ public class Niveau extends Observable implements RefreshAnim {
 						case "B":
 							insereBoue(x, y);
 							break;
+						case "D":
+							insereDiamant(x, y);
+							break;
+						case "R":
+							insereRocher(x, y);
+							break;
+						case "X":
+							insereMurMagique(x, y);
+							break;
 						default:
 							insereVide(x, y);
 							break;
 						}
 					}
 				}
+
+				ligne = br.readLine();
+				propriete = ligne.split(separateur);
+				dscore = Integer.parseInt(propriete[1]);
 			}
 
 		} catch (FileNotFoundException e) {
@@ -500,7 +546,6 @@ public class Niveau extends Observable implements RefreshAnim {
 		}
 
 		System.out.println("niveau importé");
-		afficheDebug();
 	}
 
 	@Override
