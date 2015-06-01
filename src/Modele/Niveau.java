@@ -1,5 +1,9 @@
 package Modele;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -55,6 +59,14 @@ public class Niveau extends Observable implements RefreshAnim {
 		this(10, 10, 1, 1, 8, 8);
 	}
 
+	public Niveau(String niveau) {
+		UpTable = new ArrayList<>();
+		fini = false;
+		dscore = 1;
+
+		importer(niveau);
+	}
+
 	/**
 	 * crée un niveau de l*h rempli de boue et avec une bordure de
 	 * MurIndestructible, avec une sortie en Sx,Sy et un personage en Px,Py
@@ -89,14 +101,14 @@ public class Niveau extends Observable implements RefreshAnim {
 		for (y = 0; y < h; y++) {
 			if (y == 0 || y == (h - 1)) {
 				for (x = 0; x < l; x++) {
-					tableau[x][y] = new MurIndestructible();
+					insereMurIndestructible(x, y);
 				}
 			} else {
-				tableau[0][y] = new MurIndestructible();
+				insereMurIndestructible(0, y);
 				for (x = 1; x < (l - 1); x++) {
-					tableau[x][y] = new Boue();
+					insereBoue(x, y);
 				}
-				tableau[l - 1][y] = new MurIndestructible();
+				insereMurIndestructible(l - 1, y);
 			}
 		}
 		inserePersonage(Px, Py);
@@ -132,7 +144,7 @@ public class Niveau extends Observable implements RefreshAnim {
 	 */
 	private void insereSortie(int x, int y) {
 		if (x >= 0 && x < longueur && y >= 0 && y < hauteur
-				&& tableau[x][y] != perso) {
+				&& !(tableau[x][y] instanceof Personnage)) {
 
 			sortie = new Sortie();
 			tableau[x][y] = sortie;
@@ -167,9 +179,25 @@ public class Niveau extends Observable implements RefreshAnim {
 	 */
 	public void insereVide(int x, int y) {
 		if (x > 0 && x < longueur - 1 && y > 0 && y < hauteur - 1
-				&& tableau[x][y] != perso
-				&& (tableau[x][y] != sortie || sortie.isOuverte())) {
+				&& !(tableau[x][y] instanceof Personnage)
+				&& !(tableau[x][y] instanceof Sortie)) {
 			tableau[x][y] = new Vide();
+		}
+	}
+
+	public void insereBoue(int x, int y) {
+		if (x > 0 && x < longueur - 1 && y > 0 && y < hauteur - 1
+				&& !(tableau[x][y] instanceof Personnage)
+				&& !(tableau[x][y] instanceof Sortie)) {
+			tableau[x][y] = new Boue();
+		}
+	}
+
+	public void insereMurIndestructible(int x, int y) {
+		if (x >= 0 && x < longueur && y >= 0 && y < hauteur
+				&& !(tableau[x][y] instanceof Personnage)
+				&& !(tableau[x][y] instanceof Sortie)) {
+			tableau[x][y] = new MurIndestructible();
 		}
 	}
 
@@ -409,8 +437,70 @@ public class Niveau extends Observable implements RefreshAnim {
 	 * @param string
 	 */
 	public void exporter(String string) {
-		// TODO Auto-generated method stub
 
+	}
+
+	public void importer(String niveau) {
+		String fichier = "niveaux/" + niveau + ".csv";
+		String ligne = "";
+		String separateur = ",";
+		@SuppressWarnings("resource")
+		BufferedReader br = null;
+
+		try {
+			int x, y;
+			br = new BufferedReader(new FileReader(fichier));
+
+			if ((ligne = br.readLine()) != null) {
+				String[] propriete = ligne.split(separateur);
+
+				longueur = Integer.parseInt(propriete[1]);
+				hauteur = Integer.parseInt(propriete[2]);
+
+				tableau = new Case[longueur][hauteur];
+
+				for (y = 0; y < hauteur; y++) {
+					ligne = br.readLine();
+					String[] cases = ligne.split(separateur);
+
+					for (x = 0; x < longueur; x++) {
+						switch (cases[x]) {
+						case "M":
+							insereMurIndestructible(x, y);
+							break;
+						case "P":
+							inserePersonage(x, y);
+							break;
+						case "S":
+							insereSortie(x, y);
+							break;
+						case "B":
+							insereBoue(x, y);
+							break;
+						default:
+							insereVide(x, y);
+							break;
+						}
+					}
+				}
+			}
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (br != null) {
+				try {
+					br.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		System.out.println("niveau importé");
+		afficheDebug();
 	}
 
 	@Override
