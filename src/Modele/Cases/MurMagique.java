@@ -11,7 +11,7 @@ import Modele.Animation.TableAnimation;
  * @author 4r3
  * 
  */
-public class MurMagique extends Case implements InterChutable, RefreshAnim {
+public class MurMagique extends Case implements InterChutable {
 	private boolean active;
 	private int x;
 	private int y;
@@ -105,10 +105,5 @@ public class MurMagique extends Case implements InterChutable, RefreshAnim {
 		} else {
 			return EtatChutable.Stable;
 		}
-	}
-
-	@Override
-	public void refreshAnim() {
-		getAnimation().update();
 	}
 }

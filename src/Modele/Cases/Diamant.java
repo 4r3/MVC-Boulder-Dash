@@ -11,7 +11,7 @@ import Modele.Animation.TableAnimation;
  * @author 4r3
  * 
  */
-public class Diamant extends Chutable implements InterPersonnage, RefreshAnim {
+public class Diamant extends Chutable implements InterPersonnage {
 
 	/**
 	 * @param pos_x
@@ -40,11 +40,6 @@ public class Diamant extends Chutable implements InterPersonnage, RefreshAnim {
 	@Override
 	public Animation getAnimation() {
 		return TableAnimation.getDiamant();
-	}
-
-	@Override
-	public void refreshAnim() {
-		getAnimation().update();
 	}
 
 }

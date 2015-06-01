@@ -11,7 +11,7 @@ import Modele.Animation.TableAnimation;
  * @author 4r3
  * 
  */
-public class Rocher extends Chutable implements InterPersonnage, RefreshAnim {
+public class Rocher extends Chutable implements InterPersonnage {
 
 	/**
 	 * @param pos_x
@@ -44,11 +44,6 @@ public class Rocher extends Chutable implements InterPersonnage, RefreshAnim {
 			}
 		}
 
-	}
-
-	@Override
-	public void refreshAnim() {
-		getAnimation().update();
 	}
 
 	@Override
