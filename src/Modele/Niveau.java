@@ -429,6 +429,10 @@ public class Niveau extends Observable implements RefreshAnim {
 		this.longueur = longueur;
 	}
 
+	public int getDscore() {
+		return dscore;
+	}
+
 	/**
 	 * @param string
 	 */

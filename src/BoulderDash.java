@@ -1,5 +1,6 @@
 import javax.swing.JFrame;
 
+import Modele.Jeu;
 import Modele.Niveau;
 import Modele.Animation.TableAnimation;
 import Vue.Panel.Fenetre;
@@ -10,6 +11,7 @@ public class BoulderDash {
 		// Niveau niveau = new Niveau("level0");
 
 		Niveau niveau = new Niveau(20, 15, 5, 5, 18, 18);
+		Jeu jeu = new Jeu();
 
 		niveau.insereDiamant(5, 1);
 		niveau.insereDiamant(5, 2);
@@ -22,7 +24,7 @@ public class BoulderDash {
 
 		// niveau.importer("level0");
 
-		JFrame fen = new Fenetre(niveau);
+		JFrame fen = new Fenetre(niveau, jeu);
 		fen.setVisible(true);
 
 		int i = 0;
