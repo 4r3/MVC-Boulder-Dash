@@ -16,16 +16,28 @@ public class BoulderDash
 
 		niveau.insereMurMagique(5, 10);
 
+		//niveau.exporter("level1");
+
 		JFrame fen = new Fenetre(niveau);
 		fen.setVisible(true);
+
+		int i = 0;
+
 		while ( !niveau.isFini() ) {
-			niveau.refresh();
 			try {
-				Thread.sleep(200);
+				Thread.sleep(50);
 			} catch ( InterruptedException e ) {
 				e.printStackTrace();
 			}
+
+			if ( i == 0 ) {
+				niveau.refresh();
+			} else {
+				//rafraichir animation
+			}
+
+			i = (i + 1) % 4;
 		}
-		System.exit(0);
+		//System.exit(0);
 	}
 }

@@ -426,4 +426,13 @@ public class Niveau extends Observable
 		return anim;
 	}
 
+	/**
+	 * @param string
+	 */
+	public void exporter(String string)
+	{
+		// TODO Auto-generated method stub
+
+	}
+
 }
