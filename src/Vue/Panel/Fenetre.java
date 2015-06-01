@@ -2,21 +2,18 @@ package Vue.Panel;
 
 import javax.swing.JFrame;
 
-import Controlleur.GestionClavier;
+import Modele.Jeu;
 import Modele.Niveau;
 
-public class Fenetre extends JFrame
-{
+public class Fenetre extends JFrame {
 	private static final long serialVersionUID = 3393452907097178193L;
 
-	private AireDeJeu aireJeu;
+	private PanelJeu panelJeu;
 
-	public Fenetre(Niveau niveau)
-	{
+	public Fenetre(Niveau niveau, Jeu jeu) {
 		super("Boulder Dash");
-		initAireDejeu(niveau);
+		initAireDejeu(niveau, jeu);
 
-		setFocusable(true);
 		setResizable(false);
 		pack();
 
@@ -25,12 +22,11 @@ public class Fenetre extends JFrame
 
 	}
 
-	private void initAireDejeu(Niveau niveau)
-	{
-		aireJeu = new AireDeJeu(niveau);
-		add(aireJeu);
+	private void initAireDejeu(Niveau niveau, Jeu jeu) {
 
-		addKeyListener(new GestionClavier(niveau));
+		panelJeu = new PanelJeu(niveau, jeu);
+		add(panelJeu);
+
 	}
 
 }
