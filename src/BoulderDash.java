@@ -2,18 +2,38 @@ import javax.swing.JFrame;
 
 import Modele.Jeu;
 import Modele.Niveau;
-import Modele.Animation.TableAnimation;
+import Modele.Variables;
 import Vue.Panel.Fenetre;
 
 public class BoulderDash {
 
 	public static void main(String[] args) {
 		Niveau niveau = new Niveau("level1");
+		int t = (int) (Math.random() * 4);
+		int x = 1 + (int) (Math.random() * niveau.getLongueur());
+		int y = 1 + (int) (Math.random() * niveau.getHauteur());
 
 		// Niveau niveau = new Niveau(20, 15, 5, 5, 18, 18);
 		Jeu jeu = new Jeu();
+		System.out.println(t);
+		switch (t) {
+		case 0:
+			niveau.insereVide(x, y);
+			break;
+		case 1:
+			niveau.insereDiamant(x, y);
+			break;
+		case 2:
+			niveau.insereRocher(x, y);
+			break;
+		case 3:
+			niveau.insereMurNormal(x, y);
+			break;
+		default:
+			niveau.insereVide(x, y);
+			break;
+		}
 
-		// niveau.insereDiamant(5, 1);
 		// niveau.insereDiamant(5, 2);
 		//
 		// niveau.insereRocher(2, 2);
@@ -32,9 +52,12 @@ public class BoulderDash {
 		long time = System.currentTimeMillis();
 
 		while (!niveau.isFini()) {
-			time = System.currentTimeMillis() - time;
+			time = Variables.FRAME + System.currentTimeMillis() - time;
+			if (time <= 0) {
+				time = 1;
+			}
 			try {
-				Thread.sleep(50 - time);
+				Thread.sleep(time);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -43,10 +66,10 @@ public class BoulderDash {
 			if (i == 0) {
 				niveau.refresh();
 			}
-			TableAnimation.refreshAnim();
+
 			niveau.refreshAnim();
 
-			i = (i + 1) % 4;
+			i = (i + 1) % Variables.CYCLES;
 
 		}
 		System.exit(0);

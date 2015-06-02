@@ -42,14 +42,16 @@ public class Sortie extends Case implements InterPersonnage, InterChutable,
 	}
 
 	@Override
-	public void PersonageArrive(Niveau N, int x, int y) {
+	public boolean PersonageArrive(Niveau N, int x, int y) {
 		if (ouverte) {
 			N.echangeCases(N.getPerso().getPos_x(), N.getPerso().getPos_y(), x,
 					y);
 			N.getPerso().setPos(x, y);
 			N.setFini();
+			return true;
 		} else {
 			System.out.println("sortie fermée");
+			return false;
 		}
 	}
 

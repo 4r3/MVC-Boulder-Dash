@@ -236,8 +236,10 @@ public class TableAnimation {
 	}
 
 	public static void refreshAnim() {
-		getDiamant().update();
-		getRocher().update();
-		getMurMagique().update();
+		for (ChoixAnimation anim : ChoixAnimation.values()) {
+			if (tableAnimations.get(anim) != null) {
+				tableAnimations.get(anim).update();
+			}
+		}
 	}
 }

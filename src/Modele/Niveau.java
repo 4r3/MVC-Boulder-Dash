@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
+import Modele.Animation.TableAnimation;
 import Modele.Cases.Boue;
 import Modele.Cases.Case;
 import Modele.Cases.Chutable;
@@ -248,8 +249,8 @@ public class Niveau extends Observable implements RefreshAnim {
 		if (!sortie.isOuverte() && dscore <= 0) {
 			sortie.Ouvrir();
 		}
-		setChanged();
-		notifyObservers();
+		// setChanged();
+		// notifyObservers();
 	}
 
 	/**
@@ -290,6 +291,15 @@ public class Niveau extends Observable implements RefreshAnim {
 		tableau[x1][y1] = tableau[x2][y2];
 		tableau[x2][y2] = temp;
 	}
+
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
 
 	public void addUptable(int x, int y) {
 		if (tableau[x][y] instanceof ElementDynamique
@@ -343,56 +353,8 @@ public class Niveau extends Observable implements RefreshAnim {
 		UpTable.remove(C);
 	}
 
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-
-	public void remplirRefreshAnim(int x, int y) {
-		addUptable(x, y - 1);
-		addUptable(x + 1, y - 1);
-		addUptable(x - 1, y - 1);
-		addUptable(x + 1, y);
-		addUptable(x - 1, y);
-	}
-
-	public void trieRefreshAnim() {
-		int i = 0;
-		int j, pmin;
-		ElementDynamique temp;
-
-		while (i < UpTable.size() - 1) {
-			pmin = i;
-			j = i + 1;
-			while (j < UpTable.size()) {
-				if (UpTable.get(j).isSuperior(UpTable.get(pmin))) {
-					pmin = j;
-				}
-				j++;
-			}
-			temp = UpTable.set(i, UpTable.get(pmin));
-			UpTable.set(pmin, temp);
-			i++;
-		}
-	}
-
-	public void cleanRefreshAnim() {
-		int i = 0;
-		while (i < UpTable.size()) {
-			if ((UpTable.get(i) instanceof Chutable)
-					&& !((Chutable) UpTable.get(i)).instable()) {
-				UpTable.remove(i);
-			} else {
-				i++;
-			}
-		}
-	}
-
-	public void remRefreshAnim(Case C) {
-		UpTable.remove(C);
+	public ElementDynamique[] getUpTable() {
+		return (ElementDynamique[]) UpTable.toArray();
 	}
 
 	//
@@ -459,6 +421,7 @@ public class Niveau extends Observable implements RefreshAnim {
 				}
 				writer.write("\n");
 			}
+			writer.write("DIAMOND," + dscore);
 			writer.close();
 
 		} catch (FileNotFoundException e) {
@@ -550,8 +513,10 @@ public class Niveau extends Observable implements RefreshAnim {
 
 	@Override
 	public void refreshAnim() {
-		getPerso().refreshAnim();
-		getSortie().refreshAnim();
+		perso.refreshAnim();
+		TableAnimation.refreshAnim();
+		setChanged();
+		notifyObservers();
 	}
 
 }

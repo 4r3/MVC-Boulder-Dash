@@ -27,7 +27,7 @@ public class Rocher extends Chutable implements InterPersonnage {
 	}
 
 	@Override
-	public void PersonageArrive(Niveau N, int x, int y) {
+	public boolean PersonageArrive(Niveau N, int x, int y) {
 		if (N.getPerso().getDeplace() == Directions.Gauche) {
 			if (N.getCase(x - 1, y) instanceof Vide) {
 				N.echangeCases(x, y, x - 1, y);
@@ -43,6 +43,7 @@ public class Rocher extends Chutable implements InterPersonnage {
 				setPos_x(x + 1);
 			}
 		}
+		return false;
 
 	}
 

@@ -27,14 +27,14 @@ public class Diamant extends Chutable implements InterPersonnage {
 	}
 
 	@Override
-	public void PersonageArrive(Niveau N, int x, int y) {
+	public boolean PersonageArrive(Niveau N, int x, int y) {
 		N.echangeCases(N.getPerso().getPos_x(), N.getPerso().getPos_y(), x, y);
 		N.insereVide(N.getPerso().getPos_x(), N.getPerso().getPos_y());
 		N.remplirUpTable(N.getPerso().getPos_x(), N.getPerso().getPos_y());
 		N.getPerso().setPos(x, y);
 		N.AddDscore();
 		N.remUptable(this);
-
+		return true;
 	}
 
 	@Override

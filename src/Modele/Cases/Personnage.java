@@ -1,6 +1,7 @@
 package Modele.Cases;
 
 import Modele.Niveau;
+import Modele.Variables;
 import Modele.Animation.Animation;
 import Modele.Animation.ChoixAnimation;
 import Modele.Animation.TableAnimation;
@@ -56,9 +57,7 @@ public class Personnage extends ElementDynamique implements Vivant, RefreshAnim 
 			animation = ChoixAnimation.Personnage_Marche_Haut;
 			break;
 		case Null:
-			TableAnimation.Personnage(animation).stop();
 			arret();
-			Last = Directions.Null;
 			return;
 		default:
 			return;
@@ -66,20 +65,17 @@ public class Personnage extends ElementDynamique implements Vivant, RefreshAnim 
 		Last = Deplace;
 		Case C = N.getCase(xdest, ydest);
 		if (C instanceof InterPersonnage) {
-			((InterPersonnage) C).PersonageArrive(N, xdest, ydest);
-		} else if (C instanceof Diamant) {
-			N.echangeCases(getPos_x(), getPos_y(), xdest, ydest);
-			N.insereVide(getPos_x(), getPos_y());
-			N.remplirUpTable(getPos_x(), getPos_y());
-			setPos(xdest, ydest);
-			N.AddDscore();
-			N.remUptable(C);
+			if (!((InterPersonnage) C).PersonageArrive(N, xdest, ydest)) {
+				Last = Directions.Null;
+			}
 		} else {
+			Last = Directions.Null;
 			System.out.println(N.getCase(xdest, ydest).getClass().getName());
 		}
 	}
 
 	private void arret() {
+		TableAnimation.Personnage(animation).stop();
 		switch (Last) {
 		case Bas:
 			animation = ChoixAnimation.Personnage_Debout_Bas;
@@ -107,6 +103,7 @@ public class Personnage extends ElementDynamique implements Vivant, RefreshAnim 
 		default:
 			break;
 		}
+		Last = Directions.Null;
 	}
 
 	@Override
@@ -122,7 +119,30 @@ public class Personnage extends ElementDynamique implements Vivant, RefreshAnim 
 
 	@Override
 	public void refreshAnim() {
-		getAnimation().update();
+		switch (Last) {
+		case Bas:
+			setoffsetY((getoffsetY() - Variables.PAS_MVT)
+					% Variables.TAILLE_CASE);
+			break;
+		case Droite:
+			setoffsetX((getoffsetX() - Variables.PAS_MVT)
+					% Variables.TAILLE_CASE);
+			break;
+		case Gauche:
+			setoffsetX((getoffsetX() + Variables.PAS_MVT)
+					% Variables.TAILLE_CASE);
+			break;
+		case Haut:
+			setoffsetY((getoffsetY() + Variables.PAS_MVT)
+					% Variables.TAILLE_CASE);
+			break;
+		// $CASES-OMITTED$
+		default:
+			setoffsetX(0);
+			setoffsetY(0);
+			break;
+		}
+		// getAnimation().update();
 	}
 
 	@Override

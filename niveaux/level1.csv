@@ -3,7 +3,7 @@ M,M,M,M,M,M,M,M,M,M,M,M,M,M,M,M,M,M,M,M,
 M,B,B,B,B,D,B,B,B,B,B,B,B,B,B,B,B,B,B,M,
 M,B,R,B,B,D,B,B,B,B,B,B,B,B,B,B,B,B,B,M,
 M,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,M,
-M,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,M,
+M,B,B,B,B,B,B,B,B,B,B,B,R,B,B,B,B,B,B,M,
 M,B,B,B,B,P,B,B,B,B,B,B,B,B,B,B,B,B,B,M,
 M,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,M,
 M,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,M,
@@ -14,5 +14,4 @@ M,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,M,
 M,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,M,
 M,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,S,M,
 M,M,M,M,M,M,M,M,M,M,M,M,M,M,M,M,M,M,M,M,
-DIAMONDS,3
-TIME,120
+DIAMOND,3
