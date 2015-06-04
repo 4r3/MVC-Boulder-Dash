@@ -7,18 +7,18 @@ import Modele.Jeu;
 import Modele.Niveau;
 
 public class PanelJeu extends JPanel {
-	private AireDeJeu aireJeu;
-	private AireInformation aireInfo;
+	private AirePlateauJeu aireJeu;
+	private AireInfoJeu aireInfo;
 
-	public PanelJeu(Niveau niveau, Jeu jeu) {
-		initPanelJeu(niveau, jeu);
-		setFocusable(true);
+	public PanelJeu(Fenetre fen, Niveau niveau, Jeu jeu) {
+		initPanelJeu(fen, niveau, jeu);
+		// setFocusable(true);
 	}
 
-	private void initPanelJeu(Niveau niveau, Jeu jeu) {
-		aireJeu = new AireDeJeu(niveau);
+	private void initPanelJeu(Fenetre fen, Niveau niveau, Jeu jeu) {
+		aireJeu = new AirePlateauJeu(niveau);
 		add(aireJeu);
-		aireInfo = new AireInformation(jeu);
+		aireInfo = new AireInfoJeu(fen, jeu);
 		add(aireInfo);
 
 		addKeyListener(new GestionClavier(niveau));

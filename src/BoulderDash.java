@@ -1,4 +1,4 @@
-import javax.swing.JFrame;
+import java.awt.CardLayout;
 
 import Modele.Jeu;
 import Modele.Niveau;
@@ -45,34 +45,37 @@ public class BoulderDash {
 		//
 		// niveau.exporter("level1");
 
-		JFrame fen = new Fenetre(niveau, jeu);
+		Fenetre fen = new Fenetre(niveau, jeu);
 		fen.setVisible(true);
 
 		int i = 0;
 		long time = System.currentTimeMillis();
 
-		while (!niveau.isFini()) {
-			time = Variables.FRAME + System.currentTimeMillis() - time;
-			if (time <= 0) {
-				time = 1;
+		while (true) {
+			while (!niveau.isFini()) {
+				time = Variables.FRAME + System.currentTimeMillis() - time;
+				if (time <= 0) {
+					time = 1;
+				}
+				try {
+					Thread.sleep(time);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+
+				time = System.currentTimeMillis();
+				if (i == 0) {
+					niveau.refresh();
+				}
+
+				niveau.refreshAnim();
+
+				i = (i + 1) % Variables.CYCLES;
+
 			}
-			try {
-				Thread.sleep(time);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-
-			time = System.currentTimeMillis();
-			if (i == 0) {
-				niveau.refresh();
-			}
-
-			niveau.refreshAnim();
-
-			i = (i + 1) % Variables.CYCLES;
-
+			CardLayout cl = (CardLayout) (fen.getCards().getLayout());
+			cl.show(fen.getCards(), Fenetre.MENUPRICIPAL);
+			fen.getMenuPrinc().grabFocus();
 		}
-		System.exit(0);
-
 	}
 }

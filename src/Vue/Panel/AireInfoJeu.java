@@ -5,24 +5,26 @@ import java.awt.Dimension;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Controlleur.GestionSourisJeu;
 import Modele.Jeu;
 import Modele.Variables;
 
-public class AireInformation extends JPanel implements Observer {
+public class AireInfoJeu extends JPanel implements Observer {
 
 	private Jeu jeu;
 
-	public AireInformation(Jeu jeu) {
+	public AireInfoJeu(Fenetre fen, Jeu jeu) {
 		this.jeu = jeu;
 		jeu.addObserver(this);
-		initAireInformation();
+		initAireInformation(fen);
 
 	}
 
-	private void initAireInformation() {
+	private void initAireInformation(Fenetre fen) {
 		setBackground(Color.BLACK);
 		setPreferredSize(new Dimension(Variables.HAUTEUR_PANEL_SCORE,
 				Variables.LARGEUR_PANEL_SCORE));
@@ -31,7 +33,11 @@ public class AireInformation extends JPanel implements Observer {
 		JLabel score = new JLabel("Diamant(s) restant(s) : "
 		/* + this.jeu.getDscore() */);
 		score.setForeground(Color.white);
+		JButton retour = new JButton("Menu");
+		GestionSourisJeu gsm = new GestionSourisJeu(fen, retour);
+
 		add(score);
+		add(retour);
 	}
 
 	@Override

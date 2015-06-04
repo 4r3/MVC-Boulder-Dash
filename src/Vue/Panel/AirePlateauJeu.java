@@ -15,11 +15,11 @@ import Modele.Animation.TableAnimation;
 import Modele.Cases.Personnage;
 
 @SuppressWarnings("serial")
-public class AireDeJeu extends JPanel implements Observer {
+public class AirePlateauJeu extends JPanel implements Observer {
 
 	private Niveau niveau;
 
-	public AireDeJeu(Niveau niveau) {
+	public AirePlateauJeu(Niveau niveau) {
 		this.niveau = niveau;
 		niveau.addObserver(this);
 		initAireDeJeu();

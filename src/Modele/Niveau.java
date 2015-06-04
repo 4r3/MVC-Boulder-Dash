@@ -403,7 +403,6 @@ public class Niveau extends Observable implements RefreshAnim {
 	/**
 	 * @param string
 	 */
-	@SuppressWarnings("resource")
 	public void exporter(String niveau) {
 		Writer writer = null;
 		try {
@@ -437,7 +436,6 @@ public class Niveau extends Observable implements RefreshAnim {
 		String fichier = "niveaux/" + niveau + ".csv";
 		String ligne = "";
 		String separateur = ",";
-		@SuppressWarnings("resource")
 		BufferedReader br = null;
 
 		try {
