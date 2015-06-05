@@ -41,15 +41,17 @@ public class Fenetre extends JFrame {
 
 		menuPrinc = new MenuPrincipal(this);
 		menuPrinc.setLayout(new BoxLayout(menuPrinc, BoxLayout.PAGE_AXIS));
-		// menuJeu = new MenuJeu(this);
-		// menuJeu.setLayout(new BoxLayout(menuJeu, BoxLayout.PAGE_AXIS));
-		// menuEdit = new MenuEditeur(this);
-		// menuEdit.setLayout(new BoxLayout(menuEdit, BoxLayout.PAGE_AXIS));
+		menuJeu = new MenuJeu(this);
+		menuJeu.setLayout(new BoxLayout(menuJeu, BoxLayout.PAGE_AXIS));
+		menuEdit = new MenuEditeur(this);
+		menuEdit.setLayout(new BoxLayout(menuEdit, BoxLayout.PAGE_AXIS));
 
 		panelJeu = new PanelJeu(this, niveau, jeu);
 
 		cards = new JPanel(new CardLayout());
 		cards.add(menuPrinc, MENUPRICIPAL);
+		cards.add(menuJeu, MENUJEU);
+		cards.add(menuEdit, MENUEDITEUR);
 		cards.add(panelJeu, TABLEAUJEU);
 
 		add(cards);

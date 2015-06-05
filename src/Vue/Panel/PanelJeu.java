@@ -6,6 +6,7 @@ import Controlleur.GestionClavier;
 import Modele.Jeu;
 import Modele.Niveau;
 
+@SuppressWarnings("serial")
 public class PanelJeu extends JPanel {
 	private AirePlateauJeu aireJeu;
 	private AireInfoJeu aireInfo;

@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import Controlleur.GestionSourisMenu;
 import Modele.Variables;
 
+@SuppressWarnings("serial")
 public class MenuPrincipal extends JPanel {
 
 	public MenuPrincipal(Fenetre fen) {
@@ -31,8 +32,7 @@ public class MenuPrincipal extends JPanel {
 		lancerEditeur.setAlignmentX(Component.CENTER_ALIGNMENT);
 		quitter.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-		GestionSourisMenu gsm = new GestionSourisMenu(fen, lancerJeu,
-				lancerEditeur, quitter);
+		new GestionSourisMenu(fen, lancerJeu, lancerEditeur, quitter);
 		add(lancerJeu);
 		add(lancerEditeur);
 		add(quitter);

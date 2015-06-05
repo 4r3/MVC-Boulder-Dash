@@ -13,6 +13,7 @@ import Controlleur.GestionSourisJeu;
 import Modele.Jeu;
 import Modele.Variables;
 
+@SuppressWarnings("serial")
 public class AireInfoJeu extends JPanel implements Observer {
 
 	private Jeu jeu;
@@ -34,7 +35,7 @@ public class AireInfoJeu extends JPanel implements Observer {
 		/* + this.jeu.getDscore() */);
 		score.setForeground(Color.white);
 		JButton retour = new JButton("Menu");
-		GestionSourisJeu gsm = new GestionSourisJeu(fen, retour);
+		new GestionSourisJeu(fen, retour);
 
 		add(score);
 		add(retour);
