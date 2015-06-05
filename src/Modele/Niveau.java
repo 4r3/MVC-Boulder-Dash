@@ -249,8 +249,6 @@ public class Niveau extends Observable implements RefreshAnim {
 		if (!sortie.isOuverte() && dscore <= 0) {
 			sortie.Ouvrir();
 		}
-		// setChanged();
-		// notifyObservers();
 	}
 
 	/**
