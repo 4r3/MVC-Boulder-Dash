@@ -170,7 +170,8 @@ public class Niveau extends Observable implements RefreshAnim {
 	 */
 	public void insereMurNormal(int x, int y) {
 		if (x > 0 && x < longueur - 1 && y > 0 && y < hauteur - 1
-				&& tableau[x][y] != perso && tableau[x][y] != sortie) {
+				&& !(tableau[x][y] instanceof Personnage)
+				&& !(tableau[x][y] instanceof Sortie)) {
 			tableau[x][y] = new MurNormal();
 		}
 	}

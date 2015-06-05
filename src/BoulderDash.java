@@ -8,31 +8,31 @@ import Vue.Panel.Fenetre;
 public class BoulderDash {
 
 	public static void main(String[] args) {
-		Niveau niveau = new Niveau("level1");
-		int t = (int) (Math.random() * 4);
-		int x = 1 + (int) (Math.random() * niveau.getLongueur());
-		int y = 1 + (int) (Math.random() * niveau.getHauteur());
+		Niveau niveau = new Niveau("level2");
+		// int t = (int) (Math.random() * 4);
+		// int x = 1 + (int) (Math.random() * niveau.getLongueur());
+		// int y = 1 + (int) (Math.random() * niveau.getHauteur());
 
 		// Niveau niveau = new Niveau(20, 15, 5, 5, 18, 18);
 		Jeu jeu = new Jeu();
-		System.out.println(t);
-		switch (t) {
-		case 0:
-			niveau.insereVide(x, y);
-			break;
-		case 1:
-			niveau.insereDiamant(x, y);
-			break;
-		case 2:
-			niveau.insereRocher(x, y);
-			break;
-		case 3:
-			niveau.insereMurNormal(x, y);
-			break;
-		default:
-			niveau.insereVide(x, y);
-			break;
-		}
+		// System.out.println(t);
+		// switch (t) {
+		// case 0:
+		// niveau.insereVide(x, y);
+		// break;
+		// case 1:
+		// niveau.insereDiamant(x, y);
+		// break;
+		// case 2:
+		// niveau.insereRocher(x, y);
+		// break;
+		// case 3:
+		// niveau.insereMurNormal(x, y);
+		// break;
+		// default:
+		// niveau.insereVide(x, y);
+		// break;
+		// }
 
 		// niveau.insereDiamant(5, 2);
 		//
