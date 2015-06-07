@@ -2,6 +2,7 @@ package Modele.Animation;
 
 public enum ChoixAnimation
 {
+	Papillon,
 	Personnage_Marche_Droite,
 	Personnage_Marche_Gauche,
 	Personnage_Marche_Haut,

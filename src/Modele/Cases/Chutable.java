@@ -12,7 +12,6 @@ import Modele.Niveau;
 public abstract class Chutable extends ElementDynamique implements
 		InterChutable, RefreshAnim {
 	private EtatChutable etat;
-	private Directions chute;
 
 	/**
 	 * @param pos_x
@@ -21,7 +20,6 @@ public abstract class Chutable extends ElementDynamique implements
 	public Chutable(int pos_x, int pos_y) {
 		super(pos_x, pos_y);
 		etat = EtatChutable.Stable;
-		chute = Directions.Null;
 	}
 
 	@Override

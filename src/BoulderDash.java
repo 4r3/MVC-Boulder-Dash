@@ -8,7 +8,7 @@ import Vue.Panel.Fenetre;
 public class BoulderDash {
 
 	public static void main(String[] args) {
-		Niveau niveau = new Niveau("level2");
+		Niveau niveau = new Niveau("level4");
 		// int t = (int) (Math.random() * 4);
 		// int x = 1 + (int) (Math.random() * niveau.getLongueur());
 		// int y = 1 + (int) (Math.random() * niveau.getHauteur());

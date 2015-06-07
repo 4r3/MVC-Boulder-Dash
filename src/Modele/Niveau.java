@@ -22,6 +22,7 @@ import Modele.Cases.ElementDynamique;
 import Modele.Cases.MurIndestructible;
 import Modele.Cases.MurMagique;
 import Modele.Cases.MurNormal;
+import Modele.Cases.Papillon;
 import Modele.Cases.Personnage;
 import Modele.Cases.RefreshAnim;
 import Modele.Cases.Rocher;
@@ -234,6 +235,16 @@ public class Niveau extends Observable implements RefreshAnim {
 		}
 	}
 
+	public void inserePapillon(int x, int y) {
+		if (x > 0 && x < longueur - 1 && y > 0 && y < hauteur - 1
+				&& !(tableau[x][y] instanceof Personnage)
+				&& !(tableau[x][y] instanceof Sortie)) {
+			tableau[x][y] = new Papillon(x, y);
+			UpTable.add((ElementDynamique) tableau[x][y]);
+			System.out.println("papillon");
+		}
+	}
+
 	/**
 	 * fonction de mise à jour du niveau, met a jour tout les ElementDynamique
 	 * suceptibles d'etre mis a jour dans le niveau
@@ -402,6 +413,7 @@ public class Niveau extends Observable implements RefreshAnim {
 	/**
 	 * @param string
 	 */
+	@SuppressWarnings("resource")
 	public void exporter(String niveau) {
 		Writer writer = null;
 		try {
@@ -431,6 +443,7 @@ public class Niveau extends Observable implements RefreshAnim {
 		}
 	}
 
+	@SuppressWarnings("resource")
 	public void importer(String niveau) {
 		String fichier = "niveaux/" + niveau + ".csv";
 		String ligne = "";
@@ -478,6 +491,9 @@ public class Niveau extends Observable implements RefreshAnim {
 							break;
 						case "X":
 							insereMurMagique(x, y);
+							break;
+						case "E":
+							inserePapillon(x, y);
 							break;
 						default:
 							insereVide(x, y);

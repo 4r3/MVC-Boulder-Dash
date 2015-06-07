@@ -10,6 +10,20 @@ public class TableAnimation {
 
 	private static Map<ChoixAnimation, Animation> tableAnimations = new HashMap<>();
 
+	public static Animation getPapillon() {
+
+		if (tableAnimations.get(ChoixAnimation.Papillon) == null) {
+			Sprite spritePapillon = new Sprite("mechants");
+			BufferedImage[] papillon = { spritePapillon.getSprite(0, 1),
+					spritePapillon.getSprite(1, 1),
+					spritePapillon.getSprite(2, 1) };
+			tableAnimations.put(ChoixAnimation.Papillon, new Animation(
+					papillon, Variables.VITESSE_ANIM));
+		}
+		tableAnimations.get(ChoixAnimation.Papillon).start();
+		return tableAnimations.get(ChoixAnimation.Papillon);
+	}
+
 	private static Animation getPersonnageMarcheDroite() {
 		if (tableAnimations.get(ChoixAnimation.Personnage_Marche_Droite) == null) {
 			Sprite spritePersonnage = new Sprite("rockford");
