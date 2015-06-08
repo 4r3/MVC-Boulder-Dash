@@ -17,7 +17,7 @@ public class Variables {
 
 	public static final int TAILLE_CASE = 16;
 
-	public static final int FRAME = 65;
+	public static final int FRAME = 70;
 	public static final int CYCLES = 2;
 	public static final int DELAI_IDLE = 10;
 

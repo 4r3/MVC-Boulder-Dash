@@ -445,14 +445,13 @@ public class Niveau extends Observable implements RefreshAnim {
 
 	@SuppressWarnings("resource")
 	public void importer(String niveau) {
-		String fichier = "niveaux/" + niveau + ".csv";
 		String ligne = "";
 		String separateur = ",";
 		BufferedReader br = null;
 
 		try {
 			int x, y;
-			br = new BufferedReader(new FileReader(fichier));
+			br = new BufferedReader(new FileReader(niveau));
 
 			if ((ligne = br.readLine()) != null) {
 				String[] propriete = ligne.split(separateur);
