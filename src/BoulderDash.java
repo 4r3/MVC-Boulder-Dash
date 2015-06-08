@@ -1,4 +1,5 @@
 import java.awt.CardLayout;
+import java.io.File;
 
 import Modele.Jeu;
 import Modele.Niveau;
@@ -8,42 +9,37 @@ import Vue.Panel.Fenetre;
 public class BoulderDash {
 
 	public static void main(String[] args) {
-		Niveau niveau = new Niveau("level1");
-		int t = (int) (Math.random() * 4);
-		int x = 1 + (int) (Math.random() * niveau.getLongueur());
-		int y = 1 + (int) (Math.random() * niveau.getHauteur());
+
+		// listing des niveaux
+
+		File f = new File("./niveaux");
+		File[] paths;
+
+		paths = f.listFiles();
+
+		// for each pathname in pathname array
+		for (File path : paths) {
+			// prints file and directory paths
+			System.out.println(path);
+		}
+		// System.exit(0);
+
+		//
+		//
+		//
+		//
+		//
+		//
+		//
+		//
+
+		Niveau niveau = new Niveau("./niveaux/level2.csv");
+		// int t = (int) (Math.random() * 4);
+		// int x = 1 + (int) (Math.random() * niveau.getLongueur());
+		// int y = 1 + (int) (Math.random() * niveau.getHauteur());
 
 		// Niveau niveau = new Niveau(20, 15, 5, 5, 18, 18);
 		Jeu jeu = new Jeu();
-		System.out.println(t);
-		switch (t) {
-		case 0:
-			niveau.insereVide(x, y);
-			break;
-		case 1:
-			niveau.insereDiamant(x, y);
-			break;
-		case 2:
-			niveau.insereRocher(x, y);
-			break;
-		case 3:
-			niveau.insereMurNormal(x, y);
-			break;
-		default:
-			niveau.insereVide(x, y);
-			break;
-		}
-
-		// niveau.insereDiamant(5, 2);
-		//
-		// niveau.insereRocher(2, 2);
-		//
-		// niveau.insereMurMagique(5, 10);
-		// niveau.insereMurMagique(6, 10);
-		//
-		// niveau.afficheDebug();
-		//
-		// niveau.exporter("level1");
 
 		Fenetre fen = new Fenetre(niveau, jeu);
 		fen.setVisible(true);
