@@ -4,24 +4,23 @@ import javax.swing.JPanel;
 
 import Controlleur.GestionClavier;
 import Modele.Jeu;
-import Modele.Niveau;
 
 @SuppressWarnings("serial")
 public class PanelJeu extends JPanel {
 	private AirePlateauJeu aireJeu;
 	private AireInfoJeu aireInfo;
 
-	public PanelJeu(Fenetre fen, Niveau niveau, Jeu jeu) {
-		initPanelJeu(fen, niveau, jeu);
+	public PanelJeu(Fenetre fen, Jeu jeu) {
+		initPanelJeu(fen, jeu);
 		// setFocusable(true);
 	}
 
-	private void initPanelJeu(Fenetre fen, Niveau niveau, Jeu jeu) {
-		aireJeu = new AirePlateauJeu(niveau);
+	private void initPanelJeu(Fenetre fen, Jeu jeu) {
+		aireJeu = new AirePlateauJeu(jeu.getNiveau());
 		add(aireJeu);
 		aireInfo = new AireInfoJeu(fen, jeu);
 		add(aireInfo);
 
-		addKeyListener(new GestionClavier(niveau));
+		addKeyListener(new GestionClavier(jeu.getNiveau()));
 	}
 }

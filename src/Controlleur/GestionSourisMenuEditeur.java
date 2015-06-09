@@ -1,12 +1,13 @@
 package Controlleur;
 
-import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
+import BoulderDash.BoulderDash;
 import Vue.Panel.Fenetre;
+import Vue.Panel.Vues;
 
 public class GestionSourisMenuEditeur implements ActionListener {
 
@@ -34,17 +35,13 @@ public class GestionSourisMenuEditeur implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		if (arg0.getSource() == this.bouton1) { // Retour éditeur
-			CardLayout cl = (CardLayout) (this.fenetre.getCards().getLayout());
-			cl.show(this.fenetre.getCards(), Fenetre.TABLEAUEDITEUR);
-			this.fenetre.getPanelJeu().grabFocus();
+			BoulderDash.getFen().changerCardLayout(Vues.TABLEAUJEU);
 		} else if (arg0.getSource() == this.bouton2) { // Charger niveau
 
 		} else if (arg0.getSource() == this.bouton3) { // Sauvegarder niveau
 
 		} else if (arg0.getSource() == this.bouton4) { // Retour menu principal
-			CardLayout cl = (CardLayout) (this.fenetre.getCards().getLayout());
-			cl.show(this.fenetre.getCards(), Fenetre.MENUPRICIPAL);
-			this.fenetre.getPanelJeu().grabFocus();
+			BoulderDash.getFen().changerCardLayout(Vues.MENUPRINCIPAL);
 		}
 	}
 }
