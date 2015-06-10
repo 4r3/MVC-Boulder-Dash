@@ -6,16 +6,11 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 import BoulderDash.BoulderDash;
-import Vue.Panel.Fenetre;
 import Vue.Panel.Vues;
 
 public class GestionSourisJeu implements ActionListener {
 
-	private Fenetre fenetre;
-
-	public GestionSourisJeu(Fenetre fen, JButton b1) {
-
-		this.fenetre = fen;
+	public GestionSourisJeu(JButton b1) {
 
 		b1.addActionListener(this);
 	}

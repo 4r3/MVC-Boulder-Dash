@@ -14,14 +14,15 @@ import Modele.Variables;
 import Modele.Animation.ChoixAnimation;
 import Modele.Animation.TableAnimation;
 
+@SuppressWarnings("serial")
 public class AireInfoEditeur extends JPanel {
 
-	public AireInfoEditeur(Fenetre fen) {
+	public AireInfoEditeur() {
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-		initAireInformation(fen);
+		initAireInformation();
 	}
 
-	private void initAireInformation(Fenetre fen) {
+	private void initAireInformation() {
 		setBackground(Color.BLACK);
 		setPreferredSize(new Dimension(Variables.HAUTEUR_PANEL_SCORE,
 				Variables.LARGEUR_PANEL_SCORE));
@@ -69,7 +70,7 @@ public class AireInfoEditeur extends JPanel {
 		papillon.setContentAreaFilled(false);
 
 		JButton retour = new JButton("Menu");
-		new GestionSourisEditeur(fen, retour);
+		new GestionSourisEditeur(retour);
 
 		add(rockford);
 		add(sortie);

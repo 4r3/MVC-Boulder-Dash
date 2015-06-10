@@ -15,15 +15,15 @@ public class PanelJeu extends JPanel implements Observer {
 	private AireInfoJeu aireInfo;
 	private GestionClavier listen;
 
-	public PanelJeu(Fenetre fen, Jeu jeu) {
-		initPanelJeu(fen, jeu);
+	public PanelJeu(Jeu jeu) {
+		initPanelJeu(jeu);
 		// setFocusable(true);
 	}
 
-	private void initPanelJeu(Fenetre fen, Jeu jeu) {
+	private void initPanelJeu(Jeu jeu) {
 		aireJeu = new AirePlateauJeu(jeu.getNiveau());
 		add(aireJeu);
-		aireInfo = new AireInfoJeu(fen, jeu);
+		aireInfo = new AireInfoJeu();
 		add(aireInfo);
 
 		listen = new GestionClavier(jeu.getNiveau());

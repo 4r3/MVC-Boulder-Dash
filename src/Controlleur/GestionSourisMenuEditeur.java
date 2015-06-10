@@ -6,21 +6,18 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 import BoulderDash.BoulderDash;
-import Vue.Panel.Fenetre;
 import Vue.Panel.Vues;
 
 public class GestionSourisMenuEditeur implements ActionListener {
 
-	private Fenetre fenetre;
 	private JButton bouton1;
 	private JButton bouton2;
 	private JButton bouton3;
 	private JButton bouton4;
 
-	public GestionSourisMenuEditeur(Fenetre fen, JButton b1, JButton b2,
-			JButton b3, JButton b4) {
+	public GestionSourisMenuEditeur(JButton b1, JButton b2, JButton b3,
+			JButton b4) {
 
-		this.fenetre = fen;
 		this.bouton1 = b1;
 		this.bouton2 = b2;
 		this.bouton3 = b3;

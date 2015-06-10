@@ -14,12 +14,12 @@ import Modele.Variables;
 @SuppressWarnings("serial")
 public class MenuEditeur extends JPanel {
 
-	public MenuEditeur(Fenetre fen) {
-		initMenuPrincipal(fen);
+	public MenuEditeur() {
+		initMenuPrincipal();
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 	}
 
-	private void initMenuPrincipal(Fenetre fen) {
+	private void initMenuPrincipal() {
 		setBackground(Color.BLACK);
 		setPreferredSize(new Dimension(Variables.HAUTEUR_PANEL_SCORE,
 				Variables.LARGEUR_PANEL_SCORE));
@@ -35,7 +35,7 @@ public class MenuEditeur extends JPanel {
 		sauvegarderNiveau.setAlignmentX(Component.CENTER_ALIGNMENT);
 		revenirMenu.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-		new GestionSourisMenuEditeur(fen, revenirEditeur, chargerNiveau,
+		new GestionSourisMenuEditeur(revenirEditeur, chargerNiveau,
 				sauvegarderNiveau, revenirMenu);
 		add(revenirEditeur);
 		add(chargerNiveau);

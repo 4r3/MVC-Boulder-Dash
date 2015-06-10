@@ -18,7 +18,7 @@ import Modele.Variables;
 
 /**
  * @author 4r3
- *
+ * 
  */
 @SuppressWarnings("serial")
 public class MenuChoixNiveau extends JPanel {
@@ -26,13 +26,13 @@ public class MenuChoixNiveau extends JPanel {
 	/**
 	 * @param fenetre
 	 */
-	public MenuChoixNiveau(Fenetre fenetre) {
+	public MenuChoixNiveau() {
 
-		initMenu(fenetre);
+		initMenu();
 
 	}
 
-	private void initMenu(Fenetre fenetre) {
+	private void initMenu() {
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		setBackground(Color.BLACK);
 		setPreferredSize(new Dimension(Variables.HAUTEUR_PANEL_SCORE,

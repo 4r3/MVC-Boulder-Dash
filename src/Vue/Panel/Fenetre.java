@@ -34,12 +34,12 @@ public class Fenetre extends JFrame {
 	private void initAireDejeu(Jeu jeu) {
 
 		menuPrinc = new MenuPrincipal(this);
-		menuJeu = new MenuJeu(this);
-		menuEdit = new MenuEditeur(this);
-		menuChoix = new MenuChoixNiveau(this);
+		menuJeu = new MenuJeu();
+		menuEdit = new MenuEditeur();
+		menuChoix = new MenuChoixNiveau();
 
-		panelJeu = new PanelJeu(this, jeu);
-		panelEdit = new PanelEditeur(this, BoulderDash.getEdit());
+		panelJeu = new PanelJeu(jeu);
+		panelEdit = new PanelEditeur(BoulderDash.getEdit());
 
 		cards = new JPanel(new CardLayout());
 		cards.add(menuPrinc, Vues.MENUPRINCIPAL.toString());

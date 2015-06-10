@@ -8,20 +8,16 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Controlleur.GestionSourisJeu;
-import Modele.Jeu;
 import Modele.Variables;
 
 @SuppressWarnings("serial")
 public class AireInfoJeu extends JPanel {
 
-	private Jeu jeu;
-
-	public AireInfoJeu(Fenetre fen, Jeu jeu) {
-		this.jeu = jeu;
-		initAireInformation(fen);
+	public AireInfoJeu() {
+		initAireInformation();
 	}
 
-	private void initAireInformation(Fenetre fen) {
+	private void initAireInformation() {
 		setBackground(Color.BLACK);
 		setPreferredSize(new Dimension(Variables.HAUTEUR_PANEL_SCORE,
 				Variables.LARGEUR_PANEL_SCORE));
@@ -31,7 +27,7 @@ public class AireInfoJeu extends JPanel {
 		/* + this.jeu.getDscore() */);
 		score.setForeground(Color.white);
 		JButton retour = new JButton("Menu");
-		new GestionSourisJeu(fen, retour);
+		new GestionSourisJeu(retour);
 
 		add(score);
 		add(retour);
