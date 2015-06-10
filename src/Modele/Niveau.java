@@ -411,7 +411,6 @@ public class Niveau extends Observable implements RefreshAnim {
 	/**
 	 * @param string
 	 */
-	@SuppressWarnings("resource")
 	public void exporter(String niveau) {
 		Writer writer = null;
 		try {
@@ -441,7 +440,6 @@ public class Niveau extends Observable implements RefreshAnim {
 		}
 	}
 
-	@SuppressWarnings("resource")
 	public void importer(String niveau) {
 		String ligne = "";
 		String separateur = ",";

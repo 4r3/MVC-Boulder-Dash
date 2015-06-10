@@ -34,7 +34,9 @@ public class GestionSourisMenu implements ActionListener {
 			cl.show(this.fenetre.getCards(), Fenetre.TABLEAUJEU);
 			this.fenetre.getPanelJeu().grabFocus();
 		} else if (arg0.getSource() == this.bouton2) {
-
+			CardLayout cl = (CardLayout) (this.fenetre.getCards().getLayout());
+			cl.show(this.fenetre.getCards(), Fenetre.TABLEAUEDITEUR);
+			this.fenetre.getPanelEdit().grabFocus();
 		} else if (arg0.getSource() == this.bouton3) {
 			System.exit(0);
 		}

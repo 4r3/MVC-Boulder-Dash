@@ -23,6 +23,6 @@ public class GestionSourisJeu implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		CardLayout cl = (CardLayout) (this.fenetre.getCards().getLayout());
 		cl.show(this.fenetre.getCards(), Fenetre.MENUJEU);
-		this.fenetre.getMenuPrinc().grabFocus();
+		this.fenetre.getMenuJeu().grabFocus();
 	}
 }
