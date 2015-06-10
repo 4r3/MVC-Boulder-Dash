@@ -1,6 +1,8 @@
 package Modele;
 
-public class Editeur {
+import java.util.Observable;
+
+public class Editeur extends Observable {
 
 	Niveau niveau;
 
