@@ -37,6 +37,7 @@ public class MenuEditeur extends JPanel {
 
 		new GestionSourisMenuEditeur(fen, revenirEditeur, chargerNiveau,
 				sauvegarderNiveau, revenirMenu);
+		add(revenirEditeur);
 		add(chargerNiveau);
 		add(sauvegarderNiveau);
 		add(revenirMenu);

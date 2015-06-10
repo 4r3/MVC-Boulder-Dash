@@ -5,6 +5,7 @@ import java.awt.CardLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import BoulderDash.BoulderDash;
 import Modele.Jeu;
 
 public class Fenetre extends JFrame {
@@ -38,6 +39,7 @@ public class Fenetre extends JFrame {
 		menuChoix = new MenuChoixNiveau(this);
 
 		panelJeu = new PanelJeu(this, jeu);
+		panelEdit = new PanelEditeur(this, BoulderDash.getEdit());
 
 		cards = new JPanel(new CardLayout());
 		cards.add(menuPrinc, Vues.MENUPRINCIPAL.toString());
@@ -45,6 +47,7 @@ public class Fenetre extends JFrame {
 		cards.add(menuEdit, Vues.MENUEDITEUR.toString());
 		cards.add(panelJeu, Vues.TABLEAUJEU.toString());
 		cards.add(menuChoix, Vues.MENUCHOIXNIVEAU.toString());
+		cards.add(panelEdit, Vues.TABLEAUEDITEUR.toString());
 
 		add(cards);
 	}

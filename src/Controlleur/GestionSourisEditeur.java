@@ -1,5 +1,27 @@
 package Controlleur;
 
-public class GestionSourisEditeur {
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
+
+import BoulderDash.BoulderDash;
+import Vue.Panel.Fenetre;
+import Vue.Panel.Vues;
+
+public class GestionSourisEditeur implements ActionListener {
+
+	private Fenetre fenetre;
+
+	public GestionSourisEditeur(Fenetre fen, JButton b1) {
+
+		this.fenetre = fen;
+
+		b1.addActionListener(this);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		BoulderDash.getFen().changerCardLayout(Vues.MENUEDITEUR);
+	}
 }

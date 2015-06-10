@@ -1,5 +1,6 @@
 package BoulderDash;
 
+import Modele.Editeur;
 import Modele.Jeu;
 import Vue.Panel.Fenetre;
 import Vue.Panel.Vues;
@@ -8,9 +9,11 @@ public class BoulderDash {
 
 	private static Jeu jeu;
 	private static Fenetre fen;
+	private static Editeur edit;
 
 	private static void init() {
 		jeu = new Jeu();
+		edit = new Editeur();
 
 		fen = new Fenetre(jeu);
 		fen.setVisible(true);
@@ -35,5 +38,12 @@ public class BoulderDash {
 
 	public static Fenetre getFen() {
 		return fen;
+	}
+
+	/**
+	 * @return
+	 */
+	public static Editeur getEdit() {
+		return edit;
 	}
 }

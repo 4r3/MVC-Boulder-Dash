@@ -25,7 +25,7 @@ public class GestionBoutonsMenu implements ActionListener {
 		if (arg0.getSource() == this.bouton1) {
 			BoulderDash.getFen().changerCardLayout(Vues.MENUCHOIXNIVEAU);
 		} else if (arg0.getSource() == this.bouton2) {
-
+			BoulderDash.getFen().changerCardLayout(Vues.TABLEAUEDITEUR);
 		} else if (arg0.getSource() == this.bouton3) {
 			System.exit(0);
 		}

@@ -62,7 +62,7 @@ public class Niveau implements RefreshAnim {
 	 * 
 	 */
 	public Niveau() {
-		this(10, 10, 1, 1, 8, 8);
+		this(60, 40);
 	}
 
 	public Niveau(String niveau) {
@@ -93,7 +93,7 @@ public class Niveau implements RefreshAnim {
 	 * @see MurIndestructible
 	 * 
 	 */
-	public Niveau(int l, int h, int Px, int Py, int Sx, int Sy) {
+	public Niveau(int l, int h) {
 		int x, y;
 
 		tableau = new Case[l][h];
@@ -117,8 +117,6 @@ public class Niveau implements RefreshAnim {
 				insereMurIndestructible(l - 1, y);
 			}
 		}
-		inserePersonage(Px, Py);
-		insereSortie(Sx, Sy);
 	}
 
 	/**
@@ -129,7 +127,7 @@ public class Niveau implements RefreshAnim {
 	 * @param y
 	 *            position en y du personage
 	 */
-	private void inserePersonage(int x, int y) {
+	public void inserePersonage(int x, int y) {
 		if (x > 0 && x < longueur - 1 && y > 0 && y < hauteur - 1) {
 			perso = new Personnage(x, y);
 			tableau[x][y] = perso;
@@ -148,7 +146,7 @@ public class Niveau implements RefreshAnim {
 	 * @param y
 	 *            position en y de la sortie
 	 */
-	private void insereSortie(int x, int y) {
+	public void insereSortie(int x, int y) {
 		if (x >= 0 && x < longueur && y >= 0 && y < hauteur
 				&& !(tableau[x][y] instanceof Personnage)) {
 
@@ -412,7 +410,6 @@ public class Niveau implements RefreshAnim {
 	/**
 	 * @param string
 	 */
-	@SuppressWarnings("resource")
 	public void exporter(String niveau) {
 		Writer writer = null;
 		try {
@@ -442,7 +439,6 @@ public class Niveau implements RefreshAnim {
 		}
 	}
 
-	@SuppressWarnings("resource")
 	public void importer(String niveau) {
 		String ligne = "";
 		String separateur = ",";
