@@ -39,6 +39,7 @@ public class GestionSourisMenuJeu implements ActionListener {
 		} else if (arg0.getSource() == this.bouton2) { // Recommencer le niveau
 
 		} else if (arg0.getSource() == this.bouton3) { // Changer le niveau
+			BoulderDash.getFen().changerCardLayout(Vues.MENUCHOIXNIVEAU);
 
 		} else if (arg0.getSource() == this.bouton4) { // Revenir au menu
 														// principal

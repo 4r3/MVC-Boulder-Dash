@@ -9,11 +9,13 @@ public class Jeu extends Observable {
 
 	public Jeu() {
 		level = null;
-		level = new Niveau("./niveaux/level1.csv");
+		level = new Niveau("./niveaux/level3.csv");
 	}
 
 	public void chargerNiveau(String path) {
 		level = new Niveau(path);
+		setChanged();
+		notifyObservers(2);
 	}
 
 	public Niveau getNiveau() {
@@ -60,6 +62,8 @@ public class Jeu extends Observable {
 
 			i = (i + 1) % Variables.CYCLES;
 
+			setChanged();
+			notifyObservers(1);
 		}
 	}
 }

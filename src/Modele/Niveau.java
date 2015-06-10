@@ -11,7 +11,6 @@ import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
 
 import Modele.Animation.TableAnimation;
 import Modele.Cases.Boue;
@@ -37,7 +36,7 @@ import Modele.Cases.Vide;
  * @author 4r3
  * 
  */
-public class Niveau extends Observable implements RefreshAnim {
+public class Niveau implements RefreshAnim {
 	// Variables
 	private int hauteur;
 	private int longueur;
@@ -527,8 +526,6 @@ public class Niveau extends Observable implements RefreshAnim {
 	public void refreshAnim() {
 		perso.refreshAnim();
 		TableAnimation.refreshAnim();
-		setChanged();
-		notifyObservers();
 	}
 
 }
