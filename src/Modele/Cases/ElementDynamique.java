@@ -9,6 +9,11 @@ public abstract class ElementDynamique extends Case {
 	private int offsety;
 
 	public ElementDynamique(int pos_x, int pos_y) {
+		this(pos_x, pos_y, false);
+	}
+
+	public ElementDynamique(int pos_x, int pos_y, boolean personnage) {
+		super(false, personnage);
 		this.pos_x = pos_x;
 		this.pos_y = pos_y;
 		offsetx = 0;

@@ -11,7 +11,7 @@ import Modele.Animation.TableAnimation;
  * @author 4r3
  * 
  */
-public class Rocher extends Chutable implements InterPersonnage {
+public class Rocher extends Chutable {
 
 	/**
 	 * @param pos_x
@@ -29,14 +29,14 @@ public class Rocher extends Chutable implements InterPersonnage {
 	@Override
 	public boolean PersonageArrive(Niveau N, int x, int y) {
 		if (N.getPerso().getDeplace() == Directions.Gauche) {
-			if (N.getCase(x - 1, y) instanceof Vide) {
+			if (N.getCase(x - 1, y).isVide()) {
 				N.echangeCases(x, y, x - 1, y);
 				N.addUptable(x - 1, y);
 				N.remplirUpTable(x, y);
 				setPos_x(x - 1);
 			}
 		} else if (N.getPerso().getDeplace() == Directions.Droite) {
-			if (N.getCase(x + 1, y) instanceof Vide) {
+			if (N.getCase(x + 1, y).isVide()) {
 				N.echangeCases(x, y, x + 1, y);
 				N.addUptable(x + 1, y);
 				N.remplirUpTable(x, y);

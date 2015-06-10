@@ -6,7 +6,7 @@ import Modele.Animation.Animation;
 import Modele.Animation.ChoixAnimation;
 import Modele.Animation.TableAnimation;
 
-public class Personnage extends ElementDynamique implements Vivant, RefreshAnim {
+public class Personnage extends ElementDynamique {
 	Directions Deplace;
 	Directions Last;
 	private ChoixAnimation animation;
@@ -14,7 +14,7 @@ public class Personnage extends ElementDynamique implements Vivant, RefreshAnim 
 	private int IDLE;
 
 	public Personnage(int pos_x, int pos_y) {
-		super(pos_x, pos_y);
+		super(pos_x, pos_y, true);
 		Deplace = Directions.Null;
 		Last = Directions.Null;
 
@@ -64,14 +64,19 @@ public class Personnage extends ElementDynamique implements Vivant, RefreshAnim 
 		}
 		Last = Deplace;
 		Case C = N.getCase(xdest, ydest);
-		if (C instanceof InterPersonnage) {
-			if (!((InterPersonnage) C).PersonageArrive(N, xdest, ydest)) {
-				Last = Directions.Null;
-			}
-		} else {
+
+		if (!((InterPersonnage) C).PersonageArrive(N, xdest, ydest)) {
 			Last = Directions.Null;
-			System.out.println(N.getCase(xdest, ydest).getClass().getName());
 		}
+
+		// if (C instanceof InterPersonnage) {
+		// if (!((InterPersonnage) C).PersonageArrive(N, xdest, ydest)) {
+		// Last = Directions.Null;
+		// }
+		// } else {
+		// Last = Directions.Null;
+		// System.out.println(N.getCase(xdest, ydest).getClass().getName());
+		// }
 	}
 
 	private void arret() {
@@ -112,12 +117,6 @@ public class Personnage extends ElementDynamique implements Vivant, RefreshAnim 
 	}
 
 	@Override
-	public void tuer(Niveau N) {
-		animation = ChoixAnimation.Personnage_Mort;
-		N.setFini();
-	}
-
-	@Override
 	public void refreshAnim() {
 		switch (Last) {
 		case Bas:
@@ -142,7 +141,6 @@ public class Personnage extends ElementDynamique implements Vivant, RefreshAnim 
 			setoffsetY(0);
 			break;
 		}
-		// getAnimation().update();
 	}
 
 	@Override

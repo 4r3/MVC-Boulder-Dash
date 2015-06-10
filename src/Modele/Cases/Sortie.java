@@ -11,8 +11,7 @@ import Modele.Animation.TableAnimation;
  * @author 4r3
  * 
  */
-public class Sortie extends Case implements InterPersonnage, InterChutable,
-		RefreshAnim {
+public class Sortie extends Case {
 	private boolean ouverte;
 
 	// private Animation animation;
@@ -57,8 +56,8 @@ public class Sortie extends Case implements InterPersonnage, InterChutable,
 
 	@Override
 	public EtatChutable chutableArrive(Niveau N, int x, int y) {
-		if ((N.getCase(x + 1, y) instanceof Vide)
-				&& (N.getCase(x + 1, y + 1) instanceof Vide)) {
+		if ((N.getCase(x + 1, y).isVide())
+				&& (N.getCase(x + 1, y + 1).isVide())) {
 			if (((Chutable) N.getCase(x, y)).instable()) {
 				N.echangeCases(x, y, x + 1, y + 1);
 				N.remplirUpTable(x, y);
@@ -67,8 +66,8 @@ public class Sortie extends Case implements InterPersonnage, InterChutable,
 			} else {
 				return EtatChutable.Instable;
 			}
-		} else if ((N.getCase(x - 1, y) instanceof Vide)
-				&& (N.getCase(x - 1, y + 1) instanceof Vide)) {
+		} else if ((N.getCase(x - 1, y).isVide())
+				&& (N.getCase(x - 1, y + 1).isVide())) {
 			if (((Chutable) N.getCase(x, y)).instable()) {
 				N.echangeCases(x, y, x - 1, y + 1);
 				N.remplirUpTable(x, y);

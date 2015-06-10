@@ -4,10 +4,10 @@ import Modele.Niveau;
 import Modele.Animation.Animation;
 import Modele.Animation.TableAnimation;
 
-public class Vide extends Case implements InterPersonnage, InterChutable {
+public class Vide extends Case {
 
 	public Vide() {
-
+		super(true, false);
 	}
 
 	@Override

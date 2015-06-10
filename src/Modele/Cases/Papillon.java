@@ -44,19 +44,19 @@ public class Papillon extends ElementDynamique {
 	}
 
 	private boolean verifierHaut(Niveau N) {
-		return N.getCase(getPos_x(), getPos_y() - 1) instanceof Vide;
+		return N.getCase(getPos_x(), getPos_y() - 1).isVide();
 	}
 
 	private boolean verifierBas(Niveau N) {
-		return N.getCase(getPos_x(), getPos_y() + 1) instanceof Vide;
+		return N.getCase(getPos_x(), getPos_y() + 1).isVide();
 	}
 
 	private boolean verifierGauche(Niveau N) {
-		return N.getCase(getPos_x() - 1, getPos_y()) instanceof Vide;
+		return N.getCase(getPos_x() - 1, getPos_y()).isVide();
 	}
 
 	private boolean verifierDroite(Niveau N) {
-		return N.getCase(getPos_x() + 1, getPos_y()) instanceof Vide;
+		return N.getCase(getPos_x() + 1, getPos_y()).isVide();
 	}
 
 	private void allerHaut(Niveau N) {
