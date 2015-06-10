@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -15,6 +16,7 @@ public class MenuJeu extends JPanel {
 
 	public MenuJeu(Fenetre fen) {
 		initMenuPrincipal(fen);
+		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 	}
 
 	private void initMenuPrincipal(Fenetre fen) {

@@ -7,23 +7,22 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Stroke;
 import java.awt.Toolkit;
-import java.util.Observable;
-import java.util.Observer;
 
 import javax.swing.JPanel;
 
+import Modele.Editeur;
 import Modele.Niveau;
 import Modele.Variables;
 import Modele.Animation.TableAnimation;
 import Modele.Cases.Personnage;
 
-public class AirePlateauEditeur extends JPanel implements Observer {
+@SuppressWarnings("serial")
+public class AirePlateauEditeur extends JPanel {
 
 	private Niveau niveau;
 
-	public AirePlateauEditeur(Niveau niveau) {
-		this.niveau = niveau;
-		niveau.addObserver(this);
+	public AirePlateauEditeur(Editeur edit) {
+		this.niveau = edit.getNiveau();
 		initAireEdition();
 	}
 
@@ -79,11 +78,6 @@ public class AirePlateauEditeur extends JPanel implements Observer {
 		super.paintComponent(g);
 
 		drawNiveau(g);
-	}
-
-	@Override
-	public void update(Observable o, Object arg) {
-		repaint();
 	}
 
 }

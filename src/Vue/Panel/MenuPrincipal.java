@@ -4,10 +4,11 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import Controlleur.GestionSourisMenu;
+import Controlleur.GestionBoutonsMenu;
 import Modele.Variables;
 
 @SuppressWarnings("serial")
@@ -19,6 +20,7 @@ public class MenuPrincipal extends JPanel {
 	}
 
 	private void initMenuPrincipal(Fenetre fen) {
+		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		setBackground(Color.BLACK);
 		setPreferredSize(new Dimension(Variables.HAUTEUR_PANEL_SCORE,
 				Variables.LARGEUR_PANEL_SCORE));
@@ -32,7 +34,12 @@ public class MenuPrincipal extends JPanel {
 		lancerEditeur.setAlignmentX(Component.CENTER_ALIGNMENT);
 		quitter.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-		new GestionSourisMenu(fen, lancerJeu, lancerEditeur, quitter);
+		GestionBoutonsMenu ctrl;
+		ctrl = new GestionBoutonsMenu(lancerJeu, lancerEditeur, quitter);
+		lancerJeu.addActionListener(ctrl);
+		lancerEditeur.addActionListener(ctrl);
+		quitter.addActionListener(ctrl);
+
 		add(lancerJeu);
 		add(lancerEditeur);
 		add(quitter);

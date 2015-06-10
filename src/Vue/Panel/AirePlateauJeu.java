@@ -4,8 +4,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Toolkit;
-import java.util.Observable;
-import java.util.Observer;
 
 import javax.swing.JPanel;
 
@@ -15,13 +13,12 @@ import Modele.Animation.TableAnimation;
 import Modele.Cases.Personnage;
 
 @SuppressWarnings("serial")
-public class AirePlateauJeu extends JPanel implements Observer {
+public class AirePlateauJeu extends JPanel {
 
 	private Niveau niveau;
 
 	public AirePlateauJeu(Niveau niveau) {
 		this.niveau = niveau;
-		niveau.addObserver(this);
 		initAireDeJeu();
 
 	}
@@ -65,9 +62,12 @@ public class AirePlateauJeu extends JPanel implements Observer {
 		drawNiveau(g);
 	}
 
-	@Override
-	public void update(Observable o, Object arg) {
-		repaint();
+	/**
+	 * @param niveau
+	 *            the niveau to set
+	 */
+	public void setNiveau(Niveau niveau) {
+		this.niveau = niveau;
 	}
 
 }

@@ -4,7 +4,7 @@ import java.util.Observable;
 
 public class Editeur extends Observable {
 
-	Niveau niveau;
+	private Niveau niveau;
 
 	public Editeur() {
 		this.niveau = new Niveau();
@@ -12,6 +12,10 @@ public class Editeur extends Observable {
 
 	public void createNiveau(int x, int y) {
 		this.niveau = new Niveau(x, y);
+	}
+
+	public Niveau getNiveau() {
+		return niveau;
 	}
 
 }

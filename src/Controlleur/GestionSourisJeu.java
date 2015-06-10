@@ -1,12 +1,13 @@
 package Controlleur;
 
-import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
+import BoulderDash.BoulderDash;
 import Vue.Panel.Fenetre;
+import Vue.Panel.Vues;
 
 public class GestionSourisJeu implements ActionListener {
 
@@ -21,8 +22,6 @@ public class GestionSourisJeu implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		CardLayout cl = (CardLayout) (this.fenetre.getCards().getLayout());
-		cl.show(this.fenetre.getCards(), Fenetre.MENUJEU);
-		this.fenetre.getMenuJeu().grabFocus();
+		BoulderDash.getFen().changerCardLayout(Vues.MENUJEU);
 	}
 }

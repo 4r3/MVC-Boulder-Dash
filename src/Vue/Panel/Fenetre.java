@@ -2,21 +2,14 @@ package Vue.Panel;
 
 import java.awt.CardLayout;
 
-import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import BoulderDash.BoulderDash;
 import Modele.Jeu;
-import Modele.Niveau;
 
 public class Fenetre extends JFrame {
 	private static final long serialVersionUID = 3393452907097178193L;
-
-	public final static String MENUPRICIPAL = "Menu Principal";
-	public final static String MENUJEU = "Menu Jeu";
-	public final static String MENUEDITEUR = "Menu Editeur";
-	public final static String TABLEAUJEU = "Jeu Boulder Dash";
-	public final static String TABLEAUEDITEUR = "Editeur Boulder Dash";
 
 	private JPanel cards;
 	private MenuPrincipal menuPrinc;
@@ -24,10 +17,11 @@ public class Fenetre extends JFrame {
 	private MenuEditeur menuEdit;
 	private PanelJeu panelJeu;
 	private PanelEditeur panelEdit;
+	private MenuChoixNiveau menuChoix;
 
-	public Fenetre(Niveau niveau, Jeu jeu) {
+	public Fenetre(Jeu jeu) {
 		super("Boulder Dash");
-		initAireDejeu(niveau, jeu);
+		initAireDejeu(jeu);
 
 		setResizable(false);
 		pack();
@@ -37,24 +31,23 @@ public class Fenetre extends JFrame {
 
 	}
 
-	private void initAireDejeu(Niveau niveau, Jeu jeu) {
+	private void initAireDejeu(Jeu jeu) {
 
 		menuPrinc = new MenuPrincipal(this);
-		menuPrinc.setLayout(new BoxLayout(menuPrinc, BoxLayout.PAGE_AXIS));
 		menuJeu = new MenuJeu(this);
-		menuJeu.setLayout(new BoxLayout(menuJeu, BoxLayout.PAGE_AXIS));
 		menuEdit = new MenuEditeur(this);
-		menuEdit.setLayout(new BoxLayout(menuEdit, BoxLayout.PAGE_AXIS));
+		menuChoix = new MenuChoixNiveau(this);
 
-		panelJeu = new PanelJeu(this, niveau, jeu);
-		panelEdit = new PanelEditeur(this, new Niveau());
+		panelJeu = new PanelJeu(this, jeu);
+		panelEdit = new PanelEditeur(this, BoulderDash.getEdit());
 
 		cards = new JPanel(new CardLayout());
-		cards.add(menuPrinc, MENUPRICIPAL);
-		cards.add(menuJeu, MENUJEU);
-		cards.add(menuEdit, MENUEDITEUR);
-		cards.add(panelJeu, TABLEAUJEU);
-		cards.add(panelEdit, TABLEAUEDITEUR);
+		cards.add(menuPrinc, Vues.MENUPRINCIPAL.toString());
+		cards.add(menuJeu, Vues.MENUJEU.toString());
+		cards.add(menuEdit, Vues.MENUEDITEUR.toString());
+		cards.add(panelJeu, Vues.TABLEAUJEU.toString());
+		cards.add(menuChoix, Vues.MENUCHOIXNIVEAU.toString());
+		cards.add(panelEdit, Vues.TABLEAUEDITEUR.toString());
 
 		add(cards);
 	}
@@ -81,6 +74,12 @@ public class Fenetre extends JFrame {
 
 	public PanelEditeur getPanelEdit() {
 		return panelEdit;
+	}
+
+	public void changerCardLayout(Vues vue) {
+
+		((CardLayout) cards.getLayout()).show(cards, vue.toString());
+		getPanelJeu().grabFocus();
 	}
 
 }

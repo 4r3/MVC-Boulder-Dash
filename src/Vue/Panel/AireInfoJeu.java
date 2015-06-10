@@ -2,8 +2,6 @@ package Vue.Panel;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.util.Observable;
-import java.util.Observer;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -14,15 +12,13 @@ import Modele.Jeu;
 import Modele.Variables;
 
 @SuppressWarnings("serial")
-public class AireInfoJeu extends JPanel implements Observer {
+public class AireInfoJeu extends JPanel {
 
 	private Jeu jeu;
 
 	public AireInfoJeu(Fenetre fen, Jeu jeu) {
 		this.jeu = jeu;
-		jeu.addObserver(this);
 		initAireInformation(fen);
-
 	}
 
 	private void initAireInformation(Fenetre fen) {
@@ -39,11 +35,6 @@ public class AireInfoJeu extends JPanel implements Observer {
 
 		add(score);
 		add(retour);
-	}
-
-	@Override
-	public void update(Observable arg0, Object arg1) {
-		repaint();
 	}
 
 }
