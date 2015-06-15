@@ -42,12 +42,12 @@ public class AirePlateauEditeur extends JPanel {
 		int a, b;
 		for (a = 0; a < this.niveau.getLongueur(); a++) {
 			for (b = 0; b < this.niveau.getHauteur(); b++) {
-				g.drawImage(TableAnimation.getVide().getSprite(), a
+				g.drawImage(TableAnimation.getVide().getSpriteImmobile(), a
 						* Variables.TAILLE_CASE, b * Variables.TAILLE_CASE,
 						null);
-				g.drawImage(niveau.getCase(a, b).getAnimation().getSprite(), a
-						* Variables.TAILLE_CASE, b * Variables.TAILLE_CASE,
-						null);
+				g.drawImage(niveau.getCase(a, b).getAnimation()
+						.getSpriteImmobile(), a * Variables.TAILLE_CASE, b
+						* Variables.TAILLE_CASE, null);
 				drawDashedLine(g, 0, ((b + 1) * Variables.TAILLE_CASE) - 1,
 						niveau.getLongueur() * Variables.TAILLE_CASE,
 						((b + 1) * Variables.TAILLE_CASE) - 1);
