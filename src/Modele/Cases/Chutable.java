@@ -9,8 +9,7 @@ import Modele.Niveau;
  * @author 4r3
  *
  */
-public abstract class Chutable extends ElementDynamique implements
-		InterChutable, RefreshAnim {
+public abstract class Chutable extends ElementDynamique {
 	private EtatChutable etat;
 
 	/**
@@ -25,14 +24,7 @@ public abstract class Chutable extends ElementDynamique implements
 	@Override
 	public void refresh(Niveau N) {
 		Case C = N.getCase(getPos_x(), getPos_y() + 1);
-		if (C instanceof InterChutable) {
-			etat = ((InterChutable) C)
-					.chutableArrive(N, getPos_x(), getPos_y());
-		} else if (C instanceof Vivant && etat == EtatChutable.Chute) {
-			((Vivant) C).tuer(N);
-		} else {
-			etat = EtatChutable.Stable;
-		}
+		etat = ((InterChutable) C).chutableArrive(N, getPos_x(), getPos_y());
 	}
 
 	public void setChute() {
@@ -61,8 +53,8 @@ public abstract class Chutable extends ElementDynamique implements
 
 	@Override
 	public EtatChutable chutableArrive(Niveau N, int x, int y) {
-		if ((N.getCase(x + 1, y) instanceof Vide)
-				&& (N.getCase(x + 1, y + 1) instanceof Vide)) {
+		if ((N.getCase(x + 1, y).isVide())
+				&& (N.getCase(x + 1, y + 1).isVide())) {
 			if (((Chutable) N.getCase(x, y)).instable()) {
 				N.echangeCases(x, y, x + 1, y + 1);
 				N.remplirUpTable(x, y);
@@ -71,8 +63,8 @@ public abstract class Chutable extends ElementDynamique implements
 			} else {
 				return EtatChutable.Instable;
 			}
-		} else if ((N.getCase(x - 1, y) instanceof Vide)
-				&& (N.getCase(x - 1, y + 1) instanceof Vide)) {
+		} else if (N.getCase(x - 1, y).isVide()
+				&& N.getCase(x - 1, y + 1).isVide()) {
 			if (((Chutable) N.getCase(x, y)).instable()) {
 				N.echangeCases(x, y, x - 1, y + 1);
 				N.remplirUpTable(x, y);

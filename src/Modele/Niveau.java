@@ -233,12 +233,14 @@ public class Niveau implements RefreshAnim {
 	}
 
 	public void inserePapillon(int x, int y) {
-		if (x > 0 && x < longueur - 1 && y > 0 && y < hauteur - 1
-				&& !(tableau[x][y] instanceof Personnage)
-				&& !(tableau[x][y] instanceof Sortie)) {
+		if (x > 0
+				&& x < longueur - 1
+				&& y > 0
+				&& y < hauteur - 1
+				&& tableau[x][y] != null
+				|| (tableau[x][y].isPersonnage() || tableau[x][y] instanceof Sortie)) {
 			tableau[x][y] = new Papillon(x, y);
 			UpTable.add((ElementDynamique) tableau[x][y]);
-			System.out.println("papillon");
 		}
 	}
 
@@ -410,6 +412,7 @@ public class Niveau implements RefreshAnim {
 	/**
 	 * @param string
 	 */
+	@SuppressWarnings("resource")
 	public void exporter(String niveau) {
 		Writer writer = null;
 		try {
@@ -439,6 +442,7 @@ public class Niveau implements RefreshAnim {
 		}
 	}
 
+	@SuppressWarnings("resource")
 	public void importer(String niveau) {
 		String ligne = "";
 		String separateur = ",";

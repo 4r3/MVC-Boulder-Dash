@@ -11,7 +11,7 @@ import Modele.Animation.TableAnimation;
  * @author 4r3
  * 
  */
-public class Diamant extends Chutable implements InterPersonnage {
+public class Diamant extends Chutable {
 
 	/**
 	 * @param pos_x

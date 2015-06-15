@@ -4,7 +4,7 @@ import Modele.Niveau;
 import Modele.Animation.Animation;
 import Modele.Animation.TableAnimation;
 
-public class MurNormal extends Case implements InterChutable {
+public class MurNormal extends Case {
 
 	@Override
 	public Animation getAnimation() {
@@ -18,8 +18,8 @@ public class MurNormal extends Case implements InterChutable {
 
 	@Override
 	public EtatChutable chutableArrive(Niveau N, int x, int y) {
-		if ((N.getCase(x + 1, y) instanceof Vide)
-				&& (N.getCase(x + 1, y + 1) instanceof Vide)) {
+		if ((N.getCase(x + 1, y).isVide())
+				&& (N.getCase(x + 1, y + 1).isVide())) {
 			if (((Chutable) N.getCase(x, y)).instable()) {
 				N.echangeCases(x, y, x + 1, y + 1);
 				N.remplirUpTable(x, y);
@@ -28,8 +28,8 @@ public class MurNormal extends Case implements InterChutable {
 			} else {
 				return EtatChutable.Instable;
 			}
-		} else if ((N.getCase(x - 1, y) instanceof Vide)
-				&& (N.getCase(x - 1, y + 1) instanceof Vide)) {
+		} else if ((N.getCase(x - 1, y).isVide())
+				&& (N.getCase(x - 1, y + 1).isVide())) {
 			if (((Chutable) N.getCase(x, y)).instable()) {
 				N.echangeCases(x, y, x - 1, y + 1);
 				N.remplirUpTable(x, y);
