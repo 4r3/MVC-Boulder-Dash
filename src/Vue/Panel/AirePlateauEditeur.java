@@ -15,7 +15,6 @@ import Modele.Editeur;
 import Modele.Niveau;
 import Modele.Variables;
 import Modele.Animation.TableAnimation;
-import Modele.Cases.Personnage;
 
 @SuppressWarnings("serial")
 public class AirePlateauEditeur extends JPanel {
@@ -46,14 +45,9 @@ public class AirePlateauEditeur extends JPanel {
 				g.drawImage(TableAnimation.getVide().getSprite(), a
 						* Variables.TAILLE_CASE, b * Variables.TAILLE_CASE,
 						null);
-
-				if (!(niveau.getCase(a, b) instanceof Personnage)) {
-					g.drawImage(
-							niveau.getCase(a, b).getAnimation().getSprite(), a
-									* Variables.TAILLE_CASE, b
-									* Variables.TAILLE_CASE, null);
-
-				}
+				g.drawImage(niveau.getCase(a, b).getAnimation().getSprite(), a
+						* Variables.TAILLE_CASE, b * Variables.TAILLE_CASE,
+						null);
 				drawDashedLine(g, 0, ((b + 1) * Variables.TAILLE_CASE) - 1,
 						niveau.getLongueur() * Variables.TAILLE_CASE,
 						((b + 1) * Variables.TAILLE_CASE) - 1);
