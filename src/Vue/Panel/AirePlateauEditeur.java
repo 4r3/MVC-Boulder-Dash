@@ -10,6 +10,7 @@ import java.awt.Toolkit;
 
 import javax.swing.JPanel;
 
+import Controlleur.GestionSourisInsertionEditeur;
 import Modele.Editeur;
 import Modele.Niveau;
 import Modele.Variables;
@@ -20,8 +21,10 @@ import Modele.Cases.Personnage;
 public class AirePlateauEditeur extends JPanel {
 
 	private Niveau niveau;
+	private Editeur editeur;
 
 	public AirePlateauEditeur(Editeur edit) {
+		this.editeur = edit;
 		this.niveau = edit.getNiveau();
 		initAireEdition();
 	}
@@ -32,6 +35,8 @@ public class AirePlateauEditeur extends JPanel {
 				* Variables.TAILLE_CASE, this.niveau.getHauteur()
 				* Variables.TAILLE_CASE));
 		setDoubleBuffered(true);
+
+		new GestionSourisInsertionEditeur(this, editeur);
 	}
 
 	private void drawNiveau(Graphics g) {
@@ -41,11 +46,13 @@ public class AirePlateauEditeur extends JPanel {
 				g.drawImage(TableAnimation.getVide().getSprite(), a
 						* Variables.TAILLE_CASE, b * Variables.TAILLE_CASE,
 						null);
+
 				if (!(niveau.getCase(a, b) instanceof Personnage)) {
 					g.drawImage(
 							niveau.getCase(a, b).getAnimation().getSprite(), a
 									* Variables.TAILLE_CASE, b
 									* Variables.TAILLE_CASE, null);
+
 				}
 				drawDashedLine(g, 0, ((b + 1) * Variables.TAILLE_CASE) - 1,
 						niveau.getLongueur() * Variables.TAILLE_CASE,
@@ -78,6 +85,10 @@ public class AirePlateauEditeur extends JPanel {
 		super.paintComponent(g);
 
 		drawNiveau(g);
+	}
+
+	public Niveau getNiveau() {
+		return niveau;
 	}
 
 }

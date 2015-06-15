@@ -6,7 +6,7 @@ public class Variables {
 	public static final int LARGEUR_FRAME = 500;
 	public static final int HAUTEUR_PANEL_JEU = 320;
 	public static final int LARGEUR_PANEL_JEU = 320;
-	public static final int HAUTEUR_PANEL_SCORE = 300;
+	public static final int HAUTEUR_PANEL_SCORE = 600;
 	public static final int LARGEUR_PANEL_SCORE = 300;
 	public static final int HAUTEUR_PANEL_EDITEUR_NIVEAU = 320;
 	public static final int LARGEUR_PANEL_EDITEUR_NIVEAU = 320;
