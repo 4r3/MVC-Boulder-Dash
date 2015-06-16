@@ -32,7 +32,7 @@ public class GestionSourisMenuEditeur implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		if (arg0.getSource() == this.bouton1) { // Retour éditeur
-			BoulderDash.getFen().changerCardLayout(Vues.TABLEAUJEU);
+			BoulderDash.getFen().changerCardLayout(Vues.TABLEAUEDITEUR);
 		} else if (arg0.getSource() == this.bouton2) { // Charger niveau
 
 		} else if (arg0.getSource() == this.bouton3) { // Sauvegarder niveau

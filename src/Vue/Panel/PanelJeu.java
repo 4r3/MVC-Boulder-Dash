@@ -17,7 +17,6 @@ public class PanelJeu extends JPanel implements Observer {
 
 	public PanelJeu(Jeu jeu) {
 		initPanelJeu(jeu);
-		// setFocusable(true);
 	}
 
 	private void initPanelJeu(Jeu jeu) {
@@ -39,13 +38,15 @@ public class PanelJeu extends JPanel implements Observer {
 			changeNiveau();
 			System.out.println("releveling");
 		}
-
 	}
 
 	public void changeNiveau() {
 		remove(aireJeu);
 		aireJeu = new AirePlateauJeu(BoulderDash.getJeu().getNiveau());
 		add(aireJeu);
+		remove(aireInfo);
+		aireInfo = new AireInfoJeu();
+		add(aireInfo);
 		removeKeyListener(listen);
 		listen = new GestionClavier(BoulderDash.getJeu().getNiveau());
 		addKeyListener(listen);
