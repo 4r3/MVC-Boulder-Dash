@@ -4,7 +4,7 @@ import Modele.Niveau;
 import Modele.Animation.Animation;
 import Modele.Animation.TableAnimation;
 
-public class Boue extends Case implements InterPersonnage {
+public class Boue extends Case {
 
 	public Boue() {
 
