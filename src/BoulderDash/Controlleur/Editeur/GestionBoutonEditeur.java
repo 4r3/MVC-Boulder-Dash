@@ -1,4 +1,4 @@
-package BoulderDash.Controlleur;
+package BoulderDash.Controlleur.Editeur;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

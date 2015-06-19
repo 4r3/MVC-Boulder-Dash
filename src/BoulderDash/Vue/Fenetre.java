@@ -3,6 +3,11 @@ package BoulderDash.Vue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import BoulderDash.Vue.Editeur.PanelEditeur;
+import BoulderDash.Vue.Jeu.MenuChoixNiveau;
+import BoulderDash.Vue.Jeu.MenuJeu;
+import BoulderDash.Vue.Jeu.PanelJeu;
+
 public class Fenetre extends JFrame {
 	private static final long serialVersionUID = 3393452907097178193L;
 

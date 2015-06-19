@@ -1,7 +1,7 @@
 /**
  * 
  */
-package BoulderDash.Vue;
+package BoulderDash.Vue.Jeu;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -12,7 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JPanel;
 
-import BoulderDash.Controlleur.GestionBoutonsMenuChoix;
+import BoulderDash.Controlleur.Jeu.GestionBoutonsMenuChoix;
 import BoulderDash.Modele.Jeu;
 import BoulderDash.Modele.Variables;
 

@@ -1,19 +1,21 @@
 package BoulderDash;
 
 import BoulderDash.Modele.Editeur;
+import BoulderDash.Modele.EtatApplication;
 import BoulderDash.Modele.Jeu;
 import BoulderDash.Vue.Fenetre;
-import BoulderDash.Vue.Vues;
 
 public class BoulderDash {
 
 	private static Jeu jeu;
 	private static Fenetre fen;
 	private static Editeur edit;
+	private static EtatApplication state;
 
 	private static void init() {
+		state = EtatApplication.MenuPrincipal;
 		jeu = new Jeu();
-		edit = new Editeur();
+		edit = null;
 
 		fen = new Fenetre();
 		fen.setVisible(true);
@@ -22,8 +24,22 @@ public class BoulderDash {
 
 	private static void Application() {
 		while (true) {
-			jeu.gestion();
-			fen.changerVue(Vues.MENUPRINCIPAL);
+			switch (state) {
+			case ChoixNiveau:
+			case EditeurNew:
+				edit = new Editeur();
+				state = EtatApplication.Editeur;
+				break;
+			case Editeur:
+				break;
+			case Jeu:
+				jeu.gestion();
+				break;
+			case MenuPrincipal:
+			default:
+				break;
+			}
+
 		}
 	}
 
@@ -42,5 +58,9 @@ public class BoulderDash {
 
 	public static Editeur getEdit() {
 		return edit;
+	}
+
+	public static void setState(EtatApplication state) {
+		BoulderDash.state = state;
 	}
 }

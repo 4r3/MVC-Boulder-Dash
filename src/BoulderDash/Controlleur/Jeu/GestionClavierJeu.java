@@ -1,7 +1,7 @@
 /**
  * 
  */
-package BoulderDash.Controlleur;
+package BoulderDash.Controlleur.Jeu;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -15,12 +15,12 @@ import BoulderDash.Modele.Cases.Directions;
  * @author 4r3
  *
  */
-public class GestionClavier implements KeyListener
+public class GestionClavierJeu implements KeyListener
 {
 	private Map<Integer, Boolean> keys;
 	private Niveau niveau;
 
-	public GestionClavier(Niveau niveau)
+	public GestionClavierJeu(Niveau niveau)
 	{
 		this.niveau = niveau;
 		keys = new HashMap<>();

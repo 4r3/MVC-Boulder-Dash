@@ -1,4 +1,4 @@
-package BoulderDash.Controlleur;
+package BoulderDash.Controlleur.Editeur;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;

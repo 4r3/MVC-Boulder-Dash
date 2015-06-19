@@ -1,4 +1,4 @@
-package BoulderDash.Vue;
+package BoulderDash.Vue.Editeur;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -11,7 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import BoulderDash.Controlleur.GestionBoutonEditeur;
+import BoulderDash.Controlleur.Editeur.GestionBoutonEditeur;
 import BoulderDash.Modele.Variables;
 import BoulderDash.Modele.Animation.ChoixAnimation;
 import BoulderDash.Modele.Animation.TableAnimation;

@@ -1,4 +1,4 @@
-package BoulderDash.Vue;
+package BoulderDash.Vue.Jeu;
 
 import java.awt.Color;
 import java.awt.Dimension;

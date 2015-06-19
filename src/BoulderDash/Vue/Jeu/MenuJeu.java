@@ -1,4 +1,4 @@
-package BoulderDash.Vue;
+package BoulderDash.Vue.Jeu;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -8,7 +8,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import BoulderDash.Controlleur.GestionSourisMenuJeu;
+import BoulderDash.Controlleur.Jeu.GestionSourisMenuJeu;
 import BoulderDash.Modele.Variables;
 
 @SuppressWarnings("serial")

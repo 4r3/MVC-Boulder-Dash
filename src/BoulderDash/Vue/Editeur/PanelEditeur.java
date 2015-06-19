@@ -1,4 +1,4 @@
-package BoulderDash.Vue;
+package BoulderDash.Vue.Editeur;
 
 import java.awt.BorderLayout;
 import java.util.Observable;
@@ -31,8 +31,13 @@ public class PanelEditeur extends JPanel implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		aireEditeur.repaint_xy(BoulderDash.getEdit().getChangedX(), BoulderDash
-				.getEdit().getChangedY());
-		aireInfo.repaint();
+		if (BoulderDash.getEdit().getChangedX() < 0
+				|| BoulderDash.getEdit().getChangedY() < 0) {
+			aireEditeur.repaint();
+			aireInfo.repaint();
+		} else {
+			aireEditeur.repaint_xy(BoulderDash.getEdit().getChangedX(),
+					BoulderDash.getEdit().getChangedY());
+		}
 	}
 }

@@ -1,4 +1,4 @@
-package BoulderDash.Vue;
+package BoulderDash.Vue.Jeu;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -6,13 +6,13 @@ import java.util.Observer;
 import javax.swing.JPanel;
 
 import BoulderDash.BoulderDash;
-import BoulderDash.Controlleur.GestionClavier;
+import BoulderDash.Controlleur.Jeu.GestionClavierJeu;
 
 @SuppressWarnings("serial")
 public class PanelJeu extends JPanel implements Observer {
 	private AirePlateauJeu aireJeu;
 	private AireInfoJeu aireInfo;
-	private GestionClavier listen;
+	private GestionClavierJeu listen;
 
 	public PanelJeu() {
 		aireJeu = new AirePlateauJeu(BoulderDash.getJeu().getNiveau());
@@ -20,7 +20,7 @@ public class PanelJeu extends JPanel implements Observer {
 		aireInfo = new AireInfoJeu();
 		add(aireInfo);
 
-		listen = new GestionClavier(BoulderDash.getJeu().getNiveau());
+		listen = new GestionClavierJeu(BoulderDash.getJeu().getNiveau());
 		addKeyListener(listen);
 		BoulderDash.getJeu().addObserver(this);
 	}
@@ -43,7 +43,7 @@ public class PanelJeu extends JPanel implements Observer {
 		aireInfo = new AireInfoJeu();
 		add(aireInfo);
 		removeKeyListener(listen);
-		listen = new GestionClavier(BoulderDash.getJeu().getNiveau());
+		listen = new GestionClavierJeu(BoulderDash.getJeu().getNiveau());
 		addKeyListener(listen);
 	}
 

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package BoulderDash.Controlleur;
+package BoulderDash.Controlleur.Jeu;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JList;
 
 import BoulderDash.BoulderDash;
+import BoulderDash.Modele.EtatApplication;
 import BoulderDash.Vue.Vues;
 
 /**
@@ -32,6 +33,7 @@ public class GestionBoutonsMenuChoix implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		if (arg0.getSource() == this.bouton1) {
 			BoulderDash.getJeu().chargerNiveau(liste.getSelectedValue());
+			BoulderDash.setState(EtatApplication.Jeu);
 			BoulderDash.getFen().changerVue(Vues.TABLEAUJEU);
 		} else if (arg0.getSource() == this.bouton2) {
 			BoulderDash.getFen().changerVue(Vues.MENUPRINCIPAL);

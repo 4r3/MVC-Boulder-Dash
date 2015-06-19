@@ -1,4 +1,4 @@
-package BoulderDash.Vue;
+package BoulderDash.Vue.Editeur;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -11,26 +11,24 @@ import java.awt.Toolkit;
 import javax.swing.JPanel;
 
 import BoulderDash.BoulderDash;
-import BoulderDash.Controlleur.GestionSourisInsertionEditeur;
-import BoulderDash.Modele.Niveau;
+import BoulderDash.Controlleur.Editeur.GestionSourisInsertionEditeur;
 import BoulderDash.Modele.Variables;
 import BoulderDash.Modele.Animation.TableAnimation;
 
 @SuppressWarnings("serial")
 public class AirePlateauEditeur extends JPanel {
 
-	private Niveau niveau;
-
 	public AirePlateauEditeur() {
 		super();
-		this.niveau = BoulderDash.getEdit().getNiveau();
 		initAireEdition();
 	}
 
 	private void initAireEdition() {
 		setBackground(Color.BLACK);
-		setPreferredSize(new Dimension(this.niveau.getLongueur()
-				* Variables.TAILLE_CASE, this.niveau.getHauteur()
+		setPreferredSize(new Dimension(BoulderDash.getEdit().getNiveau()
+				.getLongueur()
+				* Variables.TAILLE_CASE, BoulderDash.getEdit().getNiveau()
+				.getHauteur()
 				* Variables.TAILLE_CASE));
 		setDoubleBuffered(true);
 
@@ -39,22 +37,25 @@ public class AirePlateauEditeur extends JPanel {
 		addMouseMotionListener(ctrl);
 	}
 
-	private void drawNiveau(Graphics g) {
+	private static void drawNiveau(Graphics g) {
 		int x, y;
-		for (x = 0; x < this.niveau.getLongueur(); x++) {
-			for (y = 0; y < this.niveau.getHauteur(); y++) {
+		for (x = 0; x < BoulderDash.getEdit().getNiveau().getLongueur(); x++) {
+			for (y = 0; y < BoulderDash.getEdit().getNiveau().getHauteur(); y++) {
 				g.drawImage(TableAnimation.getVide().getSpriteImmobile(), x
 						* Variables.TAILLE_CASE, y * Variables.TAILLE_CASE,
 						null);
-				g.drawImage(niveau.getCase(x, y).getAnimation()
-						.getSpriteImmobile(), x * Variables.TAILLE_CASE, y
-						* Variables.TAILLE_CASE, null);
+				g.drawImage(BoulderDash.getEdit().getNiveau().getCase(x, y)
+						.getAnimation().getSpriteImmobile(), x
+						* Variables.TAILLE_CASE, y * Variables.TAILLE_CASE,
+						null);
 				drawDashedLine(g, 0, ((y + 1) * Variables.TAILLE_CASE) - 1,
-						niveau.getLongueur() * Variables.TAILLE_CASE,
+						BoulderDash.getEdit().getNiveau().getLongueur()
+								* Variables.TAILLE_CASE,
 						((y + 1) * Variables.TAILLE_CASE) - 1);
 			}
 			drawDashedLine(g, ((x + 1) * Variables.TAILLE_CASE) - 1, 0,
-					((x + 1) * Variables.TAILLE_CASE) - 1, niveau.getHauteur()
+					((x + 1) * Variables.TAILLE_CASE) - 1, BoulderDash
+							.getEdit().getNiveau().getHauteur()
 							* Variables.TAILLE_CASE);
 		}
 		Toolkit.getDefaultToolkit().sync();
@@ -79,23 +80,21 @@ public class AirePlateauEditeur extends JPanel {
 		drawNiveau(g);
 	}
 
-	public Niveau getNiveau() {
-		return niveau;
-	}
-
 	public void repaint_xy(int x, int y) {
 		Graphics g = getGraphics();
 		g.drawImage(TableAnimation.getVide().getSpriteImmobile(), x
 				* Variables.TAILLE_CASE, y * Variables.TAILLE_CASE, null);
-		g.drawImage(niveau.getCase(x, y).getAnimation().getSpriteImmobile(), x
-				* Variables.TAILLE_CASE, y * Variables.TAILLE_CASE, null);
+		g.drawImage(BoulderDash.getEdit().getNiveau().getCase(x, y)
+				.getAnimation().getSpriteImmobile(), x * Variables.TAILLE_CASE,
+				y * Variables.TAILLE_CASE, null);
 
-		drawDashedLine(g, 0, ((y + 1) * Variables.TAILLE_CASE) - 1,
-				niveau.getLongueur() * Variables.TAILLE_CASE,
-				((y + 1) * Variables.TAILLE_CASE) - 1);
+		drawDashedLine(g, 0, ((y + 1) * Variables.TAILLE_CASE) - 1, BoulderDash
+				.getEdit().getNiveau().getLongueur()
+				* Variables.TAILLE_CASE, ((y + 1) * Variables.TAILLE_CASE) - 1);
 
 		drawDashedLine(g, ((x + 1) * Variables.TAILLE_CASE) - 1, 0,
-				((x + 1) * Variables.TAILLE_CASE) - 1, niveau.getHauteur()
+				((x + 1) * Variables.TAILLE_CASE) - 1, BoulderDash.getEdit()
+						.getNiveau().getHauteur()
 						* Variables.TAILLE_CASE);
 
 		Toolkit.getDefaultToolkit().sync();

@@ -19,12 +19,23 @@ public class Editeur extends Observable {
 		changedY = -1;
 	}
 
-	public void createNiveau(int x, int y) {
-		this.niveau = new Niveau(x, y);
+	/**
+	 * 
+	 */
+	public void createNiveau() {
+		this.niveau = new Niveau();
+		changedX = -1;
+		changedY = -1;
+		setChanged();
+		notifyObservers();
 	}
 
-	public Niveau getNiveau() {
-		return niveau;
+	public void createNiveau(int x, int y) {
+		this.niveau = new Niveau(x, y);
+		changedX = -1;
+		changedY = -1;
+		setChanged();
+		notifyObservers();
 	}
 
 	public void loadNiveau(String path) {
@@ -33,6 +44,10 @@ public class Editeur extends Observable {
 		changedY = -1;
 		setChanged();
 		notifyObservers();
+	}
+
+	public Niveau getNiveau() {
+		return niveau;
 	}
 
 	public ChoixAnimation getIconActif() {

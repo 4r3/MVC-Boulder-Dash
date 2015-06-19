@@ -3,13 +3,14 @@ package BoulderDash.Modele;
 import java.io.File;
 import java.util.Observable;
 
+import BoulderDash.BoulderDash;
+
 public class Jeu extends Observable {
 
 	private Niveau level;
 
 	public Jeu() {
 		level = null;
-		level = new Niveau("./niveaux/level3.csv");
 	}
 
 	public void chargerNiveau(String path) {
@@ -42,6 +43,10 @@ public class Jeu extends Observable {
 		int i = 0;
 		long time = System.currentTimeMillis();
 
+		if (level == null) {
+			return;
+		}
+
 		while (!level.isFini()) {
 			time = Variables.FRAME + System.currentTimeMillis() - time;
 			if (time <= 0) {
@@ -65,5 +70,6 @@ public class Jeu extends Observable {
 			setChanged();
 			notifyObservers(1);
 		}
+		BoulderDash.setState(EtatApplication.MenuPrincipal);
 	}
 }
