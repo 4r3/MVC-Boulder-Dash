@@ -1,9 +1,9 @@
 package BoulderDash;
 
-import Modele.Editeur;
-import Modele.Jeu;
-import Vue.Panel.Fenetre;
-import Vue.Panel.Vues;
+import BoulderDash.Modele.Editeur;
+import BoulderDash.Modele.Jeu;
+import BoulderDash.Vue.Fenetre;
+import BoulderDash.Vue.Vues;
 
 public class BoulderDash {
 

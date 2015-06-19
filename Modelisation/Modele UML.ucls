@@ -1,17 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.1.8" icons="true" automaticImage="PNG" always-add-relationships="false" generalizations="true" 
   realizations="true" associations="true" dependencies="false" nesting-relationships="true">  
-  <class id="1" language="java" name="BoulderDash" project="ENSSAT-Boulder-Dash" 
-    file="/ENSSAT-Boulder-Dash/src/BoulderDash.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="321" y="-43"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
-      <operations public="false" package="false" protected="false" private="false" static="true"/>    
-    </display>  
-  </class>  
-  <class id="2" language="java" name="Controlleur.GestionClavier" project="ENSSAT-Boulder-Dash" 
-    file="/ENSSAT-Boulder-Dash/src/Controlleur/GestionClavier.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="1" language="java" name="BoulderDash.Controlleur.GestionClavier" project="ENSSAT-Boulder-Dash" 
+    file="/ENSSAT-Boulder-Dash/src/BoulderDash/Controlleur/GestionClavier.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="88" y="312"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -19,8 +10,8 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="Modele.Niveau" project="ENSSAT-Boulder-Dash" 
-    file="/ENSSAT-Boulder-Dash/src/Modele/Niveau.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="2" language="java" name="BoulderDash.Modele.Niveau" project="ENSSAT-Boulder-Dash" 
+    file="/ENSSAT-Boulder-Dash/src/BoulderDash/Modele/Niveau.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="441" y="156"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -28,8 +19,8 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="Modele.Animation.Animation" project="ENSSAT-Boulder-Dash" 
-    file="/ENSSAT-Boulder-Dash/src/Modele/Animation/Animation.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="3" language="java" name="BoulderDash.Modele.Animation.Animation" project="ENSSAT-Boulder-Dash" 
+    file="/ENSSAT-Boulder-Dash/src/BoulderDash/Modele/Animation/Animation.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="300" y="499"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -37,8 +28,9 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="Modele.Animation.TableAnimation" project="ENSSAT-Boulder-Dash" 
-    file="/ENSSAT-Boulder-Dash/src/Modele/Animation/TableAnimation.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="4" language="java" name="BoulderDash.Modele.Animation.TableAnimation" project="ENSSAT-Boulder-Dash" 
+    file="/ENSSAT-Boulder-Dash/src/BoulderDash/Modele/Animation/TableAnimation.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="300" y="376"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -46,17 +38,8 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="Vue.Panel.AireDeJeu" project="ENSSAT-Boulder-Dash" 
-    file="/ENSSAT-Boulder-Dash/src/Vue/Panel/AireDeJeu.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="186" y="132"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
-      <operations public="false" package="false" protected="false" private="false" static="true"/>    
-    </display>  
-  </class>  
-  <class id="7" language="java" name="Vue.Panel.Fenetre" project="ENSSAT-Boulder-Dash" 
-    file="/ENSSAT-Boulder-Dash/src/Vue/Panel/Fenetre.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="5" language="java" name="BoulderDash.Vue.Fenetre" project="ENSSAT-Boulder-Dash" 
+    file="/ENSSAT-Boulder-Dash/src/BoulderDash/Vue/Fenetre.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="63" y="-68"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -64,8 +47,8 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="Modele.Animation.Frame" project="ENSSAT-Boulder-Dash" 
-    file="/ENSSAT-Boulder-Dash/src/Modele/Animation/Frame.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="6" language="java" name="BoulderDash.Modele.Animation.Frame" project="ENSSAT-Boulder-Dash" 
+    file="/ENSSAT-Boulder-Dash/src/BoulderDash/Modele/Animation/Frame.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="83" y="498"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -73,8 +56,8 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="Modele.Cases.Case" project="ENSSAT-Boulder-Dash" 
-    file="/ENSSAT-Boulder-Dash/src/Modele/Cases/Case.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="7" language="java" name="BoulderDash.Modele.Cases.Case" project="ENSSAT-Boulder-Dash" 
+    file="/ENSSAT-Boulder-Dash/src/BoulderDash/Modele/Cases/Case.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="619" y="126"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -82,8 +65,8 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="Modele.Cases.ElementDynamique" project="ENSSAT-Boulder-Dash" 
-    file="/ENSSAT-Boulder-Dash/src/Modele/Cases/ElementDynamique.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="8" language="java" name="BoulderDash.Modele.Cases.ElementDynamique" project="ENSSAT-Boulder-Dash" 
+    file="/ENSSAT-Boulder-Dash/src/BoulderDash/Modele/Cases/ElementDynamique.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="596" y="272"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -91,8 +74,8 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="11" language="java" name="Modele.Cases.Boue" project="ENSSAT-Boulder-Dash" 
-    file="/ENSSAT-Boulder-Dash/src/Modele/Cases/Boue.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="9" language="java" name="BoulderDash.Modele.Cases.Boue" project="ENSSAT-Boulder-Dash" 
+    file="/ENSSAT-Boulder-Dash/src/BoulderDash/Modele/Cases/Boue.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="732" y="322"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -100,8 +83,8 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="12" language="java" name="Modele.Cases.Chutable" project="ENSSAT-Boulder-Dash" 
-    file="/ENSSAT-Boulder-Dash/src/Modele/Cases/Chutable.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="10" language="java" name="BoulderDash.Modele.Cases.Chutable" project="ENSSAT-Boulder-Dash" 
+    file="/ENSSAT-Boulder-Dash/src/BoulderDash/Modele/Cases/Chutable.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="656" y="404"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -109,8 +92,8 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="13" language="java" name="Modele.Cases.Diamant" project="ENSSAT-Boulder-Dash" 
-    file="/ENSSAT-Boulder-Dash/src/Modele/Cases/Diamant.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="11" language="java" name="BoulderDash.Modele.Cases.Diamant" project="ENSSAT-Boulder-Dash" 
+    file="/ENSSAT-Boulder-Dash/src/BoulderDash/Modele/Cases/Diamant.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="713" y="520"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -118,8 +101,8 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="14" language="java" name="Modele.Cases.Rocher" project="ENSSAT-Boulder-Dash" 
-    file="/ENSSAT-Boulder-Dash/src/Modele/Cases/Rocher.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="12" language="java" name="BoulderDash.Modele.Cases.Rocher" project="ENSSAT-Boulder-Dash" 
+    file="/ENSSAT-Boulder-Dash/src/BoulderDash/Modele/Cases/Rocher.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="769" y="447"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -127,8 +110,8 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="15" language="java" name="Modele.Cases.MurIndestructible" project="ENSSAT-Boulder-Dash" 
-    file="/ENSSAT-Boulder-Dash/src/Modele/Cases/MurIndestructible.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="13" language="java" name="BoulderDash.Modele.Cases.MurIndestructible" project="ENSSAT-Boulder-Dash" 
+    file="/ENSSAT-Boulder-Dash/src/BoulderDash/Modele/Cases/MurIndestructible.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="681" y="25"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -136,8 +119,8 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="16" language="java" name="Modele.Cases.MurNormal" project="ENSSAT-Boulder-Dash" 
-    file="/ENSSAT-Boulder-Dash/src/Modele/Cases/MurNormal.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="14" language="java" name="BoulderDash.Modele.Cases.MurNormal" project="ENSSAT-Boulder-Dash" 
+    file="/ENSSAT-Boulder-Dash/src/BoulderDash/Modele/Cases/MurNormal.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="860" y="46"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -145,8 +128,8 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="17" language="java" name="Modele.Cases.Personnage" project="ENSSAT-Boulder-Dash" 
-    file="/ENSSAT-Boulder-Dash/src/Modele/Cases/Personnage.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="15" language="java" name="BoulderDash.Modele.Cases.Personnage" project="ENSSAT-Boulder-Dash" 
+    file="/ENSSAT-Boulder-Dash/src/BoulderDash/Modele/Cases/Personnage.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="514" y="412"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -154,8 +137,8 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="18" language="java" name="Modele.Cases.Sortie" project="ENSSAT-Boulder-Dash" 
-    file="/ENSSAT-Boulder-Dash/src/Modele/Cases/Sortie.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="16" language="java" name="BoulderDash.Modele.Cases.Sortie" project="ENSSAT-Boulder-Dash" 
+    file="/ENSSAT-Boulder-Dash/src/BoulderDash/Modele/Cases/Sortie.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="494" y="46"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -163,8 +146,8 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <interface id="19" language="java" name="Modele.Cases.InterChutable" project="ENSSAT-Boulder-Dash" 
-    file="/ENSSAT-Boulder-Dash/src/Modele/Cases/InterChutable.java" binary="false" corner="BOTTOM_RIGHT">    
+  <interface id="17" language="java" name="BoulderDash.Modele.Cases.InterChutable" project="ENSSAT-Boulder-Dash" 
+    file="/ENSSAT-Boulder-Dash/src/BoulderDash/Modele/Cases/InterChutable.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="981" y="-94"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -172,8 +155,8 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </interface>  
-  <interface id="20" language="java" name="Modele.Cases.InterPersonnage" project="ENSSAT-Boulder-Dash" 
-    file="/ENSSAT-Boulder-Dash/src/Modele/Cases/InterPersonnage.java" binary="false" corner="BOTTOM_RIGHT">    
+  <interface id="18" language="java" name="BoulderDash.Modele.Cases.InterPersonnage" project="ENSSAT-Boulder-Dash" 
+    file="/ENSSAT-Boulder-Dash/src/BoulderDash/Modele/Cases/InterPersonnage.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="976" y="492"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -181,8 +164,8 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </interface>  
-  <class id="21" language="java" name="Modele.Cases.MurMagique" project="ENSSAT-Boulder-Dash" 
-    file="/ENSSAT-Boulder-Dash/src/Modele/Cases/MurMagique.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="19" language="java" name="BoulderDash.Modele.Cases.MurMagique" project="ENSSAT-Boulder-Dash" 
+    file="/ENSSAT-Boulder-Dash/src/BoulderDash/Modele/Cases/MurMagique.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="51" width="94" x="794" y="135"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -190,8 +173,8 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="22" language="java" name="Modele.Cases.Vide" project="ENSSAT-Boulder-Dash" 
-    file="/ENSSAT-Boulder-Dash/src/Modele/Cases/Vide.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="20" language="java" name="BoulderDash.Modele.Cases.Vide" project="ENSSAT-Boulder-Dash" 
+    file="/ENSSAT-Boulder-Dash/src/BoulderDash/Modele/Cases/Vide.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="823" y="257"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -199,230 +182,133 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <realization id="23">    
-    <end type="SOURCE" refId="14"/>    
-    <end type="TARGET" refId="20"/>  
-  </realization>  
-  <realization id="24">    
-    <bendpoint x="645" y="-140"/>    
-    <bendpoint x="1028" y="-139"/>    
-    <bendpoint x="1085" y="-106"/>    
-    <bendpoint x="1066" y="211"/>    
-    <end type="SOURCE" refId="18"/>    
-    <end type="TARGET" refId="20"/>  
-  </realization>  
-  <realization id="25">    
-    <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="20"/>  
-  </realization>  
-  <realization id="26">    
-    <bendpoint x="670" y="-74"/>    
-    <end type="SOURCE" refId="18"/>    
-    <end type="TARGET" refId="19"/>  
-  </realization>  
-  <association id="27">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="28" name="perso">        
+  <association id="21">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="22" name="tableau">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="29" minimum="0" maximum="1">        
+      <multiplicity id="23" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="17" navigable="true"/>    
+    <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="30">    
-    <end type="SOURCE" refId="16"/>    
-    <end type="TARGET" refId="9"/>  
+  <generalization id="24">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="7"/>  
   </generalization>  
-  <realization id="31">    
-    <end type="SOURCE" refId="22"/>    
-    <end type="TARGET" refId="20"/>  
-  </realization>  
+  <generalization id="25">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <association id="26">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="27" name="perso">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="28" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="29">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="30" name="sortie">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="31" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
   <generalization id="32">    
-    <end type="SOURCE" refId="17"/>    
-    <end type="TARGET" refId="10"/>  
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="7"/>  
   </generalization>  
   <association id="33">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="34" name="aireJeu">        
-        <position height="0" width="0" x="3" y="-53"/>      
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="34" name="frames">        
+        <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="35" minimum="0" maximum="1">        
-        <position height="0" width="0" x="3" y="-53"/>      
+      <multiplicity id="35" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="36">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="37" name="niveau">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="38" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="39">    
-    <end type="SOURCE" refId="22"/>    
-    <end type="TARGET" refId="9"/>  
-  </generalization>  
-  <generalization id="40">    
-    <end type="SOURCE" refId="12"/>    
+  <generalization id="36">    
+    <end type="SOURCE" refId="11"/>    
     <end type="TARGET" refId="10"/>  
   </generalization>  
-  <association id="41">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="42" name="tableau">        
+  <association id="37">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="38" name="tableAnimations">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="43" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="9" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="44">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="7"/>  
-  </dependency>  
-  <realization id="45">    
-    <bendpoint x="934" y="88"/>    
-    <end type="SOURCE" refId="21"/>    
-    <end type="TARGET" refId="19"/>  
-  </realization>  
-  <association id="46">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="47" name="tableAnimations">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="48" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="49">    
-    <end type="SOURCE" refId="18"/>    
-    <end type="TARGET" refId="9"/>  
-  </generalization>  
-  <association id="50">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="51" name="anim">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="52" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="53">    
-    <end type="SOURCE" refId="14"/>    
-    <end type="TARGET" refId="12"/>  
-  </generalization>  
-  <association id="54">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="55" name="sortie">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="56" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="18" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="57">    
-    <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="9"/>  
-  </generalization>  
-  <realization id="58">    
-    <bendpoint x="969" y="396"/>    
-    <bendpoint x="1032" y="205"/>    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="19"/>  
-  </realization>  
-  <realization id="59">    
-    <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="20"/>  
-  </realization>  
-  <generalization id="60">    
-    <end type="SOURCE" refId="21"/>    
-    <end type="TARGET" refId="9"/>  
-  </generalization>  
-  <realization id="61">    
-    <end type="SOURCE" refId="16"/>    
-    <end type="TARGET" refId="19"/>  
-  </realization>  
-  <generalization id="62">    
-    <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="12"/>  
-  </generalization>  
-  <association id="63">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="64" name="niveau">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="65" minimum="0" maximum="1">        
+      <multiplicity id="39" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="66">    
-    <bendpoint x="969" y="154"/>    
-    <end type="SOURCE" refId="22"/>    
-    <end type="TARGET" refId="19"/>  
-  </realization>  
-  <association id="67">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="68" name="UpTable">        
+  <generalization id="40">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
+  <generalization id="41">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <generalization id="42">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
+  <generalization id="43">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
+  <association id="44">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="45" name="niveau">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="69" minimum="0" maximum="2147483647">        
+      <multiplicity id="46" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
+    <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="70">    
-    <end type="SOURCE" refId="15"/>    
-    <end type="TARGET" refId="9"/>  
+  <generalization id="47">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="7"/>  
   </generalization>  
-  <dependency id="71">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="2"/>  
-  </dependency>  
-  <association id="72">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="73" name="frames">        
+  <association id="48">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="49" name="UpTable">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="74" minimum="0" maximum="2147483647">        
+      <multiplicity id="50" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="75">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="3"/>  
-  </dependency>  
-  <generalization id="76">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="9"/>  
+  <generalization id="51">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
+  <generalization id="52">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="10"/>  
   </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
