@@ -19,6 +19,7 @@ public class MurMagique extends Case {
 		active = false;
 	}
 
+	// TODO trouver comment se débarasser du instanceof
 	public void activer(Niveau N) {
 		active = true;
 		if (N.getCase(getX() - 1, getY()) instanceof MurMagique
@@ -54,6 +55,7 @@ public class MurMagique extends Case {
 		}
 	}
 
+	// TODO trouver comment se débarasser du instanceof
 	@Override
 	public EtatChutable chutableArrive(Niveau N, int x, int y) {
 		if (((Chutable) N.getCase(x, y)).chute()) {

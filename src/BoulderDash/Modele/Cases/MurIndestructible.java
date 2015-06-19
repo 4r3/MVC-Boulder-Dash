@@ -18,4 +18,5 @@ public class MurIndestructible extends Case {
 	public String ID() {
 		return "M";
 	}
+
 }

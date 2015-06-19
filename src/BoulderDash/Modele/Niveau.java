@@ -23,7 +23,7 @@ import BoulderDash.Modele.Cases.MurMagique;
 import BoulderDash.Modele.Cases.MurNormal;
 import BoulderDash.Modele.Cases.Papillon;
 import BoulderDash.Modele.Cases.Personnage;
-import BoulderDash.Modele.Cases.RefreshAnim;
+import BoulderDash.Modele.Cases.Refresh;
 import BoulderDash.Modele.Cases.Rocher;
 import BoulderDash.Modele.Cases.Sortie;
 import BoulderDash.Modele.Cases.Vide;
@@ -36,7 +36,7 @@ import BoulderDash.Modele.Cases.Vide;
  * @author 4r3
  * 
  */
-public class Niveau implements RefreshAnim {
+public class Niveau implements Refresh {
 	// Variables
 	private int hauteur;
 	private int longueur;
@@ -267,6 +267,7 @@ public class Niveau implements RefreshAnim {
 	 * fonction de mise à jour du niveau, met a jour tout les ElementDynamique
 	 * suceptibles d'etre mis a jour dans le niveau
 	 */
+	@Override
 	public void refresh() {
 		int i = 0;
 		perso.refresh(this);
@@ -331,9 +332,8 @@ public class Niveau implements RefreshAnim {
 	//
 
 	public void addUptable(int x, int y) {
-		if (tableau[x][y] instanceof ElementDynamique
-				&& !UpTable.contains(tableau[x][y])
-				&& !(tableau[x][y] instanceof Personnage)) {
+		if (!UpTable.contains(tableau[x][y]) && tableau[x][y] != perso
+				&& tableau[x][y] != sortie) {
 			UpTable.add(UpTable.size(), (ElementDynamique) tableau[x][y]);
 		}
 	}
@@ -369,7 +369,7 @@ public class Niveau implements RefreshAnim {
 	public void cleanUpTable() {
 		int i = 0;
 		while (i < UpTable.size()) {
-			if ((UpTable.get(i) instanceof Chutable)
+			if ((UpTable.get(i).stayInUpTable())
 					&& !((Chutable) UpTable.get(i)).instable()) {
 				UpTable.remove(i);
 			} else {
@@ -544,6 +544,11 @@ public class Niveau implements RefreshAnim {
 	public void refreshAnim() {
 		perso.refreshAnim();
 		TableAnimation.refreshAnim();
+	}
+
+	@Override
+	public boolean stayInUpTable() {
+		return false;
 	}
 
 }

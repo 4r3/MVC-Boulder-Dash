@@ -3,8 +3,7 @@ package BoulderDash.Modele.Cases;
 import BoulderDash.Modele.Niveau;
 import BoulderDash.Modele.Animation.Animation;
 
-public abstract class Case implements InterChutable, InterPersonnage,
-		RefreshAnim {
+public abstract class Case implements InterChutable, InterPersonnage, Refresh {
 
 	private int x;
 	private int y;
@@ -44,7 +43,16 @@ public abstract class Case implements InterChutable, InterPersonnage,
 	}
 
 	@Override
+	public void refresh() {
+	}
+
+	@Override
 	public void refreshAnim() {
+	}
+
+	@Override
+	public boolean stayInUpTable() {
+		return false;
 	}
 
 	public int getX() {
