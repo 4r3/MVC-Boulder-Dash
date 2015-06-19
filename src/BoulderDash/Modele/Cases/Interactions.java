@@ -9,10 +9,8 @@ import BoulderDash.Modele.Niveau;
  * @author 4r3
  *
  */
-public interface InterPersonnage {
-	/**
-	 * @param N
-	 * @return
-	 */
+public interface Interactions {
 	boolean PersonageArrive(Niveau N);
+
+	EtatChutable chutableArrive(Niveau N);
 }

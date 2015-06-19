@@ -3,7 +3,7 @@ package BoulderDash.Modele.Cases;
 import BoulderDash.Modele.Niveau;
 import BoulderDash.Modele.Animation.Animation;
 
-public abstract class Case implements InterChutable, InterPersonnage, Refresh {
+public abstract class Case implements Interactions, Refresh {
 
 	private int x;
 	private int y;
@@ -32,8 +32,16 @@ public abstract class Case implements InterChutable, InterPersonnage, Refresh {
 
 	// methodes communes
 
+	/**
+	 * @param elementDynamique
+	 * @return
+	 */
+	public boolean isSuperior(Case C) {
+		return getY() > C.getY();
+	}
+
 	@Override
-	public EtatChutable chutableArrive(Niveau N, int x, int y) {
+	public EtatChutable chutableArrive(Niveau N) {
 		return EtatChutable.Stable;
 	}
 
@@ -43,7 +51,7 @@ public abstract class Case implements InterChutable, InterPersonnage, Refresh {
 	}
 
 	@Override
-	public void refresh() {
+	public void refresh(Niveau N) {
 	}
 
 	@Override

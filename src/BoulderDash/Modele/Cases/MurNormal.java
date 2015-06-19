@@ -25,23 +25,21 @@ public class MurNormal extends Case {
 	}
 
 	@Override
-	public EtatChutable chutableArrive(Niveau N, int x, int y) {
-		if ((N.getCase(x + 1, y).isVide())
-				&& (N.getCase(x + 1, y + 1).isVide())) {
-			if (((Chutable) N.getCase(x, y)).instable()) {
-				N.echangeCases(x, y, x + 1, y + 1);
-				N.remplirUpTable(x, y);
-				((Chutable) N.getCase(x + 1, y + 1)).setXY(x + 1, y + 1);
+	public EtatChutable chutableArrive(Niveau N) {
+		if ((N.getCase(getX() + 1, getY() - 1).isVide())
+				&& (N.getCase(getX() + 1, getY()).isVide())) {
+			if (((Chutable) N.getCase(getX(), getY() - 1)).instable()) {
+				N.echangeCases(getX() + 1, getY(), getX(), getY() - 1);
+				N.remplirUpTable(getX(), getY() - 1);
 				return EtatChutable.Chute;
 			} else {
 				return EtatChutable.Instable;
 			}
-		} else if ((N.getCase(x - 1, y).isVide())
-				&& (N.getCase(x - 1, y + 1).isVide())) {
-			if (((Chutable) N.getCase(x, y)).instable()) {
-				N.echangeCases(x, y, x - 1, y + 1);
-				N.remplirUpTable(x, y);
-				((Chutable) N.getCase(x - 1, y + 1)).setXY(x - 1, y + 1);
+		} else if (N.getCase(getX() - 1, getY()).isVide()
+				&& N.getCase(getX() - 1, getY() - 1).isVide()) {
+			if (((Chutable) N.getCase(getX(), getY() - 1)).instable()) {
+				N.echangeCases(getX(), getY() - 1, getX() - 1, getY());
+				N.remplirUpTable(getX(), getY() - 1);
 				return EtatChutable.Chute;
 			} else {
 				return EtatChutable.Instable;

@@ -57,46 +57,44 @@ public class MurMagique extends Case {
 
 	// TODO trouver comment se débarasser du instanceof
 	@Override
-	public EtatChutable chutableArrive(Niveau N, int x, int y) {
-		if (((Chutable) N.getCase(x, y)).chute()) {
+	public EtatChutable chutableArrive(Niveau N) {
+		if (((Chutable) N.getCase(getX(), getY() - 1)).chute()) {
 			if (!active) {
 				activer(N);
 			}
-			N.remUptable(N.getCase(x, y));
-			if (N.getCase(x, y + 2).isVide()) {
-				if (N.getCase(x, y) instanceof Diamant) {
-					N.insereRocher(x, y + 2);
+			N.remUptable(N.getCase(getX(), getY() - 1));
+			if (N.getCase(getX(), getY() + 1).isVide()) {
+				if (N.getCase(getX(), getY() - 1) instanceof Diamant) {
+					N.insereRocher(getX(), getY() + 1);
 				} else {
 
-					N.insereDiamant(x, y + 2);
+					N.insereDiamant(getX(), getY() + 1);
 				}
-				((Chutable) N.getCase(x, y + 2)).setChute();
+				((Chutable) N.getCase(getX(), getY() + 1)).setChute();
 			}
-			N.insereVide(x, y);
+			N.insereVide(getX(), getY() - 1);
 
 			return EtatChutable.Chute;
 		} else {
-			return modeMur(N, x, y);
+			return modeMur(N);
 		}
 	}
 
-	private static EtatChutable modeMur(Niveau N, int x, int y) {
-		if ((N.getCase(x + 1, y).isVide())
-				&& (N.getCase(x + 1, y + 1).isVide())) {
-			if (((Chutable) N.getCase(x, y)).instable()) {
-				N.echangeCases(x, y, x + 1, y + 1);
-				N.remplirUpTable(x, y);
-				((Chutable) N.getCase(x + 1, y + 1)).setXY(x + 1, y + 1);
+	private EtatChutable modeMur(Niveau N) {
+		if ((N.getCase(getX() + 1, getY() - 1).isVide())
+				&& (N.getCase(getX() + 1, getY()).isVide())) {
+			if (((Chutable) N.getCase(getX(), getY() - 1)).instable()) {
+				N.echangeCases(getX() + 1, getY(), getX(), getY() - 1);
+				N.remplirUpTable(getX(), getY() - 1);
 				return EtatChutable.Chute;
 			} else {
 				return EtatChutable.Instable;
 			}
-		} else if ((N.getCase(x - 1, y).isVide())
-				&& (N.getCase(x - 1, y + 1).isVide())) {
-			if (((Chutable) N.getCase(x, y)).instable()) {
-				N.echangeCases(x, y, x - 1, y + 1);
-				N.remplirUpTable(x, y);
-				((Chutable) N.getCase(x - 1, y + 1)).setXY(x - 1, y + 1);
+		} else if (N.getCase(getX() - 1, getY()).isVide()
+				&& N.getCase(getX() - 1, getY() - 1).isVide()) {
+			if (((Chutable) N.getCase(getX(), getY() - 1)).instable()) {
+				N.echangeCases(getX(), getY() - 1, getX() - 1, getY());
+				N.remplirUpTable(getX(), getY() - 1);
 				return EtatChutable.Chute;
 			} else {
 				return EtatChutable.Instable;

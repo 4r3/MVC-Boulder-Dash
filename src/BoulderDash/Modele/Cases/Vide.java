@@ -29,11 +29,10 @@ public class Vide extends Case {
 	}
 
 	@Override
-	public EtatChutable chutableArrive(Niveau N, int x, int y) {
-		if (((Chutable) N.getCase(x, y)).instable()) {
-			N.echangeCases(x, y, x, y + 1);
-			N.remplirUpTable(x, y);
-			((Chutable) N.getCase(x, y + 1)).setY(y + 1);
+	public EtatChutable chutableArrive(Niveau N) {
+		if (((Chutable) N.getCase(getX(), getY() - 1)).instable()) {
+			N.echangeCases(getX(), getY(), getX(), getY() - 1);
+			N.remplirUpTable(getX(), getY());
 			return EtatChutable.Chute;
 		} else {
 			return EtatChutable.Instable;

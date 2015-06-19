@@ -23,7 +23,6 @@ import BoulderDash.Modele.Cases.MurMagique;
 import BoulderDash.Modele.Cases.MurNormal;
 import BoulderDash.Modele.Cases.Papillon;
 import BoulderDash.Modele.Cases.Personnage;
-import BoulderDash.Modele.Cases.Refresh;
 import BoulderDash.Modele.Cases.Rocher;
 import BoulderDash.Modele.Cases.Sortie;
 import BoulderDash.Modele.Cases.Vide;
@@ -36,7 +35,7 @@ import BoulderDash.Modele.Cases.Vide;
  * @author 4r3
  * 
  */
-public class Niveau implements Refresh {
+public class Niveau {
 	// Variables
 	private int hauteur;
 	private int longueur;
@@ -54,7 +53,7 @@ public class Niveau implements Refresh {
 	 * tableau de mise à jour, contient les ElementDynamique susceptibles d'etre
 	 * modifiés au prochain cycle
 	 */
-	private List<ElementDynamique> UpTable;
+	private List<Case> UpTable;
 
 	/**
 	 * crée un Niveau de 10*10 avec le personage en haut a gauche et la sortie
@@ -267,7 +266,6 @@ public class Niveau implements Refresh {
 	 * fonction de mise à jour du niveau, met a jour tout les ElementDynamique
 	 * suceptibles d'etre mis a jour dans le niveau
 	 */
-	@Override
 	public void refresh() {
 		int i = 0;
 		perso.refresh(this);
@@ -334,7 +332,7 @@ public class Niveau implements Refresh {
 	public void addUptable(int x, int y) {
 		if (!UpTable.contains(tableau[x][y]) && tableau[x][y] != perso
 				&& tableau[x][y] != sortie) {
-			UpTable.add(UpTable.size(), (ElementDynamique) tableau[x][y]);
+			UpTable.add(UpTable.size(), tableau[x][y]);
 		}
 	}
 
@@ -349,7 +347,7 @@ public class Niveau implements Refresh {
 	public void trieUpTable() {
 		int i = 0;
 		int j, pmin;
-		ElementDynamique temp;
+		Case temp;
 
 		while (i < UpTable.size() - 1) {
 			pmin = i;
@@ -540,15 +538,9 @@ public class Niveau implements Refresh {
 		System.out.println("niveau importé");
 	}
 
-	@Override
 	public void refreshAnim() {
 		perso.refreshAnim();
 		TableAnimation.refreshAnim();
-	}
-
-	@Override
-	public boolean stayInUpTable() {
-		return false;
 	}
 
 }
