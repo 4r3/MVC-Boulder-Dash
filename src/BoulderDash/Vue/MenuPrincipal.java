@@ -14,12 +14,12 @@ import BoulderDash.Modele.Variables;
 @SuppressWarnings("serial")
 public class MenuPrincipal extends JPanel {
 
-	public MenuPrincipal(Fenetre fen) {
-		initMenuPrincipal(fen);
+	public MenuPrincipal() {
+		initMenuPrincipal();
 		setFocusable(true);
 	}
 
-	private void initMenuPrincipal(Fenetre fen) {
+	private void initMenuPrincipal() {
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		setBackground(Color.BLACK);
 		setPreferredSize(new Dimension(Variables.HAUTEUR_PANEL_SCORE,

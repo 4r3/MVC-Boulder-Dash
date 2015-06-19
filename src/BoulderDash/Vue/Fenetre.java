@@ -3,17 +3,14 @@ package BoulderDash.Vue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import BoulderDash.BoulderDash;
-import BoulderDash.Modele.Jeu;
-
 public class Fenetre extends JFrame {
 	private static final long serialVersionUID = 3393452907097178193L;
 
 	private JPanel display;
 
-	public Fenetre(Jeu jeu) {
+	public Fenetre() {
 		super("Boulder Dash");
-		display = new MenuPrincipal(this);
+		display = new MenuPrincipal();
 		add(display);
 		display.grabFocus();
 		setResizable(false);
@@ -28,7 +25,7 @@ public class Fenetre extends JFrame {
 		remove(display);
 		switch (vue) {
 		case MENUPRINCIPAL:
-			display = new MenuPrincipal(this);
+			display = new MenuPrincipal();
 			break;
 		case MENUCHOIXNIVEAU:
 			display = new MenuChoixNiveau();
@@ -40,10 +37,10 @@ public class Fenetre extends JFrame {
 			display = new PanelEditeur();
 			break;
 		case TABLEAUJEU:
-			display = new PanelJeu(BoulderDash.getJeu());
+			display = new PanelJeu();
 			break;
 		default:
-			display = new MenuPrincipal(this);
+			display = new MenuPrincipal();
 			break;
 		}
 		add(display);

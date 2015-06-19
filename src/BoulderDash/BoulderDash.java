@@ -15,7 +15,7 @@ public class BoulderDash {
 		jeu = new Jeu();
 		edit = new Editeur();
 
-		fen = new Fenetre(jeu);
+		fen = new Fenetre();
 		fen.setVisible(true);
 
 	}
