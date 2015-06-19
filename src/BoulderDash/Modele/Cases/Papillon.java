@@ -134,6 +134,23 @@ public class Papillon extends ElementDynamique {
 		return TableAnimation.getPapillon();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * BoulderDash.Modele.Cases.Case#chutableArrive(BoulderDash.Modele.Niveau)
+	 */
+	@Override
+	public EtatChutable chutableArrive(Niveau N) {
+		for (int y = getY() - 1; y <= getY() + 1; y++) {
+			for (int x = getX() - 1; x <= getX() + 1; x++) {
+				N.remUptable(N.getCase(x, y));
+				N.insereDiamant(x, y);
+			}
+		}
+		return EtatChutable.Stable;
+	}
+
 	@Override
 	public String ID() {
 		return "E";
