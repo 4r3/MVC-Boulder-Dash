@@ -6,8 +6,8 @@ import Modele.Animation.TableAnimation;
 
 public class Boue extends Case {
 
-	public Boue() {
-
+	public Boue(int x, int y) {
+		super(x, y);
 	}
 
 	@Override
@@ -21,11 +21,11 @@ public class Boue extends Case {
 	}
 
 	@Override
-	public boolean PersonageArrive(Niveau N, int x, int y) {
-		N.echangeCases(N.getPerso().getPos_x(), N.getPerso().getPos_y(), x, y);
-		N.insereVide(N.getPerso().getPos_x(), N.getPerso().getPos_y());
-		N.remplirUpTable(N.getPerso().getPos_x(), N.getPerso().getPos_y());
-		N.getPerso().setPos(x, y);
+	public boolean PersonageArrive(Niveau N) {
+		N.echangeCases(N.getPerso().getX(), N.getPerso().getY(), this.getX(),
+				this.getY());
+		N.insereVide(N.getPerso().getX(), N.getPerso().getY());
+		N.remplirUpTable(this.getX(), this.getY());
 		return true;
 	}
 }

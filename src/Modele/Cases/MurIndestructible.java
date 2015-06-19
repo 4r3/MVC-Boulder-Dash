@@ -5,8 +5,8 @@ import Modele.Animation.TableAnimation;
 
 public class MurIndestructible extends Case {
 
-	public MurIndestructible() {
-
+	public MurIndestructible(int x, int y) {
+		super(x, y);
 	}
 
 	@Override

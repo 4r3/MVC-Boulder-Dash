@@ -40,9 +40,6 @@ public class BoulderDash {
 		return fen;
 	}
 
-	/**
-	 * @return
-	 */
 	public static Editeur getEdit() {
 		return edit;
 	}

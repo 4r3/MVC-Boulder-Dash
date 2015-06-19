@@ -23,8 +23,8 @@ public abstract class Chutable extends ElementDynamique {
 
 	@Override
 	public void refresh(Niveau N) {
-		Case C = N.getCase(getPos_x(), getPos_y() + 1);
-		etat = ((InterChutable) C).chutableArrive(N, getPos_x(), getPos_y());
+		Case C = N.getCase(getX(), getY() + 1);
+		etat = ((InterChutable) C).chutableArrive(N, getX(), getY());
 	}
 
 	public void setChute() {
@@ -58,7 +58,7 @@ public abstract class Chutable extends ElementDynamique {
 			if (((Chutable) N.getCase(x, y)).instable()) {
 				N.echangeCases(x, y, x + 1, y + 1);
 				N.remplirUpTable(x, y);
-				((Chutable) N.getCase(x + 1, y + 1)).setPos(x + 1, y + 1);
+				((Chutable) N.getCase(x + 1, y + 1)).setXY(x + 1, y + 1);
 				return EtatChutable.Chute;
 			} else {
 				return EtatChutable.Instable;
@@ -68,7 +68,7 @@ public abstract class Chutable extends ElementDynamique {
 			if (((Chutable) N.getCase(x, y)).instable()) {
 				N.echangeCases(x, y, x - 1, y + 1);
 				N.remplirUpTable(x, y);
-				((Chutable) N.getCase(x - 1, y + 1)).setPos(x - 1, y + 1);
+				((Chutable) N.getCase(x - 1, y + 1)).setXY(x - 1, y + 1);
 				return EtatChutable.Chute;
 			} else {
 				return EtatChutable.Instable;

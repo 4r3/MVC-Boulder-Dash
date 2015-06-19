@@ -27,20 +27,18 @@ public class Rocher extends Chutable {
 	}
 
 	@Override
-	public boolean PersonageArrive(Niveau N, int x, int y) {
+	public boolean PersonageArrive(Niveau N) {
 		if (N.getPerso().getDeplace() == Directions.Gauche) {
-			if (N.getCase(x - 1, y).isVide()) {
-				N.echangeCases(x, y, x - 1, y);
-				N.addUptable(x - 1, y);
-				N.remplirUpTable(x, y);
-				setPos_x(x - 1);
+			if (N.getCase(getX() - 1, getY()).isVide()) {
+				N.echangeCases(getX(), getY(), getX() - 1, getY());
+				N.addUptable(getX() - 1, getY());
+				N.remplirUpTable(getX(), getY());
 			}
 		} else if (N.getPerso().getDeplace() == Directions.Droite) {
-			if (N.getCase(x + 1, y).isVide()) {
-				N.echangeCases(x, y, x + 1, y);
-				N.addUptable(x + 1, y);
-				N.remplirUpTable(x, y);
-				setPos_x(x + 1);
+			if (N.getCase(getX() + 1, getY()).isVide()) {
+				N.echangeCases(getX(), getY(), getX() + 1, getY());
+				N.addUptable(getX() + 1, getY());
+				N.remplirUpTable(getX(), getY());
 			}
 		}
 		return false;

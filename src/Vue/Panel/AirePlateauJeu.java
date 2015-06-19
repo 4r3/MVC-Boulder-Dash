@@ -10,7 +10,6 @@ import javax.swing.JPanel;
 import Modele.Niveau;
 import Modele.Variables;
 import Modele.Animation.TableAnimation;
-import Modele.Cases.Personnage;
 
 @SuppressWarnings("serial")
 public class AirePlateauJeu extends JPanel {
@@ -38,16 +37,16 @@ public class AirePlateauJeu extends JPanel {
 				g.drawImage(TableAnimation.getVide().getSprite(), a
 						* Variables.TAILLE_CASE, b * Variables.TAILLE_CASE,
 						null);
-				if (!(niveau.getCase(a, b) instanceof Personnage)) {
+				if (!(niveau.getCase(a, b) == niveau.getPerso())) {
 					g.drawImage(
 							niveau.getCase(a, b).getAnimation().getSprite(), a
 									* Variables.TAILLE_CASE, b
 									* Variables.TAILLE_CASE, null);
 				}
 				g.drawImage(niveau.getPerso().getAnimation().getSprite(),
-						niveau.getPerso().getPos_x() * Variables.TAILLE_CASE
+						niveau.getPerso().getX() * Variables.TAILLE_CASE
 								+ niveau.getPerso().getoffsetX(), niveau
-								.getPerso().getPos_y()
+								.getPerso().getY()
 								* Variables.TAILLE_CASE
 								+ niveau.getPerso().getoffsetY(), null);
 			}

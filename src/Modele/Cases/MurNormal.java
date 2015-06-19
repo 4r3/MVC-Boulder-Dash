@@ -6,6 +6,14 @@ import Modele.Animation.TableAnimation;
 
 public class MurNormal extends Case {
 
+	/**
+	 * @param x
+	 * @param y
+	 */
+	public MurNormal(int x, int y) {
+		super(x, y);
+	}
+
 	@Override
 	public Animation getAnimation() {
 		return TableAnimation.getMur();
@@ -23,7 +31,7 @@ public class MurNormal extends Case {
 			if (((Chutable) N.getCase(x, y)).instable()) {
 				N.echangeCases(x, y, x + 1, y + 1);
 				N.remplirUpTable(x, y);
-				((Chutable) N.getCase(x + 1, y + 1)).setPos(x + 1, y + 1);
+				((Chutable) N.getCase(x + 1, y + 1)).setXY(x + 1, y + 1);
 				return EtatChutable.Chute;
 			} else {
 				return EtatChutable.Instable;
@@ -33,7 +41,7 @@ public class MurNormal extends Case {
 			if (((Chutable) N.getCase(x, y)).instable()) {
 				N.echangeCases(x, y, x - 1, y + 1);
 				N.remplirUpTable(x, y);
-				((Chutable) N.getCase(x - 1, y + 1)).setPos(x - 1, y + 1);
+				((Chutable) N.getCase(x - 1, y + 1)).setXY(x - 1, y + 1);
 				return EtatChutable.Chute;
 			} else {
 				return EtatChutable.Instable;

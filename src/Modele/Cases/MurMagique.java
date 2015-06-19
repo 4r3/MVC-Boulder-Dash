@@ -13,25 +13,22 @@ import Modele.Animation.TableAnimation;
  */
 public class MurMagique extends Case {
 	private boolean active;
-	private int x;
-	private int y;
 
 	public MurMagique(int x, int y) {
-		this.x = x;
-		this.y = y;
+		super(x, y);
 		active = false;
 	}
 
 	public void activer(Niveau N) {
 		active = true;
-		if (N.getCase(x - 1, y) instanceof MurMagique
-				&& !((MurMagique) N.getCase(x - 1, y)).isActive()) {
-			((MurMagique) N.getCase(x - 1, y)).activer(N);
+		if (N.getCase(getX() - 1, getY()) instanceof MurMagique
+				&& !((MurMagique) N.getCase(getX() - 1, getY())).isActive()) {
+			((MurMagique) N.getCase(getX() - 1, getY())).activer(N);
 		}
 
-		if (N.getCase(x + 1, y) instanceof MurMagique
-				&& !((MurMagique) N.getCase(x + 1, y)).isActive()) {
-			((MurMagique) N.getCase(x + 1, y)).activer(N);
+		if (N.getCase(getX() + 1, getY()) instanceof MurMagique
+				&& !((MurMagique) N.getCase(getX() + 1, getY())).isActive()) {
+			((MurMagique) N.getCase(getX() + 1, getY())).activer(N);
 		}
 	}
 
@@ -87,7 +84,7 @@ public class MurMagique extends Case {
 			if (((Chutable) N.getCase(x, y)).instable()) {
 				N.echangeCases(x, y, x + 1, y + 1);
 				N.remplirUpTable(x, y);
-				((Chutable) N.getCase(x + 1, y + 1)).setPos(x + 1, y + 1);
+				((Chutable) N.getCase(x + 1, y + 1)).setXY(x + 1, y + 1);
 				return EtatChutable.Chute;
 			} else {
 				return EtatChutable.Instable;
@@ -97,7 +94,7 @@ public class MurMagique extends Case {
 			if (((Chutable) N.getCase(x, y)).instable()) {
 				N.echangeCases(x, y, x - 1, y + 1);
 				N.remplirUpTable(x, y);
-				((Chutable) N.getCase(x - 1, y + 1)).setPos(x - 1, y + 1);
+				((Chutable) N.getCase(x - 1, y + 1)).setXY(x - 1, y + 1);
 				return EtatChutable.Chute;
 			} else {
 				return EtatChutable.Instable;

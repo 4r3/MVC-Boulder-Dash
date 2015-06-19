@@ -4,20 +4,17 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
+import BoulderDash.BoulderDash;
 import Modele.Editeur;
 import Modele.Variables;
-import Vue.Panel.AirePlateauEditeur;
 
 public class GestionSourisInsertionEditeur implements MouseListener,
 		MouseMotionListener {
 
 	private Editeur editeur;
 
-	public GestionSourisInsertionEditeur(AirePlateauEditeur panel,
-			Editeur editeur) {
-		this.editeur = editeur;
-		panel.addMouseListener(this);
-		panel.addMouseMotionListener(this);
+	public GestionSourisInsertionEditeur() {
+		this.editeur = BoulderDash.getEdit();
 	}
 
 	@Override

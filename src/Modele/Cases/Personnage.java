@@ -14,7 +14,7 @@ public class Personnage extends ElementDynamique {
 	private int IDLE;
 
 	public Personnage(int pos_x, int pos_y) {
-		super(pos_x, pos_y, true);
+		super(pos_x, pos_y, TypeCase.Personnage);
 		Deplace = Directions.Null;
 		Last = Directions.Null;
 
@@ -33,8 +33,8 @@ public class Personnage extends ElementDynamique {
 
 	@Override
 	public void refresh(Niveau N) {
-		int xdest = getPos_x();
-		int ydest = getPos_y();
+		int xdest = getX();
+		int ydest = getY();
 		switch (Deplace) {
 		case Bas:
 			ydest++;
@@ -65,18 +65,9 @@ public class Personnage extends ElementDynamique {
 		Last = Deplace;
 		Case C = N.getCase(xdest, ydest);
 
-		if (!((InterPersonnage) C).PersonageArrive(N, xdest, ydest)) {
+		if (!C.PersonageArrive(N)) {
 			Last = Directions.Null;
 		}
-
-		// if (C instanceof InterPersonnage) {
-		// if (!((InterPersonnage) C).PersonageArrive(N, xdest, ydest)) {
-		// Last = Directions.Null;
-		// }
-		// } else {
-		// Last = Directions.Null;
-		// System.out.println(N.getCase(xdest, ydest).getClass().getName());
-		// }
 	}
 
 	private void arret() {

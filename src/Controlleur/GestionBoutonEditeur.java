@@ -9,7 +9,7 @@ import BoulderDash.BoulderDash;
 import Modele.Animation.ChoixAnimation;
 import Vue.Panel.Vues;
 
-public class GestionSourisEditeur implements ActionListener {
+public class GestionBoutonEditeur implements ActionListener {
 
 	JButton bouton1;
 	JButton bouton2;
@@ -22,8 +22,9 @@ public class GestionSourisEditeur implements ActionListener {
 	JButton bouton9;
 	JButton bouton10;
 	JButton bouton11;
+	JButton bouton12;
 
-	public GestionSourisEditeur(JButton b1, JButton b2, JButton b3, JButton b4,
+	public GestionBoutonEditeur(JButton b1, JButton b2, JButton b3, JButton b4,
 			JButton b5, JButton b6, JButton b7, JButton b8, JButton b9,
 			JButton b10, JButton b11) {
 
@@ -38,18 +39,6 @@ public class GestionSourisEditeur implements ActionListener {
 		this.bouton9 = b9;
 		this.bouton10 = b10;
 		this.bouton11 = b11;
-
-		b1.addActionListener(this);
-		b2.addActionListener(this);
-		b3.addActionListener(this);
-		b4.addActionListener(this);
-		b5.addActionListener(this);
-		b6.addActionListener(this);
-		b7.addActionListener(this);
-		b8.addActionListener(this);
-		b9.addActionListener(this);
-		b10.addActionListener(this);
-		b11.addActionListener(this);
 	}
 
 	@Override
@@ -77,7 +66,7 @@ public class GestionSourisEditeur implements ActionListener {
 		} else if (arg0.getSource() == this.bouton10) { // Sélection Papillon
 			BoulderDash.getEdit().setIconActif(ChoixAnimation.Papillon);
 		} else if (arg0.getSource() == this.bouton11) { // Menu éditeur
-			BoulderDash.getFen().changerCardLayout(Vues.MENUEDITEUR);
+			BoulderDash.getFen().changerCardLayout(Vues.MENUPRINCIPAL);
 		}
 	}
 }

@@ -11,7 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import Controlleur.GestionSourisEditeur;
+import Controlleur.GestionBoutonEditeur;
 import Modele.Variables;
 import Modele.Animation.ChoixAnimation;
 import Modele.Animation.TableAnimation;
@@ -104,8 +104,23 @@ public class AireInfoEditeur extends JPanel {
 		papillon.setContentAreaFilled(false);
 
 		JButton retour = new JButton("Menu");
-		new GestionSourisEditeur(rockford, sortie, diamant, rocher, vide, boue,
-				mur, murIndest, murMag, papillon, retour);
+
+		// ajout des boutons dans le controlleur
+		GestionBoutonEditeur ctrl = new GestionBoutonEditeur(rockford, sortie,
+				diamant, rocher, vide, boue, mur, murIndest, murMag, papillon,
+				retour);
+
+		rockford.addActionListener(ctrl);
+		sortie.addActionListener(ctrl);
+		diamant.addActionListener(ctrl);
+		rocher.addActionListener(ctrl);
+		vide.addActionListener(ctrl);
+		boue.addActionListener(ctrl);
+		mur.addActionListener(ctrl);
+		murIndest.addActionListener(ctrl);
+		murMag.addActionListener(ctrl);
+		papillon.addActionListener(ctrl);
+		retour.addActionListener(ctrl);
 
 		add(rockford);
 		add(labelRockford);

@@ -44,42 +44,38 @@ public class Papillon extends ElementDynamique {
 	}
 
 	private boolean verifierHaut(Niveau N) {
-		return N.getCase(getPos_x(), getPos_y() - 1).isVide();
+		return N.getCase(getX(), getY() - 1).isVide();
 	}
 
 	private boolean verifierBas(Niveau N) {
-		return N.getCase(getPos_x(), getPos_y() + 1).isVide();
+		return N.getCase(getX(), getY() + 1).isVide();
 	}
 
 	private boolean verifierGauche(Niveau N) {
-		return N.getCase(getPos_x() - 1, getPos_y()).isVide();
+		return N.getCase(getX() - 1, getY()).isVide();
 	}
 
 	private boolean verifierDroite(Niveau N) {
-		return N.getCase(getPos_x() + 1, getPos_y()).isVide();
+		return N.getCase(getX() + 1, getY()).isVide();
 	}
 
 	private void allerHaut(Niveau N) {
-		N.echangeCases(getPos_x(), getPos_y() - 1, getPos_x(), getPos_y());
-		setPos_y(getPos_y() - 1);
+		N.echangeCases(getX(), getY() - 1, getX(), getY());
 		dirNav = Directions.Haut;
 	}
 
 	private void allerBas(Niveau N) {
-		N.echangeCases(getPos_x(), getPos_y() + 1, getPos_x(), getPos_y());
-		setPos_y(getPos_y() + 1);
+		N.echangeCases(getX(), getY() + 1, getX(), getY());
 		dirNav = Directions.Bas;
 	}
 
 	private void allerGauche(Niveau N) {
-		N.echangeCases(getPos_x(), getPos_y(), getPos_x() - 1, getPos_y());
-		setPos_x(getPos_x() - 1);
+		N.echangeCases(getX(), getY(), getX() - 1, getY());
 		dirNav = Directions.Gauche;
 	}
 
 	private void allerDroite(Niveau N) {
-		N.echangeCases(getPos_x(), getPos_y(), getPos_x() + 1, getPos_y());
-		setPos_x(getPos_x() + 1);
+		N.echangeCases(getX(), getY(), getX() + 1, getY());
 		dirNav = Directions.Droite;
 	}
 

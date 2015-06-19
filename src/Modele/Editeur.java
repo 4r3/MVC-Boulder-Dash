@@ -8,10 +8,15 @@ public class Editeur extends Observable {
 
 	private Niveau niveau;
 	private ChoixAnimation iconActif;
+	private int changedX;
+	private int changedY;
 
 	public Editeur() {
 		this.niveau = new Niveau();
+		niveau.afficheDebug();
 		this.setIconActif(ChoixAnimation.Personnage_Idle);
+		changedX = -1;
+		changedY = -1;
 	}
 
 	public void createNiveau(int x, int y) {
@@ -34,10 +39,26 @@ public class Editeur extends Observable {
 	public void modifierNiveau(int x, int y) {
 		switch (iconActif) {
 		case Personnage_Idle:
-			niveau.inserePersonage(x, y);
+			if (niveau.getPerso() == null) {
+				niveau.inserePersonage(x, y);
+			} else {
+				changedX = niveau.getPerso().getX();
+				changedY = niveau.getPerso().getY();
+				niveau.inserePersonage(x, y);
+				setChanged();
+				notifyObservers();
+			}
 			break;
 		case Sortie:
-			niveau.insereSortie(x, y);
+			if (niveau.getSortie() == null) {
+				niveau.insereSortie(x, y);
+			} else {
+				changedX = niveau.getSortie().getX();
+				changedY = niveau.getSortie().getY();
+				niveau.insereSortie(x, y);
+				setChanged();
+				notifyObservers();
+			}
 			break;
 		case Diamant:
 			niveau.insereDiamant(x, y);
@@ -64,8 +85,18 @@ public class Editeur extends Observable {
 			niveau.inserePapillon(x, y);
 			break;
 		}
+		changedX = x;
+		changedY = y;
 		setChanged();
 		notifyObservers();
+	}
+
+	public int getChangedX() {
+		return changedX;
+	}
+
+	public int getChangedY() {
+		return changedY;
 	}
 
 }

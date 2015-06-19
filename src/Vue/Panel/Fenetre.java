@@ -5,7 +5,6 @@ import java.awt.CardLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import BoulderDash.BoulderDash;
 import Modele.Jeu;
 
 public class Fenetre extends JFrame {
@@ -14,14 +13,13 @@ public class Fenetre extends JFrame {
 	private JPanel cards;
 	private MenuPrincipal menuPrinc;
 	private MenuJeu menuJeu;
-	private MenuEditeur menuEdit;
 	private PanelJeu panelJeu;
 	private PanelEditeur panelEdit;
 	private MenuChoixNiveau menuChoix;
 
 	public Fenetre(Jeu jeu) {
 		super("Boulder Dash");
-		initAireDejeu(jeu);
+		initFenetre(jeu);
 
 		setResizable(false);
 		pack();
@@ -31,20 +29,18 @@ public class Fenetre extends JFrame {
 
 	}
 
-	private void initAireDejeu(Jeu jeu) {
+	private void initFenetre(Jeu jeu) {
 
 		menuPrinc = new MenuPrincipal(this);
 		menuJeu = new MenuJeu();
-		menuEdit = new MenuEditeur();
 		menuChoix = new MenuChoixNiveau();
 
 		panelJeu = new PanelJeu(jeu);
-		panelEdit = new PanelEditeur(BoulderDash.getEdit());
+		panelEdit = new PanelEditeur();
 
 		cards = new JPanel(new CardLayout());
 		cards.add(menuPrinc, Vues.MENUPRINCIPAL.toString());
 		cards.add(menuJeu, Vues.MENUJEU.toString());
-		cards.add(menuEdit, Vues.MENUEDITEUR.toString());
 		cards.add(panelJeu, Vues.TABLEAUJEU.toString());
 		cards.add(menuChoix, Vues.MENUCHOIXNIVEAU.toString());
 		cards.add(panelEdit, Vues.TABLEAUEDITEUR.toString());
@@ -62,10 +58,6 @@ public class Fenetre extends JFrame {
 
 	public MenuJeu getMenuJeu() {
 		return menuJeu;
-	}
-
-	public MenuEditeur getMenuEdit() {
-		return menuEdit;
 	}
 
 	public PanelJeu getPanelJeu() {

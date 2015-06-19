@@ -6,16 +6,19 @@ import Modele.Animation.Animation;
 public abstract class Case implements InterChutable, InterPersonnage,
 		RefreshAnim {
 
-	private boolean vide;
-	private boolean personnage;
+	private int x;
+	private int y;
 
-	public Case() {
-		this(false, false);
+	private TypeCase type;
+
+	public Case(int x, int y) {
+		this(x, y, TypeCase.Autre);
 	}
 
-	public Case(boolean vide, boolean personage) {
-		this.vide = vide;
-		this.personnage = personage;
+	public Case(int x, int y, TypeCase type) {
+		this.x = x;
+		this.y = y;
+		this.type = type;
 	}
 
 	@SuppressWarnings("static-method")
@@ -26,11 +29,15 @@ public abstract class Case implements InterChutable, InterPersonnage,
 	public abstract Animation getAnimation();
 
 	public boolean isVide() {
-		return vide;
+		return type == TypeCase.Vide;
 	}
 
 	public boolean isPersonnage() {
-		return personnage;
+		return type == TypeCase.Personnage;
+	}
+
+	public boolean isSortie() {
+		return type == TypeCase.Sortie;
 	}
 
 	// methodes communes
@@ -41,12 +48,33 @@ public abstract class Case implements InterChutable, InterPersonnage,
 	}
 
 	@Override
-	public boolean PersonageArrive(Niveau N, int x, int y) {
+	public boolean PersonageArrive(Niveau N) {
 		return false;
 	}
 
 	@Override
 	public void refreshAnim() {
+	}
+
+	public int getX() {
+		return x;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public void setY(int y) {
+		this.y = y;
+	}
+
+	public void setXY(int x, int y) {
+		this.x = x;
+		this.y = y;
 	}
 
 }

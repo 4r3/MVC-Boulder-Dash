@@ -129,13 +129,17 @@ public class Niveau implements RefreshAnim {
 	 */
 	public void inserePersonage(int x, int y) {
 		if (x > 0 && x < longueur - 1 && y > 0 && y < hauteur - 1) {
-			perso = new Personnage(x, y);
-			tableau[x][y] = perso;
-		} else {
-			perso = new Personnage(1, 1);
-			tableau[1][1] = perso;
-		}
+			if (perso == null) {
+				perso = new Personnage(x, y);
+				// if (sortie != null && tableau[x][y] == sortie) {
+				// sortie = null;
+				// }
+				tableau[x][y] = perso;
+			} else {
+				echangeCases(perso.getX(), perso.getY(), x, y);
+			}
 
+		}
 	}
 
 	/**
@@ -147,14 +151,16 @@ public class Niveau implements RefreshAnim {
 	 *            position en y de la sortie
 	 */
 	public void insereSortie(int x, int y) {
-		if (x >= 0 && x < longueur && y >= 0 && y < hauteur
-				&& !(tableau[x][y] instanceof Personnage)) {
-
-			sortie = new Sortie();
-			tableau[x][y] = sortie;
-		} else {
-			sortie = new Sortie();
-			tableau[longueur - 2][hauteur - 2] = sortie;
+		if (x > 0 && x < longueur - 1 && y > 0 && y < hauteur - 1) {
+			if (sortie == null) {
+				sortie = new Sortie(x, y);
+				if (perso != null && tableau[x][y] == perso) {
+					perso = null;
+				}
+				tableau[x][y] = sortie;
+			} else {
+				echangeCases(sortie.getX(), sortie.getY(), x, y);
+			}
 		}
 	}
 
@@ -167,10 +173,12 @@ public class Niveau implements RefreshAnim {
 	 *            position en y de la sortie
 	 */
 	public void insereMurNormal(int x, int y) {
-		if (x > 0 && x < longueur - 1 && y > 0 && y < hauteur - 1
-				&& !(tableau[x][y] instanceof Personnage)
-				&& !(tableau[x][y] instanceof Sortie)) {
-			tableau[x][y] = new MurNormal();
+		if (x > 0
+				&& x < longueur - 1
+				&& y > 0
+				&& y < hauteur - 1
+				&& (tableau[x][y] == null || (tableau[x][y] != perso && tableau[x][y] != sortie))) {
+			tableau[x][y] = new MurNormal(x, y);
 		}
 	}
 
@@ -183,51 +191,63 @@ public class Niveau implements RefreshAnim {
 	 *            position en y de la sortie
 	 */
 	public void insereVide(int x, int y) {
-		if (x > 0 && x < longueur - 1 && y > 0 && y < hauteur - 1
-				&& !(tableau[x][y] instanceof Personnage)
-				&& !(tableau[x][y] instanceof Sortie)) {
-			tableau[x][y] = new Vide();
+		if (x > 0
+				&& x < longueur - 1
+				&& y > 0
+				&& y < hauteur - 1
+				&& (tableau[x][y] == null || (tableau[x][y] != perso && tableau[x][y] != sortie))) {
+			tableau[x][y] = new Vide(x, y);
 		}
 	}
 
 	public void insereBoue(int x, int y) {
-		if (x > 0 && x < longueur - 1 && y > 0 && y < hauteur - 1
-				&& !(tableau[x][y] instanceof Personnage)
-				&& !(tableau[x][y] instanceof Sortie)) {
-			tableau[x][y] = new Boue();
+		if (x > 0
+				&& x < longueur - 1
+				&& y > 0
+				&& y < hauteur - 1
+				&& (tableau[x][y] == null || (tableau[x][y] != perso && tableau[x][y] != sortie))) {
+			tableau[x][y] = new Boue(x, y);
 		}
 	}
 
 	public void insereMurIndestructible(int x, int y) {
-		if (x >= 0 && x < longueur && y >= 0 && y < hauteur
-				&& !(tableau[x][y] instanceof Personnage)
-				&& !(tableau[x][y] instanceof Sortie)) {
-			tableau[x][y] = new MurIndestructible();
+		if (x >= 0
+				&& x < longueur
+				&& y >= 0
+				&& y < hauteur
+				&& (tableau[x][y] == null || (tableau[x][y] != perso && tableau[x][y] != sortie))) {
+			tableau[x][y] = new MurIndestructible(x, y);
 		}
 	}
 
 	public void insereRocher(int x, int y) {
-		if (x > 0 && x < longueur - 1 && y > 0 && y < hauteur - 1
-				&& !(tableau[x][y] instanceof Personnage)
-				&& !(tableau[x][y] instanceof Sortie)) {
+		if (x > 0
+				&& x < longueur - 1
+				&& y > 0
+				&& y < hauteur - 1
+				&& (tableau[x][y] == null || (tableau[x][y] != perso && tableau[x][y] != sortie))) {
 			tableau[x][y] = new Rocher(x, y);
 			UpTable.add((ElementDynamique) tableau[x][y]);
 		}
 	}
 
 	public void insereDiamant(int x, int y) {
-		if (x > 0 && x < longueur - 1 && y > 0 && y < hauteur - 1
-				&& !(tableau[x][y] instanceof Personnage)
-				&& !(tableau[x][y] instanceof Sortie)) {
+		if (x > 0
+				&& x < longueur - 1
+				&& y > 0
+				&& y < hauteur - 1
+				&& (tableau[x][y] == null || (tableau[x][y] != perso && tableau[x][y] != sortie))) {
 			tableau[x][y] = new Diamant(x, y);
 			UpTable.add((ElementDynamique) tableau[x][y]);
 		}
 	}
 
 	public void insereMurMagique(int x, int y) {
-		if (x > 0 && x < longueur - 1 && y > 0 && y < hauteur - 1
-				&& !(tableau[x][y] instanceof Personnage)
-				&& !(tableau[x][y] instanceof Sortie)) {
+		if (x > 0
+				&& x < longueur - 1
+				&& y > 0
+				&& y < hauteur - 1
+				&& (tableau[x][y] == null || (tableau[x][y] != perso && tableau[x][y] != sortie))) {
 			tableau[x][y] = new MurMagique(x, y);
 		}
 	}
@@ -237,8 +257,7 @@ public class Niveau implements RefreshAnim {
 				&& x < longueur - 1
 				&& y > 0
 				&& y < hauteur - 1
-				&& tableau[x][y] != null
-				|| (tableau[x][y].isPersonnage() || tableau[x][y] instanceof Sortie)) {
+				&& (tableau[x][y] == null || (tableau[x][y] != perso && tableau[x][y] != sortie))) {
 			tableau[x][y] = new Papillon(x, y);
 			UpTable.add((ElementDynamique) tableau[x][y]);
 		}
@@ -276,7 +295,6 @@ public class Niveau implements RefreshAnim {
 		System.out.print(UpTable.size());
 		System.out.println(UpTable.toString());
 		System.out.println("Diamant restant :" + dscore);
-		System.out.println("sortie ouverte : " + sortie.isOuverte());
 	}
 
 	public Case getCase(int x, int y) {
@@ -299,6 +317,8 @@ public class Niveau implements RefreshAnim {
 		Case temp = tableau[x1][y1];
 		tableau[x1][y1] = tableau[x2][y2];
 		tableau[x2][y2] = temp;
+		tableau[x1][y1].setXY(x1, y1);
+		tableau[x2][y2].setXY(x2, y2);
 	}
 
 	//

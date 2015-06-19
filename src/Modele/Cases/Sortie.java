@@ -16,7 +16,8 @@ public class Sortie extends Case {
 
 	// private Animation animation;
 
-	public Sortie() {
+	public Sortie(int x, int y) {
+		super(x, y);
 		Fermer();
 	}
 
@@ -31,21 +32,17 @@ public class Sortie extends Case {
 
 	public void Ouvrir() {
 		this.ouverte = true;
-		// this.animation = TableAnimation.getSortie();
-		// this.animation.start();
 	}
 
 	public void Fermer() {
 		this.ouverte = false;
-		// this.animation = TableAnimation.getMur();
 	}
 
 	@Override
-	public boolean PersonageArrive(Niveau N, int x, int y) {
+	public boolean PersonageArrive(Niveau N) {
 		if (ouverte) {
-			N.echangeCases(N.getPerso().getPos_x(), N.getPerso().getPos_y(), x,
-					y);
-			N.getPerso().setPos(x, y);
+			N.echangeCases(N.getPerso().getX(), N.getPerso().getY(), getX(),
+					getY());
 			N.setFini();
 			return true;
 		} else {
@@ -61,7 +58,7 @@ public class Sortie extends Case {
 			if (((Chutable) N.getCase(x, y)).instable()) {
 				N.echangeCases(x, y, x + 1, y + 1);
 				N.remplirUpTable(x, y);
-				((Chutable) N.getCase(x + 1, y + 1)).setPos(x + 1, y + 1);
+				((Chutable) N.getCase(x + 1, y + 1)).setXY(x + 1, y + 1);
 				return EtatChutable.Chute;
 			} else {
 				return EtatChutable.Instable;
@@ -71,7 +68,7 @@ public class Sortie extends Case {
 			if (((Chutable) N.getCase(x, y)).instable()) {
 				N.echangeCases(x, y, x - 1, y + 1);
 				N.remplirUpTable(x, y);
-				((Chutable) N.getCase(x - 1, y + 1)).setPos(x - 1, y + 1);
+				((Chutable) N.getCase(x - 1, y + 1)).setXY(x - 1, y + 1);
 				return EtatChutable.Chute;
 			} else {
 				return EtatChutable.Instable;

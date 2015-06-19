@@ -10,5 +10,9 @@ import Modele.Niveau;
  *
  */
 public interface InterPersonnage {
-	public boolean PersonageArrive(Niveau N, int x, int y);
+	/**
+	 * @param N
+	 * @return
+	 */
+	boolean PersonageArrive(Niveau N);
 }

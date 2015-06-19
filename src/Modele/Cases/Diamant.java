@@ -27,11 +27,10 @@ public class Diamant extends Chutable {
 	}
 
 	@Override
-	public boolean PersonageArrive(Niveau N, int x, int y) {
-		N.echangeCases(N.getPerso().getPos_x(), N.getPerso().getPos_y(), x, y);
-		N.insereVide(N.getPerso().getPos_x(), N.getPerso().getPos_y());
-		N.remplirUpTable(N.getPerso().getPos_x(), N.getPerso().getPos_y());
-		N.getPerso().setPos(x, y);
+	public boolean PersonageArrive(Niveau N) {
+		N.echangeCases(N.getPerso().getX(), N.getPerso().getY(), getX(), getY());
+		N.insereVide(N.getPerso().getX(), N.getPerso().getY());
+		N.remplirUpTable(N.getPerso().getX(), N.getPerso().getY());
 		N.AddDscore();
 		N.remUptable(this);
 		return true;
