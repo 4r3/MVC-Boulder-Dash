@@ -23,7 +23,7 @@ public class BoulderDash {
 	private static void Application() {
 		while (true) {
 			jeu.gestion();
-			fen.changerCardLayout(Vues.MENUPRINCIPAL);
+			fen.changerVue(Vues.MENUPRINCIPAL);
 		}
 	}
 

@@ -7,7 +7,6 @@ import javax.swing.JButton;
 
 import BoulderDash.BoulderDash;
 import BoulderDash.Modele.Animation.ChoixAnimation;
-import BoulderDash.Vue.Vues;
 
 public class GestionBoutonEditeur implements ActionListener {
 
@@ -65,8 +64,6 @@ public class GestionBoutonEditeur implements ActionListener {
 			BoulderDash.getEdit().setIconActif(ChoixAnimation.Mur_Magique);
 		} else if (arg0.getSource() == this.bouton10) { // Sélection Papillon
 			BoulderDash.getEdit().setIconActif(ChoixAnimation.Papillon);
-		} else if (arg0.getSource() == this.bouton11) { // Menu éditeur
-			BoulderDash.getFen().changerCardLayout(Vues.MENUPRINCIPAL);
 		}
 	}
 }

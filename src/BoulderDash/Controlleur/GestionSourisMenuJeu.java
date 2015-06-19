@@ -31,16 +31,16 @@ public class GestionSourisMenuJeu implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		if (arg0.getSource() == this.bouton1) { // Revenir au jeu
-			BoulderDash.getFen().changerCardLayout(Vues.TABLEAUJEU);
+			BoulderDash.getFen().changerVue(Vues.TABLEAUJEU);
 		} else if (arg0.getSource() == this.bouton2) { // Recommencer le niveau
 
 		} else if (arg0.getSource() == this.bouton3) { // Changer le niveau
-			BoulderDash.getFen().changerCardLayout(Vues.MENUCHOIXNIVEAU);
+			BoulderDash.getFen().changerVue(Vues.MENUCHOIXNIVEAU);
 
 		} else if (arg0.getSource() == this.bouton4) { // Revenir au menu
 														// principal
 
-			BoulderDash.getFen().changerCardLayout(Vues.MENUPRINCIPAL);
+			BoulderDash.getFen().changerVue(Vues.MENUPRINCIPAL);
 		}
 	}
 }

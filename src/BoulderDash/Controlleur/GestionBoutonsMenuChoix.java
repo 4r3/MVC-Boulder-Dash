@@ -32,9 +32,9 @@ public class GestionBoutonsMenuChoix implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		if (arg0.getSource() == this.bouton1) {
 			BoulderDash.getJeu().chargerNiveau(liste.getSelectedValue());
-			BoulderDash.getFen().changerCardLayout(Vues.TABLEAUJEU);
+			BoulderDash.getFen().changerVue(Vues.TABLEAUJEU);
 		} else if (arg0.getSource() == this.bouton2) {
-			BoulderDash.getFen().changerCardLayout(Vues.MENUPRINCIPAL);
+			BoulderDash.getFen().changerVue(Vues.MENUPRINCIPAL);
 		}
 	}
 

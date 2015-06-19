@@ -17,6 +17,6 @@ public class GestionSourisJeu implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		BoulderDash.getFen().changerCardLayout(Vues.MENUJEU);
+		BoulderDash.getFen().changerVue(Vues.MENUJEU);
 	}
 }
