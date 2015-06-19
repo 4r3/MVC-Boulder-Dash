@@ -8,5 +8,5 @@ package BoulderDash.Modele;
  *
  */
 public enum EtatApplication {
-	MenuPrincipal, ChoixNiveau, Editeur, Jeu, EditeurNew
+	MenuPrincipal, ChoixNiveau, Editeur, Jeu
 }

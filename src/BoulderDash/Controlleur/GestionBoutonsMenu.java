@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 import BoulderDash.BoulderDash;
-import BoulderDash.Modele.EtatApplication;
 import BoulderDash.Vue.Vues;
 
 public class GestionBoutonsMenu implements ActionListener {
@@ -26,7 +25,7 @@ public class GestionBoutonsMenu implements ActionListener {
 		if (arg0.getSource() == this.bouton1) {
 			BoulderDash.getFen().changerVue(Vues.MENUCHOIXNIVEAU);
 		} else if (arg0.getSource() == this.bouton2) {
-			BoulderDash.setState(EtatApplication.EditeurNew);
+			BoulderDash.getEdit().createNiveau();
 			BoulderDash.getFen().changerVue(Vues.TABLEAUEDITEUR);
 		} else if (arg0.getSource() == this.bouton3) {
 			System.exit(0);

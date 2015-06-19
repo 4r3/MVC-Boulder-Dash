@@ -4,8 +4,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 
 import BoulderDash.BoulderDash;
+import BoulderDash.Modele.Jeu;
 import BoulderDash.Vue.Vues;
 
 public class GestionMenuEditeur implements ActionListener {
@@ -29,11 +31,29 @@ public class GestionMenuEditeur implements ActionListener {
 		if (arg0.getSource() == this.nouveau) { // Retour éditeur
 			BoulderDash.getEdit().createNiveau();
 		} else if (arg0.getSource() == this.charger) { // Charger niveau
-			System.out.println("load");
+			load();
 		} else if (arg0.getSource() == this.sauvgarder) { // Sauvegarder niveau
-			System.out.println("save");
+			save();
 		} else if (arg0.getSource() == this.quitter) { // Retour menu principal
 			BoulderDash.getFen().changerVue(Vues.MENUPRINCIPAL);
 		}
+	}
+
+	private static void save() {
+		System.out.println("save");
+		String nom = (String) JOptionPane.showInputDialog(BoulderDash.getFen(),
+				"Entrez le nom de votre niveau", "Sauvegarde",
+				JOptionPane.PLAIN_MESSAGE);
+		System.out.println(nom);
+		BoulderDash.getEdit().save(nom);
+	}
+
+	private static void load() {
+		String[] liste = Jeu.getListeNiveaux();
+		String path = (String) JOptionPane.showInputDialog(
+				BoulderDash.getFen(), "Complete the sentence:\n"
+						+ "\"Green eggs and...\"", "Customized Dialog",
+				JOptionPane.PLAIN_MESSAGE, null, liste, liste[0]);
+		BoulderDash.getEdit().loadNiveau(path);
 	}
 }

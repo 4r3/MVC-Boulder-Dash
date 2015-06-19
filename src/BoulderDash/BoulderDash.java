@@ -15,7 +15,7 @@ public class BoulderDash {
 	private static void init() {
 		state = EtatApplication.MenuPrincipal;
 		jeu = new Jeu();
-		edit = null;
+		edit = new Editeur();
 
 		fen = new Fenetre();
 		fen.setVisible(true);
@@ -26,10 +26,6 @@ public class BoulderDash {
 		while (true) {
 			switch (state) {
 			case ChoixNiveau:
-			case EditeurNew:
-				edit = new Editeur();
-				state = EtatApplication.Editeur;
-				break;
 			case Editeur:
 				break;
 			case Jeu:

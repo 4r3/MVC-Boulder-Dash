@@ -13,7 +13,7 @@ public class Editeur extends Observable {
 	private int changedY;
 
 	public Editeur() {
-		this.niveau = new Niveau();
+		// this.niveau = new Niveau();
 		this.setIconActif(ChoixAnimation.Personnage_Idle);
 		changedX = -1;
 		changedY = -1;
@@ -122,6 +122,14 @@ public class Editeur extends Observable {
 
 	public int getChangedY() {
 		return changedY;
+	}
+
+	/**
+	 * @param nom
+	 */
+	public void save(String nom) {
+		niveau.exporter(nom);
+
 	}
 
 }
