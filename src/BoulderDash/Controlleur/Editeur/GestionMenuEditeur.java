@@ -40,20 +40,20 @@ public class GestionMenuEditeur implements ActionListener {
 	}
 
 	private static void save() {
-		System.out.println("save");
 		String nom = (String) JOptionPane.showInputDialog(BoulderDash.getFen(),
 				"Entrez le nom de votre niveau", "Sauvegarde",
 				JOptionPane.PLAIN_MESSAGE);
-		System.out.println(nom);
-		BoulderDash.getEdit().save(nom);
+		if (nom != null && nom != "") {
+			BoulderDash.getEdit().save(nom);
+		}
 	}
 
 	private static void load() {
 		String[] liste = Jeu.getListeNiveaux();
 		String path = (String) JOptionPane.showInputDialog(
-				BoulderDash.getFen(), "Complete the sentence:\n"
-						+ "\"Green eggs and...\"", "Customized Dialog",
-				JOptionPane.PLAIN_MESSAGE, null, liste, liste[0]);
+				BoulderDash.getFen(), "Quel niveau voulez vous charger",
+				"Customized Dialog", JOptionPane.PLAIN_MESSAGE, null, liste,
+				liste[0]);
 		BoulderDash.getEdit().loadNiveau(path);
 	}
 }

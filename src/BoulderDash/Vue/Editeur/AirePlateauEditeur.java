@@ -82,11 +82,15 @@ public class AirePlateauEditeur extends JPanel {
 
 	public void repaint_xy(int x, int y) {
 		Graphics g = getGraphics();
-		g.drawImage(TableAnimation.getVide().getSpriteImmobile(), x
-				* Variables.TAILLE_CASE, y * Variables.TAILLE_CASE, null);
-		g.drawImage(BoulderDash.getEdit().getNiveau().getCase(x, y)
-				.getAnimation().getSpriteImmobile(), x * Variables.TAILLE_CASE,
-				y * Variables.TAILLE_CASE, null);
+		try {
+			g.drawImage(TableAnimation.getVide().getSpriteImmobile(), x
+					* Variables.TAILLE_CASE, y * Variables.TAILLE_CASE, null);
+			g.drawImage(BoulderDash.getEdit().getNiveau().getCase(x, y)
+					.getAnimation().getSpriteImmobile(), x
+					* Variables.TAILLE_CASE, y * Variables.TAILLE_CASE, null);
+		} catch (NullPointerException e) {
+			System.err.println("erreur dessin sprite");
+		}
 
 		drawDashedLine(g, 0, ((y + 1) * Variables.TAILLE_CASE) - 1, BoulderDash
 				.getEdit().getNiveau().getLongueur()

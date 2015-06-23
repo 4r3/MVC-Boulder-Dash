@@ -39,11 +39,9 @@ public class MurMagique extends Case {
 
 	@Override
 	public String ID() {
-		if (active) {
-			return "T";
-		} else {
-			return "X";
-		}
+
+		return "X";
+
 	}
 
 	@Override
@@ -67,14 +65,13 @@ public class MurMagique extends Case {
 				if (N.getCase(getX(), getY() - 1) instanceof Diamant) {
 					N.insereRocher(getX(), getY() + 1);
 				} else {
-
 					N.insereDiamant(getX(), getY() + 1);
 				}
 				((Chutable) N.getCase(getX(), getY() + 1)).setChute();
 			}
 			N.insereVide(getX(), getY() - 1);
 
-			return EtatChutable.Chute;
+			return EtatChutable.Instable;
 		} else {
 			return modeMur(N);
 		}

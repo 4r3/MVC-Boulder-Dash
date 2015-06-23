@@ -27,24 +27,6 @@ public class PanelJeu extends JPanel implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		if ((Integer) arg == 1) {
-			repaint();
-		} else {
-			changeNiveau();
-			System.out.println("releveling");
-		}
+		repaint();
 	}
-
-	public void changeNiveau() {
-		remove(aireJeu);
-		aireJeu = new AirePlateauJeu(BoulderDash.getJeu().getNiveau());
-		add(aireJeu);
-		remove(aireInfo);
-		aireInfo = new AireInfoJeu();
-		add(aireInfo);
-		removeKeyListener(listen);
-		listen = new GestionClavierJeu(BoulderDash.getJeu().getNiveau());
-		addKeyListener(listen);
-	}
-
 }

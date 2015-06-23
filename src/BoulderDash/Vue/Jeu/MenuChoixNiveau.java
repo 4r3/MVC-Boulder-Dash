@@ -12,7 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JPanel;
 
-import BoulderDash.Controlleur.Jeu.GestionBoutonsMenuChoix;
+import BoulderDash.Controlleur.Jeu.GestionMenuChoix;
 import BoulderDash.Modele.Jeu;
 import BoulderDash.Modele.Variables;
 
@@ -47,7 +47,7 @@ public class MenuChoixNiveau extends JPanel {
 		lancerJeu.setAlignmentX(Component.CENTER_ALIGNMENT);
 		retour.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-		GestionBoutonsMenuChoix ctrl = new GestionBoutonsMenuChoix(lancerJeu,
+		GestionMenuChoix ctrl = new GestionMenuChoix(lancerJeu,
 				retour, Liste);
 		lancerJeu.addActionListener(ctrl);
 		retour.addActionListener(ctrl);

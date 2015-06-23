@@ -46,7 +46,6 @@ public class Sortie extends Case {
 			N.setFini();
 			return true;
 		} else {
-			System.out.println("sortie fermée");
 			return false;
 		}
 	}

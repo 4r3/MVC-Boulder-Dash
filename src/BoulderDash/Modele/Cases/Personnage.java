@@ -71,7 +71,11 @@ public class Personnage extends ElementDynamique {
 	}
 
 	private void arret() {
-		TableAnimation.Personnage(animation).stop();
+		try {
+			TableAnimation.Personnage(animation).stop();
+		} catch (NullPointerException e) {
+		}
+
 		switch (Last) {
 		case Bas:
 			animation = ChoixAnimation.Personnage_Debout_Bas;
@@ -113,6 +117,9 @@ public class Personnage extends ElementDynamique {
 		case Bas:
 			setoffsetY((getoffsetY() - Variables.PAS_MVT)
 					% Variables.TAILLE_CASE);
+
+			// setoffsetY((getoffsetY() + Variables.PAS_MVT)
+			// % Variables.TAILLE_CASE);
 			break;
 		case Droite:
 			setoffsetX((getoffsetX() - Variables.PAS_MVT)

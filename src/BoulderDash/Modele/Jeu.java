@@ -3,20 +3,24 @@ package BoulderDash.Modele;
 import java.io.File;
 import java.util.Observable;
 
+import javax.swing.JOptionPane;
+
 import BoulderDash.BoulderDash;
+import BoulderDash.Vue.Vues;
 
 public class Jeu extends Observable {
 
 	private Niveau level;
+	private String levelPath;
+	private boolean pause;
 
 	public Jeu() {
 		level = null;
 	}
 
 	public void chargerNiveau(String path) {
+		levelPath = path;
 		level = new Niveau(path);
-		setChanged();
-		notifyObservers(2);
 	}
 
 	public Niveau getNiveau() {
@@ -57,19 +61,47 @@ public class Jeu extends Observable {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-
 			time = System.currentTimeMillis();
-			if (i == 0) {
-				level.refresh();
+			if (!pause) {
+				if (i == 0) {
+					try {
+						level.refresh();
+					} catch (NullPointerException e) {
+						corruptedLevel();
+						return;
+					}
+				}
+
+				level.refreshAnim();
+
+				i = (i + 1) % Variables.CYCLES;
+
+				setChanged();
+				notifyObservers(1);
 			}
-
-			level.refreshAnim();
-
-			i = (i + 1) % Variables.CYCLES;
-
-			setChanged();
-			notifyObservers(1);
 		}
 		BoulderDash.setState(EtatApplication.MenuPrincipal);
+	}
+
+	public void pauseOn() {
+		pause = true;
+	}
+
+	public void pauseOff() {
+		pause = false;
+	}
+
+	private void corruptedLevel() {
+		JOptionPane.showMessageDialog(BoulderDash.getFen(), "Niveau corompu",
+				"ERREUR", JOptionPane.ERROR_MESSAGE);
+		BoulderDash.getFen().changerVue(Vues.MENUPRINCIPAL);
+		BoulderDash.setState(EtatApplication.MenuPrincipal);
+	}
+
+	/**
+	 * 
+	 */
+	public void restartLevel() {
+		chargerNiveau(levelPath);
 	}
 }

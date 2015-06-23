@@ -34,21 +34,27 @@ public class AirePlateauJeu extends JPanel {
 		int a, b;
 		for (a = 0; a < this.niveau.getLongueur(); a++) {
 			for (b = 0; b < this.niveau.getHauteur(); b++) {
-				g.drawImage(TableAnimation.getVide().getSprite(), a
-						* Variables.TAILLE_CASE, b * Variables.TAILLE_CASE,
-						null);
-				if (!(niveau.getCase(a, b) == niveau.getPerso())) {
+				try {
+					g.drawImage(TableAnimation.getVide().getSprite(), a
+							* Variables.TAILLE_CASE, b * Variables.TAILLE_CASE,
+							null);
+				} catch (NullPointerException e) {
+				}
+				if (niveau.getCase(a, b) != niveau.getPerso()) {
 					g.drawImage(
 							niveau.getCase(a, b).getAnimation().getSprite(), a
 									* Variables.TAILLE_CASE, b
 									* Variables.TAILLE_CASE, null);
 				}
-				g.drawImage(niveau.getPerso().getAnimation().getSprite(),
-						niveau.getPerso().getX() * Variables.TAILLE_CASE
-								+ niveau.getPerso().getoffsetX(), niveau
-								.getPerso().getY()
-								* Variables.TAILLE_CASE
-								+ niveau.getPerso().getoffsetY(), null);
+				try {
+					g.drawImage(niveau.getPerso().getAnimation().getSprite(),
+							niveau.getPerso().getX() * Variables.TAILLE_CASE
+									+ niveau.getPerso().getoffsetX(), niveau
+									.getPerso().getY()
+									* Variables.TAILLE_CASE
+									+ niveau.getPerso().getoffsetY(), null);
+				} catch (NullPointerException e) {
+				}
 			}
 		}
 		Toolkit.getDefaultToolkit().sync();

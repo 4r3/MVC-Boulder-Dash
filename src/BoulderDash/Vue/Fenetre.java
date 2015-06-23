@@ -5,7 +5,6 @@ import javax.swing.JPanel;
 
 import BoulderDash.Vue.Editeur.PanelEditeur;
 import BoulderDash.Vue.Jeu.MenuChoixNiveau;
-import BoulderDash.Vue.Jeu.MenuJeu;
 import BoulderDash.Vue.Jeu.PanelJeu;
 
 public class Fenetre extends JFrame {
@@ -35,9 +34,6 @@ public class Fenetre extends JFrame {
 		case MENUCHOIXNIVEAU:
 			display = new MenuChoixNiveau();
 			break;
-		case MENUJEU:
-			display = new MenuJeu();
-			break;
 		case TABLEAUEDITEUR:
 			display = new PanelEditeur();
 			break;
@@ -51,6 +47,10 @@ public class Fenetre extends JFrame {
 		add(display);
 		display.grabFocus();
 		pack();
+	}
+
+	public void refocus() {
+		display.grabFocus();
 	}
 
 }

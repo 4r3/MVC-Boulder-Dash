@@ -40,6 +40,7 @@ public class Niveau {
 	private int hauteur;
 	private int longueur;
 	private int dscore;
+	private float tmax;
 	private boolean fini;
 	private Personnage perso;
 	private Sortie sortie;
@@ -267,6 +268,7 @@ public class Niveau {
 	 * suceptibles d'etre mis a jour dans le niveau
 	 */
 	public void refresh() {
+		tmax = tmax - Variables.CYCLES * Variables.FRAME / 1000;
 		int i = 0;
 		perso.refresh(this);
 		trieUpTable();
@@ -423,6 +425,14 @@ public class Niveau {
 		this.longueur = longueur;
 	}
 
+	/**
+	 * @param dscore
+	 *            the dscore to set
+	 */
+	public void setDscore(int dscore) {
+		this.dscore = dscore;
+	}
+
 	public int getDscore() {
 		return dscore;
 	}
@@ -447,7 +457,8 @@ public class Niveau {
 				}
 				writer.write("\n");
 			}
-			writer.write("DIAMOND," + dscore);
+			writer.write("DIAMOND," + dscore + "\n");
+			writer.write("TIME," + (int) tmax + "\n");
 			writer.close();
 
 		} catch (FileNotFoundException e) {
@@ -515,10 +526,20 @@ public class Niveau {
 						}
 					}
 				}
-
-				ligne = br.readLine();
-				propriete = ligne.split(separateur);
-				dscore = Integer.parseInt(propriete[1]);
+				try {
+					ligne = br.readLine();
+					propriete = ligne.split(separateur);
+					dscore = Integer.parseInt(propriete[1]);
+				} catch (NullPointerException e) {
+					dscore = 0;
+				}
+				try {
+					ligne = br.readLine();
+					propriete = ligne.split(separateur);
+					tmax = Float.parseFloat(propriete[1]);
+				} catch (NullPointerException e) {
+					tmax = 120;
+				}
 			}
 
 		} catch (FileNotFoundException e) {
@@ -534,13 +555,19 @@ public class Niveau {
 				}
 			}
 		}
-
-		System.out.println("niveau importé");
 	}
 
 	public void refreshAnim() {
 		perso.refreshAnim();
 		TableAnimation.refreshAnim();
+	}
+
+	public int getTmax() {
+		return (int) tmax;
+	}
+
+	public void setTmax(int tmax) {
+		this.tmax = tmax;
 	}
 
 }

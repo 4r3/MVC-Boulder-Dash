@@ -8,39 +8,38 @@ import javax.imageio.ImageIO;
 
 import BoulderDash.Modele.Variables;
 
-public class Sprite
-{
+public class Sprite {
 
 	private String srcImage;
 	private BufferedImage spriteSheet;
 
-	public Sprite(String src)
-	{
+	public Sprite(String src) {
 		this.srcImage = src;
 	}
 
-	public static BufferedImage loadSprite(String file)
-	{
+	public static BufferedImage loadSprite(String file) {
 
 		BufferedImage sprite = null;
 
 		try {
 			sprite = ImageIO.read(new File("sprites/" + file + ".png"));
-		} catch ( IOException e ) {
+		} catch (IOException e) {
+			System.err.println("erreur chargement sprite");
 			e.printStackTrace();
 		}
 
 		return sprite;
 	}
 
-	public BufferedImage getSprite(int xGrid, int yGrid)
-	{
+	public BufferedImage getSprite(int xGrid, int yGrid) {
 
-		if ( spriteSheet == null ) {
+		if (spriteSheet == null) {
 			spriteSheet = loadSprite(this.srcImage);
 		}
 
-		return spriteSheet.getSubimage(xGrid * Variables.TAILLE_CASE, yGrid * Variables.TAILLE_CASE, Variables.TAILLE_CASE, Variables.TAILLE_CASE);
+		return spriteSheet.getSubimage(xGrid * Variables.TAILLE_CASE, yGrid
+				* Variables.TAILLE_CASE, Variables.TAILLE_CASE,
+				Variables.TAILLE_CASE);
 	}
 
 }

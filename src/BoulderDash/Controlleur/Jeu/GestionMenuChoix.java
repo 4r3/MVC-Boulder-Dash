@@ -17,13 +17,13 @@ import BoulderDash.Vue.Vues;
  * @author 4r3
  *
  */
-public class GestionBoutonsMenuChoix implements ActionListener {
+public class GestionMenuChoix implements ActionListener {
 
 	private JButton bouton1;
 	private JButton bouton2;
 	private JList<String> liste;
 
-	public GestionBoutonsMenuChoix(JButton b1, JButton b2, JList<String> liste) {
+	public GestionMenuChoix(JButton b1, JButton b2, JList<String> liste) {
 		this.bouton1 = b1;
 		this.bouton2 = b2;
 		this.liste = liste;

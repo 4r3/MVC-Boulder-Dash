@@ -7,7 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import BoulderDash.Controlleur.Jeu.GestionSourisJeu;
+import BoulderDash.Controlleur.Jeu.GestionMenuJeu;
 import BoulderDash.Modele.Variables;
 
 @SuppressWarnings("serial")
@@ -27,7 +27,7 @@ public class AireInfoJeu extends JPanel {
 		/* + this.jeu.getDscore() */);
 		score.setForeground(Color.white);
 		JButton retour = new JButton("Menu");
-		new GestionSourisJeu(retour);
+		new GestionMenuJeu(retour);
 
 		add(score);
 		add(retour);
