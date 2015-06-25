@@ -88,6 +88,7 @@ public class Jeu extends Observable {
 				notifyObservers();
 			}
 		}
+		BoulderDash.setState(EtatApplication.MenuPrincipal);
 		if (!interuption) {
 			try {
 				Thread.sleep(Variables.FRAME);
@@ -96,16 +97,15 @@ public class Jeu extends Observable {
 			}
 			level.refreshAnim();
 			niveauFini = true;
+			int nScore = level.getTmax() + level.getScore();
 			setChanged();
 			notifyObservers();
 			if (level.getPerso().isVivant()) {
-				score += level.getScore();
-				score += level.getTmax();
+				score += nScore;
 			} else {
 				score = 0;
 			}
 		}
-		BoulderDash.setState(EtatApplication.MenuPrincipal);
 	}
 
 	public void pauseOn() {
