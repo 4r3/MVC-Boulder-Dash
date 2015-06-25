@@ -32,6 +32,7 @@ public class Diamant extends Chutable {
 		N.insereVide(getX(), getY());
 		N.remplirUpTable(N.getPerso().getX(), N.getPerso().getY());
 		N.AddDscore();
+		N.addToScore(25);
 		N.remUptable(this);
 		return true;
 	}

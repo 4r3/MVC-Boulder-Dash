@@ -27,6 +27,7 @@ public class PanelJeu extends JPanel implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		repaint();
+		aireJeu.repaint();
+		aireInfo.majinfos();
 	}
 }

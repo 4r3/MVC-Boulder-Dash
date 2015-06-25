@@ -145,4 +145,11 @@ public class Personnage extends ElementDynamique {
 	public Animation getAnimation() {
 		return TableAnimation.Personnage(animation);
 	}
+
+	/**
+	 * @return
+	 */
+	public boolean isVivant() {
+		return vivant;
+	}
 }

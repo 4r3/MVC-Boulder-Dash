@@ -13,12 +13,14 @@ import BoulderDash.Modele.Animation.TableAnimation;
  */
 public class Sortie extends Case {
 	private boolean ouverte;
+	private boolean persoSortit;
 
 	// private Animation animation;
 
 	public Sortie(int x, int y) {
 		super(x, y);
 		Fermer();
+		persoSortit = false;
 	}
 
 	@Override
@@ -44,6 +46,7 @@ public class Sortie extends Case {
 			N.echangeCases(N.getPerso().getX(), N.getPerso().getY(), getX(),
 					getY());
 			N.setFini();
+			persoSortit = true;
 			return true;
 		} else {
 			return false;
@@ -82,7 +85,9 @@ public class Sortie extends Case {
 
 	@Override
 	public Animation getAnimation() {
-		if (ouverte) {
+		if (persoSortit) {
+			return TableAnimation.getVide();
+		} else if (ouverte) {
 			return TableAnimation.getSortie();
 		} else {
 			return TableAnimation.getMur();

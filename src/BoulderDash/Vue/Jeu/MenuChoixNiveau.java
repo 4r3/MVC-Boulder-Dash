@@ -3,13 +3,12 @@
  */
 package BoulderDash.Vue.Jeu;
 
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JList;
+import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
 import BoulderDash.Controlleur.Jeu.GestionMenuChoix;
@@ -34,12 +33,11 @@ public class MenuChoixNiveau extends JPanel {
 
 	private void initMenu() {
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-		setBackground(Color.BLACK);
 		setPreferredSize(new Dimension(Variables.HAUTEUR_PANEL_SCORE,
 				Variables.LARGEUR_PANEL_SCORE));
 		setDoubleBuffered(true);
 
-		JList<String> Liste = new JList<String>(Jeu.getListeNiveaux());
+		JComboBox<String> Liste = new JComboBox<>(Jeu.getListeNiveaux());
 
 		JButton lancerJeu = new JButton("Jouer");
 		JButton retour = new JButton("Retour");
@@ -47,8 +45,7 @@ public class MenuChoixNiveau extends JPanel {
 		lancerJeu.setAlignmentX(Component.CENTER_ALIGNMENT);
 		retour.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-		GestionMenuChoix ctrl = new GestionMenuChoix(lancerJeu,
-				retour, Liste);
+		GestionMenuChoix ctrl = new GestionMenuChoix(lancerJeu, retour, Liste);
 		lancerJeu.addActionListener(ctrl);
 		retour.addActionListener(ctrl);
 

@@ -40,6 +40,7 @@ public class Niveau {
 	private int hauteur;
 	private int longueur;
 	private int dscore;
+	private int score;
 	private float tmax;
 	private boolean fini;
 	private Personnage perso;
@@ -68,14 +69,15 @@ public class Niveau {
 	public Niveau(String niveau) {
 		UpTable = new ArrayList<>();
 		fini = false;
-		dscore = 1;
-
+		score = 0;
 		importer(niveau);
 	}
 
 	/**
 	 * crée un niveau de l*h rempli de boue et avec une bordure de
 	 * MurIndestructible, avec une sortie en Sx,Sy et un personage en Px,Py
+	 * 
+	 * @deprecated
 	 * 
 	 * @param l
 	 *            longueur du niveau
@@ -93,6 +95,7 @@ public class Niveau {
 	 * @see MurIndestructible
 	 * 
 	 */
+	@Deprecated
 	public Niveau(int l, int h) {
 		int x, y;
 
@@ -268,7 +271,7 @@ public class Niveau {
 	 * suceptibles d'etre mis a jour dans le niveau
 	 */
 	public void refresh() {
-		tmax = tmax - Variables.CYCLES * Variables.FRAME / 1000;
+		tmax = tmax - Variables.CYCLES * Variables.FRAME / (float) 1000;
 		int i = 0;
 		perso.refresh(this);
 		trieUpTable();
@@ -568,6 +571,17 @@ public class Niveau {
 
 	public void setTmax(int tmax) {
 		this.tmax = tmax;
+	}
+
+	public void addToScore(int value) {
+		score += value;
+	}
+
+	/**
+	 * @return
+	 */
+	public int getScore() {
+		return score;
 	}
 
 }

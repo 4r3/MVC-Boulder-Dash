@@ -1,6 +1,5 @@
 package BoulderDash.Vue;
 
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 
@@ -21,7 +20,6 @@ public class MenuPrincipal extends JPanel {
 
 	private void initMenuPrincipal() {
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-		setBackground(Color.BLACK);
 		setPreferredSize(new Dimension(Variables.HAUTEUR_PANEL_SCORE,
 				Variables.LARGEUR_PANEL_SCORE));
 		setDoubleBuffered(true);

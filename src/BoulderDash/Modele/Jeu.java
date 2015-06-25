@@ -12,9 +12,12 @@ public class Jeu extends Observable {
 
 	private Niveau level;
 	private String levelPath;
+	private int score;
 	private boolean pause;
 
 	public Jeu() {
+		score = 0;
+		levelPath = null;
 		level = null;
 	}
 
@@ -77,9 +80,21 @@ public class Jeu extends Observable {
 				i = (i + 1) % Variables.CYCLES;
 
 				setChanged();
-				notifyObservers(1);
+				notifyObservers();
 			}
 		}
+		try {
+			Thread.sleep(Variables.FRAME);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		level.refreshAnim();
+		if (level.getPerso().isVivant()) {
+			score += level.getScore();
+			score += level.getTmax() * 10;
+		}
+		setChanged();
+		notifyObservers();
 		BoulderDash.setState(EtatApplication.MenuPrincipal);
 	}
 
@@ -91,7 +106,7 @@ public class Jeu extends Observable {
 		pause = false;
 	}
 
-	private void corruptedLevel() {
+	private static void corruptedLevel() {
 		JOptionPane.showMessageDialog(BoulderDash.getFen(), "Niveau corompu",
 				"ERREUR", JOptionPane.ERROR_MESSAGE);
 		BoulderDash.getFen().changerVue(Vues.MENUPRINCIPAL);
@@ -103,5 +118,9 @@ public class Jeu extends Observable {
 	 */
 	public void restartLevel() {
 		chargerNiveau(levelPath);
+	}
+
+	public int getScore() {
+		return score + level.getScore();
 	}
 }
