@@ -14,6 +14,8 @@ public class Jeu extends Observable {
 	private String levelPath;
 	private int score;
 	private boolean pause;
+	private boolean interuption;
+	private boolean niveauFini;
 
 	public Jeu() {
 		score = 0;
@@ -22,6 +24,9 @@ public class Jeu extends Observable {
 	}
 
 	public void chargerNiveau(String path) {
+		deleteObservers();
+		niveauFini = false;
+		interuption = false;
 		levelPath = path;
 		level = new Niveau(path);
 	}
@@ -54,7 +59,7 @@ public class Jeu extends Observable {
 			return;
 		}
 
-		while (!level.isFini()) {
+		while (!level.isFini() && !interuption) {
 			time = Variables.FRAME + System.currentTimeMillis() - time;
 			if (time <= 0) {
 				time = 1;
@@ -83,18 +88,23 @@ public class Jeu extends Observable {
 				notifyObservers();
 			}
 		}
-		try {
-			Thread.sleep(Variables.FRAME);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+		if (!interuption) {
+			try {
+				Thread.sleep(Variables.FRAME);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			level.refreshAnim();
+			niveauFini = true;
+			setChanged();
+			notifyObservers();
+			if (level.getPerso().isVivant()) {
+				score += level.getScore();
+				score += level.getTmax();
+			} else {
+				score = 0;
+			}
 		}
-		level.refreshAnim();
-		if (level.getPerso().isVivant()) {
-			score += level.getScore();
-			score += level.getTmax() * 10;
-		}
-		setChanged();
-		notifyObservers();
 		BoulderDash.setState(EtatApplication.MenuPrincipal);
 	}
 
@@ -122,5 +132,16 @@ public class Jeu extends Observable {
 
 	public int getScore() {
 		return score + level.getScore();
+	}
+
+	public void interompre() {
+		interuption = true;
+	}
+
+	/**
+	 * 
+	 */
+	public boolean isFini() {
+		return niveauFini;
 	}
 }

@@ -437,6 +437,9 @@ public class Niveau {
 	}
 
 	public int getDscore() {
+		if (dscore < 0) {
+			return 0;
+		}
 		return dscore;
 	}
 
@@ -566,6 +569,9 @@ public class Niveau {
 	}
 
 	public int getTmax() {
+		if (tmax < 0) {
+			return 0;
+		}
 		return (int) tmax;
 	}
 

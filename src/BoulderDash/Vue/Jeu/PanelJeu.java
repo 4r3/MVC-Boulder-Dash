@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 
 import BoulderDash.BoulderDash;
 import BoulderDash.Controlleur.Jeu.GestionClavierJeu;
+import BoulderDash.Controlleur.Jeu.GestionFinJeu;
 
 @SuppressWarnings("serial")
 public class PanelJeu extends JPanel implements Observer {
@@ -29,5 +30,8 @@ public class PanelJeu extends JPanel implements Observer {
 	public void update(Observable o, Object arg) {
 		aireJeu.repaint();
 		aireInfo.majinfos();
+		if (BoulderDash.getJeu().isFini()) {
+			GestionFinJeu.finJeu();
+		}
 	}
 }

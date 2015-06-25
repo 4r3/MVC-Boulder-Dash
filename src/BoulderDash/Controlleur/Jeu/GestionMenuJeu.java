@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 import BoulderDash.BoulderDash;
+import BoulderDash.Modele.EtatApplication;
 import BoulderDash.Vue.Vues;
 
 public class GestionMenuJeu implements ActionListener {
@@ -27,9 +28,11 @@ public class GestionMenuJeu implements ActionListener {
 		switch (n) {
 		case 0:
 			BoulderDash.getFen().changerVue(Vues.MENUPRINCIPAL);
+			BoulderDash.getJeu().getNiveau().setFini();
 			break;
 		case 1:
 			BoulderDash.getJeu().restartLevel();
+			BoulderDash.setState(EtatApplication.Jeu);
 			BoulderDash.getFen().changerVue(Vues.TABLEAUJEU);
 			break;
 		case 2:

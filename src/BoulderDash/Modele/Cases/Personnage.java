@@ -15,6 +15,7 @@ public class Personnage extends ElementDynamique {
 
 	public Personnage(int x, int y) {
 		super(x, y);
+		vivant = true;
 		Deplace = Directions.Null;
 		Last = Directions.Null;
 
@@ -117,9 +118,6 @@ public class Personnage extends ElementDynamique {
 		case Bas:
 			setoffsetY((getoffsetY() - Variables.PAS_MVT)
 					% Variables.TAILLE_CASE);
-
-			// setoffsetY((getoffsetY() + Variables.PAS_MVT)
-			// % Variables.TAILLE_CASE);
 			break;
 		case Droite:
 			setoffsetX((getoffsetX() - Variables.PAS_MVT)
@@ -139,6 +137,22 @@ public class Personnage extends ElementDynamique {
 			setoffsetY(0);
 			break;
 		}
+	}
+
+	@Override
+	public EtatChutable chutableArrive(Niveau N) {
+		if (((Chutable) N.getCase(getX(), getY() - 1)).chute()) {
+			vivant = false;
+			N.setFini();
+			animation = ChoixAnimation.Personnage_Mort;
+			for (int y = getY() - 1; y <= getY() + 1; y++) {
+				for (int x = getX() - 1; x <= getX() + 1; x++) {
+					N.remUptable(N.getCase(x, y));
+					N.insereVide(x, y);
+				}
+			}
+		}
+		return EtatChutable.Stable;
 	}
 
 	@Override
