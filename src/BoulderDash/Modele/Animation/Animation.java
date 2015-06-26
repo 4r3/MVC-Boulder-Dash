@@ -4,38 +4,73 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe d'animation, permet d'animer un tableau de sprites Peut être lancé ou
+ * stoppé
+ * 
+ * @see Sprite, Frame
+ */
 public class Animation {
 
-	private int frameCount; // Counts ticks for change
-	private int frameDelay; // frame delay 1-12 (You will have to play around
-							// with this)
-	private int currentFrame; // animations current frame
-	private int animationDirection; // animation direction (i.e counting forward
-									// or backward)
-	private int totalFrames; // total amount of frames for your animation
+	/**
+	 * Compteur pour le changement de frame
+	 */
+	private int compteur;
 
-	private boolean stopped; // has animations stopped
+	/**
+	 * Délai avant changement de frame
+	 */
+	private int delaiFrame;
 
-	private List<Frame> frames = new ArrayList<>(); // Arraylist of frames
+	/**
+	 * Animation actuelle
+	 */
+	private int frameCourante;
 
-	public Animation(BufferedImage[] frames, int frameDelay) {
-		this.frameDelay = frameDelay;
-		this.stopped = true;
+	/**
+	 * Nombre total de frame pour l'animation
+	 */
+	private int totalFrames;
+
+	/**
+	 * Indique si l'animation est stoppée
+	 */
+	private boolean enPause;
+
+	/**
+	 * Liste des frames
+	 */
+	private List<Frame> frames = new ArrayList<>();
+
+	/**
+	 * Crée une animation en stockant les frames dans une liste et en
+	 * initialisant le délai
+	 * 
+	 * @param frames
+	 *            tableau des images que l'on veut animer
+	 * @param delaiFrame
+	 *            délai du changement de frame
+	 */
+	public Animation(BufferedImage[] frames, int delaiFrame) {
+		this.delaiFrame = delaiFrame;
+		this.enPause = true;
 
 		for (int i = 0; i < frames.length; i++) {
-			addFrame(frames[i], frameDelay);
+			addFrame(frames[i], delaiFrame);
 		}
 
-		this.frameCount = 0;
-		this.frameDelay = frameDelay;
-		this.currentFrame = 0;
-		this.animationDirection = 1;
+		this.compteur = 0;
+		this.delaiFrame = delaiFrame;
+		this.frameCourante = 0;
 		this.totalFrames = this.frames.size();
 
 	}
 
+	/**
+	 * Lance l'animation
+	 */
 	public void start() {
-		if (!stopped) {
+		if (!enPause) {
 			return;
 		}
 
@@ -43,32 +78,29 @@ public class Animation {
 			return;
 		}
 
-		stopped = false;
+		enPause = false;
 	}
 
+	/**
+	 * Arrête l'animation
+	 */
 	public void stop() {
 		if (frames.size() == 0) {
 			return;
 		}
 
-		stopped = true;
+		enPause = true;
 	}
 
-	public void restart() {
-		if (frames.size() == 0) {
-			return;
-		}
-
-		stopped = false;
-		currentFrame = 0;
-	}
-
-	public void reset() {
-		this.stopped = true;
-		this.frameCount = 0;
-		this.currentFrame = 0;
-	}
-
+	/**
+	 * Transforme une image en frame grâce à sa durée puis la stocke dans une
+	 * liste
+	 * 
+	 * @param frame
+	 *            une des images de l'animation
+	 * @param duration
+	 *            délai du changement de frame
+	 */
 	private void addFrame(BufferedImage frame, int duration) {
 		if (duration <= 0) {
 			System.err.println("Invalid duration: " + duration);
@@ -76,28 +108,42 @@ public class Animation {
 		}
 
 		frames.add(new Frame(frame, duration));
-		currentFrame = 0;
+		frameCourante = 0;
 	}
 
+	/**
+	 * Permet de récupérer l'image actuelle
+	 * 
+	 * @return l'image de la frame courante
+	 */
 	public BufferedImage getSprite() {
-		return frames.get(currentFrame).getFrame();
+		return frames.get(frameCourante).getFrame();
 	}
 
+	/**
+	 * Permet de récupérer l'image statique de l'animation
+	 * 
+	 * @return une image statique
+	 */
 	public BufferedImage getSpriteImmobile() {
 		return frames.get(0).getFrame();
 	}
 
+	/**
+	 * Met à jour l'animation grâce au compteur qui modifie la frame actuelle
+	 * une fois le délai passé
+	 */
 	public void update() {
-		if (!stopped) {
-			frameCount++;
-			if (frameCount > frameDelay) {
-				frameCount = 0;
-				currentFrame += animationDirection;
+		if (!enPause) {
+			compteur++;
+			if (compteur > delaiFrame) {
+				compteur = 0;
+				frameCourante += 1;
 
-				if (currentFrame > totalFrames - 1) {
-					currentFrame = 0;
-				} else if (currentFrame < 0) {
-					currentFrame = totalFrames - 1;
+				if (frameCourante > totalFrames - 1) {
+					frameCourante = 0;
+				} else if (frameCourante < 0) {
+					frameCourante = totalFrames - 1;
 				}
 			}
 		}

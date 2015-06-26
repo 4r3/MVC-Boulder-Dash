@@ -6,10 +6,25 @@ import java.util.Map;
 
 import BoulderDash.Modele.Variables;
 
+/**
+ * Classe d'animation, permet d'animer un tableau de sprites Peut être lancé ou
+ * stoppé
+ * 
+ * @see Animation, Sprite
+ * @author Yiserot
+ */
 public class TableAnimation {
 
+	/**
+	 * Liste de toutes les animations du jeu
+	 */
 	private static Map<ChoixAnimation, Animation> tableAnimations = new HashMap<>();
 
+	/**
+	 * Permet de récupérer l'animation du papillon
+	 * 
+	 * @return l'animation du papillon
+	 */
 	public static Animation getPapillon() {
 
 		if (tableAnimations.get(ChoixAnimation.Papillon) == null) {
@@ -24,6 +39,11 @@ public class TableAnimation {
 		return tableAnimations.get(ChoixAnimation.Papillon);
 	}
 
+	/**
+	 * Permet de récupérer l'animation du personnage marchant vers la droite
+	 * 
+	 * @return l'animation du personnage marchant vers la droite
+	 */
 	private static Animation getPersonnageMarcheDroite() {
 		if (tableAnimations.get(ChoixAnimation.Personnage_Marche_Droite) == null) {
 			Sprite spritePersonnage = new Sprite("rockford");
@@ -36,6 +56,11 @@ public class TableAnimation {
 		return tableAnimations.get(ChoixAnimation.Personnage_Marche_Droite);
 	}
 
+	/**
+	 * Permet de récupérer l'animation du personnage marchant vers la gauche
+	 * 
+	 * @return l'animation du personnage marchant vers la gauche
+	 */
 	private static Animation getPersonnageMarcheGauche() {
 		if (tableAnimations.get(ChoixAnimation.Personnage_Marche_Gauche) == null) {
 			Sprite spritePersonnage = new Sprite("rockford");
@@ -48,6 +73,11 @@ public class TableAnimation {
 		return tableAnimations.get(ChoixAnimation.Personnage_Marche_Gauche);
 	}
 
+	/**
+	 * Permet de récupérer l'animation du personnage marchant vers le haut
+	 * 
+	 * @return l'animation du personnage marchant vers le haut
+	 */
 	private static Animation getPersonnageMarcheHaut() {
 		if (tableAnimations.get(ChoixAnimation.Personnage_Marche_Haut) == null) {
 			Sprite spritePersonnage = new Sprite("rockford");
@@ -60,6 +90,11 @@ public class TableAnimation {
 		return tableAnimations.get(ChoixAnimation.Personnage_Marche_Haut);
 	}
 
+	/**
+	 * Permet de récupérer l'animation du personnage marchant vers le bas
+	 * 
+	 * @return l'animation du personnage marchant vers le bas
+	 */
 	private static Animation getPersonnageMarcheBas() {
 		if (tableAnimations.get(ChoixAnimation.Personnage_Marche_Bas) == null) {
 			Sprite spritePersonnage = new Sprite("rockford");
@@ -72,6 +107,11 @@ public class TableAnimation {
 		return tableAnimations.get(ChoixAnimation.Personnage_Marche_Bas);
 	}
 
+	/**
+	 * Permet de récupérer l'animation du personnage debout vers la droite
+	 * 
+	 * @return l'animation du personnage debout vers la droite
+	 */
 	private static Animation getPersonnageDeboutDroite() {
 		if (tableAnimations.get(ChoixAnimation.Personnage_Debout_Droite) == null) {
 			Sprite spritePersonnage = new Sprite("rockford");
@@ -82,6 +122,11 @@ public class TableAnimation {
 		return tableAnimations.get(ChoixAnimation.Personnage_Debout_Droite);
 	}
 
+	/**
+	 * Permet de récupérer l'animation du personnage debout vers la gauche
+	 * 
+	 * @return l'animation du personnage debout vers la gauche
+	 */
 	private static Animation getPersonnageDeboutGauche() {
 		if (tableAnimations.get(ChoixAnimation.Personnage_Debout_Gauche) == null) {
 			Sprite spritePersonnage = new Sprite("rockford");
@@ -92,6 +137,11 @@ public class TableAnimation {
 		return tableAnimations.get(ChoixAnimation.Personnage_Debout_Gauche);
 	}
 
+	/**
+	 * Permet de récupérer l'animation du personnage debout vers le haut
+	 * 
+	 * @return l'animation du personnage debout vers le haut
+	 */
 	private static Animation getPersonnageDeboutHaut() {
 		if (tableAnimations.get(ChoixAnimation.Personnage_Debout_Haut) == null) {
 			Sprite spritePersonnage = new Sprite("rockford");
@@ -102,6 +152,11 @@ public class TableAnimation {
 		return tableAnimations.get(ChoixAnimation.Personnage_Debout_Haut);
 	}
 
+	/**
+	 * Permet de récupérer l'animation du personnage debout vers le bas
+	 * 
+	 * @return l'animation du personnage debout vers le bas
+	 */
 	private static Animation getPersonnageDeboutBas() {
 		if (tableAnimations.get(ChoixAnimation.Personnage_Debout_Bas) == null) {
 			Sprite spritePersonnage = new Sprite("rockford");
@@ -112,6 +167,11 @@ public class TableAnimation {
 		return tableAnimations.get(ChoixAnimation.Personnage_Debout_Bas);
 	}
 
+	/**
+	 * Permet de récupérer l'animation du personnage patientant
+	 * 
+	 * @return l'animation du personnage patientant
+	 */
 	private static Animation getPersonnageIdle() {
 		if (tableAnimations.get(ChoixAnimation.Personnage_Idle) == null) {
 			Sprite spritePersonnage = new Sprite("rockford");
@@ -124,6 +184,11 @@ public class TableAnimation {
 		return tableAnimations.get(ChoixAnimation.Personnage_Idle);
 	}
 
+	/**
+	 * Permet de récupérer l'animation du personnage mort
+	 * 
+	 * @return l'animation du personnage mort
+	 */
 	private static Animation getPersonnageMort() {
 		if (tableAnimations.get(ChoixAnimation.Personnage_Mort) == null) {
 			Sprite spritePersonnage = new Sprite("rockford");
@@ -134,6 +199,11 @@ public class TableAnimation {
 		return tableAnimations.get(ChoixAnimation.Personnage_Mort);
 	}
 
+	/**
+	 * Permet de récupérer l'animation de la boue
+	 * 
+	 * @return l'animation de la boue
+	 */
 	public static Animation getBoue() {
 		if (tableAnimations.get(ChoixAnimation.Boue) == null) {
 			Sprite spriteBoue = new Sprite("dirt");
@@ -144,6 +214,11 @@ public class TableAnimation {
 		return tableAnimations.get(ChoixAnimation.Boue);
 	}
 
+	/**
+	 * Permet de récupérer l'animation du diamant
+	 * 
+	 * @return l'animation du diamant
+	 */
 	public static Animation getDiamant() {
 		if (tableAnimations.get(ChoixAnimation.Diamant) == null) {
 			Sprite spriteDiamant = new Sprite("diamonds");
@@ -158,6 +233,11 @@ public class TableAnimation {
 		return tableAnimations.get(ChoixAnimation.Diamant);
 	}
 
+	/**
+	 * Permet de récupérer l'animation du rocher
+	 * 
+	 * @return l'animation du rocher
+	 */
 	public static Animation getRocher() {
 		if (tableAnimations.get(ChoixAnimation.Rocher) == null) {
 			Sprite spriteRocher = new Sprite("boulder");
@@ -171,6 +251,11 @@ public class TableAnimation {
 		return tableAnimations.get(ChoixAnimation.Rocher);
 	}
 
+	/**
+	 * Permet de récupérer l'animation du mur
+	 * 
+	 * @return l'animation du mur
+	 */
 	public static Animation getMur() {
 		if (tableAnimations.get(ChoixAnimation.Mur) == null) {
 			Sprite spriteMur = new Sprite("wall");
@@ -181,6 +266,11 @@ public class TableAnimation {
 		return tableAnimations.get(ChoixAnimation.Mur);
 	}
 
+	/**
+	 * Permet de récupérer l'animation du mur magique
+	 * 
+	 * @return l'animation du mur magique
+	 */
 	public static Animation getMurMagique() {
 		if (tableAnimations.get(ChoixAnimation.Mur_Magique) == null) {
 			Sprite spriteMurMagique = new Sprite("magicwall");
@@ -195,6 +285,11 @@ public class TableAnimation {
 		return tableAnimations.get(ChoixAnimation.Mur_Magique);
 	}
 
+	/**
+	 * Permet de récupérer l'animation de la sortie
+	 * 
+	 * @return l'animation de la sortie
+	 */
 	public static Animation getSortie() {
 		if (tableAnimations.get(ChoixAnimation.Sortie) == null) {
 			Sprite spriteSortieO = new Sprite("beacon");
@@ -209,6 +304,11 @@ public class TableAnimation {
 		return tableAnimations.get(ChoixAnimation.Sortie);
 	}
 
+	/**
+	 * Permet de récupérer l'animation du vide
+	 * 
+	 * @return l'animation du vide
+	 */
 	public static Animation getVide() {
 		if (tableAnimations.get(ChoixAnimation.Vide) == null) {
 			Sprite spriteVide = new Sprite("dirt_back");
@@ -220,8 +320,11 @@ public class TableAnimation {
 	}
 
 	/**
+	 * Permet de récupérer l'animation du personnage
+	 * 
 	 * @param animation
-	 * @return
+	 *            choix de l'animation
+	 * @return l'animation voulue du personnage
 	 */
 	public static Animation Personnage(ChoixAnimation animation) {
 		switch (animation) {
@@ -249,6 +352,9 @@ public class TableAnimation {
 		}
 	}
 
+	/**
+	 * Met à jour toutes les animations du jeu
+	 */
 	public static void refreshAnim() {
 		for (ChoixAnimation anim : ChoixAnimation.values()) {
 			if (tableAnimations.get(anim) != null) {
