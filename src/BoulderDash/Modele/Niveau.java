@@ -17,7 +17,6 @@ import BoulderDash.Modele.Cases.Boue;
 import BoulderDash.Modele.Cases.Case;
 import BoulderDash.Modele.Cases.Chutable;
 import BoulderDash.Modele.Cases.Diamant;
-import BoulderDash.Modele.Cases.ElementDynamique;
 import BoulderDash.Modele.Cases.MurIndestructible;
 import BoulderDash.Modele.Cases.MurMagique;
 import BoulderDash.Modele.Cases.MurNormal;
@@ -77,7 +76,6 @@ public class Niveau {
 	 * crée un niveau de l*h rempli de boue et avec une bordure de
 	 * MurIndestructible, avec une sortie en Sx,Sy et un personage en Px,Py
 	 * 
-	 * @deprecated
 	 * 
 	 * @param l
 	 *            longueur du niveau
@@ -95,7 +93,6 @@ public class Niveau {
 	 * @see MurIndestructible
 	 * 
 	 */
-	@Deprecated
 	public Niveau(int l, int h) {
 		int x, y;
 
@@ -230,7 +227,7 @@ public class Niveau {
 				&& y < hauteur - 1
 				&& (tableau[x][y] == null || (tableau[x][y] != perso && tableau[x][y] != sortie))) {
 			tableau[x][y] = new Rocher(x, y);
-			UpTable.add((ElementDynamique) tableau[x][y]);
+			UpTable.add(tableau[x][y]);
 		}
 	}
 
@@ -241,7 +238,7 @@ public class Niveau {
 				&& y < hauteur - 1
 				&& (tableau[x][y] == null || (tableau[x][y] != perso && tableau[x][y] != sortie))) {
 			tableau[x][y] = new Diamant(x, y);
-			UpTable.add((ElementDynamique) tableau[x][y]);
+			UpTable.add(tableau[x][y]);
 		}
 	}
 
@@ -262,7 +259,7 @@ public class Niveau {
 				&& y < hauteur - 1
 				&& (tableau[x][y] == null || (tableau[x][y] != perso && tableau[x][y] != sortie))) {
 			tableau[x][y] = new Papillon(x, y);
-			UpTable.add((ElementDynamique) tableau[x][y]);
+			UpTable.add(tableau[x][y]);
 		}
 	}
 
@@ -385,8 +382,8 @@ public class Niveau {
 		UpTable.remove(C);
 	}
 
-	public ElementDynamique[] getUpTable() {
-		return (ElementDynamique[]) UpTable.toArray();
+	public Case[] getUpTable() {
+		return (Case[]) UpTable.toArray();
 	}
 
 	//
@@ -446,6 +443,7 @@ public class Niveau {
 	/**
 	 * @param string
 	 */
+	@SuppressWarnings("resource")
 	public void exporter(String niveau) {
 		Writer writer = null;
 		try {
@@ -476,6 +474,7 @@ public class Niveau {
 		}
 	}
 
+	@SuppressWarnings("resource")
 	public void importer(String niveau) {
 		String ligne = "";
 		String separateur = ",";

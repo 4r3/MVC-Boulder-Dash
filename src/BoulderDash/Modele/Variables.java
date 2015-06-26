@@ -1,5 +1,7 @@
 package BoulderDash.Modele;
 
+import java.awt.Color;
+
 public class Variables {
 
 	public static final int HAUTEUR_FRAME = 500;
@@ -25,5 +27,8 @@ public class Variables {
 	public static final int VITESSE_ANIM = 1;
 	public static final int VITESSE_PERSO = 1;
 	public static final int VITESSE_IDLE = 8;
+
+	public static final Color COULEUR = Color.decode("#03224C");
+	public static final Color COULEUR_TEXTE = Color.decode("#FFFFFF");
 
 }

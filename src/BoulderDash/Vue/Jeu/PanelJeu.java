@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import BoulderDash.BoulderDash;
 import BoulderDash.Controlleur.Jeu.GestionClavierJeu;
 import BoulderDash.Controlleur.Jeu.GestionFinJeu;
+import BoulderDash.Modele.Variables;
 
 @SuppressWarnings("serial")
 public class PanelJeu extends JPanel implements Observer {
@@ -16,6 +17,7 @@ public class PanelJeu extends JPanel implements Observer {
 	private GestionClavierJeu listen;
 
 	public PanelJeu() {
+		setBackground(Variables.COULEUR);
 		aireJeu = new AirePlateauJeu(BoulderDash.getJeu().getNiveau());
 		add(aireJeu);
 		aireInfo = new AireInfoJeu();

@@ -6,7 +6,9 @@ import BoulderDash.Modele.Animation.Animation;
 import BoulderDash.Modele.Animation.ChoixAnimation;
 import BoulderDash.Modele.Animation.TableAnimation;
 
-public class Personnage extends ElementDynamique {
+public class Personnage extends Case {
+	private int offsetx;
+	private int offsety;
 	Directions Deplace;
 	Directions Last;
 	private ChoixAnimation animation;
@@ -156,6 +158,20 @@ public class Personnage extends ElementDynamique {
 	}
 
 	@Override
+	public boolean EnemiArrive(Niveau N) {
+		vivant = false;
+		N.setFini();
+		animation = ChoixAnimation.Personnage_Mort;
+		for (int y = getY() - 1; y <= getY() + 1; y++) {
+			for (int x = getX() - 1; x <= getX() + 1; x++) {
+				N.remUptable(N.getCase(x, y));
+				N.insereVide(x, y);
+			}
+		}
+		return false;
+	}
+
+	@Override
 	public Animation getAnimation() {
 		return TableAnimation.Personnage(animation);
 	}
@@ -165,5 +181,21 @@ public class Personnage extends ElementDynamique {
 	 */
 	public boolean isVivant() {
 		return vivant;
+	}
+
+	public int getoffsetX() {
+		return offsetx;
+	}
+
+	public int getoffsetY() {
+		return offsety;
+	}
+
+	public void setoffsetX(int x) {
+		offsetx = x;
+	}
+
+	public void setoffsetY(int y) {
+		offsety = y;
 	}
 }

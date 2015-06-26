@@ -51,6 +51,11 @@ public abstract class Case implements Interactions, Refresh {
 	}
 
 	@Override
+	public boolean EnemiArrive(Niveau N) {
+		return false;
+	}
+
+	@Override
 	public void refresh(Niveau N) {
 	}
 

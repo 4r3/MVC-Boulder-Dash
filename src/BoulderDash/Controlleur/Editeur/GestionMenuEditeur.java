@@ -73,7 +73,7 @@ public class GestionMenuEditeur implements ActionListener {
 		JPanel myPanel = new JPanel();
 		myPanel.add(new JLabel("Diamants requis"));
 		myPanel.add(diamants);
-		myPanel.add(Box.createVerticalStrut(15)); // a spacer
+		myPanel.add(Box.createHorizontalStrut(15)); // a spacer
 		myPanel.add(new JLabel("Temps maximum :"));
 		myPanel.add(temps);
 

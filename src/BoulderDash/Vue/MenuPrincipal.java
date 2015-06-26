@@ -1,10 +1,12 @@
 package BoulderDash.Vue;
 
-import java.awt.Component;
 import java.awt.Dimension;
 
+import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import BoulderDash.Controlleur.GestionBoutonsMenu;
@@ -22,15 +24,19 @@ public class MenuPrincipal extends JPanel {
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		setPreferredSize(new Dimension(Variables.HAUTEUR_PANEL_SCORE,
 				Variables.LARGEUR_PANEL_SCORE));
+		setBackground(Variables.COULEUR);
 		setDoubleBuffered(true);
+
+		JLabel logo = new JLabel(new ImageIcon("./sprites/titre.png"));
 
 		JButton lancerJeu = new JButton("Jeu");
 		JButton lancerEditeur = new JButton("Editeur");
 		JButton quitter = new JButton("Quitter");
 
-		lancerJeu.setAlignmentX(Component.CENTER_ALIGNMENT);
-		lancerEditeur.setAlignmentX(Component.CENTER_ALIGNMENT);
-		quitter.setAlignmentX(Component.CENTER_ALIGNMENT);
+		logo.setAlignmentX(CENTER_ALIGNMENT);
+		lancerJeu.setAlignmentX(CENTER_ALIGNMENT);
+		lancerEditeur.setAlignmentX(CENTER_ALIGNMENT);
+		quitter.setAlignmentX(CENTER_ALIGNMENT);
 
 		GestionBoutonsMenu ctrl;
 		ctrl = new GestionBoutonsMenu(lancerJeu, lancerEditeur, quitter);
@@ -38,8 +44,12 @@ public class MenuPrincipal extends JPanel {
 		lancerEditeur.addActionListener(ctrl);
 		quitter.addActionListener(ctrl);
 
+		add(logo);
+		add(Box.createVerticalStrut(15));
 		add(lancerJeu);
+		add(Box.createVerticalStrut(15));
 		add(lancerEditeur);
+		add(Box.createVerticalStrut(15));
 		add(quitter);
 	}
 }

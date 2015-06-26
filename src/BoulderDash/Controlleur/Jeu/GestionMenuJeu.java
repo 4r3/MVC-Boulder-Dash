@@ -12,14 +12,29 @@ import BoulderDash.Vue.Vues;
 
 public class GestionMenuJeu implements ActionListener {
 
-	public GestionMenuJeu(JButton b1) {
+	JButton b1;
+	JButton b2;
 
-		b1.addActionListener(this);
+	public GestionMenuJeu(JButton b1, JButton b2) {
+
+		this.b1 = b1;
+		this.b2 = b2;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		BoulderDash.getJeu().pauseOn();
+		if (arg0.getSource() == b1) {
+			menu();
+		} else if (arg0.getSource() == b2) {
+			aide();
+		}
+
+		BoulderDash.getJeu().pauseOff();
+		BoulderDash.getFen().refocus();
+	}
+
+	private static void menu() {
 		Object[] options = { "Menu principal", "Recommencer le niveau",
 				"Changer de niveau", "Retour au jeu" };
 		int n = JOptionPane.showOptionDialog(BoulderDash.getFen(), ""
@@ -41,7 +56,10 @@ public class GestionMenuJeu implements ActionListener {
 		default:
 			break;
 		}
-		BoulderDash.getJeu().pauseOff();
-		BoulderDash.getFen().refocus();
+	}
+
+	private static void aide() {
+		String help = "aucune aide arrivera !!!!";
+		JOptionPane.showMessageDialog(BoulderDash.getFen(), help);
 	}
 }

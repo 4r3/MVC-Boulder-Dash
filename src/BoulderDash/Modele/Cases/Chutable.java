@@ -9,7 +9,7 @@ import BoulderDash.Modele.Niveau;
  * @author 4r3
  *
  */
-public abstract class Chutable extends ElementDynamique {
+public abstract class Chutable extends Case {
 	private EtatChutable etat;
 
 	/**

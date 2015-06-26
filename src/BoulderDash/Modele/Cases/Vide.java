@@ -38,4 +38,9 @@ public class Vide extends Case {
 			return EtatChutable.Instable;
 		}
 	}
+
+	@Override
+	public boolean EnemiArrive(Niveau N) {
+		return true;
+	}
 }

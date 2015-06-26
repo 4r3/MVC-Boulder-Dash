@@ -11,8 +11,9 @@ import BoulderDash.Modele.Animation.TableAnimation;
  * @author 4r3
  *
  */
-public class Papillon extends ElementDynamique {
+public class Papillon extends Case {
 	Directions dirNav;
+	boolean tempo;
 
 	/**
 	 * 
@@ -20,43 +21,49 @@ public class Papillon extends ElementDynamique {
 	public Papillon(int x, int y) {
 		super(x, y);
 		dirNav = Directions.Haut;
+		tempo = true;
 	}
 
 	@Override
 	public void refresh(Niveau N) {
-		switch (dirNav) {
-		case Haut:
-			navHaut(N);
-			break;
-		case Bas:
-			navBas(N);
-			break;
-		case Gauche:
-			navGauche(N);
-			break;
-		case Droite:
-			navDroite(N);
-			break;
-		// $CASES-OMITTED$
-		default:
-			break;
+		if (!tempo) {
+			switch (dirNav) {
+			case Haut:
+				navHaut(N);
+				break;
+			case Bas:
+				navBas(N);
+				break;
+			case Gauche:
+				navGauche(N);
+				break;
+			case Droite:
+				navDroite(N);
+				break;
+			// $CASES-OMITTED$
+			default:
+				break;
+			}
+			tempo = true;
+		} else {
+			tempo = false;
 		}
 	}
 
 	private boolean verifierHaut(Niveau N) {
-		return N.getCase(getX(), getY() - 1).isVide();
+		return N.getCase(getX(), getY() - 1).EnemiArrive(N);
 	}
 
 	private boolean verifierBas(Niveau N) {
-		return N.getCase(getX(), getY() + 1).isVide();
+		return N.getCase(getX(), getY() + 1).EnemiArrive(N);
 	}
 
 	private boolean verifierGauche(Niveau N) {
-		return N.getCase(getX() - 1, getY()).isVide();
+		return N.getCase(getX() - 1, getY()).EnemiArrive(N);
 	}
 
 	private boolean verifierDroite(Niveau N) {
-		return N.getCase(getX() + 1, getY()).isVide();
+		return N.getCase(getX() + 1, getY()).EnemiArrive(N);
 	}
 
 	private void allerHaut(Niveau N) {
@@ -136,10 +143,13 @@ public class Papillon extends ElementDynamique {
 
 	@Override
 	public EtatChutable chutableArrive(Niveau N) {
-		for (int y = getY() - 1; y <= getY() + 1; y++) {
-			for (int x = getX() - 1; x <= getX() + 1; x++) {
-				N.remUptable(N.getCase(x, y));
-				N.insereDiamant(x, y);
+		if (((Chutable) N.getCase(getX(), getY() - 1)).chute()) {
+			N.addToScore(100);
+			for (int y = getY() - 1; y <= getY() + 1; y++) {
+				for (int x = getX() - 1; x <= getX() + 1; x++) {
+					N.remUptable(N.getCase(x, y));
+					N.insereDiamant(x, y);
+				}
 			}
 		}
 		return EtatChutable.Stable;

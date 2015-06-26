@@ -13,4 +13,6 @@ public interface Interactions {
 	boolean PersonageArrive(Niveau N);
 
 	EtatChutable chutableArrive(Niveau N);
+
+	boolean EnemiArrive(Niveau N);
 }
