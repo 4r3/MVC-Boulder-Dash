@@ -130,6 +130,10 @@ public class Jeu extends Observable {
 		chargerNiveau(levelPath);
 	}
 
+	public void resetScore() {
+		score = 0;
+	}
+
 	public int getScore() {
 		return score + level.getScore();
 	}

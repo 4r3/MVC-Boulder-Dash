@@ -24,6 +24,7 @@ public class GestionBoutonsMenu implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		if (arg0.getSource() == this.bouton1) {
 			BoulderDash.getFen().changerVue(Vues.MENUCHOIXNIVEAU);
+			BoulderDash.getJeu().resetScore();
 		} else if (arg0.getSource() == this.bouton2) {
 			BoulderDash.getEdit().createNiveau();
 			BoulderDash.getFen().changerVue(Vues.TABLEAUEDITEUR);

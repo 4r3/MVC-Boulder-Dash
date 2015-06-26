@@ -39,6 +39,7 @@ public class GestionFinJeu {
 				JOptionPane.PLAIN_MESSAGE, null, options, options[2]);
 		switch (n) {
 		case 0:
+			BoulderDash.getJeu().resetScore();
 			BoulderDash.getFen().changerVue(Vues.MENUPRINCIPAL);
 			break;
 		case 1:
