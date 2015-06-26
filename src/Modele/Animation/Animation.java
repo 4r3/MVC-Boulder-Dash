@@ -6,13 +6,10 @@ import java.util.List;
 
 public class Animation {
 
-	private int frameCount; // Counts ticks for change
-	private int frameDelay; // frame delay 1-12 (You will have to play around
-							// with this)
-	private int currentFrame; // animations current frame
-	private int animationDirection; // animation direction (i.e counting forward
-									// or backward)
-	private int totalFrames; // total amount of frames for your animation
+	private int frameCount;
+	private int frameDelay;
+	private int currentFrame;
+	private int totalFrames;
 
 	private boolean stopped; // has animations stopped
 
@@ -29,7 +26,6 @@ public class Animation {
 		this.frameCount = 0;
 		this.frameDelay = frameDelay;
 		this.currentFrame = 0;
-		this.animationDirection = 1;
 		this.totalFrames = this.frames.size();
 
 	}
@@ -54,15 +50,6 @@ public class Animation {
 		stopped = true;
 	}
 
-	public void restart() {
-		if (frames.size() == 0) {
-			return;
-		}
-
-		stopped = false;
-		currentFrame = 0;
-	}
-
 	public void reset() {
 		this.stopped = true;
 		this.frameCount = 0;
@@ -71,8 +58,8 @@ public class Animation {
 
 	private void addFrame(BufferedImage frame, int duration) {
 		if (duration <= 0) {
-			System.err.println("Invalid duration: " + duration);
-			throw new RuntimeException("Invalid duration: " + duration);
+			System.err.println("Cette durée est invalide : " + duration);
+			throw new RuntimeException("Cette durée est invalide : " + duration);
 		}
 
 		frames.add(new Frame(frame, duration));
@@ -92,7 +79,7 @@ public class Animation {
 			frameCount++;
 			if (frameCount > frameDelay) {
 				frameCount = 0;
-				currentFrame += animationDirection;
+				currentFrame += 1;
 
 				if (currentFrame > totalFrames - 1) {
 					currentFrame = 0;
