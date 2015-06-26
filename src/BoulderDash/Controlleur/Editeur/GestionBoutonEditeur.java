@@ -19,13 +19,9 @@ public class GestionBoutonEditeur implements ActionListener {
 	JButton bouton7;
 	JButton bouton8;
 	JButton bouton9;
-	JButton bouton10;
-	JButton bouton11;
-	JButton bouton12;
 
 	public GestionBoutonEditeur(JButton b1, JButton b2, JButton b3, JButton b4,
-			JButton b5, JButton b6, JButton b7, JButton b8, JButton b9,
-			JButton b10, JButton b11) {
+			JButton b5, JButton b6, JButton b7, JButton b8, JButton b9) {
 
 		this.bouton1 = b1;
 		this.bouton2 = b2;
@@ -36,8 +32,6 @@ public class GestionBoutonEditeur implements ActionListener {
 		this.bouton7 = b7;
 		this.bouton8 = b8;
 		this.bouton9 = b9;
-		this.bouton10 = b10;
-		this.bouton11 = b11;
 	}
 
 	@Override
@@ -57,12 +51,8 @@ public class GestionBoutonEditeur implements ActionListener {
 		} else if (arg0.getSource() == this.bouton7) { // Sélection Mur
 			BoulderDash.getEdit().setIconActif(ChoixAnimation.Mur);
 		} else if (arg0.getSource() == this.bouton8) { // Sélection Mur
-														// Indestructible
-			BoulderDash.getEdit().setIconActif(
-					ChoixAnimation.Mur_Indestructible);
-		} else if (arg0.getSource() == this.bouton9) { // Sélection Mur Magique
 			BoulderDash.getEdit().setIconActif(ChoixAnimation.Mur_Magique);
-		} else if (arg0.getSource() == this.bouton10) { // Sélection Papillon
+		} else if (arg0.getSource() == this.bouton9) { // Sélection Mur Magique
 			BoulderDash.getEdit().setIconActif(ChoixAnimation.Papillon);
 		}
 	}

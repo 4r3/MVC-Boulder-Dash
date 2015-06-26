@@ -23,6 +23,9 @@ public class AireInfoEditeur extends JPanel {
 		initAireInformation();
 	}
 
+	// TODO enlever mur indestructible, ajouter champ de choix de temp et de
+	// score dimant min
+
 	private void initAireInformation() {
 		setPreferredSize(new Dimension(Variables.LARGEUR_PANEL_SCORE,
 				Variables.HAUTEUR_PANEL_SCORE));
@@ -71,12 +74,6 @@ public class AireInfoEditeur extends JPanel {
 		mur.setBorder(BorderFactory.createEmptyBorder());
 		mur.setContentAreaFilled(false);
 
-		JLabel labelMurIndest = new JLabel("Mur indestructible");
-		JButton murIndest = new JButton(new ImageIcon(TableAnimation.getMur()
-				.getSprite().getScaledInstance(32, 32, Image.SCALE_DEFAULT)));
-		murIndest.setBorder(BorderFactory.createEmptyBorder());
-		murIndest.setContentAreaFilled(false);
-
 		JLabel labelMurMag = new JLabel("Mur Magique");
 		JButton murMag = new JButton(new ImageIcon(TableAnimation
 				.getMurMagique().getSprite()
@@ -91,12 +88,9 @@ public class AireInfoEditeur extends JPanel {
 		papillon.setBorder(BorderFactory.createEmptyBorder());
 		papillon.setContentAreaFilled(false);
 
-		JButton retour = new JButton("Menu");
-
 		// ajout des boutons dans le controlleur
 		GestionBoutonEditeur ctrl = new GestionBoutonEditeur(rockford, sortie,
-				diamant, rocher, vide, boue, mur, murIndest, murMag, papillon,
-				retour);
+				diamant, rocher, vide, boue, mur, murMag, papillon);
 
 		rockford.addActionListener(ctrl);
 		sortie.addActionListener(ctrl);
@@ -105,10 +99,8 @@ public class AireInfoEditeur extends JPanel {
 		vide.addActionListener(ctrl);
 		boue.addActionListener(ctrl);
 		mur.addActionListener(ctrl);
-		murIndest.addActionListener(ctrl);
 		murMag.addActionListener(ctrl);
 		papillon.addActionListener(ctrl);
-		retour.addActionListener(ctrl);
 
 		add(rockford);
 		add(labelRockford);
@@ -124,12 +116,9 @@ public class AireInfoEditeur extends JPanel {
 		add(labelBoue);
 		add(mur);
 		add(labelMur);
-		add(murIndest);
-		add(labelMurIndest);
 		add(murMag);
 		add(labelMurMag);
 		add(papillon);
 		add(labelPapillon);
-		add(retour);
 	}
 }
