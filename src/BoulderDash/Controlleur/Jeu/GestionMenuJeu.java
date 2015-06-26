@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 
 import BoulderDash.BoulderDash;
 import BoulderDash.Modele.EtatApplication;
+import BoulderDash.Modele.Variables;
 import BoulderDash.Vue.Vues;
 
 public class GestionMenuJeu implements ActionListener {
@@ -59,7 +60,6 @@ public class GestionMenuJeu implements ActionListener {
 	}
 
 	private static void aide() {
-		String help = "aucune aide arrivera !!!!";
-		JOptionPane.showMessageDialog(BoulderDash.getFen(), help);
+		JOptionPane.showMessageDialog(BoulderDash.getFen(), Variables.HELP);
 	}
 }
