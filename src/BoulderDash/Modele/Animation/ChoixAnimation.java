@@ -1,5 +1,11 @@
 package BoulderDash.Modele.Animation;
 
+/**
+ * Enumération des différentes animations
+ * 
+ * @see Animation
+ * @author Yiserot
+ */
 public enum ChoixAnimation
 {
 	Papillon,

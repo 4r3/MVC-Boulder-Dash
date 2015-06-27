@@ -1,5 +1,10 @@
 package BoulderDash.Modele.Animation;
 
+/**
+ * Enumération des états du personnage
+ * 
+ * @author 4r3
+ */
 public enum Etats
 {
 	MarcheHaut,
