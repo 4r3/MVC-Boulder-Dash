@@ -20,6 +20,9 @@ public class GestionBoutonEditeur implements ActionListener {
 	JButton bouton8;
 	JButton bouton9;
 
+	/**
+	 * constructeur, permet de stocker tout les boutons
+	 */
 	public GestionBoutonEditeur(JButton b1, JButton b2, JButton b3, JButton b4,
 			JButton b5, JButton b6, JButton b7, JButton b8, JButton b9) {
 
@@ -34,6 +37,9 @@ public class GestionBoutonEditeur implements ActionListener {
 		this.bouton9 = b9;
 	}
 
+	/**
+	 * selectione dans le modele le type d'ojet a inserer dans le niveau
+	 */
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		if (arg0.getSource() == this.bouton1) { // Sélection Rockford

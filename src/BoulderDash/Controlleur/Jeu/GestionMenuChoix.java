@@ -29,6 +29,9 @@ public class GestionMenuChoix implements ActionListener {
 		this.liste = liste2;
 	}
 
+	/**
+	 * declenche les actions associées a chaques bouttons
+	 */
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		if (arg0.getSource() == this.bouton1) {
