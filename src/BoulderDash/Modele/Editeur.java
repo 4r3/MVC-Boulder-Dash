@@ -13,14 +13,13 @@ public class Editeur extends Observable {
 	private int changedY;
 
 	public Editeur() {
-		// this.niveau = new Niveau();
 		this.setIconActif(ChoixAnimation.Personnage_Idle);
 		changedX = -1;
 		changedY = -1;
 	}
 
 	/**
-	 * 
+	 * crée un niveau de taille standard
 	 */
 	public void createNiveau() {
 		this.niveau = new Niveau();
@@ -30,6 +29,12 @@ public class Editeur extends Observable {
 		notifyObservers();
 	}
 
+	/**
+	 * crée un niveau de taille x par y dans l'éditeur
+	 * 
+	 * @param x
+	 * @param y
+	 */
 	public void createNiveau(int x, int y) {
 		this.niveau = new Niveau(x, y);
 		changedX = -1;
@@ -38,6 +43,12 @@ public class Editeur extends Observable {
 		notifyObservers();
 	}
 
+	/**
+	 * charge dans l'éditeur le niveau avec le chemin transmis en paramettre
+	 * 
+	 * @param path
+	 *            chemin du niveau
+	 */
 	public void loadNiveau(String path) {
 		niveau = new Niveau(path);
 		changedX = -1;
@@ -46,14 +57,28 @@ public class Editeur extends Observable {
 		notifyObservers();
 	}
 
+	/**
+	 * recupere le niveau dans l'éditeur
+	 * 
+	 * @return niveau de l'éditeur
+	 */
 	public Niveau getNiveau() {
 		return niveau;
 	}
 
+	/**
+	 * @return recupere quelle type case est choisie
+	 */
 	public ChoixAnimation getIconActif() {
 		return iconActif;
 	}
 
+	/**
+	 * coisi le type de case a insérer dans le niveau
+	 * 
+	 * @param iconActif
+	 *            case a choisir
+	 */
 	public void setIconActif(ChoixAnimation iconActif) {
 		this.iconActif = iconActif;
 	}
@@ -116,16 +141,25 @@ public class Editeur extends Observable {
 		notifyObservers();
 	}
 
+	/**
+	 * @return position x de la case modifiée
+	 */
 	public int getChangedX() {
 		return changedX;
 	}
 
+	/**
+	 * @return position y de la case modifiée
+	 */
 	public int getChangedY() {
 		return changedY;
 	}
 
 	/**
+	 * sauvegarde le niveau
+	 * 
 	 * @param nom
+	 *            nom du niveau
 	 */
 	public void save(String nom) {
 		niveau.exporter(nom);

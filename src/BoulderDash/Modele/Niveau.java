@@ -31,7 +31,6 @@ import BoulderDash.Modele.Cases.Vide;
  * tableau bidimentionel de Case, d'une table de rafraichisement
  * 
  * @see Case
- * @author 4r3
  * 
  */
 public class Niveau {
@@ -51,13 +50,13 @@ public class Niveau {
 	private Case[][] tableau;
 
 	/**
-	 * tableau de mise à jour, contient les ElementDynamique susceptibles d'etre
-	 * modifiés au prochain cycle
+	 * tableau de mise à jour, contient les Case susceptibles d'etre modifiées
+	 * au prochain cycle
 	 */
 	private List<Case> UpTable;
 
 	/**
-	 * crée un Niveau de 10*10 avec le personage en haut a gauche et la sortie
+	 * crée un Niveau de 60*40 avec le personage en haut a gauche et la sortie
 	 * en bas a droite
 	 * 
 	 */
@@ -65,30 +64,25 @@ public class Niveau {
 		this(60, 40);
 	}
 
-	public Niveau(String niveau) {
+	/**
+	 * crée un nouveau niveau a partir d'un niveau sauvegardé
+	 */
+	public Niveau(String path) {
 		UpTable = new ArrayList<>();
 		fini = false;
 		score = 0;
-		importer(niveau);
+		importer(path);
 	}
 
 	/**
 	 * crée un niveau de l*h rempli de boue et avec une bordure de
-	 * MurIndestructible, avec une sortie en Sx,Sy et un personage en Px,Py
+	 * MurIndestructible
 	 * 
 	 * 
 	 * @param l
 	 *            longueur du niveau
 	 * @param h
 	 *            hauteur du niveau
-	 * @param Px
-	 *            position du personage en x
-	 * @param Py
-	 *            position du personage en y
-	 * @param Sx
-	 *            position de la sortie en x
-	 * @param Sy
-	 *            position de la sortie en y
 	 * @see Boue
 	 * @see MurIndestructible
 	 * 
@@ -120,7 +114,9 @@ public class Niveau {
 	}
 
 	/**
-	 * insere le personage dans le niveau à la position indiquée en argument
+	 * insere le personage dans le niveau à la position indiquée en argument si
+	 * un personage est déja present alors il est echagé avec sa nouvelle
+	 * position
 	 * 
 	 * @param x
 	 *            position en x du personage
@@ -131,9 +127,6 @@ public class Niveau {
 		if (x > 0 && x < longueur - 1 && y > 0 && y < hauteur - 1) {
 			if (perso == null) {
 				perso = new Personnage(x, y);
-				// if (sortie != null && tableau[x][y] == sortie) {
-				// sortie = null;
-				// }
 				tableau[x][y] = perso;
 			} else {
 				echangeCases(perso.getX(), perso.getY(), x, y);
@@ -143,7 +136,8 @@ public class Niveau {
 	}
 
 	/**
-	 * insere la sortie du niveau a la position indiquée en argument
+	 * insere la sortie du niveau a la position indiquée en argument si elle
+	 * existe déja elle est transférée a la nouvelle position
 	 * 
 	 * @param x
 	 *            position en x de la sortie
@@ -186,9 +180,9 @@ public class Niveau {
 	 * insere du Vide a la position indiquée en argument
 	 * 
 	 * @param x
-	 *            position en x de la sortie
+	 *            position en x
 	 * @param y
-	 *            position en y de la sortie
+	 *            position en y
 	 */
 	public void insereVide(int x, int y) {
 		if (x > 0
@@ -200,6 +194,14 @@ public class Niveau {
 		}
 	}
 
+	/**
+	 * insere de la Boue a la position indiquée en argument
+	 * 
+	 * @param x
+	 *            position en x
+	 * @param y
+	 *            position en y
+	 */
 	public void insereBoue(int x, int y) {
 		if (x > 0
 				&& x < longueur - 1
@@ -210,6 +212,14 @@ public class Niveau {
 		}
 	}
 
+	/**
+	 * insere un MurIndestructible a la position indiquée en argument
+	 * 
+	 * @param x
+	 *            position en x
+	 * @param y
+	 *            position en y
+	 */
 	public void insereMurIndestructible(int x, int y) {
 		if (x >= 0
 				&& x < longueur
@@ -220,6 +230,15 @@ public class Niveau {
 		}
 	}
 
+	/**
+	 * insere un Rocher a la position indiquée en argument et le rajoute dans la
+	 * UpTable
+	 * 
+	 * @param x
+	 *            position en x
+	 * @param y
+	 *            position en y
+	 */
 	public void insereRocher(int x, int y) {
 		if (x > 0
 				&& x < longueur - 1
@@ -231,6 +250,15 @@ public class Niveau {
 		}
 	}
 
+	/**
+	 * insere un diamant a la position indiquée en argument et le rajoute dans
+	 * la UpTable
+	 * 
+	 * @param x
+	 *            position en x
+	 * @param y
+	 *            position en y
+	 */
 	public void insereDiamant(int x, int y) {
 		if (x > 0
 				&& x < longueur - 1
@@ -242,6 +270,14 @@ public class Niveau {
 		}
 	}
 
+	/**
+	 * insere un MurMagique a la position indiquée en argument
+	 * 
+	 * @param x
+	 *            position en x
+	 * @param y
+	 *            position en y
+	 */
 	public void insereMurMagique(int x, int y) {
 		if (x > 0
 				&& x < longueur - 1
@@ -252,6 +288,15 @@ public class Niveau {
 		}
 	}
 
+	/**
+	 * insere un Papillon a la position indiquée en argument et le rajoute dans
+	 * la UpTable
+	 * 
+	 * @param x
+	 *            position en x
+	 * @param y
+	 *            position en y
+	 */
 	public void inserePapillon(int x, int y) {
 		if (x > 0
 				&& x < longueur - 1
@@ -264,8 +309,9 @@ public class Niveau {
 	}
 
 	/**
-	 * fonction de mise à jour du niveau, met a jour tout les ElementDynamique
-	 * suceptibles d'etre mis a jour dans le niveau
+	 * fonction de mise à jour du niveau, met a jour toutes les Case suceptibles
+	 * d'etre mises a jour dans le niveau ouvre la sortie si les conditions sont
+	 * remplies
 	 */
 	public void refresh() {
 		tmax = tmax - Variables.CYCLES * Variables.FRAME / (float) 1000;
@@ -306,14 +352,24 @@ public class Niveau {
 		}
 	}
 
+	/**
+	 * recupere le personnage
+	 */
 	public Personnage getPerso() {
 		return perso;
 	}
 
+	/**
+	 * recupere la sortie
+	 */
 	public Sortie getSortie() {
 		return sortie;
 	}
 
+	/**
+	 * echange les deux cases dont les positions qui sont transmise en
+	 * parametres
+	 */
 	public void echangeCases(int x1, int y1, int x2, int y2) {
 		Case temp = tableau[x1][y1];
 		tableau[x1][y1] = tableau[x2][y2];
@@ -331,6 +387,13 @@ public class Niveau {
 	//
 	//
 
+	/**
+	 * ajoute dans la table de mise a jour la case dont la position est
+	 * transmise
+	 * 
+	 * @param x
+	 * @param y
+	 */
 	public void addUptable(int x, int y) {
 		if (!UpTable.contains(tableau[x][y]) && tableau[x][y] != perso
 				&& tableau[x][y] != sortie) {
@@ -338,6 +401,11 @@ public class Niveau {
 		}
 	}
 
+	/**
+	 * 
+	 * ajoute dans la table de mise a jour les case dans le rectangle de 2*3 au
+	 * dessus de la position transmise
+	 */
 	public void remplirUpTable(int x, int y) {
 		addUptable(x, y - 1);
 		addUptable(x + 1, y - 1);
@@ -346,6 +414,10 @@ public class Niveau {
 		addUptable(x - 1, y);
 	}
 
+	/**
+	 * trie la table de mise a jour, les cases les plus bas sont prioritaires
+	 * par raport au plus élevées
+	 */
 	public void trieUpTable() {
 		int i = 0;
 		int j, pmin;
@@ -366,6 +438,10 @@ public class Niveau {
 		}
 	}
 
+	/**
+	 * vide la table de mise à des élément qui ne bouge pas ou qui ne risque pas
+	 * de bouger
+	 */
 	public void cleanUpTable() {
 		int i = 0;
 		while (i < UpTable.size()) {
@@ -378,10 +454,16 @@ public class Niveau {
 		}
 	}
 
+	/**
+	 * supprime de la table de mise à jour la case passée en parametre
+	 */
 	public void remUptable(Case C) {
 		UpTable.remove(C);
 	}
 
+	/**
+	 * recupere la table de mise a jour dans un tableau
+	 */
 	public Case[] getUpTable() {
 		return (Case[]) UpTable.toArray();
 	}
@@ -394,45 +476,67 @@ public class Niveau {
 	//
 	//
 
+	/**
+	 * recupere si le niveau est fini
+	 */
 	public boolean isFini() {
 		return fini;
 	}
 
+	/**
+	 * met le niveau à l'état fini
+	 */
 	public void setFini() {
 		fini = true;
 	}
 
 	/**
-	 * 
+	 * décrémente le nombre de diamants a trouver
 	 */
 	public void AddDscore() {
 		dscore--;
 	}
 
+	/**
+	 * 
+	 * recupere la hauteur du niveau
+	 */
 	public int getHauteur() {
 		return hauteur;
 	}
 
+	/**
+	 * defini la hauteur du niveau
+	 */
 	public void setHauteur(int hauteur) {
 		this.hauteur = hauteur;
 	}
 
+	/**
+	 * recupere la longueur du niveau
+	 */
 	public int getLongueur() {
 		return longueur;
 	}
 
+	/**
+	 * defini la longueur du niveau
+	 */
 	public void setLongueur(int longueur) {
 		this.longueur = longueur;
 	}
 
 	/**
-	 * @param dscore
-	 *            the dscore to set
+	 * defini le nombre de diamant necessaire pour finir le niveau
 	 */
 	public void setDscore(int dscore) {
 		this.dscore = dscore;
 	}
 
+	/**
+	 * recupere le nombre de diamants nécéssaires pour finir le niveau, retourne
+	 * 0 si negatif
+	 */
 	public int getDscore() {
 		if (dscore < 0) {
 			return 0;
@@ -441,7 +545,9 @@ public class Niveau {
 	}
 
 	/**
-	 * @param string
+	 * 
+	 * exporte le niveau sous la forme de fichier csv, le nom du niveau est
+	 * transmi en parametre
 	 */
 	@SuppressWarnings("resource")
 	public void exporter(String niveau) {
@@ -474,6 +580,9 @@ public class Niveau {
 		}
 	}
 
+	/**
+	 * importe le niveau en csv qui se situe au chemein indiqué
+	 */
 	@SuppressWarnings("resource")
 	public void importer(String niveau) {
 		String ligne = "";
@@ -562,11 +671,17 @@ public class Niveau {
 		}
 	}
 
+	/**
+	 * met jour la table d'animation aisi que le type d'animation du personnage
+	 */
 	public void refreshAnim() {
 		perso.refreshAnim();
 		TableAnimation.refreshAnim();
 	}
 
+	/**
+	 * recupere le temps bonus restant au joueur, retourne 0 si négatif
+	 */
 	public int getTmax() {
 		if (tmax < 0) {
 			return 0;
@@ -574,16 +689,22 @@ public class Niveau {
 		return (int) tmax;
 	}
 
+	/**
+	 * defini le temp bonus du niveau
+	 */
 	public void setTmax(int tmax) {
 		this.tmax = tmax;
 	}
 
+	/**
+	 * ajoute la valeur transmise en parametre au score
+	 */
 	public void addToScore(int value) {
 		score += value;
 	}
 
 	/**
-	 * @return
+	 * recupere le score du niveau
 	 */
 	public int getScore() {
 		return score;
