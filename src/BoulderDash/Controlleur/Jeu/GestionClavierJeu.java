@@ -15,13 +15,14 @@ import BoulderDash.Modele.Cases.Directions;
  * @author 4r3
  *
  */
-public class GestionClavierJeu implements KeyListener
-{
+public class GestionClavierJeu implements KeyListener {
+	/**
+	 * map des touches enfoncées, toutes les touches sont a faux par defaut
+	 */
 	private Map<Integer, Boolean> keys;
 	private Niveau niveau;
 
-	public GestionClavierJeu(Niveau niveau)
-	{
+	public GestionClavierJeu(Niveau niveau) {
 		this.niveau = niveau;
 		keys = new HashMap<>();
 		keys.put(KeyEvent.VK_RIGHT, false);
@@ -32,83 +33,95 @@ public class GestionClavierJeu implements KeyListener
 	}
 
 	@Override
-	public void keyTyped(KeyEvent e)
-	{
+	public void keyTyped(KeyEvent e) {
 	}
 
 	@Override
-	public void keyReleased(KeyEvent e)
-	{
-		switch ( e.getKeyCode() ) {
-			case KeyEvent.VK_UP :
-				keys.put(KeyEvent.VK_UP, false);
-				break;
-			case KeyEvent.VK_LEFT :
-				keys.put(KeyEvent.VK_LEFT, false);
-				break;
-			case KeyEvent.VK_DOWN :
-				keys.put(KeyEvent.VK_DOWN, false);
-				break;
-			case KeyEvent.VK_RIGHT :
-				keys.put(KeyEvent.VK_RIGHT, false);
-				break;
-			default :
-				break;
+	/**
+	 * passe a faux la variable de la touche relachée,
+	 * si une autre touche était appuyée, alors celle ci prent le devant
+	 */
+	public void keyReleased(KeyEvent e) {
+		switch (e.getKeyCode()) {
+		case KeyEvent.VK_UP:
+			keys.put(KeyEvent.VK_UP, false);
+			break;
+		case KeyEvent.VK_LEFT:
+			keys.put(KeyEvent.VK_LEFT, false);
+			break;
+		case KeyEvent.VK_DOWN:
+			keys.put(KeyEvent.VK_DOWN, false);
+			break;
+		case KeyEvent.VK_RIGHT:
+			keys.put(KeyEvent.VK_RIGHT, false);
+			break;
+		default:
+			break;
 		}
-		if ( keys.get(KeyEvent.VK_RIGHT) ) {
+		if (keys.get(KeyEvent.VK_RIGHT)) {
 			droite();
-		} else if ( keys.get(KeyEvent.VK_LEFT) ) {
+		} else if (keys.get(KeyEvent.VK_LEFT)) {
 			gauche();
-		} else if ( keys.get(KeyEvent.VK_UP) ) {
+		} else if (keys.get(KeyEvent.VK_UP)) {
 			haut();
-		} else if ( keys.get(KeyEvent.VK_DOWN) ) {
+		} else if (keys.get(KeyEvent.VK_DOWN)) {
 			bas();
 		} else {
 			niveau.getPerso().setDeplace(Directions.Null);
 		}
 	}
 
+	/**
+	 * lance la fonction associé a la touche apuyée
+	 */
 	@Override
-	public void keyPressed(KeyEvent e)
-	{
-		switch ( e.getKeyCode() ) {
-			case KeyEvent.VK_UP :
-				haut();
-				break;
-			case KeyEvent.VK_LEFT :
-				gauche();
-				break;
-			case KeyEvent.VK_DOWN :
-				bas();
-				break;
-			case KeyEvent.VK_RIGHT :
-				droite();
-				break;
-			default :
-				break;
+	public void keyPressed(KeyEvent e) {
+		switch (e.getKeyCode()) {
+		case KeyEvent.VK_UP:
+			haut();
+			break;
+		case KeyEvent.VK_LEFT:
+			gauche();
+			break;
+		case KeyEvent.VK_DOWN:
+			bas();
+			break;
+		case KeyEvent.VK_RIGHT:
+			droite();
+			break;
+		default:
+			break;
 		}
 	}
 
-	private void droite()
-	{
+	/**
+	 * traitement de l'appuis sur la touche droite
+	 */
+	private void droite() {
 		keys.put(KeyEvent.VK_RIGHT, true);
 		niveau.getPerso().setDeplace(Directions.Droite);
 	}
 
-	private void bas()
-	{
+	/**
+	 * traitement de l'appuis sur la touche bas
+	 */
+	private void bas() {
 		keys.put(KeyEvent.VK_DOWN, true);
 		niveau.getPerso().setDeplace(Directions.Bas);
 	}
 
-	private void gauche()
-	{
+	/**
+	 * traitement de l'appuis sur la touche gauche
+	 */
+	private void gauche() {
 		keys.put(KeyEvent.VK_LEFT, true);
 		niveau.getPerso().setDeplace(Directions.Gauche);
 	}
 
-	private void haut()
-	{
+	/**
+	 * traitement de l'appuis sur la touche haut
+	 */
+	private void haut() {
 		keys.put(KeyEvent.VK_UP, true);
 		niveau.getPerso().setDeplace(Directions.Haut);
 	}

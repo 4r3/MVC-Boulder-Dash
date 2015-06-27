@@ -4,8 +4,7 @@
 package BoulderDash.Modele;
 
 /**
- * @author 4r3
- *
+ * liste des état possibles pour l'application
  */
 public enum EtatApplication {
 	MenuPrincipal, ChoixNiveau, Editeur, Jeu

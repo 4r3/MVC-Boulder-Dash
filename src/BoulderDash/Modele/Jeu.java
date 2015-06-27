@@ -17,12 +17,23 @@ public class Jeu extends Observable {
 	private boolean interuption;
 	private boolean niveauFini;
 
+	/**
+	 * crée un nouveau jeu, avec son score a 0 et ses information de niveau à
+	 * null
+	 */
 	public Jeu() {
 		score = 0;
 		levelPath = null;
 		level = null;
 	}
 
+	/**
+	 * charge un niveau situé au chemin path initialise les données niveau du
+	 * jeu
+	 * 
+	 * @param path
+	 *            chemin vers le niveau
+	 */
 	public void chargerNiveau(String path) {
 		deleteObservers();
 		niveauFini = false;
@@ -31,10 +42,20 @@ public class Jeu extends Observable {
 		level = new Niveau(path);
 	}
 
+	/**
+	 * permet de récupérer le niveau du jeu
+	 * 
+	 * @return niveau dans le jeu
+	 */
 	public Niveau getNiveau() {
 		return level;
 	}
 
+	/**
+	 * recupere la liste des niveaux
+	 * 
+	 * @return String[] liste des niveau
+	 */
 	public static String[] getListeNiveaux() {
 		File f = new File("./niveaux");
 		File[] paths;
@@ -51,6 +72,9 @@ public class Jeu extends Observable {
 		return S;
 	}
 
+	/**
+	 * Boucle de jeu, gere le déroulement du jeu
+	 */
 	public void gestion() {
 		int i = 0;
 		long time = System.currentTimeMillis();
@@ -60,17 +84,23 @@ public class Jeu extends Observable {
 		}
 
 		while (!level.isFini() && !interuption) {
+			// mesure du temps d'éxecution du dernier cycle, et calcul du temps
+			// d'attente pour ce cycle
 			time = Variables.FRAME + System.currentTimeMillis() - time;
 			if (time <= 0) {
 				time = 1;
 			}
+			// temps d'attente du cycle
 			try {
 				Thread.sleep(time);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 			time = System.currentTimeMillis();
+			// gestion de la pause
 			if (!pause) {
+				// gestion du cycle de mise a jour jeu, s'exécute tout les X
+				// cycles
 				if (i == 0) {
 					try {
 						level.refresh();
@@ -80,16 +110,21 @@ public class Jeu extends Observable {
 					}
 				}
 
+				// rafraichisement des animation du jeu
 				level.refreshAnim();
 
 				i = (i + 1) % Variables.CYCLES;
 
+				// notification des changements a la fenetre
 				setChanged();
 				notifyObservers();
 			}
 		}
+		// gestion de fin de jeux
 		BoulderDash.setState(EtatApplication.MenuPrincipal);
+		// verification si le jeux a été interompu
 		if (!interuption) {
+			// si le jeu n'a pas été interompu alors on incremente le score
 			try {
 				Thread.sleep(Variables.FRAME);
 			} catch (InterruptedException e) {
@@ -108,14 +143,23 @@ public class Jeu extends Observable {
 		}
 	}
 
+	/**
+	 * met le jeu en pause
+	 */
 	public void pauseOn() {
 		pause = true;
 	}
 
+	/**
+	 * desactive la pause
+	 */
 	public void pauseOff() {
 		pause = false;
 	}
 
+	/**
+	 * message d'erreur lors d'un crash du niveau
+	 */
 	private static void corruptedLevel() {
 		JOptionPane.showMessageDialog(BoulderDash.getFen(), "Niveau corompu",
 				"ERREUR", JOptionPane.ERROR_MESSAGE);
@@ -124,26 +168,37 @@ public class Jeu extends Observable {
 	}
 
 	/**
-	 * 
+	 * redemare le niveau en cours, perte du score realisé sur le niveau en
+	 * cours
 	 */
 	public void restartLevel() {
 		chargerNiveau(levelPath);
 	}
 
+	/**
+	 * remet le score à 0
+	 */
 	public void resetScore() {
 		score = 0;
 	}
 
+	/**
+	 * recupere le score du niveau aditioné à celui du jeu
+	 */
 	public int getScore() {
 		return score + level.getScore();
 	}
 
+	/**
+	 * interomp le jeu (appele par les menu lorsque l'on redemare ou quite le
+	 * niveau)
+	 */
 	public void interompre() {
 		interuption = true;
 	}
 
 	/**
-	 * 
+	 * recupere si le niveau à été fini
 	 */
 	public boolean isFini() {
 		return niveauFini;

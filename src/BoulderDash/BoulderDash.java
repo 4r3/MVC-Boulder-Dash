@@ -12,6 +12,9 @@ public class BoulderDash {
 	private static Editeur edit;
 	private static EtatApplication state;
 
+	/**
+	 * fonction d'initialisation du jeu
+	 */
 	private static void init() {
 		state = EtatApplication.MenuPrincipal;
 		jeu = new Jeu();
@@ -22,16 +25,16 @@ public class BoulderDash {
 
 	}
 
+	/**
+	 * fonction de jeu, s'execute pendant tout le programme
+	 */
 	private static void Application() {
 		while (true) {
 			switch (state) {
-			case ChoixNiveau:
-			case Editeur:
-				break;
 			case Jeu:
 				jeu.gestion();
 				break;
-			case MenuPrincipal:
+			// $CASES-OMITTED$
 			default:
 				break;
 			}
@@ -39,23 +42,48 @@ public class BoulderDash {
 		}
 	}
 
+	/**
+	 * main du programme initialise le programme et le lance
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		BoulderDash.init();
 		BoulderDash.Application();
 	}
 
+	/**
+	 * permet de recuperer le seul Jeu
+	 * 
+	 * @return
+	 */
 	public static Jeu getJeu() {
 		return jeu;
 	}
 
+	/**
+	 * permet de récuperer la fennetre du jeu
+	 * 
+	 * @return
+	 */
 	public static Fenetre getFen() {
 		return fen;
 	}
 
+	/**
+	 * permet de recupêrer l'editeur du jeu
+	 * 
+	 * @return
+	 */
 	public static Editeur getEdit() {
 		return edit;
 	}
 
+	/**
+	 * permet de definir dans quel état est le programme
+	 * 
+	 * @param state
+	 */
 	public static void setState(EtatApplication state) {
 		BoulderDash.state = state;
 	}

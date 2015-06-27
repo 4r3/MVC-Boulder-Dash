@@ -10,8 +10,7 @@ import BoulderDash.Modele.EtatApplication;
 import BoulderDash.Vue.Vues;
 
 /**
- * @author 4r3
- *
+ * gestionaire de fin de jeu, est appelé par la fenetre si le jeu est fini
  */
 public class GestionFinJeu {
 	public static void finJeu() {
@@ -23,6 +22,10 @@ public class GestionFinJeu {
 
 	}
 
+	/**
+	 * gestionaire de victoire, ouvre une popup avec le score et plusieur
+	 * actions possibles à effectuer
+	 */
 	private static void popVictoire() {
 		Object[] options = { "Menu principal", "Recommencer le niveau",
 				"Changer de niveau" };
@@ -55,6 +58,10 @@ public class GestionFinJeu {
 		}
 	}
 
+	/**
+	 * gestionaire de défaite, affiche une popup avec le score et les
+	 * differentes options possibles pour l'utilisateur
+	 */
 	private static void popDefaite() {
 		Object[] options = { "Menu principal", "Nouveau jeu" };
 		String message = "Votre score : " + BoulderDash.getJeu().getScore();

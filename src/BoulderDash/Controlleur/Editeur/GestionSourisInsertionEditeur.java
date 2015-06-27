@@ -18,6 +18,9 @@ public class GestionSourisInsertionEditeur implements MouseListener,
 	}
 
 	@Override
+	/**
+	 * declenche la modification dans le modele sur la case cliquée
+	 */
 	public void mouseClicked(java.awt.event.MouseEvent e) {
 		this.editeur.modifierNiveau(e.getPoint().x / Variables.TAILLE_CASE,
 				e.getPoint().y / Variables.TAILLE_CASE);
@@ -42,6 +45,9 @@ public class GestionSourisInsertionEditeur implements MouseListener,
 	}
 
 	@Override
+	/**
+	 * declenche la modification dans le modele sur la case survolée avec le clic enfoncé
+	 */
 	public void mouseDragged(MouseEvent e) {
 		this.editeur.modifierNiveau(e.getPoint().x / Variables.TAILLE_CASE,
 				e.getPoint().y / Variables.TAILLE_CASE);

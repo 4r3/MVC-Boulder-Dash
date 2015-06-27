@@ -22,6 +22,10 @@ public class GestionMenuEditeur implements ActionListener {
 	private JMenuItem configurer;
 	private JMenuItem quitter;
 
+	/**
+	 * constructeur qui enregistre la liste des boutons present avec les quel on
+	 * interagit
+	 */
 	public GestionMenuEditeur(JMenuItem nouveau, JMenuItem charger,
 			JMenuItem sauvgarder, JMenuItem configurer, JMenuItem quitter) {
 
@@ -32,6 +36,9 @@ public class GestionMenuEditeur implements ActionListener {
 		this.quitter = quitter;
 	}
 
+	/**
+	 * déclenche les action associées a chaques bouttons
+	 */
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		if (arg0.getSource() == this.nouveau) { // Retour éditeur
@@ -47,6 +54,10 @@ public class GestionMenuEditeur implements ActionListener {
 		}
 	}
 
+	/**
+	 * gestion de sauvegarde, affiche une popup dans laquelle on reseigne le nom
+	 * du niveau déclenche la sauvegarde à la confirmation de la popup
+	 */
 	private static void save() {
 		String nom = (String) JOptionPane.showInputDialog(BoulderDash.getFen(),
 				"Entrez le nom de votre niveau", "Sauvegarde",
@@ -56,15 +67,25 @@ public class GestionMenuEditeur implements ActionListener {
 		}
 	}
 
+	/**
+	 * gestionaire de chargement, affiche une popup avec une liste des niveaux
+	 * existants charge le niveau a la validation de la popup
+	 */
 	private static void load() {
 		String[] liste = Jeu.getListeNiveaux();
 		String path = (String) JOptionPane.showInputDialog(
 				BoulderDash.getFen(), "Quel niveau voulez vous charger",
 				"Customized Dialog", JOptionPane.PLAIN_MESSAGE, null, liste,
 				liste[0]);
-		BoulderDash.getEdit().loadNiveau(path);
+		if (path != null) {
+			BoulderDash.getEdit().loadNiveau(path);
+		}
 	}
 
+	/**
+	 * ouvre une popup avec deux champs texte servant a renseigner le temps
+	 * bonus du niveau et le nombre de diamants requis pour ouvrir la sortie
+	 */
 	private static void config() {
 		JTextField diamants = new JTextField(5);
 		JTextField temps = new JTextField(5);

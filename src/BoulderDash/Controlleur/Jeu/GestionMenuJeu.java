@@ -22,6 +22,10 @@ public class GestionMenuJeu implements ActionListener {
 		this.b2 = b2;
 	}
 
+	/**
+	 * met le jeu en pause declenche les actions associées au differents
+	 * bouttons desactive la pause
+	 */
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		BoulderDash.getJeu().pauseOn();
@@ -35,6 +39,11 @@ public class GestionMenuJeu implements ActionListener {
 		BoulderDash.getFen().refocus();
 	}
 
+	/**
+	 * lorsque l'on clique sur le bouton menu on affiche une popup avec les
+	 * differentes actions possibles
+	 * 
+	 */
 	private static void menu() {
 		Object[] options = { "Menu principal", "Recommencer le niveau",
 				"Changer de niveau", "Retour au jeu" };
@@ -59,6 +68,9 @@ public class GestionMenuJeu implements ActionListener {
 		}
 	}
 
+	/**
+	 * ouvre un popu avec le message d'aide
+	 */
 	private static void aide() {
 		JOptionPane.showMessageDialog(BoulderDash.getFen(), Variables.HELP);
 	}
