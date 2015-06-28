@@ -26,6 +26,11 @@ public class Diamant extends Chutable {
 		return "D";
 	}
 
+	/**
+	 * fonction d'interaction personnage, lorsque le personnage arrive on
+	 * echange les case insere du vide incremente le score de 25 et decremente
+	 * le nombre de diamant a trouver
+	 */
 	@Override
 	public boolean PersonageArrive(Niveau N) {
 		N.echangeCases(N.getPerso().getX(), N.getPerso().getY(), getX(), getY());
@@ -37,6 +42,9 @@ public class Diamant extends Chutable {
 		return true;
 	}
 
+	/**
+	 * renvoie le sprite de diamant
+	 */
 	@Override
 	public Animation getAnimation() {
 		return TableAnimation.getDiamant();

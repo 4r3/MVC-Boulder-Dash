@@ -6,10 +6,11 @@ package BoulderDash.Modele.Cases;
 import BoulderDash.Modele.Niveau;
 
 /**
- * @author 4r3
+ * fonction servant a la mise à jour des éléments du niveau
  *
  */
 public interface Refresh {
+
 	public void refresh(Niveau N);
 
 	public void refreshAnim();

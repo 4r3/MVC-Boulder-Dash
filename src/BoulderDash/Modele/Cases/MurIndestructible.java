@@ -9,6 +9,9 @@ public class MurIndestructible extends Case {
 		super(x, y);
 	}
 
+	/**
+	 * retourne le sprite d'un mur indestructible
+	 */
 	@Override
 	public Animation getAnimation() {
 		return TableAnimation.getMur();

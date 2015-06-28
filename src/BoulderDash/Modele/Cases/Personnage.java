@@ -26,14 +26,25 @@ public class Personnage extends Case {
 		animation = ChoixAnimation.Personnage_Idle;
 	}
 
+	/**
+	 * permet de choisir le prochain déplacement qui se fera lors du prochain
+	 * cycle
+	 */
 	public void setDeplace(Directions D) {
 		Deplace = D;
 	}
 
+	/**
+	 * recupere la Direction
+	 */
 	public Directions getDeplace() {
 		return Deplace;
 	}
 
+	/**
+	 * met a jour le deplacement, deplacera le personage dans la direction situe
+	 * dans Deplace
+	 */
 	@Override
 	public void refresh(Niveau N) {
 		int xdest = getX();
@@ -73,6 +84,10 @@ public class Personnage extends Case {
 		}
 	}
 
+	/**
+	 * fonction qui gere l'arret du personnage, choisi le bon sprite pour
+	 * l'arret
+	 */
 	private void arret() {
 		try {
 			TableAnimation.Personnage(animation).stop();
@@ -114,6 +129,10 @@ public class Personnage extends Case {
 		return "P";
 	}
 
+	/**
+	 * fonction de mise a jour de l'annimation, ajoute un offset de déplacement
+	 * pour fluidifier l'animation
+	 */
 	@Override
 	public void refreshAnim() {
 		switch (Last) {
@@ -141,6 +160,10 @@ public class Personnage extends Case {
 		}
 	}
 
+	/**
+	 * fonction d'interaction avec un element chutable, ecrase et tue le
+	 * personage si l'objet est en chute
+	 */
 	@Override
 	public EtatChutable chutableArrive(Niveau N) {
 		if (((Chutable) N.getCase(getX(), getY() - 1)).chute()) {
@@ -157,6 +180,9 @@ public class Personnage extends Case {
 		return EtatChutable.Stable;
 	}
 
+	/**
+	 * fonction d'interaction avec un enemi, tue le personage dans une explosion
+	 */
 	@Override
 	public boolean EnemiArrive(Niveau N) {
 		vivant = false;
@@ -171,30 +197,45 @@ public class Personnage extends Case {
 		return false;
 	}
 
+	/**
+	 * retourne le sprite du personage
+	 */
 	@Override
 	public Animation getAnimation() {
 		return TableAnimation.Personnage(animation);
 	}
 
 	/**
-	 * @return
+	 * fonction verifiant si le personnage est toujour vivant
 	 */
 	public boolean isVivant() {
 		return vivant;
 	}
 
+	/**
+	 * fonction permettant de récupérer l'offset en x du personnage
+	 */
 	public int getoffsetX() {
 		return offsetx;
 	}
 
+	/**
+	 * fonction permettant de récupérer l'offset en y du personnage
+	 */
 	public int getoffsetY() {
 		return offsety;
 	}
 
+	/**
+	 * setter de l'offset x
+	 */
 	public void setoffsetX(int x) {
 		offsetx = x;
 	}
 
+	/**
+	 * setter de l'offset y
+	 */
 	public void setoffsetY(int y) {
 		offsety = y;
 	}

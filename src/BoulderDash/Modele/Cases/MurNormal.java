@@ -24,6 +24,12 @@ public class MurNormal extends Case {
 		return "N";
 	}
 
+	/**
+	 * fonction d'arrivée d'ojet chutable (meme comportement qu'un élément
+	 * Chutable
+	 * 
+	 * @see Chutable
+	 */
 	@Override
 	public EtatChutable chutableArrive(Niveau N) {
 		if ((N.getCase(getX() + 1, getY() - 1).isVide())

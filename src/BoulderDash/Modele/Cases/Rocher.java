@@ -26,6 +26,10 @@ public class Rocher extends Chutable {
 		return "R";
 	}
 
+	/**
+	 * interaction avec le personnage, pouse le rocher a gauche ou a droite si
+	 * il y a de la place
+	 */
 	@Override
 	public boolean PersonageArrive(Niveau N) {
 		if (N.getPerso().getDeplace() == Directions.Gauche) {
@@ -44,6 +48,9 @@ public class Rocher extends Chutable {
 		return false;
 	}
 
+	/**
+	 * retourne le sprite du Rocher
+	 */
 	@Override
 	public Animation getAnimation() {
 		return TableAnimation.getRocher();

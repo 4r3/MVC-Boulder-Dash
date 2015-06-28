@@ -53,7 +53,7 @@ public class GestionMenuJeu implements ActionListener {
 		switch (n) {
 		case 0:
 			BoulderDash.getFen().changerVue(Vues.MENUPRINCIPAL);
-			BoulderDash.getJeu().getNiveau().setFini();
+			BoulderDash.getJeu().interompre();
 			break;
 		case 1:
 			BoulderDash.getJeu().restartLevel();
@@ -61,6 +61,7 @@ public class GestionMenuJeu implements ActionListener {
 			BoulderDash.getFen().changerVue(Vues.TABLEAUJEU);
 			break;
 		case 2:
+			BoulderDash.getJeu().interompre();
 			BoulderDash.getFen().changerVue(Vues.MENUCHOIXNIVEAU);
 			break;
 		default:
