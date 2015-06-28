@@ -11,17 +11,31 @@ import BoulderDash.Modele.Niveau;
 import BoulderDash.Modele.Variables;
 import BoulderDash.Modele.Animation.TableAnimation;
 
+/**
+ * Vue du terrain du jeu où l'on peut déplacer Rockford
+ * 
+ * @author Yiserot
+ */
 @SuppressWarnings("serial")
 public class AirePlateauJeu extends JPanel {
 
+	/**
+	 * Niveau affiché
+	 */
 	private Niveau niveau;
 
+	/**
+	 * Initialisation du panel
+	 */
 	public AirePlateauJeu(Niveau niveau) {
 		this.niveau = niveau;
 		initAireDeJeu();
 
 	}
 
+	/**
+	 * Initialisation du panel
+	 */
 	private void initAireDeJeu() {
 		setBackground(Color.BLACK);
 		setPreferredSize(new Dimension(this.niveau.getLongueur()
@@ -30,6 +44,9 @@ public class AirePlateauJeu extends JPanel {
 		setDoubleBuffered(true);
 	}
 
+	/**
+	 * Dessin du terrain
+	 */
 	private void drawNiveau(Graphics g) {
 		int a, b;
 		for (a = 0; a < this.niveau.getLongueur(); a++) {
@@ -68,8 +85,10 @@ public class AirePlateauJeu extends JPanel {
 	}
 
 	/**
+	 * Change le niveau à afficher
+	 * 
 	 * @param niveau
-	 *            the niveau to set
+	 *            la niveau à afficher
 	 */
 	public void setNiveau(Niveau niveau) {
 		this.niveau = niveau;

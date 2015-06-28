@@ -15,17 +15,26 @@ import BoulderDash.Modele.Variables;
 import BoulderDash.Modele.Animation.ChoixAnimation;
 import BoulderDash.Modele.Animation.TableAnimation;
 
+/**
+ * Vue de la zone d'information de l'éditeur qui permet de sélectionner
+ * l'élément à placer
+ * 
+ * @author Yiserot
+ */
 @SuppressWarnings("serial")
 public class AireInfoEditeur extends JPanel {
 
+	/**
+	 * Initialisation du panel
+	 */
 	public AireInfoEditeur() {
 		setLayout(new GridLayout(11, 2));
 		initAireInformation();
 	}
 
-	// TODO enlever mur indestructible, ajouter champ de choix de temp et de
-	// score dimant min
-
+	/**
+	 * Initialisation du panel
+	 */
 	private void initAireInformation() {
 		setPreferredSize(new Dimension(Variables.LARGEUR_PANEL_SCORE,
 				Variables.HAUTEUR_PANEL_SCORE));

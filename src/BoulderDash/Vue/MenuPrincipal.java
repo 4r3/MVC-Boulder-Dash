@@ -12,14 +12,25 @@ import javax.swing.JPanel;
 import BoulderDash.Controlleur.GestionBoutonsMenu;
 import BoulderDash.Modele.Variables;
 
+/**
+ * Vue du menu principal
+ * 
+ * @author Yiserot
+ */
 @SuppressWarnings("serial")
 public class MenuPrincipal extends JPanel {
 
+	/**
+	 * Initialisation du menu principal
+	 */
 	public MenuPrincipal() {
 		initMenuPrincipal();
 		setFocusable(true);
 	}
 
+	/**
+	 * Initialisation du menu principal
+	 */
 	private void initMenuPrincipal() {
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		setPreferredSize(new Dimension(Variables.HAUTEUR_PANEL_SCORE,

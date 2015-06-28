@@ -13,16 +13,39 @@ import BoulderDash.BoulderDash;
 import BoulderDash.Controlleur.Jeu.GestionMenuJeu;
 import BoulderDash.Modele.Variables;
 
+/**
+ * Vue de la zone d'information du jeu qui indique le temps restant, le nombre
+ * de diamants restants et le score
+ * 
+ * @author Yiserot
+ */
 @SuppressWarnings("serial")
 public class AireInfoJeu extends JPanel {
+	/**
+	 * Diamants restants
+	 */
 	private JLabel Drestant;
+
+	/**
+	 * Temps restant
+	 */
 	private JLabel Trestant;
+
+	/**
+	 * Score
+	 */
 	private JLabel score;
 
+	/**
+	 * Initialisation du panel
+	 */
 	public AireInfoJeu() {
 		initAireInformation();
 	}
 
+	/**
+	 * Initialisation du panel
+	 */
 	private void initAireInformation() {
 		setBackground(Variables.COULEUR);
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
@@ -64,6 +87,9 @@ public class AireInfoJeu extends JPanel {
 		add(aide);
 	}
 
+	/**
+	 * Mise à jour des informations affichées
+	 */
 	public void majinfos() {
 		Drestant.setText("Diamant(s) restant(s) : "
 				+ BoulderDash.getJeu().getNiveau().getDscore());

@@ -8,9 +8,17 @@ import javax.swing.JMenuItem;
 
 import BoulderDash.Controlleur.Editeur.GestionMenuEditeur;
 
+/**
+ * Vue du menu de l'éditeur
+ * 
+ * @author Yiserot
+ */
 @SuppressWarnings("serial")
 public class MenuEditeur extends JMenuBar {
 
+	/**
+	 * Initialisation du menu
+	 */
 	public MenuEditeur() {
 		super();
 		JMenuItem nouveau = new JMenuItem("Nouveau niveau");

@@ -7,11 +7,23 @@ import BoulderDash.Vue.Editeur.PanelEditeur;
 import BoulderDash.Vue.Jeu.MenuChoixNiveau;
 import BoulderDash.Vue.Jeu.PanelJeu;
 
+/**
+ * Fenêtre principale
+ * 
+ * @see MenuPrincipal, MenuChoixNiveau, PanelEditeur, PanelJeu
+ * @author Yiserot
+ */
 public class Fenetre extends JFrame {
 	private static final long serialVersionUID = 3393452907097178193L;
 
+	/**
+	 * Le panel affiché
+	 */
 	private JPanel display;
 
+	/**
+	 * Initialisation de la fenêtre
+	 */
 	public Fenetre() {
 		super("Boulder Dash");
 		display = new MenuPrincipal();
@@ -25,6 +37,14 @@ public class Fenetre extends JFrame {
 
 	}
 
+	/**
+	 * Permet de changer la vue en modifiant le panel à afficher
+	 * 
+	 * @param vue
+	 *            le nouveau panel à afficher
+	 * @param delaiFrame
+	 *            délai du changement de frame
+	 */
 	public void changerVue(Vues vue) {
 		remove(display);
 		switch (vue) {
@@ -49,6 +69,9 @@ public class Fenetre extends JFrame {
 		pack();
 	}
 
+	/**
+	 * La vue actuelle récupère le focus
+	 */
 	public void refocus() {
 		display.grabFocus();
 	}

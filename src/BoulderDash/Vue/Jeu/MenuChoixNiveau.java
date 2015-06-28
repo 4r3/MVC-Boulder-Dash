@@ -19,21 +19,23 @@ import BoulderDash.Modele.Jeu;
 import BoulderDash.Modele.Variables;
 
 /**
- * @author 4r3
+ * Vue permettant de choisir le niveau
  * 
+ * @author 4r3
  */
 @SuppressWarnings("serial")
 public class MenuChoixNiveau extends JPanel {
 
 	/**
-	 * @param fenetre
+	 * Initialisation du menu
 	 */
 	public MenuChoixNiveau() {
-
 		initMenu();
-
 	}
 
+	/**
+	 * Initialisation du menu
+	 */
 	private void initMenu() {
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		setPreferredSize(new Dimension(Variables.HAUTEUR_PANEL_SCORE,

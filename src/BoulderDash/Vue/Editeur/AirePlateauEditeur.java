@@ -15,14 +15,25 @@ import BoulderDash.Controlleur.Editeur.GestionSourisInsertionEditeur;
 import BoulderDash.Modele.Variables;
 import BoulderDash.Modele.Animation.TableAnimation;
 
+/**
+ * Vue du terrain de l'éditeur où l'on peut placer des éléments
+ * 
+ * @author Yiserot
+ */
 @SuppressWarnings("serial")
 public class AirePlateauEditeur extends JPanel {
 
+	/**
+	 * Initialisation du panel
+	 */
 	public AirePlateauEditeur() {
 		super();
 		initAireEdition();
 	}
 
+	/**
+	 * Initialisation du panel
+	 */
 	private void initAireEdition() {
 		setBackground(Color.BLACK);
 		setPreferredSize(new Dimension(BoulderDash.getEdit().getNiveau()
@@ -37,6 +48,9 @@ public class AirePlateauEditeur extends JPanel {
 		addMouseMotionListener(ctrl);
 	}
 
+	/**
+	 * Initialisation de la zone du terrain
+	 */
 	private static void drawNiveau(Graphics g) {
 		int x, y;
 		for (x = 0; x < BoulderDash.getEdit().getNiveau().getLongueur(); x++) {
@@ -61,6 +75,9 @@ public class AirePlateauEditeur extends JPanel {
 		Toolkit.getDefaultToolkit().sync();
 	}
 
+	/**
+	 * Dessine les lignes blanches
+	 */
 	public static void drawDashedLine(Graphics g, int x1, int y1, int x2, int y2) {
 
 		Graphics2D g2d = (Graphics2D) g.create();
@@ -80,6 +97,14 @@ public class AirePlateauEditeur extends JPanel {
 		drawNiveau(g);
 	}
 
+	/**
+	 * Repaint un élément uniquement
+	 * 
+	 * @param x
+	 *            emplacement horizontal de l'élément
+	 * @param y
+	 *            emplacement vertical de l'élément
+	 */
 	public void repaint_xy(int x, int y) {
 		Graphics g = getGraphics();
 		try {
