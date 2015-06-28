@@ -36,7 +36,7 @@ public class AireInfoJeu extends JPanel {
 		Trestant = new JLabel("Temps restant : "
 				+ BoulderDash.getJeu().getNiveau().getTmax());
 		Trestant.setForeground(Variables.COULEUR_TEXTE);
-		score = new JLabel("Scrore : " + BoulderDash.getJeu().getScore());
+		score = new JLabel("Score : " + BoulderDash.getJeu().getScore());
 		score.setForeground(Variables.COULEUR_TEXTE);
 
 		JButton retour = new JButton("Menu");
@@ -69,6 +69,6 @@ public class AireInfoJeu extends JPanel {
 				+ BoulderDash.getJeu().getNiveau().getDscore());
 		Trestant.setText("Temps restant : "
 				+ BoulderDash.getJeu().getNiveau().getTmax());
-		score.setText("Scrore : " + BoulderDash.getJeu().getScore());
+		score.setText("Score : " + BoulderDash.getJeu().getScore());
 	}
 }

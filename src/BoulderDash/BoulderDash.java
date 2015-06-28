@@ -26,7 +26,7 @@ public class BoulderDash {
 	}
 
 	/**
-	 * fonction de jeu, s'execute pendant tout le programme
+	 * fonction de jeu, s'exécute pendant tout le programme
 	 */
 	private static void Application() {
 		while (true) {
@@ -43,7 +43,7 @@ public class BoulderDash {
 	}
 
 	/**
-	 * main du programme initialise le programme et le lance
+	 * main du programme, initialise le programme et le lance
 	 * 
 	 * @param args
 	 */
@@ -53,7 +53,7 @@ public class BoulderDash {
 	}
 
 	/**
-	 * permet de recuperer le seul Jeu
+	 * permet de récuperer le seul Jeu
 	 * 
 	 * @return
 	 */
@@ -62,7 +62,7 @@ public class BoulderDash {
 	}
 
 	/**
-	 * permet de récuperer la fennetre du jeu
+	 * permet de récuperer la fenêtre du jeu
 	 * 
 	 * @return
 	 */
@@ -71,7 +71,7 @@ public class BoulderDash {
 	}
 
 	/**
-	 * permet de recupêrer l'editeur du jeu
+	 * permet de récupérer l'éditeur du jeu
 	 * 
 	 * @return
 	 */
@@ -80,7 +80,7 @@ public class BoulderDash {
 	}
 
 	/**
-	 * permet de definir dans quel état est le programme
+	 * permet de définir dans quel état est le programme
 	 * 
 	 * @param state
 	 */
