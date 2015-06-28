@@ -20,8 +20,8 @@ public class MurMagique extends Case {
 	}
 
 	/**
-	 * fonction servant a activer le mur magique, elle pelera les fonction des
-	 * mur magique contigus
+	 * fonction servant à activer le mur magique, elle appelera les fonctions
+	 * des murs magiques contigus
 	 */
 	public void activer(Niveau N) {
 		active = true;
@@ -51,7 +51,7 @@ public class MurMagique extends Case {
 	}
 
 	/**
-	 * retourne le sprite de mur si inactif, le sprite de mur magique sinon
+	 * retourne le sprite du mur si inactif, le sprite du mur magique sinon
 	 */
 	@Override
 	public Animation getAnimation() {
@@ -63,9 +63,9 @@ public class MurMagique extends Case {
 	}
 
 	/**
-	 * fonction d'interaction d'élément chutable si un element chutable arrive
-	 * et est en etat de chute alors il active le mur et est transmuté, sinon le
-	 * mur se comporte comme n'importe quel mur
+	 * fonction d'interaction d'élément chutable : si un élément chutable arrive
+	 * et est en état de chute, alors il active le mur et est transmuté, sinon
+	 * le mur se comporte comme n'importe quel mur
 	 * 
 	 */
 	@Override
@@ -92,7 +92,7 @@ public class MurMagique extends Case {
 	}
 
 	/**
-	 * fonction simulant un mur normal ou un element chutable lorsque le mur
+	 * fonction simulant un mur normal ou un élément chutable lorsque le mur
 	 * magique est inactif
 	 * 
 	 * @see Chutable

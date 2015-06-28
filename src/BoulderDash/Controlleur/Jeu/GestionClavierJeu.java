@@ -13,11 +13,11 @@ import BoulderDash.Modele.Cases.Directions;
 
 /**
  * @author 4r3
- *
+ * 
  */
 public class GestionClavierJeu implements KeyListener {
 	/**
-	 * map des touches enfoncées, toutes les touches sont a faux par defaut
+	 * map des touches enfoncées, toutes les touches sont à faux par défaut
 	 */
 	private Map<Integer, Boolean> keys;
 	private Niveau niveau;
@@ -38,8 +38,8 @@ public class GestionClavierJeu implements KeyListener {
 
 	@Override
 	/**
-	 * passe a faux la variable de la touche relachée,
-	 * si une autre touche était appuyée, alors celle ci prent le devant
+	 * passe à faux la variable de la touche relachée,
+	 * si une autre touche était appuyée, alors celle-ci prend le devant
 	 */
 	public void keyReleased(KeyEvent e) {
 		switch (e.getKeyCode()) {
@@ -72,7 +72,7 @@ public class GestionClavierJeu implements KeyListener {
 	}
 
 	/**
-	 * lance la fonction associé a la touche apuyée
+	 * lance la fonction associée à la touche appuyée
 	 */
 	@Override
 	public void keyPressed(KeyEvent e) {
@@ -95,7 +95,7 @@ public class GestionClavierJeu implements KeyListener {
 	}
 
 	/**
-	 * traitement de l'appuis sur la touche droite
+	 * traitement de l'appui sur la touche droite
 	 */
 	private void droite() {
 		keys.put(KeyEvent.VK_RIGHT, true);
@@ -103,7 +103,7 @@ public class GestionClavierJeu implements KeyListener {
 	}
 
 	/**
-	 * traitement de l'appuis sur la touche bas
+	 * traitement de l'appui sur la touche bas
 	 */
 	private void bas() {
 		keys.put(KeyEvent.VK_DOWN, true);
@@ -111,7 +111,7 @@ public class GestionClavierJeu implements KeyListener {
 	}
 
 	/**
-	 * traitement de l'appuis sur la touche gauche
+	 * traitement de l'appui sur la touche gauche
 	 */
 	private void gauche() {
 		keys.put(KeyEvent.VK_LEFT, true);
@@ -119,7 +119,7 @@ public class GestionClavierJeu implements KeyListener {
 	}
 
 	/**
-	 * traitement de l'appuis sur la touche haut
+	 * traitement de l'appui sur la touche haut
 	 */
 	private void haut() {
 		keys.put(KeyEvent.VK_UP, true);

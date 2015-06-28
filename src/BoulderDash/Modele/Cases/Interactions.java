@@ -6,12 +6,12 @@ package BoulderDash.Modele.Cases;
 import BoulderDash.Modele.Niveau;
 
 /**
- * interface contenant out les types d'interactions
- *
+ * interface contenant tous les types d'interaction
+ * 
  */
 public interface Interactions {
 	/**
-	 * fonction appelé par le personage lorsqu'il se déplace vers une case
+	 * fonction appelée par le personnage lorsqu'il se déplace vers une case
 	 */
 	boolean PersonageArrive(Niveau N);
 
@@ -21,7 +21,7 @@ public interface Interactions {
 	EtatChutable chutableArrive(Niveau N);
 
 	/**
-	 * fonction appelé par un enemi lorsqu'il se déplace
+	 * fonction appelée par un ennemi lorsqu'il se déplace
 	 */
 	boolean EnemiArrive(Niveau N);
 }

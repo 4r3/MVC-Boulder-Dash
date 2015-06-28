@@ -18,11 +18,11 @@ public class GestionBoutonsMenu implements ActionListener {
 	 * constructeur du gestionaire de menu
 	 * 
 	 * @param b1
-	 *            boutton Jouer
+	 *            bouton Jouer
 	 * @param b2
-	 *            boutton Editeur
+	 *            bouton Editeur
 	 * @param b3
-	 *            boutton Quitter
+	 *            bouton Quitter
 	 */
 	public GestionBoutonsMenu(JButton b1, JButton b2, JButton b3) {
 		this.bouton1 = b1;
@@ -31,7 +31,7 @@ public class GestionBoutonsMenu implements ActionListener {
 	}
 
 	/**
-	 * declenche les bonnes actions en fonction des boutton appuyés
+	 * déclenche les bonnes actions en fonction des boutons appuyés
 	 */
 	@Override
 	public void actionPerformed(ActionEvent arg0) {

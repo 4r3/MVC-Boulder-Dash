@@ -27,7 +27,7 @@ public class Rocher extends Chutable {
 	}
 
 	/**
-	 * interaction avec le personnage, pouse le rocher a gauche ou a droite si
+	 * interaction avec le personnage, pousse le rocher à gauche ou à droite si
 	 * il y a de la place
 	 */
 	@Override

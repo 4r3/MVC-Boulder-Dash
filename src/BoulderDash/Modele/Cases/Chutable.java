@@ -7,13 +7,13 @@ import BoulderDash.Modele.Niveau;
 
 /**
  * @author 4r3
- *
+ * 
  */
 public abstract class Chutable extends Case {
 	private EtatChutable etat;
 
 	/**
-	 * creation d'un objet chutable a l'état stable par défaut
+	 * création d'un objet chutable à l'état stable par défaut
 	 */
 	public Chutable(int pos_x, int pos_y) {
 		super(pos_x, pos_y);
@@ -21,8 +21,8 @@ public abstract class Chutable extends Case {
 	}
 
 	/**
-	 * met a jour l'élément chutable, en interagissant avec la case situé en
-	 * dessous
+	 * met à jour l'élément chutable, en interagissant avec la case située
+	 * en-dessous
 	 */
 	@Override
 	public void refresh(Niveau N) {
@@ -31,14 +31,14 @@ public abstract class Chutable extends Case {
 	}
 
 	/**
-	 * met l'objet en etat de chute
+	 * met l'objet en état de chute
 	 */
 	public void setChute() {
 		etat = EtatChutable.Chute;
 	}
 
 	/**
-	 * verifie si l'objet es en etat de chute
+	 * vérifie si l'objet est en état de chute
 	 * 
 	 */
 	public boolean chute() {
@@ -46,14 +46,14 @@ public abstract class Chutable extends Case {
 	}
 
 	/**
-	 * met l'ojet a l'etat instable
+	 * met l'objet à l'état instable
 	 */
 	public void setInstable() {
 		etat = EtatChutable.Instable;
 	}
 
 	/**
-	 * verifie si l'objetest instable ( la chute est considérée comme instable
+	 * vérifie si l'objet est instable ( la chute est considérée comme instable
 	 * par nature)
 	 */
 	public boolean instable() {
@@ -61,24 +61,24 @@ public abstract class Chutable extends Case {
 	}
 
 	/**
-	 * met l'objet a l'état stable
+	 * met l'objet à l'état stable
 	 */
 	public void setStable() {
 		etat = EtatChutable.Stable;
 	}
 
 	/**
-	 * verifie si l'objet est stable
+	 * vérifie si l'objet est stable
 	 */
 	public boolean stable() {
 		return etat == EtatChutable.Stable;
 	}
 
 	/**
-	 * fonction d'interaction avec un ojet chutable, on verifie que les cases a
-	 * gauche au niveau de l'objet arrivant et l'objet d'arrivée sont vide, si
-	 * oui alors l'ojet est echangé avec cette dernière on effectue pareil a
-	 * droite
+	 * fonction d'interaction avec un objet chutable, on vérifie que les cases à
+	 * gauche au niveau de l'objet arrivant et l'objet d'arrivée sont vides, si
+	 * oui alors l'objet est échangé avec cette dernière ; on effectue la même
+	 * chose à droite
 	 */
 	@Override
 	public EtatChutable chutableArrive(Niveau N) {

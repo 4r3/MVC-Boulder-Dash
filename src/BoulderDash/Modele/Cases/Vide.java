@@ -24,7 +24,7 @@ public class Vide extends Case {
 	}
 
 	/**
-	 * interaction personnage, echange le personnage et le vide
+	 * interaction personnage, échange le personnage et le vide
 	 */
 	@Override
 	public boolean PersonageArrive(Niveau N) {
@@ -50,7 +50,7 @@ public class Vide extends Case {
 	}
 
 	/**
-	 * autorise l'arrivée d'un enemi
+	 * autorise l'arrivée d'un ennemi
 	 */
 	@Override
 	public boolean EnemiArrive(Niveau N) {

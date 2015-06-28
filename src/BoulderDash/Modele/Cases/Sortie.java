@@ -32,7 +32,7 @@ public class Sortie extends Case {
 	}
 
 	/**
-	 * verifie que la sortie est ouverte
+	 * vérifie que la sortie est ouverte
 	 */
 	public boolean isOuverte() {
 		return ouverte;
@@ -53,7 +53,7 @@ public class Sortie extends Case {
 	}
 
 	/**
-	 * autorise l'arivée si la sortie est ouverte
+	 * autorise l'arrivée si la sortie est ouverte
 	 */
 	@Override
 	public boolean PersonageArrive(Niveau N) {
@@ -100,7 +100,7 @@ public class Sortie extends Case {
 	}
 
 	/**
-	 * affiche de la boue si le personnage est sortit, le sprite de sortie si la
+	 * affiche de la boue si le personnage est sorti, le sprite de sortie si la
 	 * sortie est ouverte, un mur sinon
 	 */
 	@Override

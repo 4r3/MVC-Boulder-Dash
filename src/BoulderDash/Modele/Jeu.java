@@ -18,7 +18,7 @@ public class Jeu extends Observable {
 	private boolean niveauFini;
 
 	/**
-	 * crée un nouveau jeu, avec son score a 0 et ses information de niveau à
+	 * crée un nouveau jeu, avec son score à 0 et ses informations de niveau à
 	 * null
 	 */
 	public Jeu() {
@@ -28,7 +28,7 @@ public class Jeu extends Observable {
 	}
 
 	/**
-	 * charge un niveau situé au chemin path initialise les données niveau du
+	 * charge un niveau situé au chemin path, initialise les données niveau du
 	 * jeu
 	 * 
 	 * @param path
@@ -52,9 +52,9 @@ public class Jeu extends Observable {
 	}
 
 	/**
-	 * recupere la liste des niveaux
+	 * récupère la liste des niveaux
 	 * 
-	 * @return String[] liste des niveau
+	 * @return String[] liste des niveaux
 	 */
 	public static String[] getListeNiveaux() {
 		File f = new File("./niveaux");
@@ -73,7 +73,7 @@ public class Jeu extends Observable {
 	}
 
 	/**
-	 * Boucle de jeu, gere le déroulement du jeu
+	 * Boucle de jeu, gère le déroulement du jeu
 	 */
 	public void gestion() {
 		int i = 0;
@@ -99,7 +99,7 @@ public class Jeu extends Observable {
 			time = System.currentTimeMillis();
 			// gestion de la pause
 			if (!pause) {
-				// gestion du cycle de mise a jour jeu, s'exécute tout les X
+				// gestion du cycle de mise à jour jeu, s'exécute tous les X
 				// cycles
 				if (i == 0) {
 					try {
@@ -110,12 +110,12 @@ public class Jeu extends Observable {
 					}
 				}
 
-				// rafraichisement des animation du jeu
+				// rafraichisement des animations du jeu
 				level.refreshAnim();
 
 				i = (i + 1) % Variables.CYCLES;
 
-				// notification des changements a la fenetre
+				// notification des changements à la fenêtre
 				setChanged();
 				notifyObservers();
 			}
@@ -151,7 +151,7 @@ public class Jeu extends Observable {
 	}
 
 	/**
-	 * desactive la pause
+	 * désactive la pause
 	 */
 	public void pauseOff() {
 		pause = false;
@@ -168,7 +168,7 @@ public class Jeu extends Observable {
 	}
 
 	/**
-	 * redemare le niveau en cours, perte du score realisé sur le niveau en
+	 * redémarre le niveau en cours, perte du score réalisé sur le niveau en
 	 * cours
 	 */
 	public void restartLevel() {
@@ -183,22 +183,22 @@ public class Jeu extends Observable {
 	}
 
 	/**
-	 * recupere le score du niveau aditioné à celui du jeu
+	 * récupère le score du niveau additionné à celui du jeu
 	 */
 	public int getScore() {
 		return score + level.getScore();
 	}
 
 	/**
-	 * interomp le jeu (appele par les menu lorsque l'on redemare ou quite le
-	 * niveau)
+	 * interrompt le jeu (appelé par les menus lorsque l'on redemarre ou quitte
+	 * le niveau)
 	 */
 	public void interompre() {
 		interuption = true;
 	}
 
 	/**
-	 * recupere si le niveau à été fini
+	 * récupère si le niveau à été fini
 	 */
 	public boolean isFini() {
 		return niveauFini;

@@ -15,7 +15,7 @@ import BoulderDash.Vue.Vues;
 
 /**
  * @author 4r3
- *
+ * 
  */
 public class GestionMenuChoix implements ActionListener {
 
@@ -30,7 +30,7 @@ public class GestionMenuChoix implements ActionListener {
 	}
 
 	/**
-	 * declenche les actions associées a chaques bouttons
+	 * déclenche les actions associées à chaque bouton
 	 */
 	@Override
 	public void actionPerformed(ActionEvent arg0) {

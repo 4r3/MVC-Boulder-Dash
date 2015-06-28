@@ -23,8 +23,8 @@ public class GestionMenuJeu implements ActionListener {
 	}
 
 	/**
-	 * met le jeu en pause declenche les actions associées au differents
-	 * bouttons desactive la pause
+	 * met le jeu en pause, déclenche les actions associées aux différents
+	 * boutons, désactive la pause
 	 */
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
@@ -40,8 +40,8 @@ public class GestionMenuJeu implements ActionListener {
 	}
 
 	/**
-	 * lorsque l'on clique sur le bouton menu on affiche une popup avec les
-	 * differentes actions possibles
+	 * lorsque l'on clique sur le bouton menu, on affiche une popup avec les
+	 * différentes actions possibles
 	 * 
 	 */
 	private static void menu() {
@@ -70,7 +70,7 @@ public class GestionMenuJeu implements ActionListener {
 	}
 
 	/**
-	 * ouvre un popu avec le message d'aide
+	 * ouvre une popup avec le message d'aide
 	 */
 	private static void aide() {
 		JOptionPane.showMessageDialog(BoulderDash.getFen(), Variables.HELP);

@@ -10,7 +10,7 @@ import BoulderDash.Modele.EtatApplication;
 import BoulderDash.Vue.Vues;
 
 /**
- * gestionaire de fin de jeu, est appelé par la fenetre si le jeu est fini
+ * gestionaire de fin de jeu, est appelé par la fenêtre si le jeu est fini
  */
 public class GestionFinJeu {
 	public static void finJeu() {
@@ -23,7 +23,7 @@ public class GestionFinJeu {
 	}
 
 	/**
-	 * gestionaire de victoire, ouvre une popup avec le score et plusieur
+	 * gestionaire de victoire, ouvre une popup avec le score et plusieurs
 	 * actions possibles à effectuer
 	 */
 	private static void popVictoire() {
@@ -32,13 +32,13 @@ public class GestionFinJeu {
 		String message = "Score Niveau:\n"
 				+ "\tDiamants : "
 				+ BoulderDash.getJeu().getNiveau().getScore()
-				+ "\n\t Bonus de temps : "
+				+ "\n\tBonus de temps : "
 				+ BoulderDash.getJeu().getNiveau().getTmax()
 				+ "\n\tScore total : "
 				+ (BoulderDash.getJeu().getScore() + BoulderDash.getJeu()
 						.getNiveau().getTmax());
 		int n = JOptionPane.showOptionDialog(BoulderDash.getFen(), message,
-				"Victoire !!!", JOptionPane.YES_NO_CANCEL_OPTION,
+				"Victoire !", JOptionPane.YES_NO_CANCEL_OPTION,
 				JOptionPane.PLAIN_MESSAGE, null, options, options[2]);
 		switch (n) {
 		case 0:
@@ -60,7 +60,7 @@ public class GestionFinJeu {
 
 	/**
 	 * gestionaire de défaite, affiche une popup avec le score et les
-	 * differentes options possibles pour l'utilisateur
+	 * différentes options possibles pour l'utilisateur
 	 */
 	private static void popDefaite() {
 		Object[] options = { "Menu principal", "Nouveau jeu" };

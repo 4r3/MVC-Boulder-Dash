@@ -28,8 +28,8 @@ public class Diamant extends Chutable {
 
 	/**
 	 * fonction d'interaction personnage, lorsque le personnage arrive on
-	 * echange les case insere du vide incremente le score de 25 et decremente
-	 * le nombre de diamant a trouver
+	 * échange les cases, on insère du vide, on incrémente le score de 25 et on
+	 * décrémente le nombre de diamants à trouver
 	 */
 	@Override
 	public boolean PersonageArrive(Niveau N) {

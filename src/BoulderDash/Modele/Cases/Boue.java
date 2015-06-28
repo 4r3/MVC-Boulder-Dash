@@ -24,9 +24,9 @@ public class Boue extends Case {
 	}
 
 	/**
-	 * lorsque le personnage arrive, on echange les case du personage et de la
-	 * boue on insere du vide sur l'anciene position du personnage (ecrasement
-	 * de la boue) declenche l'insertion en uptable de case potentielement
+	 * lorsque le personnage arrive, on échange les cases du personage et de la
+	 * boue, on insère du vide sur l'ancienne position du personnage (écrasement
+	 * de la boue), on déclenche l'insertion en uptable de cases potentielement
 	 * affectées par le changement
 	 */
 	@Override

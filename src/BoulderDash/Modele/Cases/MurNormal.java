@@ -25,7 +25,7 @@ public class MurNormal extends Case {
 	}
 
 	/**
-	 * fonction d'arrivée d'ojet chutable (meme comportement qu'un élément
+	 * fonction d'arrivée d'objet chutable (même comportement qu'un élément
 	 * Chutable
 	 * 
 	 * @see Chutable

@@ -44,7 +44,7 @@ public class Editeur extends Observable {
 	}
 
 	/**
-	 * charge dans l'éditeur le niveau avec le chemin transmis en paramettre
+	 * charge dans l'éditeur le niveau avec le chemin transmis en paramètre
 	 * 
 	 * @param path
 	 *            chemin du niveau
@@ -58,7 +58,7 @@ public class Editeur extends Observable {
 	}
 
 	/**
-	 * recupere le niveau dans l'éditeur
+	 * récupère le niveau dans l'éditeur
 	 * 
 	 * @return niveau de l'éditeur
 	 */
@@ -67,17 +67,17 @@ public class Editeur extends Observable {
 	}
 
 	/**
-	 * @return recupere quelle type case est choisie
+	 * @return récupère quel type de case est choisi
 	 */
 	public ChoixAnimation getIconActif() {
 		return iconActif;
 	}
 
 	/**
-	 * coisi le type de case a insérer dans le niveau
+	 * choisit le type de case à insérer dans le niveau
 	 * 
 	 * @param iconActif
-	 *            case a choisir
+	 *            case à choisir
 	 */
 	public void setIconActif(ChoixAnimation iconActif) {
 		this.iconActif = iconActif;

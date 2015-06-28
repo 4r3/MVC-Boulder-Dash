@@ -23,8 +23,8 @@ public class GestionMenuEditeur implements ActionListener {
 	private JMenuItem quitter;
 
 	/**
-	 * constructeur qui enregistre la liste des boutons present avec les quel on
-	 * interagit
+	 * constructeur qui enregistre la liste des boutons présents avec lesquels
+	 * on interagit
 	 */
 	public GestionMenuEditeur(JMenuItem nouveau, JMenuItem charger,
 			JMenuItem sauvgarder, JMenuItem configurer, JMenuItem quitter) {
@@ -37,7 +37,7 @@ public class GestionMenuEditeur implements ActionListener {
 	}
 
 	/**
-	 * déclenche les action associées a chaques bouttons
+	 * déclenche les actions associées à chaque bouton
 	 */
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
@@ -55,8 +55,8 @@ public class GestionMenuEditeur implements ActionListener {
 	}
 
 	/**
-	 * gestion de sauvegarde, affiche une popup dans laquelle on reseigne le nom
-	 * du niveau déclenche la sauvegarde à la confirmation de la popup
+	 * gestion de sauvegarde, affiche une popup dans laquelle on renseigne le
+	 * nom du niveau, déclenche la sauvegarde à la confirmation de la popup
 	 */
 	private static void save() {
 		String nom = (String) JOptionPane.showInputDialog(BoulderDash.getFen(),
@@ -68,13 +68,13 @@ public class GestionMenuEditeur implements ActionListener {
 	}
 
 	/**
-	 * gestionaire de chargement, affiche une popup avec une liste des niveaux
-	 * existants charge le niveau a la validation de la popup
+	 * gestionaire de chargement, affiche une popup avec la liste des niveaux
+	 * existants, charge le niveau à la validation de la popup
 	 */
 	private static void load() {
 		String[] liste = Jeu.getListeNiveaux();
 		String path = (String) JOptionPane.showInputDialog(
-				BoulderDash.getFen(), "Quel niveau voulez vous charger",
+				BoulderDash.getFen(), "Quel niveau voulez-vous charger ?",
 				"Customized Dialog", JOptionPane.PLAIN_MESSAGE, null, liste,
 				liste[0]);
 		if (path != null) {
@@ -83,7 +83,7 @@ public class GestionMenuEditeur implements ActionListener {
 	}
 
 	/**
-	 * ouvre une popup avec deux champs texte servant a renseigner le temps
+	 * ouvre une popup avec deux champs texte servant à renseigner le temps
 	 * bonus du niveau et le nombre de diamants requis pour ouvrir la sortie
 	 */
 	private static void config() {
@@ -99,7 +99,7 @@ public class GestionMenuEditeur implements ActionListener {
 		myPanel.add(temps);
 
 		int result = JOptionPane.showConfirmDialog(BoulderDash.getFen(),
-				myPanel, "Entrez les paramettres du niveau",
+				myPanel, "Entrez les paramètres du niveau",
 				JOptionPane.OK_CANCEL_OPTION);
 		if (result == JOptionPane.OK_OPTION) {
 			try {

@@ -35,15 +35,15 @@ public class Personnage extends Case {
 	}
 
 	/**
-	 * recupere la Direction
+	 * récupère la Direction
 	 */
 	public Directions getDeplace() {
 		return Deplace;
 	}
 
 	/**
-	 * met a jour le deplacement, deplacera le personage dans la direction situe
-	 * dans Deplace
+	 * met à jour le déplacement, déplacera le personnage dans la direction
+	 * située dans Deplace
 	 */
 	@Override
 	public void refresh(Niveau N) {
@@ -85,8 +85,8 @@ public class Personnage extends Case {
 	}
 
 	/**
-	 * fonction qui gere l'arret du personnage, choisi le bon sprite pour
-	 * l'arret
+	 * fonction qui gère l'arrêt du personnage, choisit le bon sprite pour
+	 * l'arrêt
 	 */
 	private void arret() {
 		try {
@@ -130,7 +130,7 @@ public class Personnage extends Case {
 	}
 
 	/**
-	 * fonction de mise a jour de l'annimation, ajoute un offset de déplacement
+	 * fonction de mise à jour de l'animation, ajoute un offset de déplacement
 	 * pour fluidifier l'animation
 	 */
 	@Override
@@ -161,7 +161,7 @@ public class Personnage extends Case {
 	}
 
 	/**
-	 * fonction d'interaction avec un element chutable, ecrase et tue le
+	 * fonction d'interaction avec un élément chutable, écrase et tue le
 	 * personage si l'objet est en chute
 	 */
 	@Override
@@ -181,7 +181,8 @@ public class Personnage extends Case {
 	}
 
 	/**
-	 * fonction d'interaction avec un enemi, tue le personage dans une explosion
+	 * fonction d'interaction avec un ennemi, tue le personage dans une
+	 * explosion
 	 */
 	@Override
 	public boolean EnemiArrive(Niveau N) {
@@ -198,7 +199,7 @@ public class Personnage extends Case {
 	}
 
 	/**
-	 * retourne le sprite du personage
+	 * retourne le sprite du personnage
 	 */
 	@Override
 	public Animation getAnimation() {
@@ -206,7 +207,7 @@ public class Personnage extends Case {
 	}
 
 	/**
-	 * fonction verifiant si le personnage est toujour vivant
+	 * fonction vérifiant si le personnage est toujours vivant
 	 */
 	public boolean isVivant() {
 		return vivant;

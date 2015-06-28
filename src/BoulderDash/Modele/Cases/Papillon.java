@@ -9,14 +9,14 @@ import BoulderDash.Modele.Animation.TableAnimation;
 
 /**
  * @author 4r3
- *
+ * 
  */
 public class Papillon extends Case {
 	Directions dirNav;
 	boolean tempo;
 
 	/**
-	 * crée un papillon initialise sa temporisation et sa direction de
+	 * crée un papillon, initialise sa temporisation et sa direction de
 	 * navigation
 	 */
 	public Papillon(int x, int y) {
@@ -26,7 +26,7 @@ public class Papillon extends Case {
 	}
 
 	/**
-	 * mise a jour du papillon, gere les deplacement du papillon
+	 * mise à jour du papillon, gère les déplacements du papillon
 	 */
 	@Override
 	public void refresh(Niveau N) {
@@ -54,7 +54,7 @@ public class Papillon extends Case {
 		}
 	}
 
-	// fonctions de verifications de deplacement
+	// fonctions de vérification de déplacement
 	private boolean verifierHaut(Niveau N) {
 		return N.getCase(getX(), getY() - 1).EnemiArrive(N);
 	}
@@ -92,7 +92,7 @@ public class Papillon extends Case {
 		dirNav = Directions.Droite;
 	}
 
-	// gestion des ordre de verification pour chaque directions de navigation
+	// gestion des ordres de vérification pour chaque direction de navigation
 	private void navHaut(Niveau N) {
 		if (verifierGauche(N)) {
 			allerGauche(N);
@@ -152,7 +152,7 @@ public class Papillon extends Case {
 	}
 
 	/**
-	 * ecrase le papillon et fait apparaitre de diamants autour de lui si le
+	 * écrase le papillon et fait apparaître des diamants autour de lui si le
 	 * chutable est en état de chute
 	 */
 	@Override
