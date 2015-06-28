@@ -17,6 +17,9 @@ public class Sortie extends Case {
 
 	// private Animation animation;
 
+	/**
+	 * crée une sortie fermée en x y
+	 */
 	public Sortie(int x, int y) {
 		super(x, y);
 		Fermer();
@@ -28,18 +31,30 @@ public class Sortie extends Case {
 		return "S";
 	}
 
+	/**
+	 * verifie que la sortie est ouverte
+	 */
 	public boolean isOuverte() {
 		return ouverte;
 	}
 
+	/**
+	 * ouvre la sortie
+	 */
 	public void Ouvrir() {
 		this.ouverte = true;
 	}
 
+	/**
+	 * ferme la sortie
+	 */
 	public void Fermer() {
 		this.ouverte = false;
 	}
 
+	/**
+	 * autorise l'arivée si la sortie est ouverte
+	 */
 	@Override
 	public boolean PersonageArrive(Niveau N) {
 		if (ouverte) {
@@ -53,6 +68,12 @@ public class Sortie extends Case {
 		}
 	}
 
+	/**
+	 * fonction d'interaction de chutable, se comporte comme le mur ou le
+	 * chutable
+	 * 
+	 * @see Chutable
+	 */
 	@Override
 	public EtatChutable chutableArrive(Niveau N) {
 		if ((N.getCase(getX() + 1, getY() - 1).isVide())
@@ -78,11 +99,10 @@ public class Sortie extends Case {
 		}
 	}
 
-	@Override
-	public void refreshAnim() {
-		getAnimation().update();
-	}
-
+	/**
+	 * affiche de la boue si le personnage est sortit, le sprite de sortie si la
+	 * sortie est ouverte, un mur sinon
+	 */
 	@Override
 	public Animation getAnimation() {
 		if (persoSortit) {

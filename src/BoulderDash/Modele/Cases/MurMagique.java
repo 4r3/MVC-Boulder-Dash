@@ -19,7 +19,10 @@ public class MurMagique extends Case {
 		active = false;
 	}
 
-	// TODO trouver comment se débarasser du instanceof
+	/**
+	 * fonction servant a activer le mur magique, elle pelera les fonction des
+	 * mur magique contigus
+	 */
 	public void activer(Niveau N) {
 		active = true;
 		if (N.getCase(getX() - 1, getY()) instanceof MurMagique
@@ -33,6 +36,9 @@ public class MurMagique extends Case {
 		}
 	}
 
+	/**
+	 * fonction permettant de voir si le mur est actif ou non
+	 */
 	public boolean isActive() {
 		return active;
 	}
@@ -44,6 +50,9 @@ public class MurMagique extends Case {
 
 	}
 
+	/**
+	 * retourne le sprite de mur si inactif, le sprite de mur magique sinon
+	 */
 	@Override
 	public Animation getAnimation() {
 		if (active) {
@@ -53,7 +62,12 @@ public class MurMagique extends Case {
 		}
 	}
 
-	// TODO trouver comment se débarasser du instanceof
+	/**
+	 * fonction d'interaction d'élément chutable si un element chutable arrive
+	 * et est en etat de chute alors il active le mur et est transmuté, sinon le
+	 * mur se comporte comme n'importe quel mur
+	 * 
+	 */
 	@Override
 	public EtatChutable chutableArrive(Niveau N) {
 		if (((Chutable) N.getCase(getX(), getY() - 1)).chute()) {
@@ -77,6 +91,12 @@ public class MurMagique extends Case {
 		}
 	}
 
+	/**
+	 * fonction simulant un mur normal ou un element chutable lorsque le mur
+	 * magique est inactif
+	 * 
+	 * @see Chutable
+	 */
 	private EtatChutable modeMur(Niveau N) {
 		if ((N.getCase(getX() + 1, getY() - 1).isVide())
 				&& (N.getCase(getX() + 1, getY()).isVide())) {

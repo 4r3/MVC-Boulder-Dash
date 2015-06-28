@@ -16,7 +16,8 @@ public class Papillon extends Case {
 	boolean tempo;
 
 	/**
-	 * 
+	 * crée un papillon initialise sa temporisation et sa direction de
+	 * navigation
 	 */
 	public Papillon(int x, int y) {
 		super(x, y);
@@ -24,6 +25,9 @@ public class Papillon extends Case {
 		tempo = true;
 	}
 
+	/**
+	 * mise a jour du papillon, gere les deplacement du papillon
+	 */
 	@Override
 	public void refresh(Niveau N) {
 		if (!tempo) {
@@ -50,6 +54,7 @@ public class Papillon extends Case {
 		}
 	}
 
+	// fonctions de verifications de deplacement
 	private boolean verifierHaut(Niveau N) {
 		return N.getCase(getX(), getY() - 1).EnemiArrive(N);
 	}
@@ -66,6 +71,7 @@ public class Papillon extends Case {
 		return N.getCase(getX() + 1, getY()).EnemiArrive(N);
 	}
 
+	// fonction de déplacement
 	private void allerHaut(Niveau N) {
 		N.echangeCases(getX(), getY() - 1, getX(), getY());
 		dirNav = Directions.Haut;
@@ -86,6 +92,7 @@ public class Papillon extends Case {
 		dirNav = Directions.Droite;
 	}
 
+	// gestion des ordre de verification pour chaque directions de navigation
 	private void navHaut(Niveau N) {
 		if (verifierGauche(N)) {
 			allerGauche(N);
@@ -136,11 +143,18 @@ public class Papillon extends Case {
 		}
 	}
 
+	/**
+	 * retourne le sprite de papillon
+	 */
 	@Override
 	public Animation getAnimation() {
 		return TableAnimation.getPapillon();
 	}
 
+	/**
+	 * ecrase le papillon et fait apparaitre de diamants autour de lui si le
+	 * chutable est en état de chute
+	 */
 	@Override
 	public EtatChutable chutableArrive(Niveau N) {
 		if (((Chutable) N.getCase(getX(), getY() - 1)).chute()) {

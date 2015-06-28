@@ -10,6 +10,9 @@ public class Boue extends Case {
 		super(x, y);
 	}
 
+	/**
+	 * retourne le sprite de la boue
+	 */
 	@Override
 	public Animation getAnimation() {
 		return TableAnimation.getBoue();
@@ -20,6 +23,12 @@ public class Boue extends Case {
 		return "B";
 	}
 
+	/**
+	 * lorsque le personnage arrive, on echange les case du personage et de la
+	 * boue on insere du vide sur l'anciene position du personnage (ecrasement
+	 * de la boue) declenche l'insertion en uptable de case potentielement
+	 * affectées par le changement
+	 */
 	@Override
 	public boolean PersonageArrive(Niveau N) {
 		N.echangeCases(N.getPerso().getX(), N.getPerso().getY(), this.getX(),

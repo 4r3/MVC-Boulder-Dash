@@ -10,6 +10,9 @@ public class Vide extends Case {
 		super(x, y, true);
 	}
 
+	/**
+	 * retourne le sprite du Vide
+	 */
 	@Override
 	public Animation getAnimation() {
 		return TableAnimation.getVide();
@@ -20,6 +23,9 @@ public class Vide extends Case {
 		return "V";
 	}
 
+	/**
+	 * interaction personnage, echange le personnage et le vide
+	 */
 	@Override
 	public boolean PersonageArrive(Niveau N) {
 		N.echangeCases(N.getPerso().getX(), N.getPerso().getY(), getX(), getY());
@@ -28,6 +34,10 @@ public class Vide extends Case {
 
 	}
 
+	/**
+	 * interaction chutable, fait tomber l'objet chutable si il est instable, le
+	 * met en état instable sinon
+	 */
 	@Override
 	public EtatChutable chutableArrive(Niveau N) {
 		if (((Chutable) N.getCase(getX(), getY() - 1)).instable()) {
@@ -39,6 +49,9 @@ public class Vide extends Case {
 		}
 	}
 
+	/**
+	 * autorise l'arrivée d'un enemi
+	 */
 	@Override
 	public boolean EnemiArrive(Niveau N) {
 		return true;

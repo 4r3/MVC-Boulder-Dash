@@ -4,14 +4,9 @@
 package BoulderDash.Modele.Cases;
 
 /**
- * @author 4r3
+ * Liste des directions que le personnage peut prendre
  *
  */
-public enum Directions
-{
-	Haut,
-	Bas,
-	Gauche,
-	Droite,
-	Null;
+public enum Directions {
+	Haut, Bas, Gauche, Droite, Null;
 }
